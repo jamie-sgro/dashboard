@@ -1,9 +1,10 @@
-data <- readr::read_csv("C:/Users/Cameron/Documents/SDG Cities Index/SDSN.2018.US.csv")
+data <- readr::read_csv("C:/Users/Jamie/Documents/Code/dashboard/SDSN.2018.US.csv")
 library(leaflet)
 library(shinyWidgets)
 library(ggplot2)
 library(shiny)
 library(visNetwork)
+library(plotly)
 
 server <- function(input, output) {
   #create a map of the SDG Overall Scores by City
