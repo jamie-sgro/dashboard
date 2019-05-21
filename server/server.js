@@ -1,4 +1,6 @@
 var http = require("http");
+var express = require('express');
+var router = express.Router();
 
 port = 8081;
 
@@ -46,9 +48,9 @@ function handlePost(req, res) {
 
 function handleGet(req, res) {
   console.log("get");
-
   res.writeHead(200, {outcome: "success"});
   res.write("Connected successfully to Server");
+  res.render('<html><body><h1>Hello World</h1></body></html>');
   res.end();
 };
 
