@@ -1,3 +1,4 @@
 *.RData
 *.Rhistory
 *.pem
+node_modules/*
