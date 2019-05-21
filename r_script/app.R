@@ -1,4 +1,4 @@
-data <- readr::read_csv("C:/Users/Jamie/Documents/Code/dashboard/SDSN.2018.US.csv")
+data <- readr::read_csv("SDSN.2018.US.csv")
 library(leaflet)
 library(shinyWidgets)
 library(ggplot2)
