@@ -1,0 +1,30 @@
+{
+  "name": "dashboard",
+  "version": "0.0.1",
+  "description": "This project involves building a one-page online dashboard for visualizing an SDG Cities Index that is both open-sourced and legally shareable.",
+  "main": "index.js",
+  "scripts": {
+	"start": "node ./server/bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Jamie.Sgro/dashboard.git"
+  },
+  "keywords": [
+    "Dashboard",
+    "Visualization",
+    "SDGs",
+    "Open Source"
+  ],
+  "author": "Jamie Sgro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/Jamie.Sgro/dashboard/issues"
+  },
+  "homepage": "https://gitlab.com/Jamie.Sgro/dashboard#README",
+  "dependencies": {
+    "express": "^4.17.0",
+    "npm": "^6.9.0"
+  }
+}
