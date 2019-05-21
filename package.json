@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://gitlab.com/Jamie.Sgro/dashboard/issues"
   },
-  "homepage": "https://gitlab.com/Jamie.Sgro/dashboard#README"
+  "homepage": "https://gitlab.com/Jamie.Sgro/dashboard#README",
+  "dependencies": {
+    "npm": "^6.9.0"
+  }
 }
