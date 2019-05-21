@@ -24,6 +24,7 @@
   },
   "homepage": "https://gitlab.com/Jamie.Sgro/dashboard#README",
   "dependencies": {
+    "express": "^4.17.0",
     "npm": "^6.9.0"
   }
 }
