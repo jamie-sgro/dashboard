@@ -10,8 +10,8 @@ checkPackage = function(pack) {
 #### Import Libraries ####
 checkPackage("shiny")
 library(shiny)
-checkPackage("ggplot2")
-library(ggplot2)
+checkPackage("leaflet")
+library(leaflet)
 
 
 
@@ -32,7 +32,6 @@ data[5:ncol(data)] = as.numeric(unlist(data[5:ncol(data)]))
 maxInt = 0
 for (i in 5:ncol(data)) {
   newMax = max(na.omit(data[i]))
-  print(newMax)
   if (newMax > maxInt) {
     maxInt = newMax
   }
@@ -52,7 +51,8 @@ getLeaf = function(db) {
   #l = l %>% addProviderTiles(providers$Esri.WorldShadedRelief)
   
   #set up marker colour scheme
-  pal = colorNumeric(palette = "BuPu", domain = c(min(score):max(score)), na.color = "#000000")
+  colScheme = colorRamp(c(rgb(1,.1,1), rgb(.9,.1,.9), rgb(.2,.2,.5), rgb(.1,.9,.1), rgb(.1,1,.1)))
+  pal = colorNumeric(palette = colScheme, domain = c(min(score):max(score)), na.color = "#000000")
   
   #set up marker characteristics
   l = l %>% addCircleMarkers(lat = lat,
@@ -89,6 +89,24 @@ handleMarkerClick = function(output, nodeId) {
     barLabels = c(colnames(data[5:ncol(data)]))
     barplot(barValues, names.arg = barLabels, ylim = c(0, maxInt))
   })
+  
+  #Dependent on: plotOutput("totalplot")
+  output$totalplot = renderPlot({
+    barValues = c(sort(score), decreasing = TRUE)
+    
+    barCol = c()
+    ticker = TRUE
+    for (i in 1:length(barValues)) {
+      if (barValues[i] == score[rowNum] && ticker == TRUE) {
+        barCol = c(barCol, rgb(0,0,0))
+        ticker = FALSE
+      } else {
+        barCol = c(barCol, rgb(1,1,1))
+      }
+    }
+    
+    barplot(barValues, col = barCol)
+  })
 }
 
 
@@ -118,7 +136,8 @@ ui <- fluidPage(
   sidebarLayout(
     position = "right",
     sidebarPanel(
-      plotOutput("barplot")
+      plotOutput("barplot"),
+      plotOutput("totalplot")
     ),
     
     mainPanel(
