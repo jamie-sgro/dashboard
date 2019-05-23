@@ -1,14 +1,19 @@
+<!DOCTYPE html>
 <html>
+	<head>
+    <link rel="stylesheet" href="public/ui/libraries/leaflet.css" />
+    <script src="public/ui/libraries/leaflet.js"></script>
 
-<head>
-  <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-  <iframe src="https://jamie-sgro.shinyapps.io/sdg-cities-index/" style="border: none; width: 1000px; height: 800px"></iframe>
-</head>
-
-<body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
-</body>
-
+		<script src="public/ui/libraries/d3.min.js" type="text/JavaScript"></script>
+		<script src="public/ui/libraries/jquery.min.js" type="text/JavaScript"></script>
+    <script src="public/ui/libraries/papaparse.min.js" type="text/JavaScript"></script>
+	</head>
+  <form method="post" action="/getData">
+    <button type="submit" class="registerbtn">Register</button>
+  </form>
+	<body>
+    <div id="map" style="width: 800px; height: 400px"></div>
+    <script src="public/ui/entities/data.js" type="text/JavaScript"></script>
+		<script src="public/ui/main.js" type="text/JavaScript"></script>
+	</body>
 </html>
