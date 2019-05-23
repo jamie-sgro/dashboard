@@ -15,7 +15,7 @@ router.get('/', (req, res)=> {
     header: true
   });
 
-  console.log(data)
+  //console.log(data)
 
   res.render('index');
 });
@@ -25,6 +25,13 @@ router.get('/ui/', (req, res) => {
   console.log("get: '/ui/'")
   res.render('ui');
   //res.render('index', { title: 'Express' });
+  return;
+});
+
+router.post('/getData', (req, res, next) => {
+  console.log("getting data req rec'd")
+  res.status(200);
+  res.send("getData approved");
   return;
 });
 
