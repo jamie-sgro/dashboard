@@ -8,7 +8,11 @@ library(plotly)
 
 server <- function(input, output) {
   #create a map of the SDG Overall Scores by City
-  output$map <- renderLeaflet({leaflet(data) %>% addTiles() %>% addMarkers(lng = ~longitude, lat = ~latitude, popup = ~as.character(OVERALL.INDEX), label = ~as.character(MSA.Name), layerId= ~as.character(MSA.Name))
+  output$map <- renderLeaflet({leaflet(data) %>% addTiles() %>% addMarkers(lng = ~longitude,
+                                                                           lat = ~latitude,
+                                                                           popup = ~as.character(OVERALL.INDEX),
+                                                                           label = ~as.character(MSA.Name),
+                                                                           layerId= ~as.character(MSA.Name))
   })
   
   #create a datatable
@@ -50,10 +54,11 @@ server <- function(input, output) {
   Sdg12 = sub$GOAL.12.AVERAGE
   Sdg13 = sub$GOAL.13.AVERAGE
   nm = sub$MSA.Name
+  
   # Make a text panel, barplot or scatterplot depending of the selected point
-  if(is.null(input$map_marker_click))
+  if (is.null(input$map_marker_click)) {
     return()
-  else
+  } else {
     output$text <- renderText({paste("City=", nm,
                                      "SDG1= ", Sdg1, 
                                      "SDG2= ", Sdg2,
@@ -69,11 +74,14 @@ server <- function(input, output) {
                                      "SDG12= ", Sdg12, 
                                      "SDG13= ", Sdg13
     )})
+  }
   output$myTable <- renderTable({
-    return(
-      subset(data, data$MSA.Name==input$map_marker_click$id))})
+    return(subset(data, data$MSA.Name==input$map_marker_click$id))})
   })
 }
+
+
+
 ui <- fluidPage(
   navbarPage("Canadian SDG Cities Index",  
              tabPanel("Map",
@@ -94,4 +102,7 @@ ui <- fluidPage(
                       visNetworkOutput("visNetwork"))
   )
 )
+
+
+
 shinyApp(ui=ui, server=server)
