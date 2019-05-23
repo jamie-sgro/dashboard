@@ -28,8 +28,15 @@ router.get('/ui/', (req, res) => {
   return;
 });
 
-router.post('/getData', (req, res, next) => {
+router.get('/getData', (req, res, next) => {
   console.log("getting data req rec'd")
+  res.status(200);
+  res.send("getData approved");
+  return;
+});
+
+router.post('/getData', (req, res, next) => {
+  console.log("posting data req rec'd")
   res.status(200);
   res.send("getData approved");
   return;

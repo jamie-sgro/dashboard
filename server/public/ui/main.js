@@ -3,25 +3,34 @@
 ************************/
 const width = 800;
 const height = 600;
-const locHost = "http://127.0.0.1:3000/"
+const locHost = "http://localhost:3000/";
 
 
 
 // import .csv
-// TODO: make function to get data from server
 
-//var data = d3.csvParse(rawData);
-/*var data = Papa.parse(rawData, {
-  header: true
+
+
+
+function postAjax(url, data, callback) {
+  $.ajax({
+    type: "POST",
+    data: JSON.stringify(data),
+    //data: data,
+    url: url,
+    //contentType: 'application/json',
+    //datatype: "json"
+  }).done((data)=> {
+    callback(null, data);
+  }).fail((jqXHR, textStatus, errorThrown)=> {
+    callback(jqXHR, null);
+  });
+};
+
+postAjax(locHost + "getData", {}, (err, cb)=> {
+  console.log(cb);
 });
-*/
-//console.log(data)
 
-/*
-for (i in data) {
-  console.log(data[i].name)
-}
-*/
 
 
 /*****************
