@@ -7,6 +7,43 @@ const locHost = "http://127.0.0.1:3000/"
 
 
 
+/*****************
+*** CREATE MAP ***
+*****************/
+
+// initialize the map
+var map = L.map('map');
+
+map.setView([38, -100], 4);
+
+mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+
+L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; ' + mapLink + ' Contributors',
+      maxZoom: 18,
+    }).addTo(map);
+
+
+// add marker
+
+var marker = L.marker([36.9375, -121.3542]).addTo(map);
+marker.on("click", ()=> {
+  console.log("Marker clicked!")
+})
+
+//If I want the popup open by default
+//marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+
+marker.bindPopup("68.57")
+
+//set up alerts
+map.on("click", onMapClick);
+
+function onMapClick(e) {
+    console.log("You clicked the map at " + e.latlng);
+}
+
+
 /********************
 *** CREATE CANVAS ***
 ********************/
