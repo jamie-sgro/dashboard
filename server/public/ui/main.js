@@ -8,15 +8,20 @@ const locHost = "http://127.0.0.1:3000/"
 
 
 // import .csv
-var rawData = fs.readFileSync("test.csv");
+// TODO: make function to get data from server
 
-console.log(rawData)
+//var data = d3.csvParse(rawData);
+/*var data = Papa.parse(rawData, {
+  header: true
+});
+*/
+//console.log(data)
 
-//var rawData = "foo,bar,baz\n42,33,42\n12,76,54\n13,42,17";
-
-var data = d3.csvParse(rawData);
-
-console.log(data);
+/*
+for (i in data) {
+  console.log(data[i].name)
+}
+*/
 
 
 /*****************

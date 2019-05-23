@@ -6,13 +6,13 @@ var getData = require("./getData")
 //GET home page.
 router.get('/', (req, res)=> {
   console.log("get: '/'")
-/*
+
   // TEMP:
   var fs = require("fs")
-  var data = fs.readFileSync("./public/ui/sdsn_clean.csv");
+  var data = fs.readFileSync("./public/ui/sdsn_cleaned.csv");
 
   console.log(data)
-*/
+
   res.render('index');
 });
 
