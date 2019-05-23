@@ -1,0 +1,13 @@
+name: sdg-cities-index
+title: sdg-cities-index
+username:
+account: jamie-sgro
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 941388
+bundleId: 2099524
+url: https://jamie-sgro.shinyapps.io/sdg-cities-index/
+when: 1558463550.52524
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData
