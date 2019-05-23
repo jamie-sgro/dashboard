@@ -1,3 +1,11 @@
+/***************************
+*** DECLARE DEPENDENCIES ***
+***************************/
+
+var fs = require(["fs"]);
+
+
+
 /************************
 *** DECLARE VARIABLES ***
 ************************/
@@ -5,6 +13,18 @@ const width = 800;
 const height = 600;
 const locHost = "http://127.0.0.1:3000/"
 
+
+
+// import .csv
+var rawData = fs.readFileSync("test.csv");
+
+console.log(rawData)
+
+//var rawData = "foo,bar,baz\n42,33,42\n12,76,54\n13,42,17";
+
+var data = d3.csvParse(rawData);
+
+console.log(data);
 
 
 /*****************
