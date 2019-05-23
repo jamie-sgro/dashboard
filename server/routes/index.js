@@ -13,7 +13,7 @@ router.get('/', (req, res)=> {
 
   console.log(data)
 */
-  res.render('ui');
+  res.render('index');
 });
 
 //GET User Interface page.
