@@ -28,7 +28,8 @@ function postAjax(url, data, callback) {
 };
 
 postAjax(locHost + "getData", {}, (err, cb)=> {
-  console.log(cb);
+  // TODO: add error handling
+  data = cb
 });
 
 
