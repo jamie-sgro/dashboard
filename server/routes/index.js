@@ -1,14 +1,24 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
+var getData = require("./getData")
+
+//GET home page.
+router.get('/', (req, res)=> {
+  console.log("get: '/'")
+/*
+  // TEMP:
+  var fs = require("fs")
+  var data = fs.readFileSync("./public/ui/sdsn_clean.csv");
+
+  console.log(data)
+*/
   res.render('ui');
-  //res.render('index', { title: 'Express' });
 });
 
-/* GET User Interface page. */
+//GET User Interface page.
 router.get('/ui/', (req, res) => {
+  console.log("get: '/ui/'")
   res.render('ui');
   //res.render('index', { title: 'Express' });
   return;
