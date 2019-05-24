@@ -65,7 +65,7 @@ L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 addMarker("San Jose-Sunnyvale-Santa Clara, CA ", "36.9375", "-121.3542", "68.57");
 
 function addMarker(name, lat, lng, score) {
-  var mark = L.marker([lat, lng]).addTo(map);
+  var mark = L.marker([lat, lng]).bindTooltip(name, {direction: 'left'}).addTo(map);
   mark.on("click", ()=> {
     //this is where hooks into .d3 should be made
     console.log("Marker clicked!");
