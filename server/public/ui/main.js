@@ -32,10 +32,11 @@ async function getData() {
         } catch(e) {
           console.log(err.statusText);
         };
+        reject(err);
         return;
       };
 
-      resolve(cb);
+      resolve(cb.data);
       return;
     });
   });
@@ -59,27 +60,35 @@ L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
     }).addTo(map);
 
+populateMarkers();
 
 async function populateMarkers() {
-  await data;
-
-  // add marker
-  for (i in data) {
-    console.log(data.name);
-  };
+  await data.then((res)=> {
+    // add marker
+    for (i in res) {
+      addMarker(res[i].name, res[i].lat, res[i].lng, res[i].score);
+    };
+  });
 };
 
-addMarker("San Jose-Sunnyvale-Santa Clara, CA ", "36.9375", "-121.3542", "68.57");
+
 
 function addMarker(name, lat, lng, score) {
-  var mark = L.marker([lat, lng]).bindTooltip(name, {direction: 'left'}).addTo(map);
+  var mark = L.circleMarker([lat, lng]).bindTooltip(name, {direction: 'left'}).addTo(map);
+
   mark.on("click", ()=> {
     //this is where hooks into .d3 should be made
-    console.log("Marker clicked!");
-  })
-  mark.on("mouseover", ()=> {
-
+    console.log(mark.name);
   });
+
+  mark.on("mouseover", ()=> {
+    mark.setRadius(20);
+  });
+
+  mark.on("mouseout ", ()=> {
+    mark.setRadius(10);
+  });
+
   mark.bindPopup(score);
   mark.name = name;
   return(mark);
