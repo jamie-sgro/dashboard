@@ -60,7 +60,14 @@ L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     }).addTo(map);
 
 
+async function populateMarkers() {
+  await data;
 
+  // add marker
+  for (i in data) {
+    console.log(data.name);
+  };
+};
 
 addMarker("San Jose-Sunnyvale-Santa Clara, CA ", "36.9375", "-121.3542", "68.57");
 
