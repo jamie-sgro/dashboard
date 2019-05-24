@@ -74,7 +74,17 @@ async function populateMarkers() {
 
 
 function addMarker(name, lat, lng, score) {
-  var mark = L.circleMarker([lat, lng]).bindTooltip(name, {direction: 'left'}).addTo(map);
+  options = {
+    radius: 10,
+    stroke: true,
+    color: "black",
+    opacity: 1,
+    fill: true,
+    fillColor: "blue",
+    fillOpacity: 0.8,
+  };
+
+  var mark = L.circleMarker([lat, lng], options).bindTooltip(name, {direction: 'left'}).addTo(map);
 
   mark.on("click", ()=> {
     //this is where hooks into .d3 should be made
