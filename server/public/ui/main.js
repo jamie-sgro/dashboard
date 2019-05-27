@@ -1,11 +1,35 @@
 /************************
 *** DECLARE VARIABLES ***
 ************************/
+
 const width = 800;
 const height = 600;
 const locHost = "http://localhost:3000/";
 
 
+
+/*******************
+*** MAIN ROUTINE ***
+*******************/
+
+var map = getMap();
+mark = populateMarkers(map);
+
+
+
+/********************
+*** CREATE CANVAS ***
+********************/
+
+const canvas = d3.select("body").append("svg")
+  .attr("width", width)
+  .attr("height", height)
+
+
+
+/****************
+*** FUNCTIONS ***
+****************/
 
 // import .csv
 function postAjax(url, data, callback) {
@@ -20,18 +44,15 @@ function postAjax(url, data, callback) {
   });
 };
 
+
+
 function getData() {
   if (!getData.promise) {
-    console.log("Fetching data...")
     getData.promise = new Promise((resolve, reject) => {
       postAjax(locHost + "getData", {}, (err, cb)=> {
         if (err) {
-          try {
-            errMsg = JSON.parse(err.responseText)
-            console.log(errMsg.name + ": " + errMsg.message);
-          } catch(e) {
-            console.log(err.statusText);
-          };
+          console.log("Error: " + err.statusText);
+          console.log(err)
           reject(err);
           return;
         };
@@ -49,32 +70,39 @@ function getData() {
 *** CREATE MAP ***
 *****************/
 
-// initialize the map
-var map = L.map('map');
+function getMap() {
+  map = L.map('map');
 
-map.setView([38, -100], 4);
+  map.setView([38, -100], 4);
 
-mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+  mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
 
-L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; ' + mapLink + ' Contributors',
-      maxZoom: 18,
-    }).addTo(map);
+  L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; ' + mapLink + ' Contributors',
+        maxZoom: 18,
+      }).addTo(map);
 
-populateMarkers();
-
-async function populateMarkers() {
-  data = await getData();
-
-  // add marker
-  for (i in data) {
-    addMarker(data[i].name, data[i].lat, data[i].lng, data[i].score);
-  };
+  return map;
 };
 
 
 
-function addMarker(name, lat, lng, score) {
+async function populateMarkers(map) {
+  data = await getData();
+
+  // add marker
+  mark = [];
+
+  for (i in data) {
+    mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng, data[i].score);
+  };
+
+  return mark;
+};
+
+
+
+function addMarker(map, name, lat, lng, score) {
   options = {
     radius: 10,
     stroke: true,
@@ -103,45 +131,13 @@ function addMarker(name, lat, lng, score) {
   mark.bindPopup(score);
   mark.name = name;
   return(mark);
-}
+};
 
-//If I want the popup open by default
-//marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+
 
 //set up alerts
 map.on("click", onMapClick);
 
 function onMapClick(e) {
     console.log("You clicked the map at " + e.latlng);
-}
-
-
-/********************
-*** CREATE CANVAS ***
-********************/
-
-const canvas = d3.select("body").append("svg")
-  .attr("width", width)
-  .attr("height", height)
-
-
-
-/*
-  useData();
-
-  function getData() {
-    if (!getData.promise) {
-      console.log("Fetching data...")
-      getData.promise = new Promise((resolve, reject) => {
-        resolve({one: 1, two: 2, three: 3});
-      });
-    }
-    return getData.promise;
-  };
-
-  //This is what I would like to have
-  async function useData() {
-    data = await getData();
-    console.log(data);  //which I'd like to return the value within [[PromiseValue]]
-  };
-*/
+};
