@@ -21,10 +21,11 @@ mark = populateMarkers(map);
 *** CREATE CANVAS ***
 ********************/
 
+/*
 const canvas = d3.select("body").append("svg")
   .attr("width", width)
   .attr("height", height)
-
+*/
 
 
 /****************
@@ -139,5 +140,50 @@ function addMarker(map, name, lat, lng, score) {
 map.on("click", onMapClick);
 
 function onMapClick(e) {
-    console.log("You clicked the map at " + e.latlng);
+  console.log("You clicked the map at " + e.latlng);
+  dataArray = [20, 20, 40, 50, 60]
+  canvas.selectAll("rect")
+    .data(dataArray)
+      .transition()
+      .duration(800)
+      .attr("width", function(d) {
+        console.log(d)
+        return widthScale(d);
+      })
 };
+
+
+
+//d3 barplot
+
+var dataArray = [7, 20, 40, 50, 60];
+
+var canvas = d3.select("body")
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(0, 50)");
+
+var colour = d3.scaleLinear()
+.domain([0, 60])
+.range(["red","blue"]);
+
+var widthScale = d3.scaleLinear()
+  .domain([0, 60])
+  .range([0, width]);
+
+canvas.selectAll("rect")
+  .data(dataArray)
+  .enter()
+    .append("rect")
+      .attr("width", function(d) {
+        return widthScale(d);
+      })
+      .attr("height", 50)
+      .attr("fill", function(d) {
+        return(colour(d))
+      })
+      .attr("y", function(d, i) {
+        return(i * 100)
+      });
