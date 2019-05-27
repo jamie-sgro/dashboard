@@ -20,26 +20,27 @@ function postAjax(url, data, callback) {
   });
 };
 
-data = getData();
-
-async function getData() {
-  return new Promise((resolve, reject) => {
-    postAjax(locHost + "getData", {}, (err, cb)=> {
-      if (err) {
-        try {
-          errMsg = JSON.parse(err.responseText)
-          console.log(errMsg.name + ": " + errMsg.message);
-        } catch(e) {
-          console.log(err.statusText);
+function getData() {
+  if (!getData.promise) {
+    console.log("Fetching data...")
+    getData.promise = new Promise((resolve, reject) => {
+      postAjax(locHost + "getData", {}, (err, cb)=> {
+        if (err) {
+          try {
+            errMsg = JSON.parse(err.responseText)
+            console.log(errMsg.name + ": " + errMsg.message);
+          } catch(e) {
+            console.log(err.statusText);
+          };
+          reject(err);
+          return;
         };
-        reject(err);
-        return;
-      };
 
-      resolve(cb.data);
-      return;
+        resolve(cb.data);
+      });
     });
-  });
+  }
+  return getData.promise;
 };
 
 
@@ -63,12 +64,12 @@ L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 populateMarkers();
 
 async function populateMarkers() {
-  await data.then((res)=> {
-    // add marker
-    for (i in res) {
-      addMarker(res[i].name, res[i].lat, res[i].lng, res[i].score);
-    };
-  });
+  data = await getData();
+
+  // add marker
+  for (i in data) {
+    addMarker(data[i].name, data[i].lat, data[i].lng, data[i].score);
+  };
 };
 
 
@@ -122,3 +123,25 @@ function onMapClick(e) {
 const canvas = d3.select("body").append("svg")
   .attr("width", width)
   .attr("height", height)
+
+
+
+/*
+  useData();
+
+  function getData() {
+    if (!getData.promise) {
+      console.log("Fetching data...")
+      getData.promise = new Promise((resolve, reject) => {
+        resolve({one: 1, two: 2, three: 3});
+      });
+    }
+    return getData.promise;
+  };
+
+  //This is what I would like to have
+  async function useData() {
+    data = await getData();
+    console.log(data);  //which I'd like to return the value within [[PromiseValue]]
+  };
+*/
