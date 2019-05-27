@@ -3,7 +3,7 @@
 ************************/
 
 const width = 800;
-const height = 600;
+const height = 400;
 const locHost = "http://localhost:3000/";
 
 
@@ -96,6 +96,9 @@ async function populateMarkers(map) {
 
   for (i in data) {
     mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng, data[i].score);
+
+    //attach array number to JSON object
+    mark[i].id = i;
   };
 
   return mark;
@@ -118,7 +121,9 @@ function addMarker(map, name, lat, lng, score) {
 
   mark.on("click", ()=> {
     //this is where hooks into .d3 should be made
-    console.log(mark.name);
+    console.log(mark.id);
+
+    updateGraph(mark.id);
   });
 
   mark.on("mouseover", ()=> {
@@ -135,12 +140,13 @@ function addMarker(map, name, lat, lng, score) {
 };
 
 
+async function updateGraph(id) {
+  data = await getData();
 
-//set up alerts
-map.on("click", onMapClick);
+  for (key in data[id]) {
+    console.log(key)
+  }
 
-function onMapClick(e) {
-  console.log("You clicked the map at " + e.latlng);
   dataArray = [20, 20, 40, 50, 60]
   canvas.selectAll("rect")
     .data(dataArray)
@@ -154,9 +160,18 @@ function onMapClick(e) {
 
 
 
+//set up alerts
+map.on("click", onMapClick);
+
+function onMapClick(e) {
+  console.log("You clicked the map at " + e.latlng);
+};
+
+
+
 //d3 barplot
 
-var dataArray = [7, 20, 40, 50, 60];
+var dataArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 var canvas = d3.select("body")
   .append("svg")
@@ -166,8 +181,8 @@ var canvas = d3.select("body")
     .attr("transform", "translate(0, 50)");
 
 var colour = d3.scaleLinear()
-.domain([0, 60])
-.range(["red","blue"]);
+  .domain([0, 60])
+  .range(["red","blue"]);
 
 var widthScale = d3.scaleLinear()
   .domain([0, 60])
