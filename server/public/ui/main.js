@@ -188,6 +188,11 @@ var widthScale = d3.scaleLinear()
   .domain([0, 60])
   .range([0, width]);
 
+var heightScale = d3.scaleBand()
+  .domain([0, dataArray.length])
+  .range([0, height])
+  .padding(0.2)
+
 canvas.selectAll("rect")
   .data(dataArray)
   .enter()
@@ -195,10 +200,12 @@ canvas.selectAll("rect")
       .attr("width", function(d) {
         return widthScale(d);
       })
-      .attr("height", 50)
+      .attr("height", function(d) {
+        return heightScale.bandwidth()
+      })
       .attr("fill", function(d) {
-        return(colour(d))
+        return colour(d)
       })
       .attr("y", function(d, i) {
-        return(i * 100)
+        return i / (dataArray.length+1) * height
       });
