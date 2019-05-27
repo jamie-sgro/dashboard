@@ -224,7 +224,7 @@ async function getMaxScore() {
 var margin = {
   top: 15,
   right: 25,
-  bottom: 15,
+  bottom: 20,
   left: 60
 };
 
