@@ -2,8 +2,8 @@
 *** DECLARE VARIABLES ***
 ************************/
 
-const width = 800;
-const height = 400;
+//const width = 800;
+//const height = 400;
 const locHost = "http://localhost:3000/";
 
 
@@ -171,41 +171,84 @@ function onMapClick(e) {
 
 //d3 barplot
 
-var dataArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+var dataArray = [
+  {
+    "name": "SDG1",
+    "value": 10
+  },
+  {
+    "name": "SDG2",
+    "value": 20
+  },
+  {
+    "name": "SDG3",
+    "value": 30
+  }
+];
 
-var canvas = d3.select("body")
-  .append("svg")
-  .attr("width", width)
-  .attr("height", height)
+//var dataArray = [{"name":"Bob","value":33},{"name":"Robin","value":12},{"name":"Anne","value":41},{"name":"Mark","value":16},{"name":"Joe","value":59},{"name":"Eve","value":38},{"name":"Karen","value":21},{"name":"Kirsty","value":25},{"name":"Chris","value":30},{"name":"Lisa","value":47},{"name":"Tom","value":5},{"name":"Stacy","value":20},{"name":"Charles","value":13},{"name":"Mary","value":29}];
+
+maxIndiScore = 60;
+
+var margin = {
+  top: 15,
+  right: 25,
+  bottom: 15,
+  left: 60
+};
+
+var width = 800 - margin.left - margin.right,
+  height = 400 - margin.top - margin.bottom;
+
+var canvas = d3.select("body").append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
   .append("g")
-    .attr("transform", "translate(0, 50)");
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var colour = d3.scaleLinear()
-  .domain([0, 60])
+  .domain([0, d3.max(dataArray, function(d){
+    return d.value;
+  })])
   .range(["red","blue"]);
 
+dataArray.forEach(function(d) {
+  d.value = +d.value;
+});
+
 var widthScale = d3.scaleLinear()
-  .domain([0, 60])
+  .domain([0, d3.max(dataArray, function(d){
+    return d.value;
+  })])
   .range([0, width]);
 
 var heightScale = d3.scaleBand()
-  .domain([0, dataArray.length])
-  .range([0, height])
-  .padding(0.2)
+  .range([height, 0])
+  .padding(0.1)
+  .domain(dataArray.map(function(d) {
+    return d.name;
+  }));
 
 canvas.selectAll("rect")
   .data(dataArray)
   .enter()
     .append("rect")
       .attr("width", function(d) {
-        return widthScale(d);
+        return widthScale(d.value);
       })
-      .attr("height", function(d) {
-        return heightScale.bandwidth()
-      })
+      .attr("height", heightScale.bandwidth())
       .attr("fill", function(d) {
-        return colour(d)
+        return colour(d.value)
       })
-      .attr("y", function(d, i) {
-        return i / (dataArray.length+1) * height
+      .attr("y", function(d) {
+        return heightScale(d.name);
       });
+
+      // add the x Axis
+canvas.append("g")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(widthScale));
+
+// add the y Axis
+canvas.append("g")
+  .call(d3.axisLeft(heightScale));
