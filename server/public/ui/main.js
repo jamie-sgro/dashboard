@@ -144,7 +144,9 @@ async function updateGraph(id) {
   data = await getData();
 
   for (key in data[id]) {
-    console.log(key)
+    if (matches(key, ["name","lat","lng","score"]) == false) {
+      console.log({"name": key, "value": data[id][key]})
+    }
   }
 
   dataArray = [20, 20, 40, 50, 60]
@@ -158,6 +160,16 @@ async function updateGraph(id) {
       })
 };
 
+
+
+function matches(key, search) {
+  for (i in search) {
+    if (key == search[i]) {
+      return true;
+    };
+  };
+  return false;
+};
 
 
 //set up alerts
