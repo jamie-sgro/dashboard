@@ -143,20 +143,23 @@ function addMarker(map, name, lat, lng, score) {
 async function updateGraph(id) {
   data = await getData();
 
+  dataArray = [];
+
   for (key in data[id]) {
     if (matches(key, ["name","lat","lng","score"]) == false) {
-      console.log({"name": key, "value": data[id][key]})
+      dataArray.push({"name": key, "value": data[id][key]})
     }
   }
 
-  dataArray = [20, 20, 40, 50, 60]
   canvas.selectAll("rect")
     .data(dataArray)
       .transition()
       .duration(800)
       .attr("width", function(d) {
-        console.log(d)
-        return widthScale(d);
+        return widthScale(d.value);
+      })
+      .attr("fill", function(d) {
+        return colour(d.value)
       })
 };
 
@@ -183,20 +186,21 @@ function onMapClick(e) {
 
 //d3 barplot
 
-var dataArray = [
-  {
-    "name": "SDG1",
-    "value": 10
-  },
-  {
-    "name": "SDG2",
-    "value": 20
-  },
-  {
-    "name": "SDG3",
-    "value": 30
-  }
-];
+var dataArray = [{name: "SDG1", value: "28.24"},
+{name: "SDG2", value: "14.09"},
+{name: "SDG3", value: "52.56"},
+{name: "SDG4", value: "30.74"},
+{name: "SDG5", value: "19.7"},
+{name: "SDG6", value: "99.81"},
+{name: "SDG7", value: "100"},
+{name: "SDG8", value: "56.63"},
+{name: "SDG9", value: "24.63"},
+{name: "SDG10", value: "40.02"},
+{name: "SDG11", value: "69.61"},
+{name: "SDG12", value: "72.78"},
+{name: "SDG13", value: "54.18"},
+{name: "SDG15", value: "83.84"},
+{name: "SDG16", value: "56.74"}];
 
 //var dataArray = [{"name":"Bob","value":33},{"name":"Robin","value":12},{"name":"Anne","value":41},{"name":"Mark","value":16},{"name":"Joe","value":59},{"name":"Eve","value":38},{"name":"Karen","value":21},{"name":"Kirsty","value":25},{"name":"Chris","value":30},{"name":"Lisa","value":47},{"name":"Tom","value":5},{"name":"Stacy","value":20},{"name":"Charles","value":13},{"name":"Mary","value":29}];
 
