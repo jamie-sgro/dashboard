@@ -204,7 +204,22 @@ var dataArray = [{name: "SDG1", value: "28.24"},
 
 //var dataArray = [{"name":"Bob","value":33},{"name":"Robin","value":12},{"name":"Anne","value":41},{"name":"Mark","value":16},{"name":"Joe","value":59},{"name":"Eve","value":38},{"name":"Karen","value":21},{"name":"Kirsty","value":25},{"name":"Chris","value":30},{"name":"Lisa","value":47},{"name":"Tom","value":5},{"name":"Stacy","value":20},{"name":"Charles","value":13},{"name":"Mary","value":29}];
 
-maxIndiScore = 60;
+async function getMaxScore() {
+  maxScore = 0;
+  data = await getData();
+
+  for (rec in data) {
+    for (key in data[rec]) {
+      if (matches(key, ["name","lat","lng","score"]) == false) {
+        if (data[rec][key] > maxScore) {
+          maxScore = data[rec][key];
+        };
+      };
+    };
+  };
+  console.log(maxScore);
+  return maxScore;
+};
 
 var margin = {
   top: 15,
