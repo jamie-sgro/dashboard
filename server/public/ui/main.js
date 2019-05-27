@@ -2,6 +2,7 @@
 *** DECLARE VARIABLES ***
 ************************/
 
+const markerRad = 10;
 //const width = 800;
 //const height = 400;
 const locHost = "http://localhost:3000/";
@@ -108,7 +109,7 @@ async function populateMarkers(map) {
 
 function addMarker(map, name, lat, lng, score) {
   options = {
-    radius: 10,
+    radius: markerRad,
     stroke: true,
     color: "black",
     opacity: 1,
@@ -131,7 +132,7 @@ function addMarker(map, name, lat, lng, score) {
   });
 
   mark.on("mouseout ", ()=> {
-    mark.setRadius(10);
+    mark.setRadius(markerRad);
   });
 
   mark.bindPopup(score);
@@ -260,10 +261,19 @@ var heightScale = d3.scaleBand()
     return d.name;
   }));
 
+var radiusScale = d3.scaleLinear()
+  .domain([0, d3.max(dataArray, function(d){
+    return d.value;
+  })])
+  .range([markerRad/4, markerRad*4]);
+
 canvas.selectAll("rect")
   .data(dataArray)
   .enter()
     .append("rect")
+      .attr("name", function(d) {
+        return d.name;
+      })
       .attr("width", function(d) {
         return widthScale(d.value);
       })
@@ -273,6 +283,30 @@ canvas.selectAll("rect")
       })
       .attr("y", function(d) {
         return heightScale(d.name);
+      })
+      .on("click", function() {
+        //build hook to change leaflet
+        barName = d3.select(this).attr("name");
+
+        for (i in mark) {
+          rad = radiusScale(Math.round(data[i][barName]))
+          mark[i].setStyle({radius: rad})
+        };
+      })
+      .on("mouseover", function() {
+        //build hook to change leaflet
+        barName = d3.select(this).attr("name");
+        for (i in mark) {
+          //change colour based on width of rect
+          mark[i].setStyle({fillColor: colour(data[i][barName])})
+        };
+      })
+      .on("mouseout", function() {
+        //build hook to change leaflet
+        barName = d3.select(this).attr("name");
+        for (i in mark) {
+          mark[i].setStyle({fillColor: "blue", radius: markerRad})
+        };
       });
 
       // add the x Axis
