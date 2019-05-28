@@ -166,12 +166,22 @@ async function d3PopulateMarkers(map) {
   	update();
 
     function update() {
+      //get pxl distance between two coords
+      x1 = map.latLngToLayerPoint([0,50]).x
+      x2 = map.latLngToLayerPoint([0,0]).x
+
+      scl = x1-x2;
+
       g.selectAll("circle")
+        .attr("r", .01*scl)
         .attr("transform", function(d) {
           return "translate("+
             map.latLngToLayerPoint([d.lat, d.lng]).x +","+
             map.latLngToLayerPoint([d.lat, d.lng]).y +")";
           })
+
+      var zoomLevel = map.getZoom();
+      //console.log(zoomLevel)
     }
 };
 
