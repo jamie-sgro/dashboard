@@ -2,8 +2,9 @@
 *** DECLARE VARIABLES ***
 ************************/
 
-const width = 800;
-const height = 600;
+const markerRad = 10;
+//const width = 800;
+//const height = 400;
 const locHost = "http://localhost:3000/";
 
 
@@ -21,10 +22,11 @@ mark = populateMarkers(map);
 *** CREATE CANVAS ***
 ********************/
 
+/*
 const canvas = d3.select("body").append("svg")
   .attr("width", width)
   .attr("height", height)
-
+*/
 
 
 /****************
@@ -95,6 +97,9 @@ async function populateMarkers(map) {
 
   for (i in data) {
     mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng, data[i].score);
+
+    //attach array number to JSON object
+    mark[i].id = i;
   };
 
   return mark;
@@ -104,7 +109,7 @@ async function populateMarkers(map) {
 
 function addMarker(map, name, lat, lng, score) {
   options = {
-    radius: 10,
+    radius: markerRad,
     stroke: true,
     color: "black",
     opacity: 1,
@@ -117,7 +122,7 @@ function addMarker(map, name, lat, lng, score) {
 
   mark.on("click", ()=> {
     //this is where hooks into .d3 should be made
-    console.log(mark.name);
+    updateGraph(mark.id);
   });
 
   mark.on("mouseover", ()=> {
@@ -125,7 +130,7 @@ function addMarker(map, name, lat, lng, score) {
   });
 
   mark.on("mouseout ", ()=> {
-    mark.setRadius(10);
+    mark.setRadius(markerRad);
   });
 
   mark.bindPopup(score);
@@ -134,10 +139,106 @@ function addMarker(map, name, lat, lng, score) {
 };
 
 
+async function updateGraph(id) {
+  data = await getData();
+
+  dataArray = reduceData(data[id]);
+
+  barplot.updatePlot(barplot.canvas, dataArray);
+};
+
+
+
+/* @reduceData(object)
+  - provide JSON object, removes data not used in graph visualization (i.e name
+    and coordinates) and returns an array ready for d3 to use.
+*/
+function reduceData(data) {
+
+  rtn = [];
+  for (key in data) {
+    if (matches(key, ["name","lat","lng","score"]) == false) {
+      rtn.push({"name": key, "value": data[key]})
+    };
+  };
+  return rtn;
+};
+
+
+
+function matches(key, search) {
+  for (i in search) {
+    if (key == search[i]) {
+      return true;
+    };
+  };
+  return false;
+};
+
 
 //set up alerts
 map.on("click", onMapClick);
 
 function onMapClick(e) {
-    console.log("You clicked the map at " + e.latlng);
+  console.log("You clicked the map at " + e.latlng);
+};
+
+
+
+//d3 barplot
+
+var dataArray = [{name: "SDG1", value: "28.24"},
+{name: "SDG2", value: "14.09"},
+{name: "SDG3", value: "52.56"},
+{name: "SDG4", value: "30.74"},
+{name: "SDG5", value: "19.7"},
+{name: "SDG6", value: "99.81"},
+{name: "SDG7", value: "100"},
+{name: "SDG8", value: "56.63"},
+{name: "SDG9", value: "24.63"},
+{name: "SDG10", value: "40.02"},
+{name: "SDG11", value: "69.61"},
+{name: "SDG12", value: "72.78"},
+{name: "SDG13", value: "54.18"},
+{name: "SDG15", value: "83.84"},
+{name: "SDG16", value: "56.74"}];
+
+async function getMaxScore() {
+  maxScore = 0;
+  data = await getData();
+
+  for (rec in data) {
+    for (key in data[rec]) {
+      if (matches(key, ["name","lat","lng","score"]) == false) {
+        if (data[rec][key] > maxScore) {
+            dataArray.push({"name": key, "value": data[rec][key]})
+        };
+      };
+    };
+  };
+  console.log(maxScore);
+  return maxScore;
+};
+
+var margin = {
+  top: 15,
+  right: 25,
+  bottom: 20,
+  left: 60
+};
+
+var width = 800 - margin.left - margin.right;
+var height = 400 - margin.top - margin.bottom;
+
+const barplot = new Barplot(width, height, margin);
+
+plotData();
+
+async function plotData() {
+  data = await getData();
+
+  //only return the first datapoint to populate the graph
+  dataArray = reduceData(data[0]);
+
+  barplot.plot(barplot.canvas, dataArray);
 };
