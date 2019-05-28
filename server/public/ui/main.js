@@ -122,8 +122,6 @@ function addMarker(map, name, lat, lng, score) {
 
   mark.on("click", ()=> {
     //this is where hooks into .d3 should be made
-    console.log(mark.id);
-
     updateGraph(mark.id);
   });
 
@@ -144,15 +142,26 @@ function addMarker(map, name, lat, lng, score) {
 async function updateGraph(id) {
   data = await getData();
 
-  dataArray = [];
+  dataArray = reduceData(data[id]);
 
-  for (key in data[id]) {
+  barplot.updatePlot(barplot.canvas, dataArray);
+};
+
+
+
+/* @reduceData(object)
+  - provide JSON object, removes data not used in graph visualization (i.e name
+    and coordinates) and returns an array ready for d3 to use.
+*/
+function reduceData(data) {
+
+  rtn = [];
+  for (key in data) {
     if (matches(key, ["name","lat","lng","score"]) == false) {
-      dataArray.push({"name": key, "value": data[id][key]})
-    }
-  }
-
-  barplot.updatePlot(dataArray);
+      rtn.push({"name": key, "value": data[key]})
+    };
+  };
+  return rtn;
 };
 
 
@@ -194,8 +203,6 @@ var dataArray = [{name: "SDG1", value: "28.24"},
 {name: "SDG15", value: "83.84"},
 {name: "SDG16", value: "56.74"}];
 
-//var dataArray = [{"name":"Bob","value":33},{"name":"Robin","value":12},{"name":"Anne","value":41},{"name":"Mark","value":16},{"name":"Joe","value":59},{"name":"Eve","value":38},{"name":"Karen","value":21},{"name":"Kirsty","value":25},{"name":"Chris","value":30},{"name":"Lisa","value":47},{"name":"Tom","value":5},{"name":"Stacy","value":20},{"name":"Charles","value":13},{"name":"Mary","value":29}];
-
 async function getMaxScore() {
   maxScore = 0;
   data = await getData();
@@ -204,7 +211,7 @@ async function getMaxScore() {
     for (key in data[rec]) {
       if (matches(key, ["name","lat","lng","score"]) == false) {
         if (data[rec][key] > maxScore) {
-          maxScore = data[rec][key];
+            dataArray.push({"name": key, "value": data[rec][key]})
         };
       };
     };
@@ -225,4 +232,13 @@ var height = 400 - margin.top - margin.bottom;
 
 const barplot = new Barplot(width, height, margin);
 
-barplot.plot(barplot.canvas);
+plotData();
+
+async function plotData() {
+  data = await getData();
+
+  //only return the first datapoint to populate the graph
+  dataArray = reduceData(data[0]);
+
+  barplot.plot(barplot.canvas, dataArray);
+};

@@ -11,29 +11,42 @@ class Barplot {
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   };
 
-  plot(canvas) {
-    var colour = d3.scaleLinear()
+  getColour() {
+    return d3.scaleLinear()
       .domain([0, d3.max(dataArray, function(d){
         return d.value;
       })])
       .range(["red","blue"]);
+  };
 
-    dataArray.forEach(function(d) {
-      d.value = +d.value;
-    });
-
-    var widthScale = d3.scaleLinear()
+  getWidthScale() {
+    return d3.scaleLinear()
       .domain([0, d3.max(dataArray, function(d){
         return d.value;
       })])
       .range([0, width]);
+  };
 
-    var heightScale = d3.scaleBand()
+  getHeightScale() {
+    return d3.scaleBand()
       .range([height, 0])
       .padding(0.1)
       .domain(dataArray.map(function(d) {
         return d.name;
       }));
+  };
+
+  plot(canvas, dataArray) {
+
+    dataArray.forEach(function(d) {
+      d.value = +d.value;
+    });
+
+    var colour = this.getColour();
+
+    var widthScale = this.getWidthScale();
+
+    var heightScale = this.getHeightScale();
 
     var radiusScale = d3.scaleLinear()
       .domain([0, d3.max(dataArray, function(d){
@@ -96,9 +109,13 @@ class Barplot {
 
 
 
-  updatePlot(data) {
+  updatePlot(canvas, dataArray) {
+
+    var colour = this.getColour();
+    var widthScale = this.getWidthScale();
+
     canvas.selectAll("rect")
-      .data(data)
+      .data(dataArray)
         .transition()
         .duration(800)
         .attr("width", function(d) {
