@@ -2,7 +2,7 @@
 *** DECLARE VARIABLES ***
 ************************/
 
-const markerRad = 10;
+var scl;
 //const width = 800;
 //const height = 400;
 const locHost = "http://localhost:3000/";
@@ -53,9 +53,15 @@ function getData() {
 *****************/
 
 var map = getMap();
+scl = .01*map.latLngToLayerPoint([0,50]).x - map.latLngToLayerPoint([0,0]).x;
 
 //DEPRECIATED
-//mark = populateMarkers(map);
+mark = populateMarkers(map);
+
+L.svg().addTo(map);
+var svg = d3.select("#map").select("svg")
+var g = svg.append("g")
+
 d3PopulateMarkers(map);
 
 
@@ -97,13 +103,13 @@ async function populateMarkers(map) {
 //DEPRECIATED
 function addMarker(map, name, lat, lng, score) {
   options = {
-    radius: markerRad,
-    stroke: true,
+    radius: scl,
+    stroke: false,
     color: "black",
     opacity: 1,
     fill: true,
-    fillColor: "blue",
-    fillOpacity: 0.8,
+    fillColor: "red",
+    fillOpacity: 0,
   };
 
   var mark = L.circleMarker([lat, lng], options).bindTooltip(name, {direction: 'left'}).addTo(map);
@@ -114,11 +120,11 @@ function addMarker(map, name, lat, lng, score) {
   });
 
   mark.on("mouseover", ()=> {
-    mark.setRadius(20);
+    //mark.setRadius(20);
   });
 
   mark.on("mouseout ", ()=> {
-    mark.setRadius(markerRad);
+    //mark.setRadius(scl);
   });
 
   mark.bindPopup(score);
@@ -143,15 +149,11 @@ function onMapClick(e) {
 async function d3PopulateMarkers(map) {
   data = await getData();
 
-  L.svg().addTo(map);
-  var svg = d3.select("#map").select("svg")
-  var g = svg.append("g")
-
     g.selectAll("circle")
       .data(data)
       .enter()
         .append("circle")
-        .attr("r",5)
+        .attr("r", 0)
         .attr("cx", function(d) {
           return map.layerPointToLatLng([d.lat, d.lng]).x;
         })
@@ -170,19 +172,20 @@ async function d3PopulateMarkers(map) {
       x1 = map.latLngToLayerPoint([0,50]).x
       x2 = map.latLngToLayerPoint([0,0]).x
 
-      scl = x1-x2;
+      scl = .01*(x1-x2);
 
       g.selectAll("circle")
-        .attr("r", .01*scl)
+        .attr("r", scl)
         .attr("transform", function(d) {
           return "translate("+
             map.latLngToLayerPoint([d.lat, d.lng]).x +","+
             map.latLngToLayerPoint([d.lat, d.lng]).y +")";
           })
 
-      var zoomLevel = map.getZoom();
-      //console.log(zoomLevel)
-    }
+      for (i in mark) {
+        mark[i].setStyle({radius: scl})
+      };
+    };
 };
 
 
