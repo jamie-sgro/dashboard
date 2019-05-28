@@ -152,16 +152,7 @@ async function updateGraph(id) {
     }
   }
 
-  canvas.selectAll("rect")
-    .data(dataArray)
-      .transition()
-      .duration(800)
-      .attr("width", function(d) {
-        return widthScale(d.value);
-      })
-      .attr("fill", function(d) {
-        return colour(d.value)
-      })
+  barplot.updatePlot(dataArray);
 };
 
 
@@ -229,91 +220,9 @@ var margin = {
   left: 60
 };
 
-var width = 800 - margin.left - margin.right,
-  height = 400 - margin.top - margin.bottom;
+var width = 800 - margin.left - margin.right;
+var height = 400 - margin.top - margin.bottom;
 
-var canvas = d3.select("body").append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+const barplot = new Barplot(width, height, margin);
 
-var colour = d3.scaleLinear()
-  .domain([0, d3.max(dataArray, function(d){
-    return d.value;
-  })])
-  .range(["red","blue"]);
-
-dataArray.forEach(function(d) {
-  d.value = +d.value;
-});
-
-var widthScale = d3.scaleLinear()
-  .domain([0, d3.max(dataArray, function(d){
-    return d.value;
-  })])
-  .range([0, width]);
-
-var heightScale = d3.scaleBand()
-  .range([height, 0])
-  .padding(0.1)
-  .domain(dataArray.map(function(d) {
-    return d.name;
-  }));
-
-var radiusScale = d3.scaleLinear()
-  .domain([0, d3.max(dataArray, function(d){
-    return d.value;
-  })])
-  .range([markerRad/4, markerRad*4]);
-
-canvas.selectAll("rect")
-  .data(dataArray)
-  .enter()
-    .append("rect")
-      .attr("name", function(d) {
-        return d.name;
-      })
-      .attr("width", function(d) {
-        return widthScale(d.value);
-      })
-      .attr("height", heightScale.bandwidth())
-      .attr("fill", function(d) {
-        return colour(d.value)
-      })
-      .attr("y", function(d) {
-        return heightScale(d.name);
-      })
-      .on("click", function() {
-        //build hook to change leaflet
-        barName = d3.select(this).attr("name");
-
-        for (i in mark) {
-          rad = radiusScale(Math.round(data[i][barName]))
-          mark[i].setStyle({radius: rad})
-        };
-      })
-      .on("mouseover", function() {
-        //build hook to change leaflet
-        barName = d3.select(this).attr("name");
-        for (i in mark) {
-          //change colour based on width of rect
-          mark[i].setStyle({fillColor: colour(data[i][barName])})
-        };
-      })
-      .on("mouseout", function() {
-        //build hook to change leaflet
-        barName = d3.select(this).attr("name");
-        for (i in mark) {
-          mark[i].setStyle({fillColor: "blue", radius: markerRad})
-        };
-      });
-
-      // add the x Axis
-canvas.append("g")
-  .attr("transform", "translate(0," + height + ")")
-  .call(d3.axisBottom(widthScale));
-
-// add the y Axis
-canvas.append("g")
-  .call(d3.axisLeft(heightScale));
+barplot.plot(barplot.canvas);
