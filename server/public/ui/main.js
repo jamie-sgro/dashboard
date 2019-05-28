@@ -143,30 +143,37 @@ function onMapClick(e) {
 async function d3PopulateMarkers(map) {
   data = await getData();
 
-  data.map(function(d){
-    d.latLng = [+d.lat,+d.lng];
-  });
+  L.svg().addTo(map);
+  var svg = d3.select("#map").select("svg")
+  var g = svg.append("g")
 
-  var cities = [];
-  var citiesOverlay = L.d3SvgOverlay(function(sel,proj){
-
-    //var minLogPop = Math.log2(d3.min(cities,function(d){return d.population;}));
-    sel.selectAll('circle')
+    g.selectAll("circle")
       .data(data)
       .enter()
-        .append('circle')
-        .attr('r',5)
-        .attr('cx',function(d){return proj.latLngToLayerPoint(d.latLng).x;})
-        .attr('cy',function(d){return proj.latLngToLayerPoint(d.latLng).y;})
-        .attr('stroke','black')
-        .attr('stroke-width',1)
-        .attr('fill',function(d){return (d.place == 'city') ? "red" : "blue";});
-  });
+        .append("circle")
+        .attr("r",5)
+        .attr("cx", function(d) {
+          return map.layerPointToLatLng([d.lat, d.lng]).x;
+        })
+        .attr('cy', function(d) {
+          return map.layerPointToLatLng([d.lat, d.lng]).y;
+        })
+        .attr("stroke","black")
+        .attr("stroke-width", 1)
+        .attr("fill", "blue");
 
-  citiesOverlay.addTo(map);
+    map.on("zoomend", update);
+  	update();
+
+    function update() {
+      g.selectAll("circle")
+        .attr("transform", function(d) {
+          return "translate("+
+            map.latLngToLayerPoint([d.lat, d.lng]).x +","+
+            map.latLngToLayerPoint([d.lat, d.lng]).y +")";
+          })
+    }
 };
-
-
 
 
 
