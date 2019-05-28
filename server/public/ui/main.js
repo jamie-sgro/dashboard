@@ -18,20 +18,9 @@ mark = populateMarkers(map);
 
 
 
-/********************
-*** CREATE CANVAS ***
-********************/
-
-/*
-const canvas = d3.select("body").append("svg")
-  .attr("width", width)
-  .attr("height", height)
-*/
-
-
-/****************
-*** FUNCTIONS ***
-****************/
+/***************
+*** GET DATA ***
+***************/
 
 // import .csv
 function postAjax(url, data, callback) {
@@ -139,6 +128,46 @@ function addMarker(map, name, lat, lng, score) {
 };
 
 
+//set up alerts
+map.on("click", onMapClick);
+
+function onMapClick(e) {
+  console.log("You clicked the map at " + e.latlng);
+};
+
+
+
+/*********************
+*** CREATE BARPLOT ***
+*********************/
+
+var margin = {
+  top: 15,
+  right: 25,
+  bottom: 20,
+  left: 60
+};
+
+var width = 800 - margin.left - margin.right;
+var height = 400 - margin.top - margin.bottom;
+
+const barplot = new Barplot(width, height, margin);
+
+plotData();
+
+async function plotData() {
+  data = await getData();
+
+  //only return the first datapoint to populate the graph
+  dataArray = reduceData(data[0]);
+
+  barplot.plot(barplot.canvas, dataArray);
+};
+
+
+
+//updateGraph() is called when a leaflet marker is clicked
+
 async function updateGraph(id) {
   data = await getData();
 
@@ -166,6 +195,10 @@ function reduceData(data) {
 
 
 
+/* @matches(string, object)
+  - if any item in the array 'search' is the key string, return true, else false
+*/
+
 function matches(key, search) {
   for (i in search) {
     if (key == search[i]) {
@@ -176,32 +209,6 @@ function matches(key, search) {
 };
 
 
-//set up alerts
-map.on("click", onMapClick);
-
-function onMapClick(e) {
-  console.log("You clicked the map at " + e.latlng);
-};
-
-
-
-//d3 barplot
-
-var dataArray = [{name: "SDG1", value: "28.24"},
-{name: "SDG2", value: "14.09"},
-{name: "SDG3", value: "52.56"},
-{name: "SDG4", value: "30.74"},
-{name: "SDG5", value: "19.7"},
-{name: "SDG6", value: "99.81"},
-{name: "SDG7", value: "100"},
-{name: "SDG8", value: "56.63"},
-{name: "SDG9", value: "24.63"},
-{name: "SDG10", value: "40.02"},
-{name: "SDG11", value: "69.61"},
-{name: "SDG12", value: "72.78"},
-{name: "SDG13", value: "54.18"},
-{name: "SDG15", value: "83.84"},
-{name: "SDG16", value: "56.74"}];
 
 async function getMaxScore() {
   maxScore = 0;
@@ -218,27 +225,4 @@ async function getMaxScore() {
   };
   console.log(maxScore);
   return maxScore;
-};
-
-var margin = {
-  top: 15,
-  right: 25,
-  bottom: 20,
-  left: 60
-};
-
-var width = 800 - margin.left - margin.right;
-var height = 400 - margin.top - margin.bottom;
-
-const barplot = new Barplot(width, height, margin);
-
-plotData();
-
-async function plotData() {
-  data = await getData();
-
-  //only return the first datapoint to populate the graph
-  dataArray = reduceData(data[0]);
-
-  barplot.plot(barplot.canvas, dataArray);
 };
