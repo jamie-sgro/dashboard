@@ -113,7 +113,7 @@ class Barplot {
               .delay(700)
               .duration(1300)
               .attr("fill", "blue")
-              //.attr("r", scl);
+              .attr("r", scl);
 
             /*for (i in mark) {
               mark[i].setStyle({fillColor: "blue", radius: scl})
