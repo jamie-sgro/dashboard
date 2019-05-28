@@ -9,15 +9,6 @@ const locHost = "http://localhost:3000/";
 
 
 
-/*******************
-*** MAIN ROUTINE ***
-*******************/
-
-var map = getMap();
-mark = populateMarkers(map);
-
-
-
 /***************
 *** GET DATA ***
 ***************/
@@ -51,7 +42,7 @@ function getData() {
         resolve(cb.data);
       });
     });
-  }
+  };
   return getData.promise;
 };
 
@@ -60,6 +51,11 @@ function getData() {
 /*****************
 *** CREATE MAP ***
 *****************/
+
+var map = getMap();
+mark = populateMarkers(map);
+
+
 
 function getMap() {
   map = L.map('map');
@@ -134,6 +130,43 @@ map.on("click", onMapClick);
 function onMapClick(e) {
   console.log("You clicked the map at " + e.latlng);
 };
+
+
+
+
+
+
+// TEMP:
+
+var cities = [];
+var citiesOverlay = L.d3SvgOverlay(function(sel,proj){
+
+  //var minLogPop = Math.log2(d3.min(cities,function(d){return d.population;}));
+  var citiesUpd = sel.selectAll('circle').data(cities);
+  citiesUpd.enter()
+    .append('circle')
+    .attr('r',5)
+    .attr('cx',function(d){return proj.latLngToLayerPoint(d.latLng).x;})
+    .attr('cy',function(d){return proj.latLngToLayerPoint(d.latLng).y;})
+    .attr('stroke','black')
+    .attr('stroke-width',1)
+    .attr('fill',function(d){return (d.place == 'city') ? "red" : "blue";});
+});
+
+d3.csv("swiss-cities.csv").then(function(data){
+  console.log(data)
+  cities = data.map(function(d){
+    d.latLng = [+d.lat,+d.lng];
+    return d;
+  });
+  citiesOverlay.addTo(map);
+});
+
+
+
+
+
+
 
 
 
