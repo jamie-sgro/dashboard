@@ -53,7 +53,10 @@ function getData() {
 *****************/
 
 var map = getMap();
-mark = populateMarkers(map);
+
+//DEPRECIATED
+//mark = populateMarkers(map);
+d3PopulateMarkers(map);
 
 
 
@@ -73,7 +76,7 @@ function getMap() {
 };
 
 
-
+//DEPRECIATED
 async function populateMarkers(map) {
   data = await getData();
 
@@ -91,7 +94,7 @@ async function populateMarkers(map) {
 };
 
 
-
+//DEPRECIATED
 function addMarker(map, name, lat, lng, score) {
   options = {
     radius: markerRad,
@@ -137,30 +140,32 @@ function onMapClick(e) {
 
 
 // TEMP:
+async function d3PopulateMarkers(map) {
+  data = await getData();
 
-var cities = [];
-var citiesOverlay = L.d3SvgOverlay(function(sel,proj){
-
-  //var minLogPop = Math.log2(d3.min(cities,function(d){return d.population;}));
-  var citiesUpd = sel.selectAll('circle').data(cities);
-  citiesUpd.enter()
-    .append('circle')
-    .attr('r',5)
-    .attr('cx',function(d){return proj.latLngToLayerPoint(d.latLng).x;})
-    .attr('cy',function(d){return proj.latLngToLayerPoint(d.latLng).y;})
-    .attr('stroke','black')
-    .attr('stroke-width',1)
-    .attr('fill',function(d){return (d.place == 'city') ? "red" : "blue";});
-});
-
-d3.csv("swiss-cities.csv").then(function(data){
-  console.log(data)
-  cities = data.map(function(d){
+  data.map(function(d){
     d.latLng = [+d.lat,+d.lng];
-    return d;
   });
+
+  var cities = [];
+  var citiesOverlay = L.d3SvgOverlay(function(sel,proj){
+
+    //var minLogPop = Math.log2(d3.min(cities,function(d){return d.population;}));
+    sel.selectAll('circle')
+      .data(data)
+      .enter()
+        .append('circle')
+        .attr('r',5)
+        .attr('cx',function(d){return proj.latLngToLayerPoint(d.latLng).x;})
+        .attr('cy',function(d){return proj.latLngToLayerPoint(d.latLng).y;})
+        .attr('stroke','black')
+        .attr('stroke-width',1)
+        .attr('fill',function(d){return (d.place == 'city') ? "red" : "blue";});
+  });
+
   citiesOverlay.addTo(map);
-});
+};
+
 
 
 
