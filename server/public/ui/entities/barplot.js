@@ -64,20 +64,15 @@ class Barplot {
             return heightScale(d.name);
           })
           .on("click", function() {
-            //build hook to change leaflet
             var barName = d3.select(this).attr("name");
-
             barplot.click(barName, d3.select(this));
           })
           .on("mouseover", function() {
-            //build hook to change leaflet
             var barName = d3.select(this).attr("name");
-
             barplot.mouseover(barName, d3.select(this));
           })
           .on("mouseout", function() {
             barplot.mouseout();
-            //build hook to change leaflet
           });
 
     // add the x Axis
