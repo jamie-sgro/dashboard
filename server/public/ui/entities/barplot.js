@@ -119,18 +119,8 @@ class Barplot {
             };*/
           })
           .on("mouseout", function() {
+            barplot.mouseout();
             //build hook to change leaflet
-
-            g.selectAll("circle")
-              .transition()
-              .delay(700)
-              .duration(1300)
-              .attr("fill", "blue")
-              //.attr("r", scl);
-
-            /*for (i in mark) {
-              mark[i].setStyle({fillColor: "blue", radius: scl})
-            };*/
           });
 
     // add the x Axis
@@ -146,7 +136,6 @@ class Barplot {
 
 
   updatePlot(canvas, dataArray) {
-
     var colour = this.getColour();
     var widthScale = this.getWidthScale();
 
@@ -161,6 +150,21 @@ class Barplot {
           return colour(d.value)
         })
   }
+
+  mouseout() {
+    g.selectAll("circle")
+      .transition()
+      .delay(700)
+      .duration(1300)
+      .attr("fill", "blue")
+      //.call(barplot.mouseout)
+
+    //.attr("r", scl);
+
+    /*for (i in mark) {
+      mark[i].setStyle({fillColor: "blue", radius: scl})
+    };*/
+  };
 };
 
 function tween(path) {
