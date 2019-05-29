@@ -162,3 +162,17 @@ class Barplot {
         })
   }
 };
+
+function tween(path) {
+  var dummy = {};
+
+  d3.select(dummy)
+    .transition()
+    .duration(800)
+    .tween("fill", function() {
+      var i = d3.interpolateRgb("blue", "red");
+      return function(t) {
+        path.attr("fill", i(t));
+      };
+    })
+};
