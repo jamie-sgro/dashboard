@@ -21,9 +21,7 @@ class Barplot {
 
   getWidthScale() {
     return d3.scaleLinear()
-      .domain([0, d3.max(dataArray, function(d){
-        return d.value;
-      })])
+      .domain([0, this.max])
       .range([0, width]);
   };
 
