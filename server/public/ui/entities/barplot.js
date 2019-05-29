@@ -121,12 +121,7 @@ class Barplot {
         return scl+radiusScale(d[barName]);
       });*/
 
-    obj.transition()
-      .duration(100)
-      .attr("opacity", .4)
-      .transition()
-      .duration(300)
-      .attr("opacity", 1);
+    obj.call(alphaTween, 100, 0.6)
 
     /*for (i in mark) {
       var rad = radiusScale(Math.round(data[i][barName]))
@@ -147,37 +142,12 @@ class Barplot {
       });
 
 
-    obj.call(alphaTween, 100, 0.7)
+    obj.call(alphaTween, 100, 0.3)
 
     /*for (i in mark) {
       //change colour based on width of rect
       mark[i].setStyle({fillColor: colour(data[i][barName])})
     };*/
-
-    function alphaTween(path, duration, alpha) {
-      var dummy = {};
-      var col = path.attr("fill")
-
-      d3.select(dummy)
-        .transition()
-        .duration(duration)
-        .tween("fill", function() {
-          var i = d3.interpolate(col, "transparent");
-          i = d3.interpolate(path.attr("fill"), i(alpha));
-          return function(t) {
-            path.attr("fill", i(t));
-          };
-        })
-        .transition()
-        .duration(duration*3)
-        .tween("fill", function() {
-          var i = d3.interpolate("transparent", col);
-          i = d3.interpolate(path.attr("fill"), i(1));
-          return function(t) {
-            path.attr("fill", i(t));
-          };
-        })
-    }
   };
 
 
@@ -197,6 +167,32 @@ class Barplot {
     };*/
   };
 };
+
+function alphaTween(path, duration, alpha) {
+  var dummy = {};
+  var col = path.attr("fill")
+  console.log(col)
+
+  d3.select(dummy)
+    .transition()
+    .duration(duration)
+    .tween("fill", function() {
+      var i = d3.interpolate(col, "transparent");
+      i = d3.interpolate(col, i(alpha));
+      return function(t) {
+        path.attr("fill", i(t));
+      };
+    })
+    .transition()
+    .duration(duration*3)
+    .tween("fill", function() {
+      var i = d3.interpolate("transparent", col);
+      i = d3.interpolate(path.attr("fill"), i(100000000));
+      return function(t) {
+        path.attr("fill", i(t));
+      };
+    })
+}
 
 function tween(path) {
   var dummy = {};
