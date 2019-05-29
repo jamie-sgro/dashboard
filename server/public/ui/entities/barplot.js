@@ -21,9 +21,7 @@ class Barplot {
 
   getWidthScale() {
     return d3.scaleLinear()
-      .domain([0, d3.max(dataArray, function(d){
-        return d.value;
-      })])
+      .domain([0, this.max])
       .range([0, width]);
   };
 
@@ -52,7 +50,7 @@ class Barplot {
       .domain([0, d3.max(dataArray, function(d){
         return d.value;
       })])
-      .range([markerRad/4, markerRad*4]);
+      .range([scl/4, scl*4]);
 
     canvas.selectAll("rect")
       .data(dataArray)
@@ -75,26 +73,64 @@ class Barplot {
             //build hook to change leaflet
             var barName = d3.select(this).attr("name");
 
-            for (i in mark) {
+            g.selectAll("circle")
+              .transition()
+              .duration(500)
+              /*.attr("r", function(d) {
+                return scl+radiusScale(d[barName]);
+              });*/
+
+            d3.select(this)
+              .transition()
+              .duration(100)
+              .attr("opacity", .4)
+              .transition()
+              .duration(300)
+              .attr("opacity", 1);
+
+            /*for (i in mark) {
               var rad = radiusScale(Math.round(data[i][barName]))
               mark[i].setStyle({radius: rad})
-            };
+            };*/
           })
           .on("mouseover", function() {
             //build hook to change leaflet
             var barName = d3.select(this).attr("name");
 
-            for (i in mark) {
+
+            g.selectAll("circle")
+              .transition()
+              .duration(300)
+              .attr("fill", function(d) {
+                return colour(d[barName]);
+              });
+
+            d3.select(this)
+              .transition()
+              .duration(100)
+              .attr("opacity", .7)
+              .transition()
+              .duration(300)
+              .attr("opacity", 1);
+
+            /*for (i in mark) {
               //change colour based on width of rect
               mark[i].setStyle({fillColor: colour(data[i][barName])})
-            };
+            };*/
           })
           .on("mouseout", function() {
             //build hook to change leaflet
-            var barName = d3.select(this).attr("name");
-            for (i in mark) {
-              mark[i].setStyle({fillColor: "blue", radius: markerRad})
-            };
+
+            g.selectAll("circle")
+              .transition()
+              .delay(700)
+              .duration(1300)
+              .attr("fill", "blue")
+              //.attr("r", scl);
+
+            /*for (i in mark) {
+              mark[i].setStyle({fillColor: "blue", radius: scl})
+            };*/
           });
 
     // add the x Axis
