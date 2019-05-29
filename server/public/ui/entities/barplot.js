@@ -46,12 +46,6 @@ class Barplot {
 
     var heightScale = this.getHeightScale();
 
-    var radiusScale = d3.scaleLinear()
-      .domain([0, d3.max(dataArray, function(d){
-        return d.value;
-      })])
-      .range([scl/4, scl*4]);
-
     canvas.selectAll("rect")
       .data(dataArray)
       .enter()
@@ -73,32 +67,13 @@ class Barplot {
             //build hook to change leaflet
             var barName = d3.select(this).attr("name");
 
-            g.selectAll("circle")
-              .transition()
-              .duration(500)
-              /*.attr("r", function(d) {
-                return scl+radiusScale(d[barName]);
-              });*/
-
-            d3.select(this)
-              .transition()
-              .duration(100)
-              .attr("opacity", .4)
-              .transition()
-              .duration(300)
-              .attr("opacity", 1);
-
-            /*for (i in mark) {
-              var rad = radiusScale(Math.round(data[i][barName]))
-              mark[i].setStyle({radius: rad})
-            };*/
+            barplot.click(barName, d3.select(this));
           })
           .on("mouseover", function() {
             //build hook to change leaflet
             var barName = d3.select(this).attr("name");
-            var obj = d3.select(this);
 
-            barplot.mouseover(barName, obj);
+            barplot.mouseover(barName, d3.select(this));
           })
           .on("mouseout", function() {
             barplot.mouseout();
@@ -132,6 +107,37 @@ class Barplot {
           return colour(d.value)
         })
   }
+
+
+
+  click(barName, obj) {
+    /*
+    var radiusScale = d3.scaleLinear()
+      .domain([0, d3.max(dataArray, function(d){
+        return d.value;
+      })])
+      .range([scl/4, scl*4]);
+    */
+
+    g.selectAll("circle")
+      .transition()
+      .duration(500)
+      /*.attr("r", function(d) {
+        return scl+radiusScale(d[barName]);
+      });*/
+
+    obj.transition()
+      .duration(100)
+      .attr("opacity", .4)
+      .transition()
+      .duration(300)
+      .attr("opacity", 1);
+
+    /*for (i in mark) {
+      var rad = radiusScale(Math.round(data[i][barName]))
+      mark[i].setStyle({radius: rad})
+    };*/
+  };
 
 
 
