@@ -96,27 +96,9 @@ class Barplot {
           .on("mouseover", function() {
             //build hook to change leaflet
             var barName = d3.select(this).attr("name");
+            var obj = d3.select(this);
 
-
-            g.selectAll("circle")
-              .transition()
-              .duration(300)
-              .attr("fill", function(d) {
-                return colour(d[barName]);
-              });
-
-            d3.select(this)
-              .transition()
-              .duration(100)
-              .attr("opacity", .7)
-              .transition()
-              .duration(300)
-              .attr("opacity", 1);
-
-            /*for (i in mark) {
-              //change colour based on width of rect
-              mark[i].setStyle({fillColor: colour(data[i][barName])})
-            };*/
+            barplot.mouseover(barName, obj);
           })
           .on("mouseout", function() {
             barplot.mouseout();
@@ -150,6 +132,33 @@ class Barplot {
           return colour(d.value)
         })
   }
+
+
+
+  mouseover(barName, obj) {
+    var colour = this.getColour();
+
+    g.selectAll("circle")
+      .transition()
+      .duration(300)
+      .attr("fill", function(d) {
+        return colour(d[barName]);
+      });
+
+    obj.transition()
+      .duration(100)
+      .attr("opacity", .7)
+      .transition()
+      .duration(300)
+      .attr("opacity", 1);
+
+    /*for (i in mark) {
+      //change colour based on width of rect
+      mark[i].setStyle({fillColor: colour(data[i][barName])})
+    };*/
+  };
+
+
 
   mouseout() {
     g.selectAll("circle")
