@@ -78,10 +78,17 @@ class Barplot {
             g.selectAll("circle")
               .transition()
               .duration(500)
-              .attr("r", function(d) {
-                console.log(scl)
-                return radiusScale(d[barName]);
-              });
+              /*.attr("r", function(d) {
+                return scl+radiusScale(d[barName]);
+              });*/
+
+            d3.select(this)
+              .transition()
+              .duration(100)
+              .attr("opacity", .4)
+              .transition()
+              .duration(300)
+              .attr("opacity", 1);
 
             /*for (i in mark) {
               var rad = radiusScale(Math.round(data[i][barName]))
@@ -100,6 +107,14 @@ class Barplot {
                 return colour(d[barName]);
               });
 
+            d3.select(this)
+              .transition()
+              .duration(100)
+              .attr("opacity", .7)
+              .transition()
+              .duration(300)
+              .attr("opacity", 1);
+
             /*for (i in mark) {
               //change colour based on width of rect
               mark[i].setStyle({fillColor: colour(data[i][barName])})
@@ -113,7 +128,7 @@ class Barplot {
               .delay(700)
               .duration(1300)
               .attr("fill", "blue")
-              .attr("r", scl);
+              //.attr("r", scl);
 
             /*for (i in mark) {
               mark[i].setStyle({fillColor: "blue", radius: scl})
