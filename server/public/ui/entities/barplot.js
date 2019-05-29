@@ -146,17 +146,37 @@ class Barplot {
         return colour(d[barName]);
       });
 
-    obj.transition()
-      .duration(100)
-      .attr("opacity", .7)
-      .transition()
-      .duration(300)
-      .attr("opacity", 1);
+
+    obj.call(test)
 
     /*for (i in mark) {
       //change colour based on width of rect
       mark[i].setStyle({fillColor: colour(data[i][barName])})
     };*/
+
+    function test(path) {
+      var dummy = {};
+
+      d3.select(dummy)
+        .transition()
+        .duration(100)
+        .tween("fill", function() {
+          var i = d3.interpolateRgb("blue", "red");
+          return function(t) {
+            path.attr("fill", i(t));
+          };
+        })
+        //.attr("opacity", .7)
+        .transition()
+        .duration(300)
+        .tween("fill", function() {
+          var i = d3.interpolateRgb("red", "blue");
+          return function(t) {
+            path.attr("fill", i(t));
+          };
+        })
+        //.attr("opacity", 1);
+    }
   };
 
 
