@@ -70,6 +70,8 @@ function onMapClick(e) {
   console.log("You clicked the map at " + e.latlng);
 };
 
+
+
 /*********************
 *** CREATE BARPLOT ***
 *********************/
@@ -88,8 +90,12 @@ const barplot = new Barplot(width, height, margin);
 
 plotData();
 
+
+//called once when the screen renders
 async function plotData() {
   data = await getData();
+
+  barplot.max = getMaxScore(data)
 
   //only return the first datapoint to populate the graph
   dataArray = reduceData(data[0]);
@@ -143,19 +149,17 @@ function matches(key, search) {
 
 
 
-async function getMaxScore() {
+function getMaxScore(data) {
   maxScore = 0;
-  data = await getData();
 
   for (rec in data) {
     for (key in data[rec]) {
       if (matches(key, ["name","lat","lng","score"]) == false) {
-        if (data[rec][key] > maxScore) {
-            dataArray.push({"name": key, "value": data[rec][key]})
+        if (Number(data[rec][key]) > Number(maxScore)) {
+            maxScore = data[rec][key];
         };
       };
     };
   };
-  console.log(maxScore);
   return maxScore;
 };
