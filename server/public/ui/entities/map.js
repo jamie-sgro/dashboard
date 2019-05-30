@@ -95,11 +95,27 @@ async function d3PopulateMarkers(map) {
         .attr("fill", "blue")
         .attr("pointer-events","visible")
         .on("mouseover", function() {
-          d3.select(this).style("cursor", "pointer");
+          mouseover(d3.select(this));
         })
         .on("mouseout", function() {
-          d3.select(this).style("cursor", "default");
+          mouseout(d3.select(this));
         })
+
+    function mouseover(obj) {
+      obj
+        .style("cursor", "pointer")
+        .transition()
+        .duration(300)
+          .style("opacity", .3)
+    }
+
+    function mouseout(obj) {
+      obj
+        .style("cursor", "default")
+        .transition()
+        .duration(600)
+          .style("opacity", 1)
+    }
 
     map.on("zoomend", update);
   	update();
