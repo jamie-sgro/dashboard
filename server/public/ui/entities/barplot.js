@@ -41,6 +41,12 @@ class Barplot {
       d.value = +d.value;
     });*/
 
+    var colour = this.getColour();
+
+    var widthScale = this.getWidthScale();
+
+    var heightScale = this.getHeightScale();
+
     var onClick = function(data) {
       /*var radiusScale = d3.scaleLinear()
         .domain([0, d3.max(dataArray, function(d){
@@ -66,7 +72,7 @@ class Barplot {
     };
 
     var onMouseover = function(data) {
-      var colour = this.getColour();
+      var colour = barplot.getColour();
 
       g.selectAll("circle")
         .transition()
@@ -89,12 +95,6 @@ class Barplot {
       */
     };
 
-    var colour = this.getColour();
-
-    var widthScale = this.getWidthScale();
-
-    var heightScale = this.getHeightScale();
-
     canvas.selectAll("rect")
       .data(dataArray)
       .enter()
@@ -114,10 +114,10 @@ class Barplot {
           })
           .on("click", onClick)
           .on("mouseover", onMouseover)
-          .on("mouseover", function() {
+          /*.on("mouseover", function() {
             var barName = d3.select(this).attr("name");
             barplot.mouseover(barName, d3.select(this));
-          })
+          })*/
           .on("mouseout", function() {
             barplot.mouseout();
           });
