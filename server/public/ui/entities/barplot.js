@@ -89,10 +89,6 @@ class Barplot {
             return heightScale(d.name);
           })
           .on("click", onclick)
-          /*.on("click", function() {
-            var barName = d3.select(this).attr("name");
-            barplot.click(barName, d3.select(this));
-          })*/
           .on("mouseover", function() {
             var barName = d3.select(this).attr("name");
             barplot.mouseover(barName, d3.select(this));
@@ -128,32 +124,6 @@ class Barplot {
           return colour(d.value)
         })
   }
-
-
-
-  click(barName, obj) {
-    /*
-    var radiusScale = d3.scaleLinear()
-      .domain([0, d3.max(dataArray, function(d){
-        return d.value;
-      })])
-      .range([scl/4, scl*4]);
-    */
-
-    g.selectAll("circle")
-      .transition()
-      .duration(500)
-      /*.attr("r", function(d) {
-        return scl+radiusScale(d[barName]);
-      });*/
-
-    obj.call(alphaTween, 100, 0.6)
-
-    /*for (i in mark) {
-      var rad = radiusScale(Math.round(data[i][barName]))
-      mark[i].setStyle({radius: rad})
-    };*/
-  };
 
 
 
