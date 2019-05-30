@@ -92,7 +92,14 @@ async function d3PopulateMarkers(map) {
         })
         .attr("stroke","black")
         .attr("stroke-width", 1)
-        .attr("fill", "blue");
+        .attr("fill", "blue")
+        .attr("pointer-events","visible")
+        .on("mouseover", function() {
+          d3.select(this).style("cursor", "pointer");
+        })
+        .on("mouseout", function() {
+          d3.select(this).style("cursor", "default");
+        })
 
     map.on("zoomend", update);
   	update();
@@ -112,8 +119,8 @@ async function d3PopulateMarkers(map) {
             map.latLngToLayerPoint([d.lat, d.lng]).y +")";
           })
 
-      for (i in mark) {
+      /*for (i in mark) {
         mark[i].setStyle({radius: scl})
-      };
+      };*/
     };
 };

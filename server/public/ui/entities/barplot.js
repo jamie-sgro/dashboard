@@ -144,10 +144,10 @@ class Barplot {
 
     obj.call(alphaTween, 100, 0.3)
 
-    /*for (i in mark) {
+    for (i in mark) {
       //change colour based on width of rect
       mark[i].setStyle({fillColor: colour(data[i][barName])})
-    };*/
+    };
   };
 
 
@@ -171,7 +171,6 @@ class Barplot {
 function alphaTween(path, duration, alpha) {
   var dummy = {};
   var col = path.attr("fill")
-  console.log(col)
 
   d3.select(dummy)
     .transition()
