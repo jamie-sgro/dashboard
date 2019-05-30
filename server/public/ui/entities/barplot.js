@@ -36,11 +36,7 @@ class Barplot {
   };
 
   plot(canvas, dataArray) {
-
-    /*dataArray.forEach(function(d) {
-      d.value = +d.value;
-    });*/
-
+    
     var colour = this.getColour();
 
     var widthScale = this.getWidthScale();
