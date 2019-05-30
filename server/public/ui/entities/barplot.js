@@ -41,7 +41,7 @@ class Barplot {
       d.value = +d.value;
     });*/
 
-    var onclick = function(data) {
+    var onClick = function(data) {
       /*var radiusScale = d3.scaleLinear()
         .domain([0, d3.max(dataArray, function(d){
           return d.value;
@@ -63,7 +63,31 @@ class Barplot {
         var rad = radiusScale(Math.round(data[i][barName]))
         mark[i].setStyle({radius: rad})
       };*/
-    }
+    };
+
+    var onMouseover = function(data) {
+      var colour = this.getColour();
+
+      g.selectAll("circle")
+        .transition()
+        .duration(300)
+        .attr("fill", function(d) {
+          return colour(d[data.name]);
+        });
+
+
+      d3.select(this)
+        .call(alphaTween, 100, 0.3)
+
+
+      //DEPRECIATED: removing marker variable
+      /*
+      for (i in mark) {
+        //change colour based on width of rect
+        mark[i].setStyle({fillColor: colour(data[i][data.name])})
+      };
+      */
+    };
 
     var colour = this.getColour();
 
@@ -88,7 +112,8 @@ class Barplot {
           .attr("y", function(d) {
             return heightScale(d.name);
           })
-          .on("click", onclick)
+          .on("click", onClick)
+          .on("mouseover", onMouseover)
           .on("mouseover", function() {
             var barName = d3.select(this).attr("name");
             barplot.mouseover(barName, d3.select(this));
