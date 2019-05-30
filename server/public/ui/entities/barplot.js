@@ -127,9 +127,14 @@ class Barplot {
     g.selectAll("circle")
       .transition()
       .duration(300)
+      .attrTween("fill", function(d) {
+        return d3.interpolate("blue", colour(d[data.name]));
+      });
+      /*.transition()
+      .duration(300)
       .attr("fill", function(d) {
         return colour(d[data.name]);
-      });
+      });*/
 
 
     d3.select(this)
