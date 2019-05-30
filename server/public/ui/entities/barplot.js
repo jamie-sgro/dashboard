@@ -114,10 +114,6 @@ class Barplot {
           })
           .on("click", onClick)
           .on("mouseover", onMouseover)
-          /*.on("mouseover", function() {
-            var barName = d3.select(this).attr("name");
-            barplot.mouseover(barName, d3.select(this));
-          })*/
           .on("mouseout", function() {
             barplot.mouseout();
           });
@@ -149,27 +145,6 @@ class Barplot {
           return colour(d.value)
         })
   }
-
-
-
-  mouseover(barName, obj) {
-    var colour = this.getColour();
-
-    g.selectAll("circle")
-      .transition()
-      .duration(300)
-      .attr("fill", function(d) {
-        return colour(d[barName]);
-      });
-
-
-    obj.call(alphaTween, 100, 0.3)
-
-    for (i in mark) {
-      //change colour based on width of rect
-      mark[i].setStyle({fillColor: colour(data[i][barName])})
-    };
-  };
 
 
 
