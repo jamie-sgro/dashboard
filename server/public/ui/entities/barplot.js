@@ -36,7 +36,7 @@ class Barplot {
   };
 
   plot(canvas, dataArray) {
-    
+
     var colour = this.getColour();
 
     var widthScale = this.getWidthScale();
@@ -134,15 +134,6 @@ class Barplot {
 
     d3.select(this)
       .call(alphaTween, 100, 0.3)
-
-
-    //DEPRECIATED: removing marker variable
-    /*
-    for (i in mark) {
-      //change colour based on width of rect
-      mark[i].setStyle({fillColor: colour(data[i][data.name])})
-    };
-    */
   };
 
 
@@ -159,7 +150,7 @@ class Barplot {
 
     //DEPRECIATED: removing marker variable
     /*for (i in mark) {
-      mark[i].setStyle({fillColor: "blue", radius: scl})
+      mark[i].setStyle({radius: scl})
     };*/
   }
 };
