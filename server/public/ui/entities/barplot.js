@@ -95,6 +95,22 @@ class Barplot {
       */
     };
 
+    var onMouseOut = function() {
+      g.selectAll("circle")
+        .transition()
+        .delay(700)
+        .duration(1300)
+        .attr("fill", "blue")
+        //.call(barplot.mouseout)
+
+      //.attr("r", scl);
+
+      //DEPRECIATED: removing marker variable
+      /*for (i in mark) {
+        mark[i].setStyle({fillColor: "blue", radius: scl})
+      };*/
+    }
+
     canvas.selectAll("rect")
       .data(dataArray)
       .enter()
@@ -114,9 +130,10 @@ class Barplot {
           })
           .on("click", onClick)
           .on("mouseover", onMouseover)
-          .on("mouseout", function() {
+          .on("mouseout", onMouseOut)
+          /*.on("mouseout", function() {
             barplot.mouseout();
-          });
+          });*/
 
     // add the x Axis
     canvas.append("g")
