@@ -47,70 +47,6 @@ class Barplot {
 
     var heightScale = this.getHeightScale();
 
-    var onClick = function(data) {
-      /*var radiusScale = d3.scaleLinear()
-        .domain([0, d3.max(dataArray, function(d){
-          return d.value;
-        })])
-        .range([scl/4, scl*4]);
-
-      g.selectAll("circle")
-        .transition()
-        .duration(500)
-        .attr("r", function(d) {
-          return scl+radiusScale(d[data.name]);
-        });*/
-
-      d3.select(this)
-        .call(alphaTween, 100, 0.6)
-
-      //DEPRECIATED: removing marker variable
-      /*for (i in mark) {
-        var rad = radiusScale(Math.round(data[i][barName]))
-        mark[i].setStyle({radius: rad})
-      };*/
-    };
-
-    var onMouseover = function(data) {
-      var colour = barplot.getColour();
-
-      g.selectAll("circle")
-        .transition()
-        .duration(300)
-        .attr("fill", function(d) {
-          return colour(d[data.name]);
-        });
-
-
-      d3.select(this)
-        .call(alphaTween, 100, 0.3)
-
-
-      //DEPRECIATED: removing marker variable
-      /*
-      for (i in mark) {
-        //change colour based on width of rect
-        mark[i].setStyle({fillColor: colour(data[i][data.name])})
-      };
-      */
-    };
-
-    var onMouseOut = function() {
-      g.selectAll("circle")
-        .transition()
-        .delay(700)
-        .duration(1300)
-        .attr("fill", "blue")
-        //.call(barplot.mouseout)
-
-      //.attr("r", scl);
-
-      //DEPRECIATED: removing marker variable
-      /*for (i in mark) {
-        mark[i].setStyle({fillColor: "blue", radius: scl})
-      };*/
-    }
-
     canvas.selectAll("rect")
       .data(dataArray)
       .enter()
@@ -128,9 +64,9 @@ class Barplot {
           .attr("y", function(d) {
             return heightScale(d.name);
           })
-          .on("click", onClick)
-          .on("mouseover", onMouseover)
-          .on("mouseout", onMouseOut)
+          .on("click", this.onClick)
+          .on("mouseover", this.onMouseover)
+          .on("mouseout", this.onMouseOut)
 
     // add the x Axis
     canvas.append("g")
@@ -159,6 +95,77 @@ class Barplot {
           return colour(d.value)
         })
   };
+
+
+
+  onClick(data) {
+    //Change marker size based on data value
+    /*var radiusScale = d3.scaleLinear()
+      .domain([0, d3.max(dataArray, function(d){
+        return d.value;
+      })])
+      .range([scl/4, scl*4]);
+
+    g.selectAll("circle")
+      .transition()
+      .duration(500)
+      .attr("r", function(d) {
+        return scl+radiusScale(d[data.name]);
+      });*/
+
+    d3.select(this)
+      .call(alphaTween, 100, 0.6)
+
+    //DEPRECIATED: removing marker variable
+    /*for (i in mark) {
+      var rad = radiusScale(Math.round(data[i][barName]))
+      mark[i].setStyle({radius: rad})
+    };*/
+  };
+
+
+
+  onMouseover(data) {
+    var colour = barplot.getColour();
+
+    g.selectAll("circle")
+      .transition()
+      .duration(300)
+      .attr("fill", function(d) {
+        return colour(d[data.name]);
+      });
+
+
+    d3.select(this)
+      .call(alphaTween, 100, 0.3)
+
+
+    //DEPRECIATED: removing marker variable
+    /*
+    for (i in mark) {
+      //change colour based on width of rect
+      mark[i].setStyle({fillColor: colour(data[i][data.name])})
+    };
+    */
+  };
+
+
+
+  onMouseOut() {
+    g.selectAll("circle")
+      .transition()
+      .delay(700)
+      .duration(1300)
+      .attr("fill", "blue")
+      //.call(barplot.mouseout)
+
+    //.attr("r", scl);
+
+    //DEPRECIATED: removing marker variable
+    /*for (i in mark) {
+      mark[i].setStyle({fillColor: "blue", radius: scl})
+    };*/
+  }
 };
 
 function alphaTween(path, duration, alpha) {
