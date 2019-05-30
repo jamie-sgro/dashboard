@@ -95,10 +95,12 @@ async function d3PopulateMarkers(map) {
         .attr("fill", "blue")
         .attr("pointer-events","visible")
         .on("mouseover", function() {
-          mouseover(d3.select(this));
+          d3.select(this)
+            .style("cursor", "pointer")
         })
         .on("mouseout", function() {
-          mouseout(d3.select(this));
+          d3.select(this)
+            .style("cursor", "default")
         })
 
     function mouseover(obj) {
