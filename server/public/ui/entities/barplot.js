@@ -96,7 +96,7 @@ class Barplot {
 
   onClick(data) {
     //Change marker size based on data value
-    /*var radiusScale = d3.scaleLinear()
+    var radiusScale = d3.scaleLinear()
       .domain([0, d3.max(dataArray, function(d){
         return d.value;
       })])
@@ -107,7 +107,7 @@ class Barplot {
       .duration(500)
       .attr("r", function(d) {
         return scl+radiusScale(d[data.name]);
-      });*/
+      });
 
     d3.select(this)
       .call(alphaTween, 100, 0.6)
@@ -125,15 +125,9 @@ class Barplot {
     var colour = barplot.getColour();
 
     g.selectAll("circle")
-      /*.transition()
-      .duration(300)
-      .attrTween("fill", function(d) {
-        return d3.interpolate(d3.select(this).attr("fill"), colour(d[data.name]));
-        return function(t) {
-          d3.select(this).attr("fill", i(t));
-        };
-      })*/
       .each(function(d,i) {
+        //concurrent transitions that overlap the same attribute should have the
+        //same duration so that the newest tween overwrites the old one
         d3.select(this).call(colourTween, 300, colour(d[data.name]))
       })
       /*.transition()
