@@ -104,7 +104,7 @@ class Barplot {
 
     g.selectAll("circle")
       .each(function(d,i) {
-        d3.select(this).call(radiusTween, 5000, scl+radiusScale(d[data.name]))
+        d3.select(this).call(attrTween, 500, "r", scl+radiusScale(d[data.name]))
       })
       /*.transition()
       .duration(500)
@@ -131,7 +131,7 @@ class Barplot {
       .each(function(d,i) {
         //concurrent transitions that overlap the same attribute should have the
         //same duration so that the newest tween overwrites the old one
-        d3.select(this).call(colourTween, 300, "fill", colour(d[data.name]))
+        d3.select(this).call(attrTween, 300, "fill", colour(d[data.name]))
       })
       /*.transition()
       .duration(300)
@@ -149,7 +149,7 @@ class Barplot {
   onMouseOut() {
     g.selectAll("circle")
       .each(function(d,i) {
-        d3.select(this).call(colourTween, 300, "fill", "blue")
+        d3.select(this).call(attrTween, 300, "fill", "blue")
       })
       //.call(barplot.mouseout)
 
@@ -162,7 +162,7 @@ class Barplot {
   }
 };
 
-function colourTween(path, duration, attr, endCol) {
+function attrTween(path, duration, attr, endCol) {
   var dummy = {};
   var colour = barplot.getColour();
 
