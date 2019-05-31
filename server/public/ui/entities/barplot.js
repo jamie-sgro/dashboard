@@ -103,11 +103,14 @@ class Barplot {
       .range([scl/4, scl*4]);
 
     g.selectAll("circle")
-      .transition()
+      .each(function(d,i) {
+        d3.select(this).call(radiusTween, 5000, scl+radiusScale(d[data.name]))
+      })
+      /*.transition()
       .duration(500)
       .attr("r", function(d) {
         return scl+radiusScale(d[data.name]);
-      });
+      });*/
 
     d3.select(this)
       .call(alphaTween, 100, 0.6)
@@ -170,6 +173,23 @@ function colourTween(path, duration, endCol) {
       var lerp = d3.interpolateRgb(path.attr("fill"), endCol);
       return function(t) {
         path.attr("fill", lerp(t));
+      };
+    })
+}
+
+
+
+function radiusTween(path, duration, endRad) {
+  var dummy = {};
+  var colour = barplot.getColour();
+
+  d3.select(dummy)
+    .transition()
+    .duration(duration)
+    .tween("r", function() {
+      var lerp = d3.interpolate(path.attr("r"), endRad);
+      return function(t) {
+        path.attr("r", lerp(t));
       };
     })
 }
