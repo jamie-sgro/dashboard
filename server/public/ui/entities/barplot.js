@@ -107,8 +107,10 @@ class Barplot {
         d3.select(this).call(attrTween, 500, "r", scl+radiusScale(d[data.name]))
       })
 
+    var myCol = d3.select(this).attr("fill")
+
     d3.select(this)
-      .call(alphaTween, 100, 0.6)
+      .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .4))
 
     //DEPRECIATED: removing marker variable
     /*for (i in mark) {
@@ -129,8 +131,10 @@ class Barplot {
         d3.select(this).call(attrTween, 300, "fill", colour(d[data.name]))
       })
 
+    var myCol = d3.select(this).attr("fill")
+
     d3.select(this)
-      .call(alphaTween, 100, 0.3)
+      .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .7))
   };
 
 
@@ -149,7 +153,16 @@ class Barplot {
   }
 };
 
-function attrTween(path, duration, attr, endCol) {
+function setAlpha(c, v) {
+  var c = d3.rgb(c);
+  c.opacity = v;
+
+  console.log(c)
+
+  return c;
+}
+
+function attrTween(path, duration, attr, endRes) {
   var dummy = {};
   var colour = barplot.getColour();
 
@@ -157,7 +170,32 @@ function attrTween(path, duration, attr, endCol) {
     .transition()
     .duration(duration)
     .tween(attr, function() {
-      var lerp = d3.interpolate(path.attr(attr), endCol);
+      var lerp = d3.interpolate(path.attr(attr), endRes);
+      return function(t) {
+        path.attr(attr, lerp(t));
+      };
+    })
+}
+
+
+
+function resetTween(path, duration, attr, endRes, peakRes) {
+  var dummy = {};
+  var colour = barplot.getColour();
+
+  d3.select(dummy)
+    .transition()
+    .duration(duration)
+    .tween(attr, function() {
+      var lerp = d3.interpolate(path.attr(attr), peakRes);
+      return function(t) {
+        path.attr(attr, lerp(t));
+      };
+    })
+    .transition()
+    .duration(duration*3)
+    .tween(attr, function() {
+      var lerp = d3.interpolate(peakRes, endRes);
       return function(t) {
         path.attr(attr, lerp(t));
       };

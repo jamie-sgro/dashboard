@@ -148,6 +148,9 @@ async function d3PopulateMarkers(map) {
         .on("mouseover", function() {
           d3.select(this)
             .style("cursor", "pointer")
+            .style("fill", function() {
+              return d3.rgb(d3.select(this).style("fill")).brighter(5)
+            })
         })
         .on("mouseout", function() {
           d3.select(this)
