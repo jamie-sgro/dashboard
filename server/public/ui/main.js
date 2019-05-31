@@ -68,6 +68,10 @@ map.on("click", onMapClick);
 
 function onMapClick(e) {
   console.log("You clicked the map at " + e.latlng);
+  g.selectAll("circle")
+    .each(function(d,i) {
+      d3.select(this).call(attrTween, 500, "r", scl)
+    })
 };
 
 
