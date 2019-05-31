@@ -104,13 +104,8 @@ class Barplot {
 
     g.selectAll("circle")
       .each(function(d,i) {
-        d3.select(this).call(radiusTween, 5000, scl+radiusScale(d[data.name]))
+        d3.select(this).call(attrTween, 500, "r", scl+radiusScale(d[data.name]))
       })
-      /*.transition()
-      .duration(500)
-      .attr("r", function(d) {
-        return scl+radiusScale(d[data.name]);
-      });*/
 
     d3.select(this)
       .call(alphaTween, 100, 0.6)
@@ -131,14 +126,8 @@ class Barplot {
       .each(function(d,i) {
         //concurrent transitions that overlap the same attribute should have the
         //same duration so that the newest tween overwrites the old one
-        d3.select(this).call(colourTween, 300, colour(d[data.name]))
+        d3.select(this).call(attrTween, 300, "fill", colour(d[data.name]))
       })
-      /*.transition()
-      .duration(300)
-      .attr("fill", function(d) {
-        return colour(d[data.name]);
-      });*/
-
 
     d3.select(this)
       .call(alphaTween, 100, 0.3)
@@ -149,11 +138,9 @@ class Barplot {
   onMouseOut() {
     g.selectAll("circle")
       .each(function(d,i) {
-        d3.select(this).call(colourTween, 300, "blue")
+        d3.select(this).call(attrTween, 300, "fill", "blue")
       })
-      //.call(barplot.mouseout)
 
-    //.attr("r", scl);
 
     //DEPRECIATED: removing marker variable
     /*for (i in mark) {
@@ -162,34 +149,17 @@ class Barplot {
   }
 };
 
-function colourTween(path, duration, endCol) {
+function attrTween(path, duration, attr, endCol) {
   var dummy = {};
   var colour = barplot.getColour();
 
   d3.select(dummy)
     .transition()
     .duration(duration)
-    .tween("fill", function() {
-      var lerp = d3.interpolateRgb(path.attr("fill"), endCol);
+    .tween(attr, function() {
+      var lerp = d3.interpolate(path.attr(attr), endCol);
       return function(t) {
-        path.attr("fill", lerp(t));
-      };
-    })
-}
-
-
-
-function radiusTween(path, duration, endRad) {
-  var dummy = {};
-  var colour = barplot.getColour();
-
-  d3.select(dummy)
-    .transition()
-    .duration(duration)
-    .tween("r", function() {
-      var lerp = d3.interpolate(path.attr("r"), endRad);
-      return function(t) {
-        path.attr("r", lerp(t));
+        path.attr(attr, lerp(t));
       };
     })
 }
