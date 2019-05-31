@@ -134,7 +134,7 @@ class Barplot {
         };
       })*/
       .each(function(d,i) {
-        d3.select(this).call(colourTween, 300, d[data.name])
+        d3.select(this).call(colourTween, 300, colour(d[data.name]))
       })
       /*.transition()
       .duration(300)
@@ -151,10 +151,9 @@ class Barplot {
 
   onMouseOut() {
     g.selectAll("circle")
-      .transition()
-      .delay(700)
-      .duration(1300)
-      .attr("fill", "blue")
+      .each(function(d,i) {
+        d3.select(this).call(colourTween, 300, "blue")
+      })
       //.call(barplot.mouseout)
 
     //.attr("r", scl);
@@ -174,7 +173,7 @@ function colourTween(path, duration, endCol) {
     .transition()
     .duration(duration)
     .tween("fill", function() {
-      var lerp = d3.interpolateRgb(path.attr("fill"), colour(endCol));
+      var lerp = d3.interpolateRgb(path.attr("fill"), endCol);
       return function(t) {
         path.attr("fill", lerp(t));
       };
