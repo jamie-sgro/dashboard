@@ -106,11 +106,6 @@ class Barplot {
       .each(function(d,i) {
         d3.select(this).call(attrTween, 500, "r", scl+radiusScale(d[data.name]))
       })
-      /*.transition()
-      .duration(500)
-      .attr("r", function(d) {
-        return scl+radiusScale(d[data.name]);
-      });*/
 
     d3.select(this)
       .call(alphaTween, 100, 0.6)
@@ -133,12 +128,6 @@ class Barplot {
         //same duration so that the newest tween overwrites the old one
         d3.select(this).call(attrTween, 300, "fill", colour(d[data.name]))
       })
-      /*.transition()
-      .duration(300)
-      .attr("fill", function(d) {
-        return colour(d[data.name]);
-      });*/
-
 
     d3.select(this)
       .call(alphaTween, 100, 0.3)
@@ -151,9 +140,7 @@ class Barplot {
       .each(function(d,i) {
         d3.select(this).call(attrTween, 300, "fill", "blue")
       })
-      //.call(barplot.mouseout)
 
-    //.attr("r", scl);
 
     //DEPRECIATED: removing marker variable
     /*for (i in mark) {
