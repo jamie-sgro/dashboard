@@ -109,18 +109,6 @@ async function plotData() {
 
 
 
-//updateGraph() is called when a leaflet marker is clicked
-
-async function updateGraph(id) {
-  data = await getData();
-
-  dataArray = reduceData(data[id]);
-
-  barplot.updatePlot(barplot.canvas, dataArray);
-};
-
-
-
 /* @reduceData(object)
   - provide JSON object, removes data not used in graph visualization (i.e name
     and coordinates) and returns an array ready for d3 to use.

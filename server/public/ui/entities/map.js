@@ -76,6 +76,18 @@ function addMarker(map, name, lat, lng, score) {
 
 
 
+//updateGraph() is called when a leaflet marker is clicked
+
+async function updateGraph(id) {
+  data = await getData();
+
+  dataArray = reduceData(data[id]);
+
+  barplot.updatePlot(barplot.canvas, dataArray);
+};
+
+
+
 async function d3PopulateMarkers(map) {
   data = await getData();
 
