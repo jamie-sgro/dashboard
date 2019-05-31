@@ -131,6 +131,9 @@ async function d3PopulateMarkers(map) {
       .data(data)
       .enter()
         .append("circle")
+        .attr("id", function(d, i) {
+          return i;
+        })
         .attr("r", 0)
         .attr("cx", function(d) {
           return map.layerPointToLatLng([d.lat, d.lng]).x;
@@ -149,6 +152,9 @@ async function d3PopulateMarkers(map) {
         .on("mouseout", function() {
           d3.select(this)
             .style("cursor", "default")
+        })
+        .on("click", function() {
+          updateGraph(d3.select(this).attr("id"))
         })
 
     function mouseover(obj) {
