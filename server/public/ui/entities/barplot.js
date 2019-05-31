@@ -134,7 +134,7 @@ class Barplot {
         };
       })*/
       .each(function(d,i) {
-        d3.select(this).call(colourTween, 300, data, d)
+        d3.select(this).call(colourTween, 300, d[data.name])
       })
       /*.transition()
       .duration(300)
@@ -166,7 +166,7 @@ class Barplot {
   }
 };
 
-function colourTween(path, duration, data, d) {
+function colourTween(path, duration, endCol) {
   var dummy = {};
   var colour = barplot.getColour();
 
@@ -174,7 +174,7 @@ function colourTween(path, duration, data, d) {
     .transition()
     .duration(duration)
     .tween("fill", function() {
-      var lerp = d3.interpolateRgb(path.attr("fill"), colour(d[data.name]));
+      var lerp = d3.interpolateRgb(path.attr("fill"), colour(endCol));
       return function(t) {
         path.attr("fill", lerp(t));
       };
