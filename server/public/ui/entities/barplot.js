@@ -179,23 +179,6 @@ function attrTween(path, duration, attr, endCol) {
 
 
 
-function radiusTween(path, duration, endRad) {
-  var dummy = {};
-  var colour = barplot.getColour();
-
-  d3.select(dummy)
-    .transition()
-    .duration(duration)
-    .tween("r", function() {
-      var lerp = d3.interpolate(path.attr("r"), endRad);
-      return function(t) {
-        path.attr("r", lerp(t));
-      };
-    })
-}
-
-
-
 function alphaTween(path, duration, alpha) {
   var dummy = {};
   var col = path.attr("fill")
