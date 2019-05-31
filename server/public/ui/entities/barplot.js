@@ -170,7 +170,7 @@ function colourTween(path, duration, endCol) {
     .transition()
     .duration(duration)
     .tween("fill", function() {
-      var lerp = d3.interpolateRgb(path.attr("fill"), endCol);
+      var lerp = d3.interpolate(path.attr("fill"), endCol);
       return function(t) {
         path.attr("fill", lerp(t));
       };
