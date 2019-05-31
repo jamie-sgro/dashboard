@@ -109,38 +109,6 @@ async function plotData() {
 
 
 
-/* @reduceData(object)
-  - provide JSON object, removes data not used in graph visualization (i.e name
-    and coordinates) and returns an array ready for d3 to use.
-*/
-function reduceData(data) {
-
-  rtn = [];
-  for (key in data) {
-    if (matches(key, ["name","lat","lng","score"]) == false) {
-      rtn.push({"name": key, "value": data[key]})
-    };
-  };
-  return rtn;
-};
-
-
-
-/* @matches(string, object)
-  - if any item in the array 'search' is the key string, return true, else false
-*/
-
-function matches(key, search) {
-  for (i in search) {
-    if (key == search[i]) {
-      return true;
-    };
-  };
-  return false;
-};
-
-
-
 function getMaxScore(data) {
   maxScore = 0;
 
