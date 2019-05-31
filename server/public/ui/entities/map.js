@@ -76,6 +76,54 @@ function addMarker(map, name, lat, lng, score) {
 
 
 
+/**********************
+*** UPDATE BARCHART ***
+**********************/
+
+//updateGraph() is called when a leaflet marker is clicked
+
+async function updateGraph(id) {
+  data = await getData();
+
+  dataArray = reduceData(data[id]);
+
+  barplot.updatePlot(barplot.canvas, dataArray);
+};
+
+
+
+/* @reduceData(object)
+  - provide JSON object, removes data not used in graph visualization (i.e name
+    and coordinates) and returns an array ready for d3 to use.
+*/
+function reduceData(data) {
+
+  rtn = [];
+  for (key in data) {
+    if (matches(key, ["name","lat","lng","score"]) == false) {
+      rtn.push({"name": key, "value": data[key]})
+    };
+  };
+  return rtn;
+};
+
+
+
+/* @matches(string, object)
+  - if any item in the array 'search' is the key string, return true, else false
+*/
+
+function matches(key, search) {
+  for (i in search) {
+    if (key == search[i]) {
+      return true;
+    };
+  };
+  return false;
+};
+
+
+
 async function d3PopulateMarkers(map) {
   data = await getData();
 
@@ -83,6 +131,9 @@ async function d3PopulateMarkers(map) {
       .data(data)
       .enter()
         .append("circle")
+        .attr("id", function(d, i) {
+          return i;
+        })
         .attr("r", 0)
         .attr("cx", function(d) {
           return map.layerPointToLatLng([d.lat, d.lng]).x;
@@ -97,10 +148,16 @@ async function d3PopulateMarkers(map) {
         .on("mouseover", function() {
           d3.select(this)
             .style("cursor", "pointer")
+            .style("fill", function() {
+              return d3.rgb(d3.select(this).style("fill")).brighter(5)
+            })
         })
         .on("mouseout", function() {
           d3.select(this)
             .style("cursor", "default")
+        })
+        .on("click", function() {
+          updateGraph(d3.select(this).attr("id"))
         })
 
     function mouseover(obj) {
