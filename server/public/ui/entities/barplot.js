@@ -157,8 +157,6 @@ function setAlpha(c, v) {
   var c = d3.rgb(c);
   c.opacity = v;
 
-  console.log(c)
-
   return c;
 }
 

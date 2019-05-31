@@ -146,15 +146,20 @@ async function d3PopulateMarkers(map) {
         .attr("fill", "blue")
         .attr("pointer-events","visible")
         .on("mouseover", function() {
+
+          var myCol = d3.select(this).attr("fill")
+
           d3.select(this)
             .style("cursor", "pointer")
-            .style("fill", function() {
-              return d3.rgb(d3.select(this).style("fill")).brighter(5)
-            })
+            .call(attrTween, 100, "fill", setAlpha(myCol, .4))
         })
         .on("mouseout", function() {
+
+          var myCol = d3.select(this).attr("fill")
+
           d3.select(this)
             .style("cursor", "default")
+            .call(attrTween, 100, "fill", setAlpha(myCol, 1))
         })
         .on("click", function() {
           updateGraph(d3.select(this).attr("id"))
