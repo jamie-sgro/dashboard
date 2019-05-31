@@ -125,11 +125,17 @@ class Barplot {
     var colour = barplot.getColour();
 
     g.selectAll("circle")
-      .transition()
+      /*.transition()
       .duration(300)
       .attrTween("fill", function(d) {
-        return d3.interpolate("blue", colour(d[data.name]));
-      });
+        return d3.interpolate(d3.select(this).attr("fill"), colour(d[data.name]));
+        return function(t) {
+          d3.select(this).attr("fill", i(t));
+        };
+      })*/
+      .each(function(d,i) {
+        d3.select(this).call(colourTween, 300, data, d)
+      })
       /*.transition()
       .duration(300)
       .attr("fill", function(d) {
@@ -159,6 +165,23 @@ class Barplot {
     };*/
   }
 };
+
+function colourTween(path, duration, data, d) {
+  var dummy = {};
+  var colour = barplot.getColour();
+
+  d3.select(dummy)
+    .transition()
+    .duration(duration)
+    .tween("fill", function() {
+      var lerp = d3.interpolateRgb(path.attr("fill"), colour(d[data.name]));
+      return function(t) {
+        path.attr("fill", lerp(t));
+      };
+    })
+}
+
+
 
 function alphaTween(path, duration, alpha) {
   var dummy = {};
