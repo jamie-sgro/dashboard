@@ -18,7 +18,7 @@ router.get('/ui/', (req, res) => {
 
 router.post('/getData', (req, res, next) => {
   var fs = require("fs")
-  var rawData = fs.readFileSync("./public/ui/sdsn_cleaned.csv", "utf8");
+  var rawData = fs.readFileSync("./public/data/sdsn_cleaned.csv", "utf8");
 
   var data = papa.parse(rawData, {
     header: true
