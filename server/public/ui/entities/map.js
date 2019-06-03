@@ -125,66 +125,6 @@ function matches(key, search) {
 
 
 async function d3PopulateMarkers(map) {
-
-  /*
-  var tooltip = g.append("div")
-        .style("opacity", 1)
-        .attr("class", "tooltip")
-        .style("background-color", "black")
-        .style("border-radius", "5px")
-        .style("padding", "10px")
-        .style("color", "white")
-        .attr("stroke-width", 1)
-  */
-
-  var tooltip = g.append("rect")
-    .style("opacity", 1)
-    .attr("class", "tooltip")
-    .attr("width", 100)
-    .attr('height', 50)
-    .attr("stroke","black")
-    .attr("stroke-width", 1)
-    .attr("fill", "red")
-
-  var showTooltip = function(d) {
-    var pos = getPos(d, tooltip);
-    var myCol = d3.select(this).attr("fill")
-
-    tooltip
-      .transition()
-      .duration(2000)
-    tooltip
-      .style("opacity", 1)
-      .html("Name: " + d.name)
-      .attr("x", pos[0])
-      .attr("y", pos[1])
-  }
-
-  var moveTooltip = function(d) {
-    var pos = getPos(d, tooltip);
-
-    tooltip
-      .attr("x", pos[0] + d3.mouse(this)[0])
-      .attr("y", pos[1] + d3.mouse(this)[1])
-  }
-
-  var hideTooltip = function(d) {
-    tooltip
-      .transition()
-      .duration(2000)
-      .style("opacity", 0)
-  }
-
-  function getPos(d, obj) {
-    x = map.latLngToLayerPoint([d.lat, d.lng]).x;
-    x = x - (tooltip.attr("width") / 2);
-
-    y = map.latLngToLayerPoint([d.lat, d.lng]).y
-    y = y - (tooltip.attr("height") / 2) - 50;
-
-    return [x, y];
-  }
-
   data = await getData();
 
     g.selectAll("circle")
@@ -205,10 +145,7 @@ async function d3PopulateMarkers(map) {
         .attr("stroke-width", 1)
         .attr("fill", "blue")
         .attr("pointer-events","visible")
-        .on("mouseover", showTooltip, d3.select(this))
-        .on("mousemove", moveTooltip)
-        .on("mouseleave", hideTooltip)
-        /*.on("mouseover", function() {
+        .on("mouseover", function() {
 
           var myCol = d3.select(this).attr("fill")
 
@@ -226,7 +163,7 @@ async function d3PopulateMarkers(map) {
         })
         .on("click", function() {
           updateGraph(d3.select(this).attr("id"))
-        })*/
+        })
 
     function mouseover(obj) {
       obj
