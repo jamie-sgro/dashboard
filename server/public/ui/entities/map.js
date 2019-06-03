@@ -18,6 +18,8 @@ function getMap() {
         maxZoom: 18,
       }).addTo(map);
 
+  map.doubleClickZoom.disable();
+
   return map;
 };
 
@@ -199,8 +201,8 @@ async function d3PopulateMarkers(map) {
             map.latLngToLayerPoint([d.lat, d.lng]).y +")";
           })
 
-      /*for (i in mark) {
+      for (i in mark) {
         mark[i].setStyle({radius: scl})
-      };*/
+      };
     };
 };

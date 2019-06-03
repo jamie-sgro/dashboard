@@ -55,13 +55,14 @@ function getData() {
 var map = getMap();
 scl = .01*map.latLngToLayerPoint([0,50]).x - map.latLngToLayerPoint([0,0]).x;
 
-//DEPRECIATED
-mark = populateMarkers(map);
-
 L.svg().addTo(map);
 var g = d3.select("#map").select("svg").append("g")
 
 d3PopulateMarkers(map);
+
+//DEPRECIATED
+//move about d3PopulateMarkers() to use .d3 cirlce mouseEvents
+mark = populateMarkers(map);
 
 //set up alerts
 map.on("click", onMapClick);
