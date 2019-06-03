@@ -88,7 +88,7 @@ var margin = {
   left: 60
 };
 
-var width = 800 - margin.left - margin.right;
+var width = ($(window).width()/2) - margin.left - margin.right;
 var height = 400 - margin.top - margin.bottom;
 
 const barplot = new Barplot(width, height, margin);
