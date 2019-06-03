@@ -113,10 +113,10 @@ class Barplot {
       .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .4))
 
     //DEPRECIATED: removing marker variable
-    /*for (i in mark) {
-      var rad = radiusScale(Math.round(data[i][barName]))
+    for (i in mark) {
+      var rad = Math.round(scl+radiusScale(d3.select(this).data()[0].value))
       mark[i].setStyle({radius: rad})
-    };*/
+    };
   };
 
 
