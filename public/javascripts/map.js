@@ -19,8 +19,8 @@ function getMap() {
       }).addTo(map);
 
   $(window).on("resize", function() {
-    h = ($(window).height()/2) - 50
-    w = ($(window).width()) - 50
+    h = ($(window).height()/2) - 50;
+    w = ($(window).width()) - 50;
     $("#map").height(h).width(w);
     map.invalidateSize();
   }).trigger("resize");
