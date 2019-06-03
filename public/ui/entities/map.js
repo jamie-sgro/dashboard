@@ -15,8 +15,13 @@ function getMap() {
 
   L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; ' + mapLink + ' Contributors',
-        maxZoom: 18,
+        maxZoom: 8,
       }).addTo(map);
+
+  $(window).on("resize", function() {
+    $("#map").height($(window).height()/2).width($(window).width()/2);
+    map.invalidateSize();
+  }).trigger("resize");
 
   map.doubleClickZoom.disable();
 
