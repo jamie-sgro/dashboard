@@ -1,5 +1,0 @@
-*.RData
-*.Rhistory
-*.pem
-~$*.docx
-node_modules/*
