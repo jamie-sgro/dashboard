@@ -18,6 +18,8 @@ function getMap() {
         maxZoom: 18,
       }).addTo(map);
 
+  map.doubleClickZoom.disable();
+
   return map;
 };
 
@@ -76,6 +78,54 @@ function addMarker(map, name, lat, lng, score) {
 
 
 
+/**********************
+*** UPDATE BARCHART ***
+**********************/
+
+//updateGraph() is called when a leaflet marker is clicked
+
+async function updateGraph(id) {
+  data = await getData();
+
+  dataArray = reduceData(data[id]);
+
+  barplot.updatePlot(barplot.canvas, dataArray);
+};
+
+
+
+/* @reduceData(object)
+  - provide JSON object, removes data not used in graph visualization (i.e name
+    and coordinates) and returns an array ready for d3 to use.
+*/
+function reduceData(data) {
+
+  rtn = [];
+  for (key in data) {
+    if (matches(key, ["name","lat","lng","score"]) == false) {
+      rtn.push({"name": key, "value": data[key]})
+    };
+  };
+  return rtn;
+};
+
+
+
+/* @matches(string, object)
+  - if any item in the array 'search' is the key string, return true, else false
+*/
+
+function matches(key, search) {
+  for (i in search) {
+    if (key == search[i]) {
+      return true;
+    };
+  };
+  return false;
+};
+
+
+
 async function d3PopulateMarkers(map) {
   data = await getData();
 
@@ -83,6 +133,9 @@ async function d3PopulateMarkers(map) {
       .data(data)
       .enter()
         .append("circle")
+        .attr("id", function(d, i) {
+          return i;
+        })
         .attr("r", 0)
         .attr("cx", function(d) {
           return map.layerPointToLatLng([d.lat, d.lng]).x;
@@ -92,7 +145,43 @@ async function d3PopulateMarkers(map) {
         })
         .attr("stroke","black")
         .attr("stroke-width", 1)
-        .attr("fill", "blue");
+        .attr("fill", "blue")
+        .attr("pointer-events","visible")
+        .on("mouseover", function() {
+
+          var myCol = d3.select(this).attr("fill")
+
+          d3.select(this)
+            .style("cursor", "pointer")
+            .call(attrTween, 100, "fill", setAlpha(myCol, .4))
+        })
+        .on("mouseout", function() {
+
+          var myCol = d3.select(this).attr("fill")
+
+          d3.select(this)
+            .style("cursor", "default")
+            .call(attrTween, 100, "fill", setAlpha(myCol, 1))
+        })
+        .on("click", function() {
+          updateGraph(d3.select(this).attr("id"))
+        })
+
+    function mouseover(obj) {
+      obj
+        .style("cursor", "pointer")
+        .transition()
+        .duration(300)
+          .style("opacity", .3)
+    }
+
+    function mouseout(obj) {
+      obj
+        .style("cursor", "default")
+        .transition()
+        .duration(600)
+          .style("opacity", 1)
+    }
 
     map.on("zoomend", update);
   	update();

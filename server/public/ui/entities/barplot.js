@@ -4,11 +4,12 @@ class Barplot {
     this.height = height;
     this.margin = margin;
 
-    this.canvas = d3.select("body").append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+    this.canvas = d3.select("body")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
       .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   };
 
   getColour() {
@@ -36,10 +37,6 @@ class Barplot {
 
   plot(canvas, dataArray) {
 
-    /*dataArray.forEach(function(d) {
-      d.value = +d.value;
-    });*/
-
     var colour = this.getColour();
 
     var widthScale = this.getWidthScale();
@@ -63,17 +60,9 @@ class Barplot {
           .attr("y", function(d) {
             return heightScale(d.name);
           })
-          .on("click", function() {
-            var barName = d3.select(this).attr("name");
-            barplot.click(barName, d3.select(this));
-          })
-          .on("mouseover", function() {
-            var barName = d3.select(this).attr("name");
-            barplot.mouseover(barName, d3.select(this));
-          })
-          .on("mouseout", function() {
-            barplot.mouseout();
-          });
+          .on("click", this.onClick)
+          .on("mouseover", this.onMouseover)
+          .on("mouseout", this.onMouseOut)
 
     // add the x Axis
     canvas.append("g")
@@ -101,28 +90,29 @@ class Barplot {
         .attr("fill", function(d) {
           return colour(d.value)
         })
-  }
+  };
 
 
 
-  click(barName, obj) {
-    /*
+  onClick(data) {
+    //Change marker size based on data value
     var radiusScale = d3.scaleLinear()
       .domain([0, d3.max(dataArray, function(d){
         return d.value;
       })])
       .range([scl/4, scl*4]);
-    */
 
     g.selectAll("circle")
-      .transition()
-      .duration(500)
-      /*.attr("r", function(d) {
-        return scl+radiusScale(d[barName]);
-      });*/
+      .each(function(d,i) {
+        d3.select(this).call(attrTween, 500, "r", scl+radiusScale(d[data.name]))
+      })
 
-    obj.call(alphaTween, 100, 0.6)
+    var myCol = d3.select(this).attr("fill")
 
+    d3.select(this)
+      .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .4))
+
+    //DEPRECIATED: removing marker variable
     /*for (i in mark) {
       var rad = radiusScale(Math.round(data[i][barName]))
       mark[i].setStyle({radius: rad})
@@ -131,47 +121,90 @@ class Barplot {
 
 
 
-  mouseover(barName, obj) {
-    var colour = this.getColour();
+  onMouseover(data) {
+    var colour = barplot.getColour();
 
     g.selectAll("circle")
-      .transition()
-      .duration(300)
-      .attr("fill", function(d) {
-        return colour(d[barName]);
-      });
+      .each(function(d,i) {
+        //concurrent transitions that overlap the same attribute should have the
+        //same duration so that the newest tween overwrites the old one
+        d3.select(this).call(attrTween, 300, "fill", colour(d[data.name]))
+      })
 
+    var myCol = d3.select(this).attr("fill")
 
-    obj.call(alphaTween, 100, 0.3)
-
-    /*for (i in mark) {
-      //change colour based on width of rect
-      mark[i].setStyle({fillColor: colour(data[i][barName])})
-    };*/
+    d3.select(this)
+      .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .7))
   };
 
 
 
-  mouseout() {
+  onMouseOut() {
     g.selectAll("circle")
-      .transition()
-      .delay(700)
-      .duration(1300)
-      .attr("fill", "blue")
-      //.call(barplot.mouseout)
+      .each(function(d,i) {
+        d3.select(this).call(attrTween, 300, "fill", "blue")
+      })
 
-    //.attr("r", scl);
 
+    //DEPRECIATED: removing marker variable
     /*for (i in mark) {
-      mark[i].setStyle({fillColor: "blue", radius: scl})
+      mark[i].setStyle({radius: scl})
     };*/
-  };
+  }
 };
+
+function setAlpha(c, v) {
+  var c = d3.rgb(c);
+  c.opacity = v;
+
+  return c;
+}
+
+function attrTween(path, duration, attr, endRes) {
+  var dummy = {};
+  var colour = barplot.getColour();
+
+  d3.select(dummy)
+    .transition()
+    .duration(duration)
+    .tween(attr, function() {
+      var lerp = d3.interpolate(path.attr(attr), endRes);
+      return function(t) {
+        path.attr(attr, lerp(t));
+      };
+    })
+}
+
+
+
+function resetTween(path, duration, attr, endRes, peakRes) {
+  var dummy = {};
+  var colour = barplot.getColour();
+
+  d3.select(dummy)
+    .transition()
+    .duration(duration)
+    .tween(attr, function() {
+      var lerp = d3.interpolate(path.attr(attr), peakRes);
+      return function(t) {
+        path.attr(attr, lerp(t));
+      };
+    })
+    .transition()
+    .duration(duration*3)
+    .tween(attr, function() {
+      var lerp = d3.interpolate(peakRes, endRes);
+      return function(t) {
+        path.attr(attr, lerp(t));
+      };
+    })
+}
+
+
 
 function alphaTween(path, duration, alpha) {
   var dummy = {};
   var col = path.attr("fill")
-  console.log(col)
 
   d3.select(dummy)
     .transition()

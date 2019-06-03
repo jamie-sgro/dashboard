@@ -55,19 +55,24 @@ function getData() {
 var map = getMap();
 scl = .01*map.latLngToLayerPoint([0,50]).x - map.latLngToLayerPoint([0,0]).x;
 
-//DEPRECIATED
-mark = populateMarkers(map);
-
 L.svg().addTo(map);
 var g = d3.select("#map").select("svg").append("g")
 
 d3PopulateMarkers(map);
+
+//DEPRECIATED
+//move about d3PopulateMarkers() to use .d3 cirlce mouseEvents
+mark = populateMarkers(map);
 
 //set up alerts
 map.on("click", onMapClick);
 
 function onMapClick(e) {
   console.log("You clicked the map at " + e.latlng);
+  g.selectAll("circle")
+    .each(function(d,i) {
+      d3.select(this).call(attrTween, 500, "r", scl)
+    })
 };
 
 
@@ -101,50 +106,6 @@ async function plotData() {
   dataArray = reduceData(data[0]);
 
   barplot.plot(barplot.canvas, dataArray);
-};
-
-
-
-//updateGraph() is called when a leaflet marker is clicked
-
-async function updateGraph(id) {
-  data = await getData();
-
-  dataArray = reduceData(data[id]);
-
-  barplot.updatePlot(barplot.canvas, dataArray);
-};
-
-
-
-/* @reduceData(object)
-  - provide JSON object, removes data not used in graph visualization (i.e name
-    and coordinates) and returns an array ready for d3 to use.
-*/
-function reduceData(data) {
-
-  rtn = [];
-  for (key in data) {
-    if (matches(key, ["name","lat","lng","score"]) == false) {
-      rtn.push({"name": key, "value": data[key]})
-    };
-  };
-  return rtn;
-};
-
-
-
-/* @matches(string, object)
-  - if any item in the array 'search' is the key string, return true, else false
-*/
-
-function matches(key, search) {
-  for (i in search) {
-    if (key == search[i]) {
-      return true;
-    };
-  };
-  return false;
 };
 
 
