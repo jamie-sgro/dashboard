@@ -3,4 +3,3 @@
 *.pem
 ~$*.docx
 node_modules/*
-public/ui/libraries/*
