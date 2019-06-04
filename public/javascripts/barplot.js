@@ -6,8 +6,8 @@ class Barplot {
 
     this.canvas = d3.select("body")
       .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("width", this.width + this.margin.left + this.margin.right)
+        .attr("height", this.height + this.margin.top + this.margin.bottom)
       .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   };
@@ -66,11 +66,13 @@ class Barplot {
 
     // add the x Axis
     canvas.append("g")
+      .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(widthScale));
 
     // add the y Axis
     canvas.append("g")
+      .attr("class", "y axis")
       .call(d3.axisLeft(heightScale));
   };
 
@@ -151,6 +153,36 @@ class Barplot {
       mark[i].setStyle({radius: scl})
     };*/
   }
+
+
+
+
+  resize() {
+    this.width = $(window).width() - this.margin.left - this.margin.right;
+    this.height = ($(window).height()/2) - this.margin.top - this.margin.bottom;
+
+    var widthScale = barplot.getWidthScale();
+
+    var heightScale = barplot.getHeightScale();
+
+    barplot.canvas.selectAll("rect")
+      .attr("width", function(d) {
+        return widthScale(d.value);
+      })
+      .attr("height", heightScale.bandwidth())
+      .attr("y", function(d) {
+        return heightScale(d.name);
+      })
+
+    // add the x Axis
+    barplot.canvas.selectAll("g.x.axis")
+      .attr("transform", "translate(0," + this.height + ")")
+      .call(d3.axisBottom(widthScale));
+
+    // add the y Axis
+    barplot.canvas.selectAll("g.y.axis")
+      .call(d3.axisLeft(heightScale));
+  };
 };
 
 function setAlpha(c, v) {

@@ -124,3 +124,9 @@ function getMaxScore(data) {
   };
   return maxScore;
 };
+
+var staleFlag;
+window.onresize = function(){
+  clearTimeout(staleFlag);
+  staleFlag = setTimeout(barplot.resize, 100);
+};
