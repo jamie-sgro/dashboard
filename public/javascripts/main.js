@@ -97,7 +97,7 @@ async function plotData() {
   //only return the first datapoint to populate the graph
   dataArray = reduceData(data[0]);
 
-  barplot.plot(barplot.canvas, dataArray);
+  barplot.plot(dataArray);
 };
 
 

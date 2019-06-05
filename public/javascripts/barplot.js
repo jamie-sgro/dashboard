@@ -45,7 +45,9 @@ class Barplot {
       }));
   };
 
-  plot(canvas, dataArray) {
+
+
+  plot(dataArray) {
 
     var colour = this.getColour();
 
@@ -53,7 +55,7 @@ class Barplot {
 
     var heightScale = this.getHeightScale();
 
-    canvas.selectAll("rect")
+    this.canvas.selectAll("rect")
       .data(dataArray)
       .enter()
         .append("rect")
@@ -75,13 +77,13 @@ class Barplot {
           .on("mouseout", this.onMouseOut)
 
     // add the x Axis
-    canvas.append("g")
+    this.canvas.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + this.height + ")")
       .call(d3.axisBottom(widthScale));
 
     // add the y Axis
-    canvas.append("g")
+    this.canvas.append("g")
       .attr("class", "y axis")
       .call(d3.axisLeft(heightScale));
   };
