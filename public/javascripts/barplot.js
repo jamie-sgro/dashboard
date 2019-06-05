@@ -4,10 +4,20 @@ class Barplot {
     this.height = height;
     this.margin = margin;
 
+    this.getWidth = function(path, obj) {
+      path.attr("width", obj.width + obj.margin.left + obj.margin.right)
+    }
+
+    this.getHeight = function(path, obj) {
+      path.attr("height", obj.height + obj.margin.top + obj.margin.bottom)
+    }
+
     this.svg = d3.select("body")
       .append("svg")
-        .attr("width", this.width + this.margin.left + this.margin.right)
-        .attr("height", this.height + this.margin.top + this.margin.bottom)
+        .call(this.getWidth, this)
+        .call(this.getHeight, this)
+        //.attr("width", this.width + this.margin.left + this.margin.right)
+        //.attr("height", this.height + this.margin.top + this.margin.bottom)
 
     this.canvas = this.svg
       .append("g")
