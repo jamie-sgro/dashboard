@@ -16,8 +16,6 @@ class Barplot {
       .append("svg")
         .call(this.getWidth, this)
         .call(this.getHeight, this)
-        //.attr("width", this.width + this.margin.left + this.margin.right)
-        //.attr("height", this.height + this.margin.top + this.margin.bottom)
 
     this.canvas = this.svg
       .append("g")
@@ -198,8 +196,6 @@ class Barplot {
     barplot.svg
       .call(barplot.getWidth, barplot)
       .call(barplot.getHeight, barplot)
-      /*.attr("width", barplot.width + barplot.margin.left + barplot.margin.right)
-      .attr("height", barplot.height + barplot.margin.top + barplot.margin.bottom)*/
   };
 };
 
