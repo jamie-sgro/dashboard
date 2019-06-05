@@ -1,8 +1,8 @@
 class Barplot {
   constructor(width, height, margin) {
+    this.margin = margin;
     this.width = width;
     this.height = height;
-    this.margin = margin;
 
     this.getWidth = function(path, obj) {
       path.attr("width", obj.width + obj.margin.left + obj.margin.right)
@@ -35,7 +35,7 @@ class Barplot {
   getWidthScale() {
     return d3.scaleLinear()
       .domain([0, this.max])
-      .range([0, width - margin.left]);
+      .range([0, this.width - margin.left]);
   };
 
   getHeightScale() {
@@ -170,7 +170,7 @@ class Barplot {
 
 
   resize() {
-    this.width = $(window).width() - this.margin.left - this.margin.right;
+    barplot.width = $(window).width() - this.margin.left - this.margin.right;
     this.height = ($(window).height()/2) - this.margin.top - this.margin.bottom;
 
     var widthScale = barplot.getWidthScale();
