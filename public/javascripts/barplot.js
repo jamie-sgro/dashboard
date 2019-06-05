@@ -35,7 +35,7 @@ class Barplot {
   getWidthScale() {
     return d3.scaleLinear()
       .domain([0, this.max])
-      .range([0, this.width - margin.left]);
+      .range([0, this.width - this.margin.left - this.margin.right]);
   };
 
   getHeightScale() {
