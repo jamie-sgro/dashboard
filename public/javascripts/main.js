@@ -117,8 +117,14 @@ function getMaxScore(data) {
   return maxScore;
 };
 
-var staleFlag;
-window.onresize = function() {
-  clearTimeout(staleFlag);
-  staleFlag = setTimeout(barplot.resize, 100);
-};
+
+
+//currently set to resize actively, but delays can be set so resize only occurs
+//  at the end the end of screen change if barplot.resize() gets too costly
+$(window).on("resize", function() {
+  //update leaflet map
+  mapResize();
+
+  //update d3 barplot
+  barplot.resize();
+});

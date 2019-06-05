@@ -6,6 +6,15 @@ class D3Map {
 
 
 
+function mapResize() {
+  h = ($(window).height()/2) - 50;
+  w = ($(window).width()) - 50;
+  $("#map").height(h).width(w);
+  map.invalidateSize();
+};
+
+
+
 function getMap() {
   map = L.map('map');
 
@@ -18,12 +27,7 @@ function getMap() {
         maxZoom: 8,
       }).addTo(map);
 
-  $(window).on("resize", function() {
-    h = ($(window).height()/2) - 50;
-    w = ($(window).width()) - 50;
-    $("#map").height(h).width(w);
-    map.invalidateSize();
-  }).trigger("resize");
+  mapResize();
 
   map.doubleClickZoom.disable();
 

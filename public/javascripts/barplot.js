@@ -168,14 +168,14 @@ class Barplot {
 
 
   resize() {
-    barplot.width = $(window).width() - barplot.margin.left - barplot.margin.right;
-    barplot.height = ($(window).height()/2) - barplot.margin.top - barplot.margin.bottom;
+    this.width = $(window).width() - this.margin.left - this.margin.right;
+    this.height = ($(window).height()/2) - this.margin.top - this.margin.bottom;
 
-    var widthScale = barplot.getWidthScale();
+    var widthScale = this.getWidthScale();
 
-    var heightScale = barplot.getHeightScale();
+    var heightScale = this.getHeightScale();
 
-    barplot.canvas.selectAll("rect")
+    this.canvas.selectAll("rect")
       .attr("width", function(d) {
         return widthScale(d.value);
       })
@@ -185,17 +185,17 @@ class Barplot {
       })
 
     // add the x Axis
-    barplot.canvas.selectAll("g.x.axis")
-      .attr("transform", "translate(0," + barplot.height + ")")
+    this.canvas.selectAll("g.x.axis")
+      .attr("transform", "translate(0," + this.height + ")")
       .call(d3.axisBottom(widthScale));
 
     // add the y Axis
-    barplot.canvas.selectAll("g.y.axis")
+    this.canvas.selectAll("g.y.axis")
       .call(d3.axisLeft(heightScale));
 
-    barplot.svg
-      .call(barplot.getWidth, barplot)
-      .call(barplot.getHeight, barplot)
+    this.svg
+      .call(this.getWidth, this)
+      .call(this.getHeight, this)
   };
 };
 
