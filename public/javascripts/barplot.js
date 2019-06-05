@@ -199,8 +199,8 @@ class Barplot {
 
 
   resize() {
-    this.width = $(window).width() - this.margin.left - this.margin.right;
-    this.height = ($(window).height()/2) - this.margin.top - this.margin.bottom;
+    this.width = $(window).width() - 50 - this.margin.left - this.margin.right;
+    this.height = ($(window).height()*screenPanel) - this.margin.top - this.margin.bottom;
 
     this.canvas.selectAll("rect")
       .call(this.getAttr, ["width", "height", "y"])

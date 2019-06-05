@@ -4,6 +4,7 @@
 
 var scl;
 const locHost = "http://localhost:3000/";
+const screenPanel = 0.40
 
 
 
@@ -81,8 +82,8 @@ function onMapClick(e) {
 
 //Barplot(width, height, margin)
 const barplot = new Barplot(
-  $(window).width(),
-  ($(window).height()/2),
+  $(window).width()-50,
+  ($(window).height()*screenPanel),
   {top: 15, right: 25, bottom: 20, left: 60}
 );
 

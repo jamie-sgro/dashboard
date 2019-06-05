@@ -7,7 +7,7 @@ class D3Map {
 
 
 function mapResize() {
-  h = ($(window).height()/2) - 50;
+  h = ($(window).height()*(1-screenPanel)) - 50;
   w = ($(window).width()) - 50;
   $("#map").height(h).width(w);
   map.invalidateSize();
