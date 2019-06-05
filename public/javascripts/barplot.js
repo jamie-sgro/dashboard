@@ -40,7 +40,7 @@ class Barplot {
 
   getHeightScale() {
     return d3.scaleBand()
-      .range([height, 0])
+      .range([this.height, 0])
       .padding(0.1)
       .domain(dataArray.map(function(d) {
         return d.name;
@@ -171,7 +171,7 @@ class Barplot {
 
   resize() {
     barplot.width = $(window).width() - this.margin.left - this.margin.right;
-    this.height = ($(window).height()/2) - this.margin.top - this.margin.bottom;
+    barplot.height = ($(window).height()/2) - this.margin.top - this.margin.bottom;
 
     var widthScale = barplot.getWidthScale();
 
@@ -188,7 +188,7 @@ class Barplot {
 
     // add the x Axis
     barplot.canvas.selectAll("g.x.axis")
-      .attr("transform", "translate(0," + this.height + ")")
+      .attr("transform", "translate(0," + barplot.height + ")")
       .call(d3.axisBottom(widthScale));
 
     // add the y Axis
