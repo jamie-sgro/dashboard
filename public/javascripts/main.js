@@ -3,9 +3,8 @@
 ************************/
 
 var scl;
-//const width = 800;
-//const height = 400;
 const locHost = "http://localhost:3000/";
+const screenPanel = 0.40
 
 
 
@@ -81,20 +80,14 @@ function onMapClick(e) {
 *** CREATE BARPLOT ***
 *********************/
 
-var margin = {
-  top: 15,
-  right: 25,
-  bottom: 20,
-  left: 60
-};
-
-var width = 800 - margin.left - margin.right;
-var height = 400 - margin.top - margin.bottom;
-
-const barplot = new Barplot(width, height, margin);
+//Barplot(width, height, margin)
+const barplot = new Barplot(
+  $(window).width()-50,
+  ($(window).height()*screenPanel),
+  {top: 15, right: 25, bottom: 20, left: 60}
+);
 
 plotData();
-
 
 //called once when the screen renders
 async function plotData() {
@@ -105,7 +98,7 @@ async function plotData() {
   //only return the first datapoint to populate the graph
   dataArray = reduceData(data[0]);
 
-  barplot.plot(barplot.canvas, dataArray);
+  barplot.plot(dataArray);
 };
 
 
@@ -124,3 +117,15 @@ function getMaxScore(data) {
   };
   return maxScore;
 };
+
+
+
+//currently set to resize actively, but delays can be set so resize only occurs
+//  at the end the end of screen change if barplot.resize() gets too costly
+$(window).on("resize", function() {
+  //update leaflet map
+  mapResize();
+
+  //update d3 barplot
+  barplot.resize();
+});

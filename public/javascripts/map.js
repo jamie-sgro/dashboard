@@ -6,6 +6,15 @@ class D3Map {
 
 
 
+function mapResize() {
+  h = ($(window).height()*(1-screenPanel)) - 50;
+  w = ($(window).width()) - 50;
+  $("#map").height(h).width(w);
+  map.invalidateSize();
+};
+
+
+
 function getMap() {
   map = L.map('map');
 
@@ -15,8 +24,10 @@ function getMap() {
 
   L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; ' + mapLink + ' Contributors',
-        maxZoom: 18,
+        maxZoom: 8,
       }).addTo(map);
+
+  mapResize();
 
   map.doubleClickZoom.disable();
 
