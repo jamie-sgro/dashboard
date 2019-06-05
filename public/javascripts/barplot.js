@@ -196,8 +196,8 @@ class Barplot {
       .call(d3.axisLeft(heightScale));
 
     barplot.svg
-    .attr("width", this.width + this.margin.left + this.margin.right)
-    .attr("height", this.height + this.margin.top + this.margin.bottom)
+    .attr("width", barplot.width + barplot.margin.left + barplot.margin.right)
+    .attr("height", barplot.height + barplot.margin.top + barplot.margin.bottom)
   };
 };
 
