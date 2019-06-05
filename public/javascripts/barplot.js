@@ -1,13 +1,23 @@
 class Barplot {
   constructor(width, height, margin) {
-    this.width = width;
-    this.height = height;
     this.margin = margin;
+    this.width = width - this.margin.left - this.margin.right;
+    this.height = height - margin.top - margin.bottom;
 
-    this.canvas = d3.select("body")
+    this.getWidth = function(path, obj) {
+      path.attr("width", obj.width + obj.margin.left + obj.margin.right)
+    }
+
+    this.getHeight = function(path, obj) {
+      path.attr("height", obj.height + obj.margin.top + obj.margin.bottom)
+    }
+
+    this.svg = d3.select("body")
       .append("svg")
-        .attr("width", this.width + this.margin.left + this.margin.right)
-        .attr("height", this.height + this.margin.top + this.margin.bottom)
+        .call(this.getWidth, this)
+        .call(this.getHeight, this)
+
+    this.canvas = this.svg
       .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   };
@@ -23,12 +33,12 @@ class Barplot {
   getWidthScale() {
     return d3.scaleLinear()
       .domain([0, this.max])
-      .range([0, width - margin.left]);
+      .range([0, this.width - this.margin.left - this.margin.right]);
   };
 
   getHeightScale() {
     return d3.scaleBand()
-      .range([height, 0])
+      .range([this.height, 0])
       .padding(0.1)
       .domain(dataArray.map(function(d) {
         return d.name;
@@ -67,7 +77,7 @@ class Barplot {
     // add the x Axis
     canvas.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "translate(0," + this.height + ")")
       .call(d3.axisBottom(widthScale));
 
     // add the y Axis
@@ -158,8 +168,8 @@ class Barplot {
 
 
   resize() {
-    this.width = $(window).width() - this.margin.left - this.margin.right;
-    this.height = ($(window).height()/2) - this.margin.top - this.margin.bottom;
+    barplot.width = $(window).width() - barplot.margin.left - barplot.margin.right;
+    barplot.height = ($(window).height()/2) - barplot.margin.top - barplot.margin.bottom;
 
     var widthScale = barplot.getWidthScale();
 
@@ -176,12 +186,16 @@ class Barplot {
 
     // add the x Axis
     barplot.canvas.selectAll("g.x.axis")
-      .attr("transform", "translate(0," + this.height + ")")
+      .attr("transform", "translate(0," + barplot.height + ")")
       .call(d3.axisBottom(widthScale));
 
     // add the y Axis
     barplot.canvas.selectAll("g.y.axis")
       .call(d3.axisLeft(heightScale));
+
+    barplot.svg
+      .call(barplot.getWidth, barplot)
+      .call(barplot.getHeight, barplot)
   };
 };
 
