@@ -91,7 +91,7 @@ var margin = {
 //var width = $(window).width() - margin.left - margin.right;
 //var height = ($(window).height()/2) - margin.top - margin.bottom;
 
-const barplot = new Barplot(width = $(window).width() - margin.left - margin.right, height = ($(window).height()/2) - margin.top - margin.bottom, margin);
+const barplot = new Barplot(width = $(window).width(), height = ($(window).height()/2), margin);
 plotData();
 
 //called once when the screen renders

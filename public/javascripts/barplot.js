@@ -1,8 +1,8 @@
 class Barplot {
   constructor(width, height, margin) {
     this.margin = margin;
-    this.width = width;
-    this.height = height;
+    this.width = width - this.margin.left - this.margin.right;
+    this.height = height - margin.top - margin.bottom;
 
     this.getWidth = function(path, obj) {
       path.attr("width", obj.width + obj.margin.left + obj.margin.right)
