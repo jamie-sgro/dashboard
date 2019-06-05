@@ -88,13 +88,11 @@ var margin = {
   left: 60
 };
 
-var width = $(window).width() - margin.left - margin.right;
+//var width = $(window).width() - margin.left - margin.right;
 var height = ($(window).height()/2) - margin.top - margin.bottom;
 
-const barplot = new Barplot(width, height, margin);
-
+const barplot = new Barplot(width = $(window).width() - margin.left - margin.right, height, margin);
 plotData();
-
 
 //called once when the screen renders
 async function plotData() {
