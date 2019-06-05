@@ -77,7 +77,7 @@ class Barplot {
     // add the x Axis
     canvas.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "translate(0," + this.height + ")")
       .call(d3.axisBottom(widthScale));
 
     // add the y Axis
