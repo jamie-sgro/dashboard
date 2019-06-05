@@ -4,10 +4,12 @@ class Barplot {
     this.height = height;
     this.margin = margin;
 
-    this.canvas = d3.select("body")
+    this.svg = d3.select("body")
       .append("svg")
         .attr("width", this.width + this.margin.left + this.margin.right)
         .attr("height", this.height + this.margin.top + this.margin.bottom)
+
+    this.canvas = this.svg
       .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   };
