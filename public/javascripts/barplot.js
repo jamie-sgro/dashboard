@@ -168,8 +168,8 @@ class Barplot {
 
 
   resize() {
-    barplot.width = $(window).width() - this.margin.left - this.margin.right;
-    barplot.height = ($(window).height()/2) - this.margin.top - this.margin.bottom;
+    barplot.width = $(window).width() - barplot.margin.left - barplot.margin.right;
+    barplot.height = ($(window).height()/2) - barplot.margin.top - barplot.margin.bottom;
 
     var widthScale = barplot.getWidthScale();
 

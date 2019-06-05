@@ -81,17 +81,13 @@ function onMapClick(e) {
 *** CREATE BARPLOT ***
 *********************/
 
-var margin = {
+//Barplot(width, height, margin)
+const barplot = new Barplot($(window).width(), ($(window).height()/2), {
   top: 15,
   right: 25,
   bottom: 20,
   left: 60
-};
-
-//var width = $(window).width() - margin.left - margin.right;
-//var height = ($(window).height()/2) - margin.top - margin.bottom;
-
-const barplot = new Barplot($(window).width(), ($(window).height()/2), margin);
+});
 plotData();
 
 //called once when the screen renders
