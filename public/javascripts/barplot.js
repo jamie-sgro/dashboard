@@ -184,6 +184,10 @@ class Barplot {
     // add the y Axis
     barplot.canvas.selectAll("g.y.axis")
       .call(d3.axisLeft(heightScale));
+
+    barplot.svg
+      .attr("width", $(window).width()-50)
+      .attr("height", ($(window).height()/2))
   };
 };
 
