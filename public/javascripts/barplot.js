@@ -4,23 +4,29 @@ class Barplot {
     this.width = width - this.margin.left - this.margin.right;
     this.height = height - margin.top - margin.bottom;
 
-    this.getWidth = function(path, obj) {
-      path.attr("width", obj.width + obj.margin.left + obj.margin.right)
-    }
+    /* the (path, obj) convention is used to denote:
+        path = d3 element
+        obj = the barplot element typically evoked though 'this.'
 
-    this.getHeight = function(path, obj) {
-      path.attr("height", obj.height + obj.margin.top + obj.margin.bottom)
+      - note that the 'this.' element is overwritten by d3 regardless of the
+        class
+    */
+    this.getSvgSize = function(path, obj) {
+      path
+        .attr("width", obj.width + obj.margin.left + obj.margin.right)
+        .attr("height", obj.height + obj.margin.top + obj.margin.bottom);
     }
 
     this.svg = d3.select("body")
       .append("svg")
-        .call(this.getWidth, this)
-        .call(this.getHeight, this)
+        .call(this.getSvgSize, this);
 
     this.canvas = this.svg
       .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   };
+
+
 
   getColour() {
     return d3.scaleLinear()
@@ -47,14 +53,57 @@ class Barplot {
 
 
 
+  /* @getAttr(d3object, oject)
+    - constructor for reused attributes for barplot. All updates to common
+      atrributes are stored in this single function for rapid updating
+    - the attributes object should be an array of strings that match d3
+      attributes
+  */
+  getAttr(path, attributes) {
+    var widthScale = barplot.getWidthScale();
+    var heightScale = barplot.getHeightScale();
+    var colour = barplot.getColour();
+
+    for (key in attributes) {
+      switch (attributes[key]) {
+        case "width":
+          path.attr("width", function(d) {
+            return widthScale(d.value);
+          });
+          break;
+        case "height":
+          path.attr("height", heightScale.bandwidth())
+          break;
+        case "fill":
+          path.attr("fill", function(d) {
+            return colour(d.value)
+          })
+          break;
+        case "y":
+          path.attr("y", function(d) {
+            return heightScale(d.name);
+          })
+          break;
+      };
+    };
+  };
+
+
+
+  getXAxis(path, obj) {
+    path
+      .attr("transform", "translate(0," + obj.height + ")")
+      .call(d3.axisBottom(obj.getWidthScale()));
+  }
+
+  getYAxis(path, obj) {
+    path
+      .call(d3.axisLeft(obj.getHeightScale()));
+  }
+
+
+
   plot(dataArray) {
-
-    var colour = this.getColour();
-
-    var widthScale = this.getWidthScale();
-
-    var heightScale = this.getHeightScale();
-
     this.canvas.selectAll("rect")
       .data(dataArray)
       .enter()
@@ -62,48 +111,20 @@ class Barplot {
           .attr("name", function(d) {
             return d.name;
           })
-          .attr("width", function(d) {
-            return widthScale(d.value);
-          })
-          .attr("height", heightScale.bandwidth())
-          .attr("fill", function(d) {
-            return colour(d.value)
-          })
-          .attr("y", function(d) {
-            return heightScale(d.name);
-          })
+          .call(this.getAttr, ["width", "height", "fill", "y"])
           .on("click", this.onClick)
           .on("mouseover", this.onMouseover)
-          .on("mouseout", this.onMouseOut)
+          .on("mouseout", this.onMouseOut);
 
     // add the x Axis
     this.canvas.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + this.height + ")")
-      .call(d3.axisBottom(widthScale));
+      .call(this.getXAxis, this);
 
     // add the y Axis
     this.canvas.append("g")
       .attr("class", "y axis")
-      .call(d3.axisLeft(heightScale));
-  };
-
-
-
-  updatePlot(canvas, dataArray) {
-    var colour = this.getColour();
-    var widthScale = this.getWidthScale();
-
-    canvas.selectAll("rect")
-      .data(dataArray)
-        .transition()
-        .duration(800)
-        .attr("width", function(d) {
-          return widthScale(d.value);
-        })
-        .attr("fill", function(d) {
-          return colour(d.value)
-        })
+      .call(this.getYAxis, this);
   };
 
 
@@ -159,7 +180,6 @@ class Barplot {
         d3.select(this).call(attrTween, 300, "fill", "blue")
       })
 
-
     //DEPRECIATED: removing marker variable
     /*for (i in mark) {
       mark[i].setStyle({radius: scl})
@@ -168,38 +188,35 @@ class Barplot {
 
 
 
+  updatePlot(canvas, dataArray) {
+    canvas.selectAll("rect")
+      .data(dataArray)
+        .transition()
+        .duration(800)
+        .call(this.getAttr, ["width", "fill"])
+  };
+
+
 
   resize() {
     this.width = $(window).width() - this.margin.left - this.margin.right;
     this.height = ($(window).height()/2) - this.margin.top - this.margin.bottom;
 
-    var widthScale = this.getWidthScale();
-
-    var heightScale = this.getHeightScale();
-
     this.canvas.selectAll("rect")
-      .attr("width", function(d) {
-        return widthScale(d.value);
-      })
-      .attr("height", heightScale.bandwidth())
-      .attr("y", function(d) {
-        return heightScale(d.name);
-      })
+      .call(this.getAttr, ["width", "height", "y"])
 
-    // add the x Axis
     this.canvas.selectAll("g.x.axis")
-      .attr("transform", "translate(0," + this.height + ")")
-      .call(d3.axisBottom(widthScale));
+      .call(this.getXAxis, this)
 
-    // add the y Axis
     this.canvas.selectAll("g.y.axis")
-      .call(d3.axisLeft(heightScale));
+      .call(this.getYAxis, this)
 
     this.svg
-      .call(this.getWidth, this)
-      .call(this.getHeight, this)
+      .call(this.getSvgSize, this)
   };
 };
+
+
 
 function setAlpha(c, v) {
   var c = d3.rgb(c);
@@ -207,6 +224,8 @@ function setAlpha(c, v) {
 
   return c;
 }
+
+
 
 function attrTween(path, duration, attr, endRes) {
   var dummy = {};
@@ -247,44 +266,3 @@ function resetTween(path, duration, attr, endRes, peakRes) {
       };
     })
 }
-
-
-
-function alphaTween(path, duration, alpha) {
-  var dummy = {};
-  var col = path.attr("fill")
-
-  d3.select(dummy)
-    .transition()
-    .duration(duration)
-    .tween("fill", function() {
-      var i = d3.interpolate(col, "transparent");
-      i = d3.interpolate(col, i(alpha));
-      return function(t) {
-        path.attr("fill", i(t));
-      };
-    })
-    .transition()
-    .duration(duration*3)
-    .tween("fill", function() {
-      var i = d3.interpolate("transparent", col);
-      i = d3.interpolate(path.attr("fill"), i(100000000));
-      return function(t) {
-        path.attr("fill", i(t));
-      };
-    })
-}
-
-function tween(path) {
-  var dummy = {};
-
-  d3.select(dummy)
-    .transition()
-    .duration(800)
-    .tween("fill", function() {
-      var i = d3.interpolateRgb("blue", "red");
-      return function(t) {
-        path.attr("fill", i(t));
-      };
-    })
-};
