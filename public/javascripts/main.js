@@ -3,8 +3,6 @@
 ************************/
 
 var scl;
-//const width = 800;
-//const height = 400;
 const locHost = "http://localhost:3000/";
 
 
@@ -82,15 +80,12 @@ function onMapClick(e) {
 *********************/
 
 //Barplot(width, height, margin)
-const barplot = new Barplot($(window).width(),
+const barplot = new Barplot(
+  $(window).width(),
   ($(window).height()/2),
-  {
-    top: 15,
-    right: 25,
-    bottom: 20,
-    left: 60
-  });
-  
+  {top: 15, right: 25, bottom: 20, left: 60}
+);
+
 plotData();
 
 //called once when the screen renders
@@ -123,7 +118,7 @@ function getMaxScore(data) {
 };
 
 var staleFlag;
-window.onresize = function(){
+window.onresize = function() {
   clearTimeout(staleFlag);
   staleFlag = setTimeout(barplot.resize, 100);
 };
