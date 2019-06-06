@@ -3,6 +3,9 @@
 ************************/
 
 var scl;
+const markRad = 15;
+const markCol = "rgba(10,151,217, .8)";
+const scaleToZoom = false;
 const locHost = "http://localhost:3000/";
 const screenPanel = 0.40
 
@@ -52,7 +55,13 @@ function getData() {
 *****************/
 
 var map = getMap();
-scl = .01*map.latLngToLayerPoint([0,50]).x - map.latLngToLayerPoint([0,0]).x;
+
+if (scaleToZoom) {
+  scl = map.latLngToLayerPoint([0,1]).x - map.latLngToLayerPoint([0,0]).x;
+} else {
+  scl = markRad;
+}
+
 
 L.svg().addTo(map);
 var g = d3.select("#map").select("svg").append("g")
@@ -72,6 +81,10 @@ function onMapClick(e) {
     .each(function(d,i) {
       d3.select(this).call(attrTween, 500, "r", scl)
     })
+
+  for (i in mark) {
+    mark[i].setStyle({radius: scl})
+  }
 };
 
 
