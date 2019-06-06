@@ -210,3 +210,22 @@ footer {
     top: 0;
     left: 0;
 }
+
+/* D3 */
+div.tooltip {
+	max-width: 10%;
+	color: white;
+	position: absolute;			
+	text-align: left;						
+	overflow-wrap: break-word;
+	padding: 5px;				
+	background: rgba(20,20,20, .8);	
+	border-radius: 8px;			
+	pointer-events: none;
+	-webkit-transition: width 2000ms; /* Safari */
+  transition: width 2000ms;
+}
+
+div.tooltip .picture {
+	width: 100%;
+}
