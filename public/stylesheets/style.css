@@ -222,8 +222,6 @@ div.tooltip {
 	background: rgba(20,20,20, .8);	
 	border-radius: 8px;			
 	pointer-events: none;
-	-webkit-transition: width 2000ms; /* Safari */
-  transition: width 2000ms;
 }
 
 div.tooltip .picture {

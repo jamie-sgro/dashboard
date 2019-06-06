@@ -1,6 +1,5 @@
 class Barplot {
   constructor(width, height, margin) {
-    this.timer = Date.now()
     this.margin = margin;
     this.width = width - this.margin.left - this.margin.right;
     this.height = height - margin.top - margin.bottom;
@@ -122,10 +121,15 @@ class Barplot {
           .on("mouseover", this.onMouseover)
           .on("mouseout", this.onMouseOut)
           .on('mousemove', function() {
-            barplot.timer = Date.now();
             barplot.tooltip
               .style("left", (d3.event.pageX + 10) + "px")
               .style("top", (d3.event.pageY) + "px")
+
+            //check if tooltip offscreen
+            if (parseInt(barplot.tooltip.style("bottom")) < 0) {
+              barplot.tooltip
+                .style("top", (d3.event.pageY + parseInt(barplot.tooltip.style("bottom"))) + "px")
+            };
           })
 
     // add the x Axis
@@ -202,6 +206,12 @@ class Barplot {
         d3.select(this)
           .html(d3.select(this).html() +
           " additional info displays after a delayed period")
+
+        //check if tooltip offscreen
+        if (parseInt(barplot.tooltip.style("bottom")) < 0) {
+          barplot.tooltip
+            .style("top", parseInt(barplot.tooltip.style("top")) + parseInt(barplot.tooltip.style("bottom")) + "px")
+        };
       })
 
     var colour = barplot.getColour();
