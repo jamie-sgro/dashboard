@@ -33,7 +33,7 @@ class Barplot {
       .domain([0, d3.max(dataArray, function(d){
         return d.value;
       })])
-      .range(["red","blue"]);
+      .range(["rgb(56, 94, 231)","rgb(34, 236, 87)"]);
   };
 
   getWidthScale() {
@@ -135,7 +135,7 @@ class Barplot {
       .domain([0, d3.max(dataArray, function(d){
         return d.value;
       })])
-      .range([scl/4, scl*4]);
+      .range([scl/2, scl*2]);
 
     g.selectAll("circle")
       .each(function(d,i) {
@@ -163,7 +163,7 @@ class Barplot {
       .each(function(d,i) {
         //concurrent transitions that overlap the same attribute should have the
         //same duration so that the newest tween overwrites the old one
-        d3.select(this).call(attrTween, 300, "fill", colour(d[data.name]))
+        d3.select(this).call(attrTween, 300, "fill", setAlpha(colour(d[data.name]), .8))
       })
 
     var myCol = d3.select(this).attr("fill")
@@ -177,7 +177,7 @@ class Barplot {
   onMouseOut() {
     g.selectAll("circle")
       .each(function(d,i) {
-        d3.select(this).call(attrTween, 300, "fill", "blue")
+        d3.select(this).call(attrTween, 300, "fill", markCol)
       })
 
     //DEPRECIATED: removing marker variable

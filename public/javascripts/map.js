@@ -67,7 +67,7 @@ function addMarker(map, name, lat, lng, score) {
     fillOpacity: 0,
   };
 
-  var mark = L.circleMarker([lat, lng], options).bindTooltip(name, {direction: 'left'}).addTo(map);
+  var mark = L.circleMarker([lat, lng], options).addTo(map);
 
   mark.on("click", ()=> {
     //this is where hooks into .d3 should be made
@@ -82,7 +82,8 @@ function addMarker(map, name, lat, lng, score) {
     //mark.setRadius(scl);
   });
 
-  mark.bindPopup(score);
+  mark.bindTooltip(name, {direction: 'left'})
+  mark.bindPopup("<h1>" + name + "</h1>" + "<h3>Avg. score: " + score + "</h3>");
   mark.name = name;
   return(mark);
 };
@@ -154,9 +155,9 @@ async function d3PopulateMarkers(map) {
         .attr('cy', function(d) {
           return map.layerPointToLatLng([d.lat, d.lng]).y;
         })
-        .attr("stroke","black")
+        .attr("stroke","white")
         .attr("stroke-width", 1)
-        .attr("fill", "blue")
+        .attr("fill", markCol)
         .attr("pointer-events","visible")
         .on("mouseover", function() {
 
@@ -198,11 +199,13 @@ async function d3PopulateMarkers(map) {
   	update();
 
     function update() {
-      //get pxl distance between two coords
-      x1 = map.latLngToLayerPoint([0,50]).x
-      x2 = map.latLngToLayerPoint([0,0]).x
+      if (scaleToZoom) {
+        //get pxl distance between two coords
+        x1 = map.latLngToLayerPoint([0,1]).x
+        x2 = map.latLngToLayerPoint([0,0]).x
 
-      scl = .01*(x1-x2);
+        scl = (x1-x2);
+      }
 
       g.selectAll("circle")
         .attr("r", scl)
