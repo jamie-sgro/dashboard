@@ -75,7 +75,7 @@ async function populateMarkers(map) {
     if (standing > 0) {
       standing = "<font color='green'>&#x25B2;" + standing + "% above average</font>";
     } else if (standing < 0) {
-      standing = "<font color='red'>&#x25BC; " + standing + "% below average</font>";
+      standing = "<font color='red'>&#x25BC;" + standing + "% below average</font>";
     } else {
       standing = "No average standing available";
     };
@@ -156,7 +156,7 @@ async function updateGraph(id) {
 
   dataArray = reduceData(data[id]);
 
-  barplot.updatePlot(barplot.canvas, dataArray);
+  barplot.updatePlot(barplot.canvas, dataArray, data[id].name);
 };
 
 
