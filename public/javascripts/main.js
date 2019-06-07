@@ -69,7 +69,7 @@ var g = d3.select("#map").select("svg").append("g")
 d3PopulateMarkers(map);
 
 //DEPRECIATED
-//move about d3PopulateMarkers() to use .d3 cirlce mouseEvents
+//move about d3PopulateMarkers() to use .d3 circle mouseEvents
 mark = populateMarkers(map);
 
 //set up alerts

@@ -40,11 +40,23 @@ function getMap() {
 async function populateMarkers(map) {
   data = await getData();
 
+  //get relative ranking
+  var arr = [];
+  for (i in data) {
+    arr.push(data[i].score);
+  };
+  var sorted = arr.slice().sort(function(a,b) {
+    return b-a;
+  });
+  var rank = arr.slice().map(function(v){
+    return sorted.indexOf(v) + 1;
+  });
+
   // add marker
   mark = [];
 
   for (i in data) {
-    mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng, data[i].score);
+    mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng, data[i].score, rank[i] + " (of " + rank.length + ")");
 
     //attach array number to JSON object
     mark[i].id = i;
@@ -56,7 +68,7 @@ async function populateMarkers(map) {
 
 
 //DEPRECIATED
-function addMarker(map, name, lat, lng, score) {
+function addMarker(map, name, lat, lng, score, rank) {
   options = {
     radius: scl,
     stroke: false,
@@ -83,7 +95,24 @@ function addMarker(map, name, lat, lng, score) {
   });
 
   mark.bindTooltip(name, {direction: 'left'})
-  mark.bindPopup("<h1>" + name + "</h1>" + "<h3>Avg. score: " + score + "</h3>");
+  mark.bindPopup(
+    `<h1>` + name + `</h1>
+    <table style="width:100%">
+      <tr>
+        <th>Score</th>
+        <th>Ranking</th>
+        <th>Age</th>
+      </tr>
+      <tr>
+        <td>` + score + `</td>
+        <td>` + rank + `</td>
+        <td>50</td>
+      </tr>
+    </table>`
+  );
+
+
+
   mark.name = name;
   return(mark);
 };
