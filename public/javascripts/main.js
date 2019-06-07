@@ -110,6 +110,7 @@ async function plotData() {
 
   //only return the first datapoint to populate the graph
   dataArray = reduceData(data[0]);
+  barplot.title = data[0].name; //Currently use first row of .csv on graph init
 
   barplot.plot(dataArray);
 };

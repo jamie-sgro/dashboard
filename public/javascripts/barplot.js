@@ -149,7 +149,7 @@ class Barplot {
       .attr("text-anchor", "middle")
       .style("font-size", "16px")
       .style("text-decoration", "underline")
-      .text(data[0].name);  //Currently use first row of .csv on graph init
+      .text(this.title);
   };
 
 
@@ -218,7 +218,7 @@ class Barplot {
       .on("end", function() {
         d3.select(this)
           .html(d3.select(this).html() +
-          " " + rectData.name)
+          " " + rectData.value)
 
         //check if tooltip offscreen
         if (parseInt(barplot.tooltip.style("bottom")) < 0) {
@@ -263,6 +263,8 @@ class Barplot {
 
 
   updatePlot(canvas, dataArray, name) {
+    this.title = name;
+
     canvas.selectAll("rect")
       .data(dataArray)
         .transition()
@@ -270,7 +272,7 @@ class Barplot {
         .call(this.getAttr, ["width", "fill"])
 
     this.canvas.select(".title")
-      .text(name)
+      .text(this.title)
   };
 
 
