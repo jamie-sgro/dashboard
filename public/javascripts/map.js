@@ -25,6 +25,7 @@ function getMap() {
   L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; ' + mapLink + ' Contributors',
         maxZoom: 8,
+        minZoom: 2,
       }).addTo(map);
 
   mapResize();
