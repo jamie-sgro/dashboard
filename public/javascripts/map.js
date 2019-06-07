@@ -43,7 +43,7 @@ async function populateMarkers(map) {
   //get relative ranking
   var arr = [];
   for (i in data) {
-    arr.push(data[i].score);
+    arr.push(Number(data[i].score));
   };
   var sorted = arr.slice().sort(function(a,b) {
     return b-a;
@@ -52,11 +52,36 @@ async function populateMarkers(map) {
     return sorted.indexOf(v) + 1;
   });
 
+  //get average score
+  var sum = 0;
+  var avg = 0;
+  if (arr.length) {
+    sum = arr.reduce(function(a, b) {
+      return a + b;
+    });
+    avg = sum / arr.length;
+  }
+
   // add marker
-  mark = [];
+  var mark = [];
+
+  var standing;
 
   for (i in data) {
-    mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng, data[i].score, rank[i] + " (of " + rank.length + ")");
+    //get relative standing
+    standing = Math.round(((data[i].score / avg) - 1) * 100)
+
+    if (standing > 0) {
+      standing = "<font color='green'>&#x25B2;" + standing + "% above average</font>";
+    } else if (standing < 0) {
+      standing = "<font color='red'>&#x25BC; " + standing + "% below average</font>";
+    } else {
+      standing = "No average standing available";
+    };
+
+    //create marker element
+    mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng,
+      data[i].score, rank[i] + " (of " + rank.length + ")", standing);
 
     //attach array number to JSON object
     mark[i].id = i;
@@ -68,7 +93,7 @@ async function populateMarkers(map) {
 
 
 //DEPRECIATED
-function addMarker(map, name, lat, lng, score, rank) {
+function addMarker(map, name, lat, lng, score, rank, standing) {
   options = {
     radius: scl,
     stroke: false,
@@ -101,12 +126,12 @@ function addMarker(map, name, lat, lng, score, rank) {
       <tr>
         <th>Score</th>
         <th>Ranking</th>
-        <th>Age</th>
+        <th>Standing</th>
       </tr>
       <tr>
         <td>` + score + `</td>
         <td>` + rank + `</td>
-        <td>50</td>
+        <td>` + standing + `</td>
       </tr>
     </table>`
   );
