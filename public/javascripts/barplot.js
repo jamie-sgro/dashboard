@@ -24,6 +24,11 @@ class Barplot {
     this.canvas = this.svg
       .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // Define the div for the tooltip
+    this.tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
   };
 
 
@@ -114,7 +119,18 @@ class Barplot {
           .call(this.getAttr, ["width", "height", "fill", "y"])
           .on("click", this.onClick)
           .on("mouseover", this.onMouseover)
-          .on("mouseout", this.onMouseOut);
+          .on("mouseout", this.onMouseOut)
+          .on('mousemove', function() {
+            barplot.tooltip
+              .style("left", (d3.event.pageX + 10) + "px")
+              .style("top", (d3.event.pageY) + "px")
+
+            //check if tooltip offscreen
+            if (parseInt(barplot.tooltip.style("bottom")) < 0) {
+              barplot.tooltip
+                .style("top", (d3.event.pageY + parseInt(barplot.tooltip.style("bottom"))) + "px")
+            };
+          })
 
     // add the x Axis
     this.canvas.append("g")
@@ -157,6 +173,47 @@ class Barplot {
 
 
   onMouseover(data) {
+    //remove old text
+    barplot.tooltip
+      .html("")
+
+    //remove old img
+    barplot.tooltip
+      .selectAll("img")
+      .remove()
+
+    //try to append now image
+    barplot.tooltip
+      .append("img")
+        .attr("class", "picture")
+        .attr("src", function(d) {
+          return "public/images/sdg-icons/" + data.name + ".png";
+        })
+        .on("error", function(d) {
+          barplot.tooltip
+            .html(data.name)
+        })
+
+    barplot.tooltip
+      .transition()
+      .duration(200)
+      .style("opacity", 1)
+
+    barplot.tooltip
+      .transition()
+      .delay(2000)
+      .on("end", function() {
+        d3.select(this)
+          .html(d3.select(this).html() +
+          " additional info displays after a delayed period")
+
+        //check if tooltip offscreen
+        if (parseInt(barplot.tooltip.style("bottom")) < 0) {
+          barplot.tooltip
+            .style("top", parseInt(barplot.tooltip.style("top")) + parseInt(barplot.tooltip.style("bottom")) + "px")
+        };
+      })
+
     var colour = barplot.getColour();
 
     g.selectAll("circle")
@@ -175,6 +232,10 @@ class Barplot {
 
 
   onMouseOut() {
+    barplot.tooltip.transition()
+        .duration(200)
+        .style("opacity", 0)
+
     g.selectAll("circle")
       .each(function(d,i) {
         d3.select(this).call(attrTween, 300, "fill", markCol)
