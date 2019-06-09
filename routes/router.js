@@ -8,6 +8,11 @@ router.get('/', (req, res)=> {
   res.render('index');
 });
 
+//GET final page
+router.get('/final-index', (req, res)=> {
+  res.render('final-index');
+});
+
 //GET about page.
 router.get('/about', (req, res)=> {
   res.render('about');
