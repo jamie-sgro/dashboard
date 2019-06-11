@@ -7,7 +7,12 @@ class D3Map {
 
 
 function mapResize() {
-  h = ($(window).height()*(1-screenPanel)) - 50 - $('#header').height();
+  if ($('#header').height()) {
+    h = ($(window).height()*(1-screenPanel)) - 50 - $('#header').height();
+  } else {
+    h = ($(window).height()*(1-screenPanel)) - 50;
+  }
+
   w = ($(window).width()) - 50;
   $("#map").height(h).width(w);
   map.invalidateSize();
@@ -122,7 +127,7 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
 
   mark.bindTooltip(name, {direction: 'left'})
   mark.bindPopup(
-    `<h1>` + name + `</h1>
+    `<h4>` + name + `</h4>
     <table style="width:100%">
       <tr>
         <th>Score</th>
