@@ -1989,14 +1989,19 @@ ul.icons {
     -webkit-transform: translateX(50%) translateY(50%);
     -ms-transform: translateX(50%) translateY(50%);
     transform: translateX(50%) translateY(50%);
-    bottom: 100%;
+    bottom: 80%;
     height: auto;
-    min-height: 50%;
-    min-width: 50%;
+    min-height: 100%;
+    min-width: 100%;
     overflow: hidden;
     position: absolute;
     right: 50%;
-    width: auto; }
+    width: 100%; }
+  @media screen and (max-width: 1000px) {
+    #banner video {
+      width: auto;
+    }
+  }
   #banner:before {
     -moz-transition: opacity 3s ease;
     -webkit-transition: opacity 3s ease;
