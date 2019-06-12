@@ -209,7 +209,6 @@ class Barplot {
       .style("opacity", 1)
 
     //retrieving data from rect obj must be done outside of tooltip functions
-    //qwe
     var rectData = d3.select(this).data()[0]
 
     barplot.tooltip
