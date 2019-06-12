@@ -8,9 +8,9 @@ class D3Map {
 
 function mapResize() {
   if ($('#header').height()) {
-    h = ($(window).height()*(1-screenPanel)) - 50 - $('#header').height();
+    h = ($(window).height()*(1-screenPanel)) - 10 - $('#header').height();
   } else {
-    h = ($(window).height()*(1-screenPanel)) - 50;
+    h = ($(window).height()*(1-screenPanel)) - 10;
   }
 
   w = ($(window).width()) - 50;
