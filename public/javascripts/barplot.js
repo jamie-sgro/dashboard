@@ -126,10 +126,10 @@ class Barplot {
               .style("top", (d3.event.pageY) + "px")
 
             //check if tooltip offscreen
-            if (parseInt(barplot.tooltip.style("bottom")) < 0) {
+            /*if (parseInt(barplot.tooltip.style("bottom")) < 0) {
               barplot.tooltip
                 .style("top", (d3.event.pageY + parseInt(barplot.tooltip.style("bottom"))) + "px")
-            };
+            };*/
           })
 
     // add the x Axis
@@ -220,10 +220,10 @@ class Barplot {
           " " + rectData.value)
 
         //check if tooltip offscreen
-        if (parseInt(barplot.tooltip.style("bottom")) < 0) {
+        /*if (parseInt(barplot.tooltip.style("bottom")) < 0) {
           barplot.tooltip
             .style("top", parseInt(barplot.tooltip.style("top")) + parseInt(barplot.tooltip.style("bottom")) + "px")
-        };
+        };*/
       })
 
     var colour = barplot.getColour();
