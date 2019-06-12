@@ -9,7 +9,7 @@ router.get('/', (req, res)=> {
 });
 
 //GET final page
-router.get('/final-index', (req, res)=> {
+router.get('/home', (req, res)=> {
   res.render('final-index');
 });
 
@@ -24,6 +24,11 @@ router.get('/ui/', (req, res) => {
   res.render('ui');
   //res.render('index', { title: 'Express' });
   return;
+});
+
+//GET home page if nothing else matches.
+router.get('*', (req, res)=> {
+  res.redirect('final-index');
 });
 
 router.post('/getData', (req, res) => {
