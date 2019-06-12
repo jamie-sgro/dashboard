@@ -1991,8 +1991,8 @@ ul.icons {
     transform: translateX(50%) translateY(50%);
     bottom: 100%;
     height: auto;
-    min-height: 50%;
-    min-width: 50%;
+    min-height: 100%;
+    min-width: 100%;
     overflow: hidden;
     position: absolute;
     right: 50%;
