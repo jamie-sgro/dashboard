@@ -97,7 +97,7 @@ function onMapClick(e) {
 const barplot = new Barplot(
   $(window).width()-50,
   ($(window).height()*screenPanel),
-  {top: 15, right: 25, bottom: 20, left: 60}
+  {top: 35, right: 25, bottom: 20, left: 60}
 );
 
 plotData();
@@ -110,6 +110,7 @@ async function plotData() {
 
   //only return the first datapoint to populate the graph
   dataArray = reduceData(data[0]);
+  barplot.title = data[0].name; //Currently use first row of .csv on graph init
 
   barplot.plot(dataArray);
 };

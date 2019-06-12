@@ -141,6 +141,15 @@ class Barplot {
     this.canvas.append("g")
       .attr("class", "y axis")
       .call(this.getYAxis, this);
+
+    this.canvas.append("text")
+      .attr("class", "title")
+      .attr("x", (this.width / 2))
+      .attr("y", 0 - (this.margin.top / 2))
+      .attr("text-anchor", "middle")
+      .style("font-size", "16px")
+      .style("text-decoration", "underline")
+      .text(this.title);
   };
 
 
@@ -199,13 +208,16 @@ class Barplot {
       .duration(200)
       .style("opacity", 1)
 
+    //retrieving data from rect obj must be done outside of tooltip functions
+    var rectData = d3.select(this).data()[0]
+
     barplot.tooltip
       .transition()
       .delay(2000)
       .on("end", function() {
         d3.select(this)
           .html(d3.select(this).html() +
-          " additional info displays after a delayed period")
+          " " + rectData.value)
 
         //check if tooltip offscreen
         if (parseInt(barplot.tooltip.style("bottom")) < 0) {
@@ -249,12 +261,17 @@ class Barplot {
 
 
 
-  updatePlot(canvas, dataArray) {
+  updatePlot(canvas, dataArray, name) {
+    this.title = name;
+
     canvas.selectAll("rect")
       .data(dataArray)
         .transition()
         .duration(800)
         .call(this.getAttr, ["width", "fill"])
+
+    this.canvas.select(".title")
+      .text(this.title)
   };
 
 
@@ -274,6 +291,9 @@ class Barplot {
 
     this.svg
       .call(this.getSvgSize, this)
+
+    this.canvas.select(".title")
+      .attr("x", (this.width / 2))
   };
 };
 
