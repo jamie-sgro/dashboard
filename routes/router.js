@@ -4,13 +4,13 @@ var papa = require("papaparse");
 var getData = require("./getData")
 
 //GET home page.
-router.get('/', (req, res)=> {
+router.get('/index', (req, res)=> {
   res.render('index');
 });
 
 //GET final page
 router.get('/home', (req, res)=> {
-  res.render('final-index');
+  res.render('home');
 });
 
 //GET about page.
@@ -28,7 +28,7 @@ router.get('/ui/', (req, res) => {
 
 //GET home page if nothing else matches.
 router.get('*', (req, res)=> {
-  res.redirect('final-index');
+  res.redirect('home');
 });
 
 router.post('/getData', (req, res) => {
