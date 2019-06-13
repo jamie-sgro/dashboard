@@ -125,11 +125,7 @@ class Barplot {
               .style("left", (d3.event.pageX + 10) + "px")
               .style("top", (d3.event.pageY) + "px")
 
-            //check if tooltip offscreen
-            /*if (parseInt(barplot.tooltip.style("bottom")) < 0) {
-              barplot.tooltip
-                .style("top", (d3.event.pageY + parseInt(barplot.tooltip.style("bottom"))) + "px")
-            };*/
+            checkOffScreen();
           })
 
     // add the x Axis
@@ -148,7 +144,6 @@ class Barplot {
       .attr("y", 0 - (this.margin.top / 2))
       .attr("text-anchor", "middle")
       .style("font-size", "16px")
-      .style("text-decoration", "underline")
       .text(this.title);
   };
 
@@ -219,11 +214,7 @@ class Barplot {
           .html(d3.select(this).html() +
           " " + rectData.value)
 
-        //check if tooltip offscreen
-        /*if (parseInt(barplot.tooltip.style("bottom")) < 0) {
-          barplot.tooltip
-            .style("top", parseInt(barplot.tooltip.style("top")) + parseInt(barplot.tooltip.style("bottom")) + "px")
-        };*/
+        checkOffScreen();
       })
 
     var colour = barplot.getColour();
@@ -347,3 +338,18 @@ function resetTween(path, duration, attr, endRes, peakRes) {
       };
     })
 }
+
+
+
+function checkOffScreen() {
+  var tooltipHtml = barplot.tooltip._groups[0][0]
+  var svgHtml = d3.select(barplot.canvas)._groups[0][0]._groups[0][0];
+  var absBottom = $(svgHtml).offset().top + parseInt(barplot.svg.style("height"));
+  var absToolBottom = $(tooltipHtml).offset().top + parseInt(barplot.tooltip.style("height"));
+
+  //check if tooltip offscreen
+  if (absToolBottom > absBottom) {
+    barplot.tooltip
+      .style("top", absBottom - parseInt(barplot.tooltip.style("height")) + "px");
+  };
+};
