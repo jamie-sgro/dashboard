@@ -127,8 +127,8 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
 
   mark.bindTooltip(name, {direction: 'left'})
   mark.bindPopup(
-    `<h4>` + name + `</h4>
-    <table style="width:100%">
+    `<h1>` + name + `</h1>
+    <table style="width:100%", id="leaflet">
       <tr>
         <th>Score</th>
         <th>Ranking</th>
