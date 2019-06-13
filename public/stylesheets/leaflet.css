@@ -460,25 +460,64 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	background-clip: padding-box;
 	}
 
+/* table */
+/* selector for element and children */
+/*#leaflet,#leaflet *,#leaflet a:hover,#leaflet a:visited,#leaflet a:active{
+	background:none;
+	border:none;
+	bottom:auto;
+	clear:none;
+	cursor:default;
+	float:none;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:medium;
+	font-style:normal;
+	font-weight:normal;
+	height:auto;
+	left:auto;
+	letter-spacing:normal;
+	line-height:normal;
+	max-height:none;
+	max-width:none;
+	min-height:0;
+	min-width:0;
+	overflow:visible;
+	position:static;
+	right:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:0;
+	text-transform:none;
+	top:auto;
+	visibility:visible;
+	white-space:normal;
+	width:auto;
+	z-index:auto;
+}*/
+
+h1 {
+	padding-top: 10px;
+	font-size: 1rem;
+}
 
 /* popup */
-
 .leaflet-popup {
 	position: absolute;
 	text-align: center;
 	margin-bottom: 20px;
 	}
 .leaflet-popup-content-wrapper {
-	padding: 5px;
+	padding: 0px;
 	text-align: center;
-	border-radius: 120px;
+	/*border-radius: 120px;*/
+	border-radius: 0px;
 	}
 .leaflet-popup-content {
-	margin: 13px 19px;
+	margin: 0px 0px;
 	line-height: 1.4;
 	}
 .leaflet-popup-content p {
-	margin: 18px 0;
+	margin: 0px 0;
 	}
 /*.leaflet-popup-tip-container {
 	width: 40px;
@@ -507,7 +546,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	color: #333;
 	box-shadow: 0 3px 14px rgba(0,0,0,0.4);
 	}
-.leaflet-container a.leaflet-popup-close-button {
+/*.leaflet-container a.leaflet-popup-close-button {
 	position: absolute;
 	top: 0;
 	right: 10%;
@@ -521,7 +560,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	text-decoration: none;
 	font-weight: bold;
 	background: transparent;
-	}
+	}*/
 .leaflet-container a.leaflet-popup-close-button:hover {
 	color: #999;
 	}
