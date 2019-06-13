@@ -348,8 +348,21 @@ function checkOffScreen() {
   var absToolBottom = $(tooltipHtml).offset().top + parseInt(barplot.tooltip.style("height"));
 
   //check if tooltip offscreen
+  try {
+    var offScreenDiff = $(window).height() - event.clientY - parseInt(barplot.tooltip.style("height"))
+    if (offScreenDiff < 0) {
+      barplot.tooltip
+        .style("top", parseInt(barplot.tooltip.style("top")) + offScreenDiff + "px");
+      return;
+    }
+  } catch {
+
+  }
+
+  //check if tooltip outside barplot svg offscreen
   if (absToolBottom > absBottom) {
     barplot.tooltip
       .style("top", absBottom - parseInt(barplot.tooltip.style("height")) + "px");
+    return
   };
 };
