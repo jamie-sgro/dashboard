@@ -17,11 +17,11 @@ class Barplot {
         .attr("height", obj.height + obj.margin.top + obj.margin.bottom)
 
       $(".barplot.svg").css({left: $(window).width()*(1-panelWidth), position:'relative'});
-      $(".barplot.svg").css({top: -$(window).height()*(1-panelHeight)});
+      //$(".barplot.svg").css({top: -$(window).height()*(1-panelHeight)});
 
       if ($('#header').height()) {
         //update previous .css "top" styling to account for header
-        $(".barplot.svg").css({top: parseInt($(".barplot.svg").css("top")) + $('#header').height()})
+        //$(".barplot.svg").css({top: parseInt($(".barplot.svg").css("top")) + $('#header').height()})
       };
     };
 
