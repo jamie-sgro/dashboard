@@ -210,10 +210,15 @@ async function d3PopulateMarkers(map) {
         })
         .attr("r", 0)
         .attr("cx", function(d) {
-          return map.layerPointToLatLng([d.lat, d.lng]).x;
+
+          // layerPointToLatLng() ran on second monitor with coords from dataset
+          // (the variable 'd') returns uncaught promise
+          // - relies on update() function to properly init coordinates
+          // - currently throw a dummy coordinate [0, 0]
+          return map.layerPointToLatLng([0, 0]).x;
         })
         .attr('cy', function(d) {
-          return map.layerPointToLatLng([d.lat, d.lng]).y;
+          return map.layerPointToLatLng([0, 0]).y;
         })
         .attr("stroke","white")
         .attr("stroke-width", 1)
