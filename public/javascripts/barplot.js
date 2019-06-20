@@ -1,8 +1,8 @@
 class Barplot {
   constructor(width, height, margin) {
     this.margin = margin;
-    this.width = width - this.margin.left - this.margin.right;
-    this.height = height - margin.top - margin.bottom;
+    this.width = width;
+    this.height = height;
 
     /* the (path, obj) convention is used to denote:
         path = d3 element
@@ -13,11 +13,17 @@ class Barplot {
     */
     this.getSvgSize = function(path, obj) {
       path
-        .attr("width", obj.width + obj.margin.left + obj.margin.right)
-        .attr("height", obj.height + obj.margin.top + obj.margin.bottom)
+        .attr("width", obj.width)
+        .attr("height", obj.height)
 
-      $("svg").css({top: -$(window).height()*(1-panelHeight)+50, left: ($(window).width()*(1-panelWidth)), position:'relative'})
-    }
+      $("svg").css({left: $(window).width()*(1-panelWidth), position:'relative'});
+      $("svg").css({top: -$(window).height()*(1-panelHeight)});
+
+      if ($('#header').height()) {
+        $("svg").css({top: parseInt($("svg").css("top")) + $('#header').height()})
+        //parseInt($("svg").css("left")) + $('#header').height();
+      };
+    };
 
     this.svg = d3.select("body")
       .append("svg")
@@ -270,7 +276,7 @@ class Barplot {
 
 
   resize() {
-    this.width = ($(window).width()*panelWidth) - 50 - this.margin.left - this.margin.right;
+    this.width = ($(window).width()*panelWidth);
     this.height = ($(window).height()-50) - this.margin.top - this.margin.bottom;
 
     this.canvas.selectAll("rect")

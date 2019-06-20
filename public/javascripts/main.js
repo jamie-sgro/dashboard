@@ -96,9 +96,9 @@ function onMapClick(e) {
 
 //Barplot(width, height, margin)
 const barplot = new Barplot(
-  ($(window).width()*panelWidth)-50,
-  ($(window).height()-50),
-  {top: 35, right: 0, bottom: 20, left: 60}
+  ($(window).width()*panelWidth),
+  $(window).height() - $('#header').height(),
+  {top: 10, right: 20, bottom: 20, left: 60}
 );
 
 plotData();
