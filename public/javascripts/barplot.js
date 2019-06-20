@@ -16,17 +16,18 @@ class Barplot {
         .attr("width", obj.width)
         .attr("height", obj.height + obj.margin.top + obj.margin.bottom)
 
-      $("svg").css({left: $(window).width()*(1-panelWidth), position:'relative'});
-      $("svg").css({top: -$(window).height()*(1-panelHeight)});
+      $(".barplot.svg").css({left: $(window).width()*(1-panelWidth), position:'relative'});
+      $(".barplot.svg").css({top: -$(window).height()*(1-panelHeight)});
 
       if ($('#header').height()) {
         //update previous .css "top" styling to account for header
-        $("svg").css({top: parseInt($("svg").css("top")) + $('#header').height()})
+        $(".barplot.svg").css({top: parseInt($(".barplot.svg").css("top")) + $('#header').height()})
       };
     };
 
     this.svg = d3.select("body")
       .append("svg")
+        .attr("class", "barplot svg")
         .call(this.getSvgSize, this);
 
     this.canvas = this.svg
@@ -56,7 +57,6 @@ class Barplot {
   };
 
   getHeightScale() {
-    console.log(this.height)
     return d3.scaleBand()
       .range([this.height, 0])
       .padding(0.1)
