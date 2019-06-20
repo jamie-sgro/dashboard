@@ -73,6 +73,22 @@ d3PopulateMarkers(map);
 //move about d3PopulateMarkers() to use .d3 circle mouseEvents
 mark = populateMarkers(map);
 
+
+
+function getPanel3Pos() {
+  h = ($(window).height()*(1-panelHeight));
+
+  if ($('#header').height()) {
+    h -= $('#header').height();
+  };
+
+  h += parseInt($("#panel3").css("height"));
+
+  return h;
+};
+
+$("#panel3").css({top: getPanel3Pos()});
+
 //set up alerts
 map.on("click", onMapClick);
 
@@ -151,4 +167,7 @@ $(window).on("resize", function() {
 
   //update d3 barplot
   barplot.resize();
+
+  //update panel3
+  $("#panel3").css({top: getPanel3Pos()});
 });

@@ -115,6 +115,9 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
   mark.on("click", ()=> {
     //this is where hooks into .d3 should be made
     updateGraph(mark.id);
+
+    //this is where hooks into panel 3 should be made
+    document.getElementById("popupInfo").innerHTML = "test";
   });
 
   mark.on("mouseover", ()=> {
