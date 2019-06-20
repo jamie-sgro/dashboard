@@ -7,14 +7,14 @@ class D3Map {
 
 
 function mapResize() {
+  h = ($(window).height()*(1-panelHeight)) - 10
+
   if ($('#header').height()) {
-    h = ($(window).height()*(1-screenPanel)) - 10 - $('#header').height();
-  } else {
-    h = ($(window).height()*(1-screenPanel)) - 10;
+    h -= $('#header').height();
   }
 
-  w = ($(window).width()) - 50;
-  $("#map").height(h).width(w);
+  w = ($(window).width() * (1-panelWidth));
+  $("#map").height(h).width(w).css({position:'absolute'});
   map.invalidateSize();
 };
 

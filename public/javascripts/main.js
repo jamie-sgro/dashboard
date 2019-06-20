@@ -7,7 +7,8 @@ const markRad = 15;
 const markCol = "rgba(10,151,217, .8)";
 const scaleToZoom = false;
 const locHost = "http://localhost:3000/";
-const screenPanel = 0.40
+const panelHeight = 0.40;
+const panelWidth = 0.50;
 
 
 
@@ -96,7 +97,7 @@ function onMapClick(e) {
 //Barplot(width, height, margin)
 const barplot = new Barplot(
   $(window).width()-50,
-  ($(window).height()*screenPanel),
+  ($(window).height()*panelHeight),
   {top: 35, right: 25, bottom: 20, left: 60}
 );
 
