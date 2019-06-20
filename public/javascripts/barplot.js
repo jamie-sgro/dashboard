@@ -14,7 +14,9 @@ class Barplot {
     this.getSvgSize = function(path, obj) {
       path
         .attr("width", obj.width + obj.margin.left + obj.margin.right)
-        .attr("height", obj.height + obj.margin.top + obj.margin.bottom);
+        .attr("height", obj.height + obj.margin.top + obj.margin.bottom)
+
+      $("svg").css({top: -$(window).height()*(1-panelHeight)+50, left: ($(window).width()*(1-panelWidth)), position:'relative'})
     }
 
     this.svg = d3.select("body")
@@ -138,13 +140,13 @@ class Barplot {
       .attr("class", "y axis")
       .call(this.getYAxis, this);
 
-    this.canvas.append("text")
+    /*this.canvas.append("text")
       .attr("class", "title")
       .attr("x", (this.width / 2))
       .attr("y", 0 - (this.margin.top / 2))
       .attr("text-anchor", "middle")
       .style("font-size", "16px")
-      .text(this.title);
+      .text(this.title)*/
   };
 
 
@@ -268,8 +270,8 @@ class Barplot {
 
 
   resize() {
-    this.width = $(window).width() - 50 - this.margin.left - this.margin.right;
-    this.height = ($(window).height()*panelHeight) - this.margin.top - this.margin.bottom;
+    this.width = ($(window).width()*panelWidth) - 50 - this.margin.left - this.margin.right;
+    this.height = ($(window).height()-50) - this.margin.top - this.margin.bottom;
 
     this.canvas.selectAll("rect")
       .call(this.getAttr, ["width", "height", "y"])

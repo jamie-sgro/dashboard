@@ -14,7 +14,7 @@ function mapResize() {
   }
 
   w = ($(window).width() * (1-panelWidth));
-  $("#map").height(h).width(w).css({position:'absolute'});
+  $("#map").height(h).width(w).css({position:'relative'});
   map.invalidateSize();
 };
 
