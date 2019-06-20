@@ -94,11 +94,19 @@ function onMapClick(e) {
 *** CREATE BARPLOT ***
 *********************/
 
+function getHeight() {
+  if ($('#header').height()) {
+    return $(window).height() - $('#header').height();
+  } else {
+    return $(window).height();
+  };
+};
+
 //Barplot(width, height, margin)
 const barplot = new Barplot(
   ($(window).width()*panelWidth),
-  $(window).height() - $('#header').height(),
-  {top: 10, right: 20, bottom: 20, left: 60}
+  getHeight(),
+  {top: 10, right: 20, bottom: 30, left: 60}
 );
 
 plotData();
