@@ -7,7 +7,8 @@ const markRad = 15;
 const markCol = "rgba(10,151,217, .8)";
 const scaleToZoom = false;
 const locHost = "http://localhost:3000/";
-const screenPanel = 0.40
+const panelHeight = 0.40;
+const panelWidth = 0.40;
 
 
 
@@ -72,6 +73,8 @@ d3PopulateMarkers(map);
 //move about d3PopulateMarkers() to use .d3 circle mouseEvents
 mark = populateMarkers(map);
 
+
+
 //set up alerts
 map.on("click", onMapClick);
 
@@ -90,14 +93,52 @@ function onMapClick(e) {
 
 
 /*********************
+*** MODIFY PANEL 3 ***
+*********************/
+
+function panel3Resize() {
+  pos = {};
+  pos.top = ($(window).height()*(1-panelHeight));
+
+  if ($('#header').height()) {
+    pos.top -= $('#header').height();
+  };
+
+  //hardcoded based on orig height of the elem
+  pos.top += 50;
+
+  pos.width = $(window).width() * (1-panelWidth);
+
+  pos.height = ($(window).height()*(panelHeight)) - 27;
+
+  $("#panel3").css({
+    top: pos.top,
+    width: pos.width,
+    height: pos.height
+  });
+};
+
+panel3Resize();
+
+
+
+/*********************
 *** CREATE BARPLOT ***
 *********************/
 
+function getHeight() {
+  if ($('#header').height()) {
+    return $(window).height() - $('#header').height();
+  } else {
+    return $(window).height();
+  };
+};
+
 //Barplot(width, height, margin)
 const barplot = new Barplot(
-  $(window).width()-50,
-  ($(window).height()*screenPanel),
-  {top: 35, right: 25, bottom: 20, left: 60}
+  ($(window).width()*panelWidth),
+  getHeight(),
+  {top: 10, right: 20, bottom: 30, left: 60}
 );
 
 plotData();
@@ -142,4 +183,7 @@ $(window).on("resize", function() {
 
   //update d3 barplot
   barplot.resize();
+
+  //update panel3
+  panel3Resize();
 });

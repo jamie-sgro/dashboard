@@ -7,14 +7,14 @@ class D3Map {
 
 
 function mapResize() {
+  h = ($(window).height()*(1-panelHeight)) - 10
+
   if ($('#header').height()) {
-    h = ($(window).height()*(1-screenPanel)) - 10 - $('#header').height();
-  } else {
-    h = ($(window).height()*(1-screenPanel)) - 10;
+    h -= $('#header').height();
   }
 
-  w = ($(window).width()) - 50;
-  $("#map").height(h).width(w);
+  w = ($(window).width() * (1-panelWidth));
+  $("#map").height(h).width(w).css({position:'absolute'});
   map.invalidateSize();
 };
 
@@ -115,6 +115,21 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
   mark.on("click", ()=> {
     //this is where hooks into .d3 should be made
     updateGraph(mark.id);
+
+    //this is where hooks into panel 3 should be made
+    document.getElementById("popupInfo").innerHTML = `<h1>` + name + `</h1>
+    <table style="width:100%", id="leaflet">
+      <tr>
+        <th>Score</th>
+        <th>Ranking</th>
+        <th>Standing</th>
+      </tr>
+      <tr>
+        <td>` + score + `</td>
+        <td>` + rank + `</td>
+        <td>` + standing + `</td>
+      </tr>
+    </table>`;
   });
 
   mark.on("mouseover", ()=> {

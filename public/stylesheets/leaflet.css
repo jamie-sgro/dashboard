@@ -677,3 +677,18 @@ h1 {
 	margin-left: -12px;
 	border-right-color: #fff;
 	}
+
+	#panel3 {
+	    background: rgba(255, 255, 255, 0.7);
+	    position: absolute;
+			height:0px;
+	    top:0px;
+	    left:0px;
+	    padding:20px;
+	    border:1px solid grey;
+	    display:solid;
+	}
+	#popupInfo {
+	    font-weight:bold;
+	    color:black;
+	}

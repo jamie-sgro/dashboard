@@ -1,8 +1,8 @@
 class Barplot {
   constructor(width, height, margin) {
     this.margin = margin;
-    this.width = width - this.margin.left - this.margin.right;
-    this.height = height - margin.top - margin.bottom;
+    this.width = width;
+    this.height = height - this.margin.top - this.margin.bottom;
 
     /* the (path, obj) convention is used to denote:
         path = d3 element
@@ -13,12 +13,15 @@ class Barplot {
     */
     this.getSvgSize = function(path, obj) {
       path
-        .attr("width", obj.width + obj.margin.left + obj.margin.right)
-        .attr("height", obj.height + obj.margin.top + obj.margin.bottom);
-    }
+        .attr("width", obj.width)
+        .attr("height", obj.height + obj.margin.top + obj.margin.bottom)
+
+      $(".barplot.svg").css({left: $(window).width()*(1-panelWidth), position:'relative'});
+    };
 
     this.svg = d3.select("body")
       .append("svg")
+        .attr("class", "barplot svg")
         .call(this.getSvgSize, this);
 
     this.canvas = this.svg
@@ -138,13 +141,13 @@ class Barplot {
       .attr("class", "y axis")
       .call(this.getYAxis, this);
 
-    this.canvas.append("text")
+    /*this.canvas.append("text")
       .attr("class", "title")
       .attr("x", (this.width / 2))
       .attr("y", 0 - (this.margin.top / 2))
       .attr("text-anchor", "middle")
       .style("font-size", "16px")
-      .text(this.title);
+      .text(this.title)*/
   };
 
 
@@ -268,8 +271,8 @@ class Barplot {
 
 
   resize() {
-    this.width = $(window).width() - 50 - this.margin.left - this.margin.right;
-    this.height = ($(window).height()*screenPanel) - this.margin.top - this.margin.bottom;
+    this.width = ($(window).width()*panelWidth);
+    this.height = ($(window).height()-50) - this.margin.top - this.margin.bottom;
 
     this.canvas.selectAll("rect")
       .call(this.getAttr, ["width", "height", "y"])
