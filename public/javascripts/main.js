@@ -75,20 +75,6 @@ mark = populateMarkers(map);
 
 
 
-function getPanel3Pos() {
-  h = ($(window).height()*(1-panelHeight));
-
-  if ($('#header').height()) {
-    h -= $('#header').height();
-  };
-
-  h += parseInt($("#panel3").css("height"));
-
-  return h;
-};
-
-$("#panel3").css({top: getPanel3Pos()});
-
 //set up alerts
 map.on("click", onMapClick);
 
@@ -103,6 +89,36 @@ function onMapClick(e) {
     mark[i].setStyle({radius: scl})
   }
 };
+
+
+
+/*********************
+*** MODIFY PANEL 3 ***
+*********************/
+
+function panel3Resize() {
+  pos = {};
+  pos.top = ($(window).height()*(1-panelHeight));
+
+  if ($('#header').height()) {
+    pos.top -= $('#header').height();
+  };
+
+  //hardcoded based on orig height of the elem
+  pos.top += 50;
+
+  pos.width = $(window).width() * (1-panelWidth);
+
+  pos.height = ($(window).height()*(panelHeight)) - 27;
+
+  $("#panel3").css({
+    top: pos.top,
+    width: pos.width,
+    height: pos.height
+  });
+};
+
+panel3Resize();
 
 
 
@@ -169,5 +185,5 @@ $(window).on("resize", function() {
   barplot.resize();
 
   //update panel3
-  $("#panel3").css({top: getPanel3Pos()});
+  panel3Resize();
 });

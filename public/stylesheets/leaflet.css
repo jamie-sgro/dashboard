@@ -681,9 +681,10 @@ h1 {
 	#panel3 {
 	    background: rgba(255, 255, 255, 0.7);
 	    position: absolute;
+			height:0px;
 	    top:0px;
 	    left:0px;
-	    padding:5px;
+	    padding:20px;
 	    border:1px solid grey;
 	    display:solid;
 	}
