@@ -133,6 +133,8 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
       document.getElementById("popupInfo").innerHTML = "radio-beta"
     } else if ($("input[id=radio-gamma]:checked").length) {
       document.getElementById("popupInfo").innerHTML = "radio-gamma"
+    } else {
+      console.log("radio button not detected")
     }
   });
 
@@ -165,6 +167,20 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
 
   mark.name = name;
   return(mark);
+};
+
+
+
+function onMapClick(e) {
+  console.log("You clicked the map at " + e.latlng);
+  g.selectAll("circle")
+    .each(function(d,i) {
+      d3.select(this).call(attrTween, 500, "r", scl)
+    })
+
+  for (i in mark) {
+    mark[i].setStyle({radius: scl})
+  }
 };
 
 

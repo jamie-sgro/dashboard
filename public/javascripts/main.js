@@ -73,22 +73,8 @@ d3PopulateMarkers(map);
 //move about d3PopulateMarkers() to use .d3 circle mouseEvents
 mark = populateMarkers(map);
 
-
-
 //set up alerts
 map.on("click", onMapClick);
-
-function onMapClick(e) {
-  console.log("You clicked the map at " + e.latlng);
-  g.selectAll("circle")
-    .each(function(d,i) {
-      d3.select(this).call(attrTween, 500, "r", scl)
-    })
-
-  for (i in mark) {
-    mark[i].setStyle({radius: scl})
-  }
-};
 
 
 
@@ -173,7 +159,9 @@ function getMaxScore(data) {
   return maxScore;
 };
 
-
+/*********************
+*** DYNAMIC RESIZE ***
+*********************/
 
 //currently set to resize actively, but delays can be set so resize only occurs
 //  at the end the end of screen change if barplot.resize() gets too costly
