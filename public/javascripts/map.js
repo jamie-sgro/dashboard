@@ -25,10 +25,8 @@ function getMap() {
 
   map.setView([38, -100], 4);
 
-  mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
-
-  L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; ' + mapLink + ' Contributors',
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+        attribution: '&copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
         maxZoom: 8,
         minZoom: 2,
       }).addTo(map);
