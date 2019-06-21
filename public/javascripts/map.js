@@ -115,19 +115,25 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
     updateGraph(mark.id);
 
     //this is where hooks into panel 3 should be made
-    document.getElementById("popupInfo").innerHTML = `<h1>` + name + `</h1>
-    <table style="width:100%", id="leaflet">
-      <tr>
-        <th>Score</th>
-        <th>Ranking</th>
-        <th>Standing</th>
-      </tr>
-      <tr>
-        <td>` + score + `</td>
-        <td>` + rank + `</td>
-        <td>` + standing + `</td>
-      </tr>
-    </table>`;
+    if ($("input[id=radio-alpha]:checked").length) {
+      document.getElementById("popupInfo").innerHTML = `<h1>` + name + `</h1>
+      <table style="width:100%", id="leaflet">
+        <tr>
+          <th>Score</th>
+          <th>Ranking</th>
+          <th>Standing</th>
+        </tr>
+        <tr>
+          <td>` + score + `</td>
+          <td>` + rank + `</td>
+          <td>` + standing + `</td>
+        </tr>
+      </table>`;
+    } else if ($("input[id=radio-beta]:checked").length) {
+      document.getElementById("popupInfo").innerHTML = "radio-beta"
+    } else if ($("input[id=radio-gamma]:checked").length) {
+      document.getElementById("popupInfo").innerHTML = "radio-gamma"
+    }
   });
 
   mark.on("mouseover", ()=> {
