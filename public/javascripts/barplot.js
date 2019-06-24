@@ -158,11 +158,11 @@ class Barplot {
       .domain([0, d3.max(dataArray, function(d){
         return d.value;
       })])
-      .range([scl/2, scl*2]);
+      .range([scl/4, scl*4]);
 
     g.selectAll("circle")
       .each(function(d,i) {
-        d3.select(this).call(attrTween, 500, "r", scl+radiusScale(d[data.name]))
+        d3.select(this).call(attrTween, 500, "r", radiusScale(d[data.name]))
       })
 
     var myCol = d3.select(this).attr("fill")

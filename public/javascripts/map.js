@@ -25,10 +25,8 @@ function getMap() {
 
   map.setView([38, -100], 4);
 
-  mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
-
-  L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; ' + mapLink + ' Contributors',
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+        attribution: '&copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
         maxZoom: 8,
         minZoom: 2,
       }).addTo(map);
@@ -98,8 +96,8 @@ async function populateMarkers(map) {
 
 
 
-//DEPRECIATED
 function addMarker(map, name, lat, lng, score, rank, standing) {
+
   options = {
     radius: scl,
     stroke: false,
@@ -117,19 +115,7 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
     updateGraph(mark.id);
 
     //this is where hooks into panel 3 should be made
-    document.getElementById("popupInfo").innerHTML = `<h1>` + name + `</h1>
-    <table style="width:100%", id="leaflet">
-      <tr>
-        <th>Score</th>
-        <th>Ranking</th>
-        <th>Standing</th>
-      </tr>
-      <tr>
-        <td>` + score + `</td>
-        <td>` + rank + `</td>
-        <td>` + standing + `</td>
-      </tr>
-    </table>`;
+    updatePanel3();
   });
 
   mark.on("mouseover", ()=> {
@@ -141,6 +127,9 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
   });
 
   mark.bindTooltip(name, {direction: 'left'})
+
+  mark.content = `<h1>name</h1>`
+
   mark.bindPopup(
     `<h1>` + name + `</h1>
     <table style="width:100%", id="leaflet">
@@ -157,10 +146,51 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
     </table>`
   );
 
-
+  // based on which button is currently presssed
+  if ($("input[id=radio-alpha]:checked").length) {
+    document.getElementById("popupInfo").innerHTML = `<h1>` + name + `</h1>
+    <table style="width:100%", id="leaflet">
+      <tr>
+        <th>Score</th>
+        <th>Ranking</th>
+        <th>Standing</th>
+      </tr>
+      <tr>
+        <td>` + score + `</td>
+        <td>` + rank + `</td>
+        <td>` + standing + `</td>
+      </tr>
+    </table>`;
+  } else if ($("input[id=radio-beta]:checked").length) {
+    document.getElementById("popupInfo").innerHTML = "radio-beta"
+  } else if ($("input[id=radio-gamma]:checked").length) {
+    document.getElementById("popupInfo").innerHTML = "radio-gamma"
+  } else {
+    console.log("radio button not detected")
+  };
 
   mark.name = name;
   return(mark);
+};
+
+
+
+function updatePanel3() {
+  document.getElementById("popupInfo").innerHTML = "test";
+};
+
+
+
+function onMapClick(e) {
+  console.log("You clicked the map at " + e.latlng);
+  g.selectAll("circle")
+    .each(function(d,i) {
+      d3.select(this).call(attrTween, 500, "r", scl)
+    })
+
+  for (i in mark) {
+    mark[i].setStyle({radius: scl})
+  }
 };
 
 
