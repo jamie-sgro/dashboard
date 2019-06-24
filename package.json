@@ -2,17 +2,17 @@
   "name": "dashboard",
   "version": "0.0.1",
   "private": true,
-	"description": "This project involves building a one-page online dashboard for visualizing an SDG Cities Index that is both open-sourced and legally shareable.",
+  "description": "This project involves building a one-page online dashboard for visualizing an SDG Cities Index that is both open-sourced and legally shareable.",
   "main": "index.js",
   "scripts": {
-	"start": "git pull server master; pm2 reload ./bin/www",
+    "start": "git pull server master; pm2 reload ./bin/www",
     "test": "echo No test specified"
   },
-	"repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://gitlab.com/Jamie.Sgro/dashboard.git"
   },
-	"keywords": [
+  "keywords": [
     "Dashboard",
     "Visualization",
     "SDGs",
@@ -23,10 +23,11 @@
   "bugs": {
     "url": "https://gitlab.com/Jamie.Sgro/dashboard/issues"
   },
-	"homepage": "https://gitlab.com/Jamie.Sgro/dashboard#README",
+  "homepage": "https://gitlab.com/Jamie.Sgro/dashboard#README",
   "dependencies": {
     "async": "^3.0.0",
     "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
     "d3": "^5.9.2",
     "debug": "~2.6.9",
     "ejs": "^2.6.1",
@@ -34,8 +35,8 @@
     "http": "0.0.0",
     "leaflet": "^1.5.1",
     "morgan": "^1.9.1",
+    "npm": "^6.9.0",
     "papaparse": "^4.6.3",
-    "request": "^2.88.0",
-		"npm": "^6.9.0"
+    "request": "^2.88.0"
   }
 }
