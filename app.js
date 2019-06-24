@@ -12,24 +12,17 @@ app.set("views", path.join(__dirname, "public"));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-// IP's allowed all access this server
-let whitelist = ["localhost:3000",
-  "https://sdsn.localtunnel.me",
-  "https://dashboard.localtunnel.me"];
+app.use('*', function(req, res, next) {
+  //replace localhost:3000 to the ip address:port of your server
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Credentials', true);
+  next();
+});
 
-let corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(null, true);
-      //callback(new Error('Not allowed by CORS'));
-    }
-  }
-};
-
-// Cross-Origin Resource Sharing
-app.use(cors(corsOptions));
+//enable pre-flight
+app.options('*', cors());
 
 app.use(logger('dev'));
 app.use(express.json());
