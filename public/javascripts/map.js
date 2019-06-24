@@ -96,8 +96,8 @@ async function populateMarkers(map) {
 
 
 
-//DEPRECIATED
 function addMarker(map, name, lat, lng, score, rank, standing) {
+
   options = {
     radius: scl,
     stroke: false,
@@ -115,27 +115,7 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
     updateGraph(mark.id);
 
     //this is where hooks into panel 3 should be made
-    if ($("input[id=radio-alpha]:checked").length) {
-      document.getElementById("popupInfo").innerHTML = `<h1>` + name + `</h1>
-      <table style="width:100%", id="leaflet">
-        <tr>
-          <th>Score</th>
-          <th>Ranking</th>
-          <th>Standing</th>
-        </tr>
-        <tr>
-          <td>` + score + `</td>
-          <td>` + rank + `</td>
-          <td>` + standing + `</td>
-        </tr>
-      </table>`;
-    } else if ($("input[id=radio-beta]:checked").length) {
-      document.getElementById("popupInfo").innerHTML = "radio-beta"
-    } else if ($("input[id=radio-gamma]:checked").length) {
-      document.getElementById("popupInfo").innerHTML = "radio-gamma"
-    } else {
-      console.log("radio button not detected")
-    }
+    updatePanel3();
   });
 
   mark.on("mouseover", ()=> {
@@ -147,6 +127,9 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
   });
 
   mark.bindTooltip(name, {direction: 'left'})
+
+  mark.content = `<h1>name</h1>`
+
   mark.bindPopup(
     `<h1>` + name + `</h1>
     <table style="width:100%", id="leaflet">
@@ -163,10 +146,37 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
     </table>`
   );
 
-
+  // based on which button is currently presssed
+  if ($("input[id=radio-alpha]:checked").length) {
+    document.getElementById("popupInfo").innerHTML = `<h1>` + name + `</h1>
+    <table style="width:100%", id="leaflet">
+      <tr>
+        <th>Score</th>
+        <th>Ranking</th>
+        <th>Standing</th>
+      </tr>
+      <tr>
+        <td>` + score + `</td>
+        <td>` + rank + `</td>
+        <td>` + standing + `</td>
+      </tr>
+    </table>`;
+  } else if ($("input[id=radio-beta]:checked").length) {
+    document.getElementById("popupInfo").innerHTML = "radio-beta"
+  } else if ($("input[id=radio-gamma]:checked").length) {
+    document.getElementById("popupInfo").innerHTML = "radio-gamma"
+  } else {
+    console.log("radio button not detected")
+  };
 
   mark.name = name;
   return(mark);
+};
+
+
+
+function updatePanel3() {
+  document.getElementById("popupInfo").innerHTML = "test";
 };
 
 
