@@ -32,6 +32,14 @@ router.get('*', (req, res)=> {
 });
 
 router.post('/getData', (req, res) => {
+
+  //detect if valid CORS req
+  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  var urlRegExp = new RegExp("(https:\/\/)*(\.localtunnel\.me)*");
+  if (urlRegExp.test(fullUrl)) {
+    res.header("Access-Control-Allow-Origin", "*");
+  };
+
   var fs = require("fs")
   var rawData = fs.readFileSync("./public/data/sdsn_cleaned.csv", "utf8");
 
