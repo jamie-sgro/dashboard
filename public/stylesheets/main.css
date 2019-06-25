@@ -2450,6 +2450,11 @@ body {
     text-decoration: none; }
     #header > nav > a:hover {
       color: #ffffff; }
+    @media screen and (max-width: 800px) {
+      #header .shy-text {
+        display: none;
+      }
+    }
     #header > nav > a[href="#menu"] {
       text-decoration: none;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
