@@ -10,6 +10,9 @@ const locHost = "https://sdsn-dashboard.localtunnel.me/";
 const panelHeight = 0.40;
 const panelWidth = 0.40;
 
+//set default city
+document.getElementById("popupInfo").class = 0;
+
 
 
 /***************
@@ -136,8 +139,9 @@ async function plotData() {
   barplot.max = getMaxScore(data)
 
   //only return the first datapoint to populate the graph
-  dataArray = reduceData(data[0]);
-  barplot.title = data[0].name; //Currently use first row of .csv on graph init
+  var id = document.getElementById("popupInfo").class;
+  dataArray = reduceData(data[id]);
+  barplot.title = data[id].name; //Currently use first row of .csv on graph init
 
   barplot.plot(dataArray);
 };
