@@ -121,6 +121,7 @@ function getMarkScore(mark, data) {
   }
 
   var standing;
+  mark[i].table = {};
 
   for (i in data) {
     //get relative standing
@@ -134,8 +135,10 @@ function getMarkScore(mark, data) {
       standing = "No average standing available";
     };
 
-    mark[i].table = generateTable(data[i].name, data[i].score,
-      rank[i] + " (of " + rank.length + ")", standing);
+    mark[i].table = {
+      alpha: generateTable(data[i].name, data[i].score,
+      rank[i] + " (of " + rank.length + ")", standing)
+    };
   }
 };
 
@@ -192,12 +195,12 @@ async function updatePanel3(id) {
   mark = await mark;
 
   // based on which button is currently presssed
-  if ($("input[id=radio-alpha]:checked").length) {
-    document.getElementById("popupInfo").innerHTML = mark[id].table;
-  } else if ($("input[id=radio-beta]:checked").length) {
-    document.getElementById("popupInfo").innerHTML = "radio-beta"
-  } else if ($("input[id=radio-gamma]:checked").length) {
-    document.getElementById("popupInfo").innerHTML = "radio-gamma"
+  if ($("input[id=alpha]:checked").length) {
+    document.getElementById("popupInfo").innerHTML = mark[id].table.alpha;
+  } else if ($("input[id=beta]:checked").length) {
+    document.getElementById("popupInfo").innerHTML = "beta"
+  } else if ($("input[id=gamma]:checked").length) {
+    document.getElementById("popupInfo").innerHTML = "gamma"
   } else {
     console.log("radio button not detected")
   };
