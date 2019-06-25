@@ -101,7 +101,7 @@ function getMarkScore(mark, data) {
   //get relative ranking
   var arr = [];
   for (i in data) {
-    arr.push(Number(data[i].score));
+    arr.push(Number(data[i].score$arithmetic));
   };
   var sorted = arr.slice().sort(function(a,b) {
     return b-a;
@@ -125,7 +125,7 @@ function getMarkScore(mark, data) {
 
   for (i in data) {
     //get relative standing
-    standing = Math.round(((data[i].score / avg) - 1) * 100)
+    standing = Math.round(((data[i].score$arithmetic / avg) - 1) * 100)
 
     if (standing > 0) {
       standing = "<font color='green'>&#x25B2;" + standing + "% above average</font>";
@@ -136,7 +136,7 @@ function getMarkScore(mark, data) {
     };
 
     mark[i].table = {
-      alpha: generateTable(data[i].name, data[i].score,
+      arithmetic: generateTable(data[i].name, data[i].score$arithmetic,
       rank[i] + " (of " + rank.length + ")", standing)
     };
   }
