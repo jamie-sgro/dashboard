@@ -40,63 +40,7 @@ function getMap() {
 
 
 
-//DEPRECIATED
-async function populateMarkers(map) {
-  data = await getData();
-
-  //get relative ranking
-  var arr = [];
-  for (i in data) {
-    arr.push(Number(data[i].score));
-  };
-  var sorted = arr.slice().sort(function(a,b) {
-    return b-a;
-  });
-  var rank = arr.slice().map(function(v){
-    return sorted.indexOf(v) + 1;
-  });
-
-  //get average score
-  var sum = 0;
-  var avg = 0;
-  if (arr.length) {
-    sum = arr.reduce(function(a, b) {
-      return a + b;
-    });
-    avg = sum / arr.length;
-  }
-
-  // add marker
-  var mark = [];
-
-  var standing;
-
-  for (i in data) {
-    //get relative standing
-    standing = Math.round(((data[i].score / avg) - 1) * 100)
-
-    if (standing > 0) {
-      standing = "<font color='green'>&#x25B2;" + standing + "% above average</font>";
-    } else if (standing < 0) {
-      standing = "<font color='red'>&#x25BC;" + standing + "% below average</font>";
-    } else {
-      standing = "No average standing available";
-    };
-
-    //create marker element
-    mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng,
-      data[i].score, rank[i] + " (of " + rank.length + ")", standing);
-
-    //attach array number to JSON object
-    mark[i].id = i;
-  };
-
-  return mark;
-};
-
-
-
-function addMarker(map, name, lat, lng, score, rank, standing) {
+function addMarker(map, name, lat, lng) {
 
   options = {
     radius: scl,
@@ -115,7 +59,7 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
     updateGraph(mark.id);
 
     //this is where hooks into panel 3 should be made
-    updatePanel3();
+    updatePanel3(mark.id);
   });
 
   mark.on("mouseover", ()=> {
@@ -130,7 +74,7 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
 
   mark.content = `<h1>name</h1>`
 
-  mark.bindPopup(
+  /*mark.bindPopup(
     `<h1>` + name + `</h1>
     <table style="width:100%", id="leaflet">
       <tr>
@@ -144,30 +88,7 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
         <td>` + standing + `</td>
       </tr>
     </table>`
-  );
-
-  // based on which button is currently presssed
-  if ($("input[id=radio-alpha]:checked").length) {
-    document.getElementById("popupInfo").innerHTML = `<h1>` + name + `</h1>
-    <table style="width:100%", id="leaflet">
-      <tr>
-        <th>Score</th>
-        <th>Ranking</th>
-        <th>Standing</th>
-      </tr>
-      <tr>
-        <td>` + score + `</td>
-        <td>` + rank + `</td>
-        <td>` + standing + `</td>
-      </tr>
-    </table>`;
-  } else if ($("input[id=radio-beta]:checked").length) {
-    document.getElementById("popupInfo").innerHTML = "radio-beta"
-  } else if ($("input[id=radio-gamma]:checked").length) {
-    document.getElementById("popupInfo").innerHTML = "radio-gamma"
-  } else {
-    console.log("radio button not detected")
-  };
+  );*/
 
   mark.name = name;
   return(mark);
@@ -175,8 +96,149 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
 
 
 
-function updatePanel3() {
-  document.getElementById("popupInfo").innerHTML = "test";
+// take dataset and calculate metrics for the mark[i].table element
+function getMarkScore(mark, data, scoreName) {
+  //vet variable
+  if (typeof(scoreName) != "string") {
+    throw "Error in getMarkScore()\nscoreName variable must be a string matching a .csv header";
+  };
+
+  //get relative ranking
+  var arr = [];
+  for (i in data) {
+    arr.push(Number(data[i][scoreName]));
+  };
+  var sorted = arr.slice().sort(function(a,b) {
+    return b-a;
+  });
+  var rank = arr.slice().map(function(v){
+    return sorted.indexOf(v) + 1;
+  });
+
+  //get average score
+  var sum = 0;
+  var avg = 0;
+  if (arr.length) {
+    sum = arr.reduce(function(a, b) {
+      return a + b;
+    });
+    avg = sum / arr.length;
+  }
+
+  var standing;
+
+  for (i in data) {
+    //get relative standing
+    standing = Math.round(((data[i][scoreName] / avg) - 1) * 100)
+
+    if (standing > 0) {
+      standing = "<font color='green'>&#x25B2;" + standing + "% above average</font>";
+    } else if (standing < 0) {
+      standing = "<font color='red'>&#x25BC;" + standing + "% below average</font>";
+    } else {
+      standing = "No average standing available";
+    };
+
+    if (mark[i].table == undefined) {
+      mark[i].table = {};
+    };
+
+    //get score type without the "score$"
+    jsonName = scoreName.substring(6);
+
+    mark[i].table[jsonName] = generateTable(data[i].name, data[i][scoreName],
+      rank[i] + " (of " + rank.length + ")", standing);
+  };
+};
+
+
+
+function generateTable(name, score, rank, standing) {
+  return `<h1>` + name + `</h1>
+  <table style="width:100%", id="leaflet">
+    <tr>
+      <th>Score</th>
+      <th>Ranking</th>
+      <th>Standing</th>
+    </tr>
+    <tr>
+      <td>` + score + `</td>
+      <td>` + rank + `</td>
+      <td>` + standing + `</td>
+    </tr>
+  </table>`
+};
+
+
+
+async function populateMarkers(map) {
+  data = await getData();
+
+  // add marker
+  var mark = [];
+
+  for (i in data) {
+    //create marker element
+    mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng);
+
+    //attach array number to JSON object
+    mark[i].id = i;
+  };
+
+  /* get metrics to create table
+      - run through .csv headers, if header starts with "score", calculate metrics
+        for that respective column
+  */
+  for (header in data[0]) {
+    if (header.substring(0, 5) == "score") {
+      // header variable represents the full string of a column containing raw
+      //  score values
+      getMarkScore(mark, data, header);
+    };
+  };
+
+
+  return mark;
+};
+
+
+
+async function updatePanel3(id) {
+  //update city id if applicable
+  if (id) {
+    document.getElementById("popupInfo").class = id;
+  } else {
+    id = document.getElementById("popupInfo").class
+  };
+
+  mark = await mark;
+
+  var checkedRadio = getCheckedRadio();
+
+  if (!mark[id].table[checkedRadio]) {
+    document.getElementById("popupInfo").innerHTML = "Could not retrieve city data."
+    throw "Could not populate table based on button name. Please confirm whether button-name matches a .csv column\ni.e. A column named score$geometric should have a button named geometric";
+  } else {
+    // populate table based on which button is currently presssed
+    document.getElementById("popupInfo").innerHTML = mark[id].table[checkedRadio];
+  };
+};
+
+
+
+/* @getCheckedRadio()
+  - run through all elements named 'radio' to find first one that is checked.
+    return the string of the button name, else throw error
+*/
+function getCheckedRadio() {
+  var buttonArr = document.getElementsByName("radio");
+  for (var i = 0; i < buttonArr.length; i++) {
+    //check if checked
+    if ($("input[id=" + buttonArr[i].id + "]:checked").length) {
+      return buttonArr[i].id;
+    };
+  };
+  throw "no radio button pressed";
 };
 
 
@@ -219,8 +281,10 @@ function reduceData(data) {
 
   rtn = [];
   for (key in data) {
-    if (matches(key, ["name","lat","lng","score"]) == false) {
-      rtn.push({"name": key, "value": data[key]})
+    if (matches(key, ["name","lat","lng"]) == false) {
+      if (key.substring(0, 5) != "score") {
+        rtn.push({"name": key, "value": data[key]});
+      };
     };
   };
   return rtn;

@@ -6,9 +6,13 @@ var scl;
 const markRad = 15;
 const markCol = "rgba(10,151,217, .8)";
 const scaleToZoom = false;
-const locHost = "https://sdsn-dashboard.localtunnel.me/";
+//const locHost = "https://sdsn-dashboard.localtunnel.me/";
+const locHost = "http://localhost:3000/"
 const panelHeight = 0.40;
 const panelWidth = 0.40;
+
+//set default city
+document.getElementById("popupInfo").class = 0;
 
 
 
@@ -136,8 +140,9 @@ async function plotData() {
   barplot.max = getMaxScore(data)
 
   //only return the first datapoint to populate the graph
-  dataArray = reduceData(data[0]);
-  barplot.title = data[0].name; //Currently use first row of .csv on graph init
+  var id = document.getElementById("popupInfo").class;
+  dataArray = reduceData(data[id]);
+  barplot.title = data[id].name; //Currently use first row of .csv on graph init
 
   barplot.plot(dataArray);
 };
@@ -149,9 +154,11 @@ function getMaxScore(data) {
 
   for (rec in data) {
     for (key in data[rec]) {
-      if (matches(key, ["name","lat","lng","score"]) == false) {
-        if (Number(data[rec][key]) > Number(maxScore)) {
-            maxScore = data[rec][key];
+      if (matches(key, ["name","lat","lng"]) == false) {
+        if (key.substring(0, 5) != "score") {
+          if (Number(data[rec][key]) > Number(maxScore)) {
+              maxScore = data[rec][key];
+          };
         };
       };
     };
