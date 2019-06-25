@@ -154,9 +154,11 @@ function getMaxScore(data) {
 
   for (rec in data) {
     for (key in data[rec]) {
-      if (matches(key, ["name","lat","lng","score"]) == false) {
-        if (Number(data[rec][key]) > Number(maxScore)) {
-            maxScore = data[rec][key];
+      if (matches(key, ["name","lat","lng"]) == false) {
+        if (key.substring(0, 5) != "score") {
+          if (Number(data[rec][key]) > Number(maxScore)) {
+              maxScore = data[rec][key];
+          };
         };
       };
     };
