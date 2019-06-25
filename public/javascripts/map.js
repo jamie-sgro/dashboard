@@ -194,16 +194,27 @@ async function updatePanel3(id) {
 
   mark = await mark;
 
-  // based on which button is currently presssed
-  if ($("input[id=alpha]:checked").length) {
-    document.getElementById("popupInfo").innerHTML = mark[id].table.alpha;
-  } else if ($("input[id=beta]:checked").length) {
-    document.getElementById("popupInfo").innerHTML = "beta"
-  } else if ($("input[id=gamma]:checked").length) {
-    document.getElementById("popupInfo").innerHTML = "gamma"
-  } else {
-    console.log("radio button not detected")
+  var checkedRadio = getCheckedRadio();
+
+  // populate table based on which button is currently presssed
+  document.getElementById("popupInfo").innerHTML = mark[id].table[checkedRadio];
+};
+
+
+
+/* @getCheckedRadio()
+  - run through all elements named 'radio' to find first one that is checked.
+    return the string of the button name, else throw error
+*/
+function getCheckedRadio() {
+  var buttonArr = document.getElementsByName("radio");
+  for (var i = 0; i < buttonArr.length; i++) {
+    //check if checked
+    if ($("input[id=" + buttonArr[i].id + "]:checked").length) {
+      return buttonArr[i].id;
+    };
   };
+  throw "no radio button pressed";
 };
 
 
@@ -246,8 +257,10 @@ function reduceData(data) {
 
   rtn = [];
   for (key in data) {
-    if (matches(key, ["name","lat","lng","score"]) == false) {
-      rtn.push({"name": key, "value": data[key]})
+    if (matches(key, ["name","lat","lng"]) == false) {
+      if (key.substring(0, 5) != "score") {
+        rtn.push({"name": key, "value": data[key]});
+      };
     };
   };
   return rtn;
