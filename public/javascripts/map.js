@@ -126,7 +126,6 @@ function getMarkScore(mark, name, data, scoreName) {
   }
 
   var standing;
-  mark[i].table = {};
 
   for (i in data) {
     //get relative standing
@@ -140,14 +139,16 @@ function getMarkScore(mark, name, data, scoreName) {
       standing = "No average standing available";
     };
 
-    //get score type without the "score$"
-    jsonName = scoreName.substring(6)
-
-    mark[i].table = {
-      [jsonName]: generateTable(name, data[i][scoreName],
-      rank[i] + " (of " + rank.length + ")", standing)
+    if (mark[i].table == undefined) {
+      mark[i].table = {};
     };
-  }
+
+    //get score type without the "score$"
+    jsonName = scoreName.substring(6);
+
+    mark[i].table[jsonName] = generateTable(name, data[i][scoreName],
+      rank[i] + " (of " + rank.length + ")", standing);
+  };
 };
 
 
