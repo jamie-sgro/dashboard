@@ -1,8 +1,6 @@
 @import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600");
 /*
-	Industrious by TEMPLATED
-	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 */
 /* Basic */
@@ -342,7 +340,7 @@ button,
     input[type="button"]:hover:active,
     button:hover:active,
     .button:hover:active {
-      background-color: rgba(206, 27, 40, 0.25); }
+      background-color: rgba(10, 151, 217, 0.25); }
   input[type="submit"].primary,
   input[type="reset"].primary,
   input[type="button"].primary,
@@ -356,14 +354,14 @@ button,
     input[type="button"].primary:hover,
     button.primary:hover,
     .button.primary:hover {
-      background-color: #e2212f;
+      background-color: #0A97D9;
       box-shadow: none; }
       input[type="submit"].primary:hover:active,
       input[type="reset"].primary:hover:active,
       input[type="button"].primary:hover:active,
       button.primary:hover:active,
       .button.primary:hover:active {
-        background-color: #b71824; }
+        background-color: #0A97D9; }
 
 /* Form */
 form {
@@ -1865,7 +1863,7 @@ ul.icons {
       #banner input[type="button"]:hover:active,
       #banner button:hover:active,
       #banner .button:hover:active {
-        background-color: rgba(206, 27, 40, 0.25); }
+        background-color: rgba(10, 151, 217, 0.25); }
     #banner input[type="submit"].primary,
     #banner input[type="reset"].primary,
     #banner input[type="button"].primary,
@@ -1879,14 +1877,14 @@ ul.icons {
       #banner input[type="button"].primary:hover,
       #banner button.primary:hover,
       #banner .button.primary:hover {
-        background-color: #e2212f;
+        background-color: #0A97D9;
         box-shadow: none; }
         #banner input[type="submit"].primary:hover:active,
         #banner input[type="reset"].primary:hover:active,
         #banner input[type="button"].primary:hover:active,
         #banner button.primary:hover:active,
         #banner .button.primary:hover:active {
-          background-color: #b71824; }
+          background-color: #0A97D9; }
   #banner label {
     color: #ffffff; }
   #banner input[type="text"],
