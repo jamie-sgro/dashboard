@@ -40,10 +40,64 @@ function getMap() {
 
 
 
-//DEPRECIATED
-async function populateMarkers(map) {
-  data = await getData();
+function addMarker(map, name, lat, lng) {
 
+  options = {
+    radius: scl,
+    stroke: false,
+    color: "black",
+    opacity: 1,
+    fill: true,
+    fillColor: "red",
+    fillOpacity: 0,
+  };
+
+  var mark = L.circleMarker([lat, lng], options).addTo(map);
+
+  mark.on("click", ()=> {
+    //this is where hooks into .d3 should be made
+    updateGraph(mark.id);
+
+    //this is where hooks into panel 3 should be made
+    updatePanel3(mark.id);
+  });
+
+  mark.on("mouseover", ()=> {
+    //mark.setRadius(20);
+  });
+
+  mark.on("mouseout ", ()=> {
+    //mark.setRadius(scl);
+  });
+
+  mark.bindTooltip(name, {direction: 'left'})
+
+  mark.content = `<h1>name</h1>`
+
+  /*mark.bindPopup(
+    `<h1>` + name + `</h1>
+    <table style="width:100%", id="leaflet">
+      <tr>
+        <th>Score</th>
+        <th>Ranking</th>
+        <th>Standing</th>
+      </tr>
+      <tr>
+        <td>` + score + `</td>
+        <td>` + rank + `</td>
+        <td>` + standing + `</td>
+      </tr>
+    </table>`
+  );*/
+
+  mark.name = name;
+  return(mark);
+};
+
+
+
+// take dataset and calculate metrics for the mark[i].table element
+function getMarkScore(mark, data) {
   //get relative ranking
   var arr = [];
   for (i in data) {
@@ -66,9 +120,6 @@ async function populateMarkers(map) {
     avg = sum / arr.length;
   }
 
-  // add marker
-  var mark = [];
-
   var standing;
 
   for (i in data) {
@@ -83,84 +134,66 @@ async function populateMarkers(map) {
       standing = "No average standing available";
     };
 
+    mark[i].table = generateTable(data[i].name, data[i].score,
+      rank[i] + " (of " + rank.length + ")", standing);
+  }
+};
+
+
+
+function generateTable(name, score, rank, standing) {
+  return `<h1>` + name + `</h1>
+  <table style="width:100%", id="leaflet">
+    <tr>
+      <th>Score</th>
+      <th>Ranking</th>
+      <th>Standing</th>
+    </tr>
+    <tr>
+      <td>` + score + `</td>
+      <td>` + rank + `</td>
+      <td>` + standing + `</td>
+    </tr>
+  </table>`
+};
+
+
+
+async function populateMarkers(map) {
+  data = await getData();
+
+  // add marker
+  var mark = [];
+
+  for (i in data) {
     //create marker element
-    mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng,
-      data[i].score, rank[i] + " (of " + rank.length + ")", standing);
+    mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng);
 
     //attach array number to JSON object
     mark[i].id = i;
   };
+
+  //get metrics to create table
+  getMarkScore(mark, data);
 
   return mark;
 };
 
 
 
-function addMarker(map, name, lat, lng, score, rank, standing) {
-
-  options = {
-    radius: scl,
-    stroke: false,
-    color: "black",
-    opacity: 1,
-    fill: true,
-    fillColor: "red",
-    fillOpacity: 0,
+async function updatePanel3(id) {
+  //update city id if applicable
+  if (id) {
+    document.getElementById("popupInfo").class = id;
+  } else {
+    id = document.getElementById("popupInfo").class
   };
 
-  var mark = L.circleMarker([lat, lng], options).addTo(map);
-
-  mark.on("click", ()=> {
-    //this is where hooks into .d3 should be made
-    updateGraph(mark.id);
-
-    //this is where hooks into panel 3 should be made
-    updatePanel3();
-  });
-
-  mark.on("mouseover", ()=> {
-    //mark.setRadius(20);
-  });
-
-  mark.on("mouseout ", ()=> {
-    //mark.setRadius(scl);
-  });
-
-  mark.bindTooltip(name, {direction: 'left'})
-
-  mark.content = `<h1>name</h1>`
-
-  mark.bindPopup(
-    `<h1>` + name + `</h1>
-    <table style="width:100%", id="leaflet">
-      <tr>
-        <th>Score</th>
-        <th>Ranking</th>
-        <th>Standing</th>
-      </tr>
-      <tr>
-        <td>` + score + `</td>
-        <td>` + rank + `</td>
-        <td>` + standing + `</td>
-      </tr>
-    </table>`
-  );
+  mark = await mark;
 
   // based on which button is currently presssed
   if ($("input[id=radio-alpha]:checked").length) {
-    document.getElementById("popupInfo").innerHTML = `<h1>` + name + `</h1>
-    <table style="width:100%", id="leaflet">
-      <tr>
-        <th>Score</th>
-        <th>Ranking</th>
-        <th>Standing</th>
-      </tr>
-      <tr>
-        <td>` + score + `</td>
-        <td>` + rank + `</td>
-        <td>` + standing + `</td>
-      </tr>
-    </table>`;
+    document.getElementById("popupInfo").innerHTML = mark[id].table;
   } else if ($("input[id=radio-beta]:checked").length) {
     document.getElementById("popupInfo").innerHTML = "radio-beta"
   } else if ($("input[id=radio-gamma]:checked").length) {
@@ -168,15 +201,6 @@ function addMarker(map, name, lat, lng, score, rank, standing) {
   } else {
     console.log("radio button not detected")
   };
-
-  mark.name = name;
-  return(mark);
-};
-
-
-
-function updatePanel3() {
-  document.getElementById("popupInfo").innerHTML = "test";
 };
 
 
