@@ -97,7 +97,7 @@ function addMarker(map, name, lat, lng) {
 
 
 // take dataset and calculate metrics for the mark[i].table element
-function getMarkScore(mark, name, data, scoreName) {
+function getMarkScore(mark, data, scoreName) {
   //vet variable
   if (typeof(scoreName) != "string") {
     throw "Error in getMarkScore()\nscoreName variable must be a string matching a .csv header";
@@ -146,7 +146,7 @@ function getMarkScore(mark, name, data, scoreName) {
     //get score type without the "score$"
     jsonName = scoreName.substring(6);
 
-    mark[i].table[jsonName] = generateTable(name, data[i][scoreName],
+    mark[i].table[jsonName] = generateTable(data[i].name, data[i][scoreName],
       rank[i] + " (of " + rank.length + ")", standing);
   };
 };
@@ -193,7 +193,7 @@ async function populateMarkers(map) {
     if (header.substring(0, 5) == "score") {
       // header variable represents the full string of a column containing raw
       //  score values
-      getMarkScore(mark, data[i].name, data, header);
+      getMarkScore(mark, data, header);
     };
   };
 
