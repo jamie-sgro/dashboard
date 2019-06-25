@@ -197,6 +197,7 @@ async function updatePanel3(id) {
   var checkedRadio = getCheckedRadio();
 
   if (!mark[id].table[checkedRadio]) {
+    document.getElementById("popupInfo").innerHTML = "Could not retrieve city data."
     throw "Could not populate table based on button name. Please confirm whether button-name matches a .csv column\ni.e. A column named score$geometric should have a button named geometric";
   };
 
