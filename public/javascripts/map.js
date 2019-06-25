@@ -196,6 +196,10 @@ async function updatePanel3(id) {
 
   var checkedRadio = getCheckedRadio();
 
+  if (!mark[id].table[checkedRadio]) {
+    throw "Could not populate table based on button name. Please confirm whether button-name matches a .csv column\ni.e. A column named score$geometric should have a button named geometric";
+  };
+
   // populate table based on which button is currently presssed
   document.getElementById("popupInfo").innerHTML = mark[id].table[checkedRadio];
 };
