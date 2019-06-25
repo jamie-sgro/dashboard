@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var papa = require("papaparse");
-var getData = require("./getData")
 
 //GET home page.
 router.get('/index', (req, res)=> {
@@ -39,6 +38,9 @@ router.post('/getData', (req, res) => {
   if (urlRegExp.test(fullUrl)) {
     res.header("Access-Control-Allow-Origin", "*");
   };
+
+  // TEMP: Remove before going public
+  res.header("Access-Control-Allow-Origin", "*");
 
   var fs = require("fs")
   var rawData = fs.readFileSync("./public/data/sdsn_cleaned.csv", "utf8");
