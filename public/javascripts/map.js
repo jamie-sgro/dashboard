@@ -97,11 +97,16 @@ function addMarker(map, name, lat, lng) {
 
 
 // take dataset and calculate metrics for the mark[i].table element
-function getMarkScore(mark, data) {
+function getMarkScore(mark, name, data, scoreName) {
+  //vet variable
+  if (typeof(scoreName) != "string") {
+    throw "Error in getMarkScore()\nscoreName variable must be a string matching a .csv header";
+  };
+
   //get relative ranking
   var arr = [];
   for (i in data) {
-    arr.push(Number(data[i].score$arithmetic));
+    arr.push(Number(data[i][scoreName]));
   };
   var sorted = arr.slice().sort(function(a,b) {
     return b-a;
@@ -125,7 +130,7 @@ function getMarkScore(mark, data) {
 
   for (i in data) {
     //get relative standing
-    standing = Math.round(((data[i].score$arithmetic / avg) - 1) * 100)
+    standing = Math.round(((data[i][scoreName] / avg) - 1) * 100)
 
     if (standing > 0) {
       standing = "<font color='green'>&#x25B2;" + standing + "% above average</font>";
@@ -135,8 +140,11 @@ function getMarkScore(mark, data) {
       standing = "No average standing available";
     };
 
+    //get score type without the "score$"
+    jsonName = scoreName.substring(6)
+
     mark[i].table = {
-      arithmetic: generateTable(data[i].name, data[i].score$arithmetic,
+      [jsonName]: generateTable(name, data[i][scoreName],
       rank[i] + " (of " + rank.length + ")", standing)
     };
   }
@@ -176,8 +184,18 @@ async function populateMarkers(map) {
     mark[i].id = i;
   };
 
-  //get metrics to create table
-  getMarkScore(mark, data);
+  /* get metrics to create table
+      - run through .csv headers, if header starts with "score", calculate metrics
+        for that respective column
+  */
+  for (header in data[0]) {
+    if (header.substring(0, 5) == "score") {
+      // header variable represents the full string of a column containing raw
+      //  score values
+      getMarkScore(mark, data[i].name, data, header);
+    };
+  };
+
 
   return mark;
 };
