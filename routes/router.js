@@ -17,6 +17,11 @@ router.get('/about', (req, res)=> {
   res.render('about');
 });
 
+//GET table page.
+router.get('/table', (req, res)=> {
+  res.render('table');
+});
+
 //GET User Interface page.
 router.get('/ui/', (req, res) => {
   console.log("get: '/ui/'")
