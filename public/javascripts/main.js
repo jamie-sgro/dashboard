@@ -110,6 +110,16 @@ function panel3Resize() {
 
 panel3Resize();
 
+//
+d3.select("#panel3")
+  .append("svg")
+    .attr("width", 519)
+    .attr("height", 25)
+    .append("rect")
+      .attr("width", d3.select("#panel3").select("svg").attr("width"))
+      .attr("height", d3.select("#panel3").select("svg").attr("height"))
+      .attr("fill", "red")
+
 
 
 /*********************
