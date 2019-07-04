@@ -139,40 +139,38 @@ function panel3Resize() {
 
 panel3Resize();
 
-var width = parseInt($("#panel3 svg").css("width"))
-var height = parseInt($("#panel3 svg").css("height"))
-var testData = [
-  {name: "one", value: "100"},
-  {name: "two", value: "200"},
-  {name: "three", value: "300"},
-  {name: "four", value: "250"}
-];
-
-plotPanel3("score$arithmetic");
+plotPanel3();
 
 async function plotPanel3(keyPhrase) {
-  rawData = await getData();
+  var rawData = await getData();
+
+  var keyPhrase = "score$" + getCheckedRadio()
+  console.log(keyPhrase)
+
+  var width = parseInt($("#panel3 svg").css("width"))
+  //var height = parseInt($("#panel3 svg").css("height"))
+  var height = getPanel3Height()
 
   //parse needed data from rawData
-  testData = [];
+  panel3Data = [];
   for (i in rawData) {
-    testData.push({name: rawData[i].name, value: rawData[i][keyPhrase]})
+    panel3Data.push({name: rawData[i].name, value: rawData[i][keyPhrase]})
   }
 
   //sort data in descending order
-  testData.sort(function(x, y) {
+  panel3Data.sort(function(x, y) {
     return d3.descending(x.value, y.value)
   })
 
   var x = d3.scaleBand()
     .range([0, width])
     .padding(0)
-    .domain(testData.map(function(d) {
+    .domain(panel3Data.map(function(d) {
       return d.name;
     }))
 
   var y = d3.scaleLinear()
-    .domain([0, d3.max(testData, function(d) {
+    .domain([0, d3.max(panel3Data, function(d) {
       return d.value
     })])
     .range([height, 0]);
@@ -180,7 +178,7 @@ async function plotPanel3(keyPhrase) {
   d3.select("#panel3")
     .select("svg")
     .selectAll("rect")
-      .data(testData)
+      .data(panel3Data)
       .enter()
       .append("rect")
         .attr("id", function(d) {
@@ -271,4 +269,6 @@ $(window).on("resize", function() {
 
   //update panel3
   panel3Resize();
+
+  plotPanel3();
 });
