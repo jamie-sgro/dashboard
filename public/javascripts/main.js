@@ -86,6 +86,18 @@ map.on("click", onMapClick);
 *** MODIFY PANEL 3 ***
 *********************/
 
+function getPanel3Height() {
+  rtn = parseInt($("#panel3").css("height"));
+  rtn -= parseInt($("#panel3").css("padding")) * 2;
+  return rtn;
+};
+
+
+
+//set up svg ahead so the modular function can select instead of append
+d3.select("#panel3")
+  .append("svg")
+
 function panel3Resize() {
   pos = {};
   pos.top = ($(window).height()*(1-panelHeight));
@@ -106,21 +118,24 @@ function panel3Resize() {
     width: pos.width,
     height: pos.height
   });
+
+  //set up svg bounds with padding for panel3 graph
+  d3.select("#panel3").select("svg")
+    .attr("width", "100%")
+    .attr("height", getPanel3Height())
 };
 
 panel3Resize();
 
 //
 d3.select("#panel3")
-  .append("svg")
-    .attr("width", 519)
-    .attr("height", 25)
+  .select("svg")
     .append("rect")
       .attr("width", d3.select("#panel3").select("svg").attr("width"))
       .attr("height", d3.select("#panel3").select("svg").attr("height"))
       .attr("fill", "red")
 
-
+console.log(d3.select("#panel3").attr("height"))
 
 /*********************
 *** CREATE BARPLOT ***
