@@ -89,6 +89,14 @@ map.on("click", onMapClick);
 function getPanel3Height() {
   rtn = parseInt($("#panel3").css("height"));
   rtn -= parseInt($("#panel3").css("padding")) * 2;
+
+  if ($("#popupInfo").css("height") != "0px") {
+    rtn -= parseInt($("#popupInfo").css("height"));
+  } else {
+    rtn -= parseInt($("#popupInfo").children().css("height"));
+    rtn -= parseInt($("#leaflet").css("height"));
+  };
+
   return rtn;
 };
 
@@ -135,7 +143,6 @@ d3.select("#panel3")
       .attr("height", d3.select("#panel3").select("svg").attr("height"))
       .attr("fill", "red")
 
-console.log(d3.select("#panel3").attr("height"))
 
 /*********************
 *** CREATE BARPLOT ***

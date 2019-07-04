@@ -154,8 +154,8 @@ function getMarkScore(mark, data, scoreName) {
 
 
 function generateTable(name, score, rank, standing) {
-  return `<h1>` + name + `</h1>
-  <table style="width:100%", id="leaflet">
+  return `<h1 style="margin:0; padding:0">` + name + `</h1>
+  <table style="width:100%; margin:0", id="leaflet">
     <tr>
       <th>Score</th>
       <th>Ranking</th>
@@ -222,6 +222,9 @@ async function updatePanel3(id) {
     // populate table based on which button is currently presssed
     document.getElementById("popupInfo").innerHTML = mark[id].table[checkedRadio];
   };
+
+  d3.select("#panel3").select("svg")
+    .attr("height", getPanel3Height())
 };
 
 
