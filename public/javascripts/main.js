@@ -87,9 +87,13 @@ map.on("click", onMapClick);
 *********************/
 
 function getPanel3Height() {
+  //start with panel3 html height
   rtn = parseInt($("#panel3").css("height"));
+
+  //reduce by padding in .css
   rtn -= parseInt($("#panel3").css("padding")) * 2;
 
+  //reduce by text height if there's no table, else reduce by table height
   if ($("#popupInfo").css("height") != "0px") {
     rtn -= parseInt($("#popupInfo").css("height"));
   } else {
@@ -139,8 +143,8 @@ panel3Resize();
 d3.select("#panel3")
   .select("svg")
     .append("rect")
-      .attr("width", d3.select("#panel3").select("svg").attr("width"))
-      .attr("height", d3.select("#panel3").select("svg").attr("height"))
+      .attr("width", "100%")
+      .attr("height", "100%")
       .attr("fill", "red")
 
 
