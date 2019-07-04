@@ -139,14 +139,53 @@ function panel3Resize() {
 
 panel3Resize();
 
-//
-d3.select("#panel3")
-  .select("svg")
-    .append("rect")
-      .attr("width", "100%")
-      .attr("height", "100%")
-      .attr("fill", "red")
+var width = parseInt($("#panel3 svg").css("width"))
+var height = parseInt($("#panel3 svg").css("height"))
+var testData = [
+  {name: "one", value: "100"},
+  {name: "two", value: "200"},
+  {name: "three", value: "300"},
+  {name: "four", value: "250"}
+];
 
+testData.sort(function(x, y) {
+  return d3.descending(x.value, y.value)
+})
+
+var x = d3.scaleBand()
+  .range([0, width])
+  .padding(0)
+  .domain(testData.map(function(d) {
+    return d.name;
+  }))
+
+var y = d3.scaleLinear()
+  .domain([0, d3.max(testData, function(d) {
+    return d.value
+  })])
+  .range([height, 0]);
+
+  d3.select("#panel3")
+    .select("svg")
+    .selectAll("rect")
+      .data(testData)
+      .enter()
+      .append("rect")
+        .attr("id", function(d) {
+          return d.name;
+        })
+        .attr("x", function(d) {
+          return x(d.name);
+        })
+        .attr("y", function(d) {
+          return y(d.value);
+        })
+        .attr("width", x.bandwidth())
+        .attr("height", function(d) {
+          return height - y(d.value);
+        })
+        .attr("fill", "#EFEFEF")
+        .attr("stroke", "#D0CFD4")
 
 /*********************
 *** CREATE BARPLOT ***
