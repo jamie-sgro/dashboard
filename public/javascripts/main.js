@@ -165,6 +165,21 @@ var y = d3.scaleLinear()
   })])
   .range([height, 0]);
 
+formatScoreData("score$arithmetic");
+
+async function formatScoreData(keyPhrase) {
+  db = await getData();
+
+  rtn = [];
+  for (i in db) {
+    rtn.push({name: db[i].name, value: db[i][keyPhrase]})
+  }
+
+  console.log(rtn)
+
+  return rtn;
+};
+
   d3.select("#panel3")
     .select("svg")
     .selectAll("rect")
