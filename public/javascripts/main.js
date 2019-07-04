@@ -148,37 +148,34 @@ var testData = [
   {name: "four", value: "250"}
 ];
 
-testData.sort(function(x, y) {
-  return d3.descending(x.value, y.value)
-})
+plotPanel3("score$arithmetic");
 
-var x = d3.scaleBand()
-  .range([0, width])
-  .padding(0)
-  .domain(testData.map(function(d) {
-    return d.name;
-  }))
+async function plotPanel3(keyPhrase) {
+  rawData = await getData();
 
-var y = d3.scaleLinear()
-  .domain([0, d3.max(testData, function(d) {
-    return d.value
-  })])
-  .range([height, 0]);
-
-formatScoreData("score$arithmetic");
-
-async function formatScoreData(keyPhrase) {
-  db = await getData();
-
-  rtn = [];
-  for (i in db) {
-    rtn.push({name: db[i].name, value: db[i][keyPhrase]})
+  //parse needed data from rawData
+  testData = [];
+  for (i in rawData) {
+    testData.push({name: rawData[i].name, value: rawData[i][keyPhrase]})
   }
 
-  console.log(rtn)
+  //sort data in descending order
+  testData.sort(function(x, y) {
+    return d3.descending(x.value, y.value)
+  })
 
-  return rtn;
-};
+  var x = d3.scaleBand()
+    .range([0, width])
+    .padding(0)
+    .domain(testData.map(function(d) {
+      return d.name;
+    }))
+
+  var y = d3.scaleLinear()
+    .domain([0, d3.max(testData, function(d) {
+      return d.value
+    })])
+    .range([height, 0]);
 
   d3.select("#panel3")
     .select("svg")
@@ -201,6 +198,9 @@ async function formatScoreData(keyPhrase) {
         })
         .attr("fill", "#EFEFEF")
         .attr("stroke", "#D0CFD4")
+};
+
+
 
 /*********************
 *** CREATE BARPLOT ***
