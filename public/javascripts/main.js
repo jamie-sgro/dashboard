@@ -92,7 +92,7 @@ d3.select("#panel3")
 
 panel3Resize();
 
-plotPanel3();
+initPanel3();
 
 
 
@@ -166,5 +166,5 @@ $(window).on("resize", function() {
   //update panel3
   panel3Resize();
 
-  plotPanel3();
+  plotPanel3Resize();
 });

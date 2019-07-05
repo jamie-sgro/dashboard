@@ -16,6 +16,8 @@ function getPanel3Height() {
   return rtn;
 };
 
+
+
 function panel3Resize() {
   pos = {};
   pos.top = ($(window).height()*(1-panelHeight));
@@ -43,11 +45,13 @@ function panel3Resize() {
     .attr("height", getPanel3Height())
 };
 
-async function plotPanel3() {
+
+//Ran first and once to get proper sizing
+//  (uses dataset, but assumes values of 0)
+async function initPanel3() {
   var rawData = await getData();
 
   var keyPhrase = "score$" + getCheckedRadio()
-  console.log(keyPhrase)
 
   var width = parseInt($("#panel3 svg").css("width"))
   //var height = parseInt($("#panel3 svg").css("height"))
@@ -79,23 +83,110 @@ async function plotPanel3() {
 
   d3.select("#panel3")
     .select("svg")
-    .selectAll("rect")
-      .data(panel3Data)
-      .enter()
-      .append("rect")
-        .attr("id", function(d, i) {
-          return "id" + i;
-        })
-        .attr("x", function(d) {
-          return x(d.name);
-        })
-        .attr("y", function(d) {
-          return y(d.value);
-        })
-        .attr("width", x.bandwidth())
-        .attr("height", function(d) {
-          return height - y(d.value);
-        })
-        .attr("fill", "#EFEFEF")
-        .attr("stroke", "#D0CFD4")
+      .selectAll("rect")
+        .data(panel3Data)
+        .enter()
+        .append("rect")
+          .attr("id", function(d, i) {
+            return "id" + i;
+          })
+          .attr("x", function(d) {
+            return x(d.name);
+          })
+          .attr("y", function(d) {
+            return y(0);
+          })
+          .attr("width", x.bandwidth())
+          .attr("height", function(d) {
+            return height - y(d.value);
+          })
+          .attr("fill", "#EFEFEF")
+          .attr("stroke", "#D0CFD4")
+};
+
+
+
+async function plotPanel3() {
+  var rawData = await getData();
+
+  var keyPhrase = "score$" + getCheckedRadio()
+
+  var width = parseInt($("#panel3 svg").css("width"))
+  //var height = parseInt($("#panel3 svg").css("height"))
+  var height = getPanel3Height()
+
+  //parse needed data from rawData
+  panel3Data = [];
+  for (i in rawData) {
+    panel3Data.push({name: rawData[i].name, value: rawData[i][keyPhrase]})
+  }
+
+  //sort data in descending order
+  panel3Data.sort(function(x, y) {
+    return d3.descending(x.value, y.value)
+  })
+
+  var x = d3.scaleBand()
+    .range([0, width])
+    .padding(0)
+    .domain(panel3Data.map(function(d) {
+      return d.name;
+    }))
+
+  var y = d3.scaleLinear()
+    .domain([0, d3.max(panel3Data, function(d) {
+      return d.value
+    })])
+    .range([height, 0]);
+
+  d3.select("#panel3")
+    .select("svg")
+      .selectAll("rect")
+        .data(panel3Data)
+        .transition()
+        .duration(800)
+          .attr("x", function(d) {
+            return x(d.name);
+          })
+          .attr("y", function(d) {
+            return y(d.value);
+          })
+          .attr("width", x.bandwidth())
+          .attr("height", function(d) {
+            return height - y(d.value);
+          })
+};
+
+
+function plotPanel3Resize() {
+  var width = parseInt($("#panel3 svg").css("width"))
+  //var height = parseInt($("#panel3 svg").css("height"))
+  var height = getPanel3Height()
+
+  var x = d3.scaleBand()
+    .range([0, width])
+    .padding(0)
+    .domain(panel3Data.map(function(d) {
+      return d.name;
+    }))
+
+  var y = d3.scaleLinear()
+    .domain([0, d3.max(panel3Data, function(d) {
+      return d.value
+    })])
+    .range([height, 0]);
+
+  d3.select("#panel3")
+    .select("svg")
+      .selectAll("rect")
+          .attr("x", function(d) {
+            return x(d.name);
+          })
+          .attr("y", function(d) {
+            return y(d.value);
+          })
+          .attr("width", x.bandwidth())
+          .attr("height", function(d) {
+            return height - y(d.value);
+          })
 };
