@@ -141,6 +141,7 @@ function getMarkScore(mark, data, scoreName) {
 
     if (mark[i].table == undefined) {
       mark[i].table = {};
+      mark[i].score = {};
     };
 
     //get score type without the "score$"
@@ -148,6 +149,9 @@ function getMarkScore(mark, data, scoreName) {
 
     mark[i].table[jsonName] = generateTable(data[i].name, data[i][scoreName],
       rank[i] + " (of " + rank.length + ")", standing);
+
+    //record relative ranking for panel3 barchart selection
+    mark[i].score[jsonName] = rank[i]
   };
 };
 
@@ -230,17 +234,15 @@ async function updatePanel3(id) {
   //  longer)
   for (var i = 0; i < mark.length; i++) {
     d3.select("rect#id" + i)
-      .transition()
-      .duration(300)
-      .attr("fill", "#EFEFEF")
+      .call(attrTween, 300, "fill", "#EFEFEF")
   };
 
   //highlight bar that matches the marker selected
-  d3.select("rect#id" + id)
-    .transition()
-    .duration(300)
-    .attr("fill", "rgb(100,100,100)")
-    .attr("state", "active")
+  d3.select("rect#id" + (mark[id].score[checkedRadio] - 1))
+    .call(attrTween, 300, "fill", "rgb(100,100,100)")
+
+  //replot graph if radio button is pressed
+  replotPanel3()
 };
 
 
