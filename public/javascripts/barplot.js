@@ -158,7 +158,7 @@ class Barplot {
       .domain([0, d3.max(dataArray, function(d){
         return d.value;
       })])
-      .range([scl/4, scl*4]);
+      .range([scl/2, scl*2]);
 
     g.selectAll("circle")
       .each(function(d,i) {
@@ -170,7 +170,6 @@ class Barplot {
     d3.select(this)
       .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .4))
 
-    //DEPRECIATED: removing marker variable
     for (i in mark) {
       var rad = Math.round(scl+radiusScale(d3.select(this).data()[0].value))
       mark[i].setStyle({radius: rad})

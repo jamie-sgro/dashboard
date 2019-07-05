@@ -18,6 +18,63 @@ function getPanel3Height() {
 
 
 
+async function updatePanel3(id) {
+  //update city id if applicable
+  if (id) {
+    document.getElementById("popupInfo").class = id;
+  } else {
+    id = document.getElementById("popupInfo").class
+  };
+
+  mark = await mark;
+
+  var checkedRadio = getCheckedRadio();
+
+  if (!mark[id].table[checkedRadio]) {
+    document.getElementById("popupInfo").innerHTML = "Could not retrieve city data."
+    throw "Could not populate table based on button name. Please confirm whether button-name matches a .csv column\ni.e. A column named score$geometric should have a button named geometric";
+  } else {
+    // populate table based on which button is currently presssed
+    document.getElementById("popupInfo").innerHTML = mark[id].table[checkedRadio];
+  };
+
+  d3.select("#panel3").select("svg")
+    .attr("height", getPanel3Height())
+
+  //reset previous marker (do all since checking for the highlighted bar takes
+  //  longer)
+  for (var i = 0; i < mark.length; i++) {
+    d3.select("rect#id" + i)
+      .call(attrTween, 300, "fill", "#EFEFEF")
+  };
+
+  //highlight bar that matches the marker selected
+  d3.select("rect#id" + (mark[id].score[checkedRadio] - 1))
+    .call(attrTween, 300, "fill", "rgb(100,100,100)")
+
+  //replot graph if radio button is pressed
+  plotPanel3()
+};
+
+
+
+/* @getCheckedRadio()
+  - run through all elements named 'radio' to find first one that is checked.
+    return the string of the button name, else throw error
+*/
+function getCheckedRadio() {
+  var buttonArr = document.getElementsByName("radio");
+  for (var i = 0; i < buttonArr.length; i++) {
+    //check if checked
+    if ($("input[id=" + buttonArr[i].id + "]:checked").length) {
+      return buttonArr[i].id;
+    };
+  };
+  throw "no radio button pressed";
+};
+
+
+
 function panel3Resize() {
   pos = {};
   pos.top = ($(window).height()*(1-panelHeight));
