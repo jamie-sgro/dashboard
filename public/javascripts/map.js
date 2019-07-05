@@ -158,7 +158,7 @@ function getMarkScore(mark, data, scoreName) {
 
 
 function generateTable(name, score, rank, standing) {
-  return `<h1 style="margin:0; padding:0">` + name + `</h1>
+  return `<h1 style="margin:0; padding:10">` + name + `</h1>
   <table style="width:100%; margin:0", id="leaflet">
     <tr>
       <th>Score</th>
@@ -242,7 +242,7 @@ async function updatePanel3(id) {
     .call(attrTween, 300, "fill", "rgb(100,100,100)")
 
   //replot graph if radio button is pressed
-  replotPanel3()
+  plotPanel3()
 };
 
 
