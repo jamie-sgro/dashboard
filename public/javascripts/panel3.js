@@ -69,6 +69,7 @@ function panel3GetHeightScale() {
 };
 
 
+
 /* @getAttr(d3object, oject)
   - constructor for reused attributes for d3 graph. All updates to common
     atrributes are stored in this single function for rapid updating
@@ -104,6 +105,7 @@ function getAttr(path, attributes) {
     };
   };
 };
+
 
 
 /* @panel3ParseData(array)
@@ -158,6 +160,11 @@ async function initPanel3() {
 
 
 
+/* @plotPanel3()
+  - redisplay graph with new data based on radio button score selected and
+    current button selected
+  - uses a motion tween with 800ms to resize rectangles
+*/
 async function plotPanel3() {
   var rawData = await getData();
   panel3Data = panel3ParseData(rawData);
@@ -173,6 +180,10 @@ async function plotPanel3() {
 
 
 
+/* @plotPanel3Resize()
+  - ran on screen resize, moves graph to stay within the bounds of #panel3
+    svg element. No delay or transiton for plot resize
+*/
 function plotPanel3Resize() {
   d3.select("#panel3")
     .select("svg")
