@@ -69,7 +69,12 @@ function panel3GetHeightScale() {
 };
 
 
-
+/* @getAttr(d3object, oject)
+  - constructor for reused attributes for d3 graph. All updates to common
+    atrributes are stored in this single function for rapid updating
+  - the attributes object should be an array of strings that match d3
+    attributes
+*/
 function getAttr(path, attributes) {
   var height = getPanel3Height()
 
@@ -101,7 +106,11 @@ function getAttr(path, attributes) {
 };
 
 
-
+/* @panel3ParseData(array)
+  - take full .csv dataset (an array of JSON objects) and reduces the list to
+    just the name and score (given the current radio button selected)
+  - sorts the new reduced list in descending order given the req of the graph
+*/
 function panel3ParseData(rawData) {
   var keyPhrase = "score$" + getCheckedRadio();
 
@@ -127,7 +136,6 @@ async function initPanel3() {
   var rawData = await getData();
 
   panel3Data = panel3ParseData(rawData);
-
   var heightScale = panel3GetHeightScale();
 
   d3.select("#panel3")
@@ -141,6 +149,7 @@ async function initPanel3() {
           })
           .call(this.getAttr, ["x", "width", "height"])
           .attr("y", function(d) {
+            //assume no value until user prompt
             return heightScale(0);
           })
           .attr("fill", "#EFEFEF")
@@ -151,19 +160,7 @@ async function initPanel3() {
 
 async function plotPanel3() {
   var rawData = await getData();
-
-  var keyPhrase = "score$" + getCheckedRadio()
-
-  //parse needed data from rawData
-  panel3Data = [];
-  for (i in rawData) {
-    panel3Data.push({name: rawData[i].name, value: rawData[i][keyPhrase]})
-  }
-
-  //sort data in descending order
-  panel3Data.sort(function(x, y) {
-    return d3.descending(x.value, y.value)
-  })
+  panel3Data = panel3ParseData(rawData);
 
   d3.select("#panel3")
     .select("svg")
