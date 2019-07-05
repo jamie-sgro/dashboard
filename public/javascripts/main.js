@@ -150,6 +150,8 @@ function getMaxScore(data) {
   return maxScore;
 };
 
+
+
 /*********************
 *** DYNAMIC RESIZE ***
 *********************/
