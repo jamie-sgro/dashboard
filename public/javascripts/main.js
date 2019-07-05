@@ -181,8 +181,8 @@ async function plotPanel3(keyPhrase) {
       .data(panel3Data)
       .enter()
       .append("rect")
-        .attr("id", function(d) {
-          return d.name;
+        .attr("id", function(d, i) {
+          return "id" + i;
         })
         .attr("x", function(d) {
           return x(d.name);
