@@ -46,6 +46,29 @@ function panel3Resize() {
 };
 
 
+
+function panel3GetWidthScale() {
+  var width = parseInt($("#panel3 svg").css("width"))
+
+  return d3.scaleBand()
+    .range([0, width])
+    .padding(0)
+    .domain(panel3Data.map(function(d) {
+      return d.name;
+    }))
+};
+
+
+
+function panel3GetHeightScale() {
+  return d3.scaleLinear()
+    .domain([0, d3.max(panel3Data, function(d) {
+      return d.value
+    })])
+    .range([getPanel3Height(), 0]);
+};
+
+
 //Ran first and once to get proper sizing
 //  (uses dataset, but assumes values of 0)
 async function initPanel3() {
@@ -53,8 +76,6 @@ async function initPanel3() {
 
   var keyPhrase = "score$" + getCheckedRadio()
 
-  var width = parseInt($("#panel3 svg").css("width"))
-  //var height = parseInt($("#panel3 svg").css("height"))
   var height = getPanel3Height()
 
   //parse needed data from rawData
@@ -68,18 +89,8 @@ async function initPanel3() {
     return d3.descending(x.value, y.value)
   })
 
-  var x = d3.scaleBand()
-    .range([0, width])
-    .padding(0)
-    .domain(panel3Data.map(function(d) {
-      return d.name;
-    }))
-
-  var y = d3.scaleLinear()
-    .domain([0, d3.max(panel3Data, function(d) {
-      return d.value
-    })])
-    .range([height, 0]);
+  var widthScale = panel3GetWidthScale();
+  var heightScale = panel3GetHeightScale();
 
   d3.select("#panel3")
     .select("svg")
@@ -91,14 +102,14 @@ async function initPanel3() {
             return "id" + i;
           })
           .attr("x", function(d) {
-            return x(d.name);
+            return widthScale(d.name);
           })
           .attr("y", function(d) {
-            return y(0);
+            return heightScale(0);
           })
-          .attr("width", x.bandwidth())
+          .attr("width", widthScale.bandwidth())
           .attr("height", function(d) {
-            return height - y(d.value);
+            return height - heightScale(d.value);
           })
           .attr("fill", "#EFEFEF")
           .attr("stroke", "#D0CFD4")
@@ -111,8 +122,6 @@ async function plotPanel3() {
 
   var keyPhrase = "score$" + getCheckedRadio()
 
-  var width = parseInt($("#panel3 svg").css("width"))
-  //var height = parseInt($("#panel3 svg").css("height"))
   var height = getPanel3Height()
 
   //parse needed data from rawData
@@ -126,18 +135,8 @@ async function plotPanel3() {
     return d3.descending(x.value, y.value)
   })
 
-  var x = d3.scaleBand()
-    .range([0, width])
-    .padding(0)
-    .domain(panel3Data.map(function(d) {
-      return d.name;
-    }))
-
-  var y = d3.scaleLinear()
-    .domain([0, d3.max(panel3Data, function(d) {
-      return d.value
-    })])
-    .range([height, 0]);
+  var widthScale = panel3GetWidthScale();
+  var heightScale = panel3GetHeightScale();
 
   d3.select("#panel3")
     .select("svg")
@@ -146,47 +145,57 @@ async function plotPanel3() {
         .transition()
         .duration(800)
           .attr("x", function(d) {
-            return x(d.name);
+            return widthScale(d.name);
           })
           .attr("y", function(d) {
-            return y(d.value);
+            return heightScale(d.value);
           })
-          .attr("width", x.bandwidth())
+          .attr("width", widthScale.bandwidth())
           .attr("height", function(d) {
-            return height - y(d.value);
+            return height - heightScale(d.value);
           })
 };
 
 
+
+function getAttr(path, attributes) {
+  var widthScale = panel3GetWidthScale();
+  var heightScale = panel3GetHeightScale();
+
+  for (key in attributes) {
+    switch (attributes[key]) {
+      case "width":
+        path.attr("width", widthScale.bandwidth())
+        break;
+      case "height":
+        path.attr("height", function(d) {
+          return height - heightScale(d.value);
+        })
+        break;
+      case "x":
+        path.attr("x", function(d) {
+          return widthScale(d.name);
+        })
+        break;
+      case "y":
+        path.attr("y", function(d) {
+          return heightScale(d.value);
+        })
+        break;
+    };
+  };
+}
+
+
+
 function plotPanel3Resize() {
-  var width = parseInt($("#panel3 svg").css("width"))
-  //var height = parseInt($("#panel3 svg").css("height"))
   var height = getPanel3Height()
 
-  var x = d3.scaleBand()
-    .range([0, width])
-    .padding(0)
-    .domain(panel3Data.map(function(d) {
-      return d.name;
-    }))
-
-  var y = d3.scaleLinear()
-    .domain([0, d3.max(panel3Data, function(d) {
-      return d.value
-    })])
-    .range([height, 0]);
+  var widthScale = panel3GetWidthScale();
+  var heightScale = panel3GetHeightScale();
 
   d3.select("#panel3")
     .select("svg")
       .selectAll("rect")
-          .attr("x", function(d) {
-            return x(d.name);
-          })
-          .attr("y", function(d) {
-            return y(d.value);
-          })
-          .attr("width", x.bandwidth())
-          .attr("height", function(d) {
-            return height - y(d.value);
-          })
+          .call(this.getAttr, ["x", "y", "width", "height"])
 };
