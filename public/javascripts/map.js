@@ -225,6 +225,22 @@ async function updatePanel3(id) {
 
   d3.select("#panel3").select("svg")
     .attr("height", getPanel3Height())
+
+  //reset previous marker (do all since checking for the highlighted bar takes
+  //  longer)
+  for (var i = 0; i < mark.length; i++) {
+    d3.select("rect#id" + i)
+      .transition()
+      .duration(300)
+      .attr("fill", "#EFEFEF")
+  };
+
+  //highlight bar that matches the marker selected
+  d3.select("rect#id" + id)
+    .transition()
+    .duration(300)
+    .attr("fill", "rgb(100,100,100)")
+    .attr("state", "active")
 };
 
 
