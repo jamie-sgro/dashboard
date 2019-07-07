@@ -26,9 +26,9 @@ function postAjax(url, data, callback) {
     type: "POST",
     data: JSON.stringify(data),
     url: url,
-  }).done((data)=> {
+  }).done(function(data) {
     callback(null, data);
-  }).fail((jqXHR, textStatus, errorThrown)=> {
+  }).fail(function(jqXHR, textStatus, errorThrown) {
     callback(jqXHR, null);
   });
 };
@@ -37,8 +37,8 @@ function postAjax(url, data, callback) {
 
 function getData() {
   if (!getData.promise) {
-    getData.promise = new Promise((resolve, reject) => {
-      postAjax(locHost + "getData", {}, (err, cb)=> {
+    getData.promise = new Promise(function(resolve, reject) {
+      postAjax(locHost + "getData", {}, function(err, cb) {
         if (err) {
           console.log("Error: " + err.statusText);
           console.log(err)
