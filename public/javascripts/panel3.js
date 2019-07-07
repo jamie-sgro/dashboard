@@ -2,8 +2,14 @@ function getPanel3Height() {
   //start with panel3 html height
   rtn = parseInt($("#panel3").css("height"));
 
-  //reduce by padding in .css
-  rtn -= parseInt($("#panel3").css("padding")) * 2;
+  //reduce by padding in .css (if browser can detect it)
+  var panel3Padding = parseInt($("#panel3").css("padding"));
+  if (isNaN(panel3Padding)) {
+    //hardcoded on firefox & ms edge
+    rtn -= 20;
+  } else {
+    rtn -= panel3Padding * 2;
+  };
 
   //reduce by text height if there's no table, else reduce by table height
   if ($("#popupInfo").css("height") != "0px") {
