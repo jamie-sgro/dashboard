@@ -357,8 +357,8 @@ function checkOffScreen() {
         .style("top", parseInt(barplot.tooltip.style("top")) + offScreenDiff + "px");
       return;
     }
-  } catch {
-
+  } catch(error) {
+	console.log(error);
   }
 
   //check if tooltip outside barplot svg offscreen
