@@ -12,10 +12,12 @@ function getPanel3Height() {
   };
 
   //reduce by text height if there's no table, else reduce by table height
-  if ($("#popupInfo").css("height") != "0px") {
+  if ($("#leaflet").css("height") == undefined) {
     rtn -= parseInt($("#popupInfo").css("height"));
   } else {
+    //reduce by header before table
     rtn -= parseInt($("#popupInfo").children().css("height"));
+    //reduce by table
     rtn -= parseInt($("#leaflet").css("height"));
   };
 
