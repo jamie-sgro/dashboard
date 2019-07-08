@@ -6,8 +6,8 @@ var scl;
 const markRad = 15;
 const markCol = "rgba(10,151,217, .8)";
 const scaleToZoom = false;
-//const locHost = "https://sdsn-dashboard.localtunnel.me/";
 const locHost = "http://localhost:3000/"
+//const locHost = "https://sdsn-dashboard.localtunnel.me/";
 const panelHeight = 0.40;
 const panelWidth = 0.40;
 
