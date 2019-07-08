@@ -22,6 +22,11 @@ router.get('/table', (req, res)=> {
   res.render('table');
 });
 
+//GET robots.txt page.
+router.get('/robots.txt', (req, res)=> {
+  res.render('robots');
+});
+
 //GET User Interface page.
 router.get('/ui/', (req, res) => {
   console.log("get: '/ui/'")
