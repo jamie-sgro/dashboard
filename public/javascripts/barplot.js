@@ -112,6 +112,8 @@ class Barplot {
 
 
   plot(dataArray) {
+    var widthScale = barplot.getWidthScale();
+    
     this.canvas.selectAll("rect")
       .data(dataArray)
       .enter()
@@ -119,7 +121,10 @@ class Barplot {
           .attr("name", function(d) {
             return d.name;
           })
-          .call(this.getAttr, ["width", "height", "fill", "y"])
+          .attr("width", function(d) {
+            return widthScale(0);
+          })
+          .call(this.getAttr, ["height", "fill", "y"])
           .on("click", this.onClick)
           .on("mouseover", this.onMouseover)
           .on("mouseout", this.onMouseOut)
