@@ -26,9 +26,9 @@ function postAjax(url, data, callback) {
     type: "POST",
     data: JSON.stringify(data),
     url: url,
-  }).done((data)=> {
+  }).done(function(data) {
     callback(null, data);
-  }).fail((jqXHR, textStatus, errorThrown)=> {
+  }).fail(function(jqXHR, textStatus, errorThrown) {
     callback(jqXHR, null);
   });
 };
@@ -37,8 +37,8 @@ function postAjax(url, data, callback) {
 
 function getData() {
   if (!getData.promise) {
-    getData.promise = new Promise((resolve, reject) => {
-      postAjax(locHost + "getData", {}, (err, cb)=> {
+    getData.promise = new Promise(function(resolve, reject) {
+      postAjax(locHost + "getData", {}, function(err, cb) {
         if (err) {
           console.log("Error: " + err.statusText);
           console.log(err)
@@ -86,29 +86,13 @@ map.on("click", onMapClick);
 *** MODIFY PANEL 3 ***
 *********************/
 
-function panel3Resize() {
-  pos = {};
-  pos.top = ($(window).height()*(1-panelHeight));
-
-  if ($('#header').height()) {
-    pos.top -= $('#header').height();
-  };
-
-  //hardcoded based on orig height of the elem
-  pos.top += 50;
-
-  pos.width = $(window).width() * (1-panelWidth);
-
-  pos.height = ($(window).height()*(panelHeight)) - 27;
-
-  $("#panel3").css({
-    top: pos.top,
-    width: pos.width,
-    height: pos.height
-  });
-};
+//set up svg ahead so the modular function can select instead of append
+d3.select("#panel3")
+  .append("svg")
 
 panel3Resize();
+
+initPanel3();
 
 
 
@@ -166,6 +150,8 @@ function getMaxScore(data) {
   return maxScore;
 };
 
+
+
 /*********************
 *** DYNAMIC RESIZE ***
 *********************/
@@ -181,4 +167,6 @@ $(window).on("resize", function() {
 
   //update panel3
   panel3Resize();
+
+  plotPanel3Resize();
 });

@@ -141,6 +141,7 @@ function getMarkScore(mark, data, scoreName) {
 
     if (mark[i].table == undefined) {
       mark[i].table = {};
+      mark[i].score = {};
     };
 
     //get score type without the "score$"
@@ -148,14 +149,17 @@ function getMarkScore(mark, data, scoreName) {
 
     mark[i].table[jsonName] = generateTable(data[i].name, data[i][scoreName],
       rank[i] + " (of " + rank.length + ")", standing);
+
+    //record relative ranking for panel3 barchart selection
+    mark[i].score[jsonName] = rank[i]
   };
 };
 
 
 
 function generateTable(name, score, rank, standing) {
-  return `<h1>` + name + `</h1>
-  <table style="width:100%", id="leaflet">
+  return `<h1 style="margin:0; padding:10">` + name + `</h1>
+  <table style="width:100%; margin:0", id="leaflet">
     <tr>
       <th>Score</th>
       <th>Ranking</th>
@@ -199,46 +203,6 @@ async function populateMarkers(map) {
 
 
   return mark;
-};
-
-
-
-async function updatePanel3(id) {
-  //update city id if applicable
-  if (id) {
-    document.getElementById("popupInfo").class = id;
-  } else {
-    id = document.getElementById("popupInfo").class
-  };
-
-  mark = await mark;
-
-  var checkedRadio = getCheckedRadio();
-
-  if (!mark[id].table[checkedRadio]) {
-    document.getElementById("popupInfo").innerHTML = "Could not retrieve city data."
-    throw "Could not populate table based on button name. Please confirm whether button-name matches a .csv column\ni.e. A column named score$geometric should have a button named geometric";
-  } else {
-    // populate table based on which button is currently presssed
-    document.getElementById("popupInfo").innerHTML = mark[id].table[checkedRadio];
-  };
-};
-
-
-
-/* @getCheckedRadio()
-  - run through all elements named 'radio' to find first one that is checked.
-    return the string of the button name, else throw error
-*/
-function getCheckedRadio() {
-  var buttonArr = document.getElementsByName("radio");
-  for (var i = 0; i < buttonArr.length; i++) {
-    //check if checked
-    if ($("input[id=" + buttonArr[i].id + "]:checked").length) {
-      return buttonArr[i].id;
-    };
-  };
-  throw "no radio button pressed";
 };
 
 
