@@ -21,7 +21,11 @@ function getPanel3Height() {
     rtn -= parseInt($("#leaflet").css("height"));
   };
 
-  return rtn;
+  if (rtn > 0) {
+    return rtn;
+  } else {
+    return 0;
+  };
 };
 
 
@@ -154,7 +158,11 @@ function getAttr(path, attributes) {
         break;
       case "height":
         path.attr("height", function(d) {
-          return height - heightScale(d.value);
+          if (height - heightScale(d.value) > 0) {
+            return height - heightScale(d.value);
+          } else {
+            return 0;
+          };
         })
         break;
       case "x":
