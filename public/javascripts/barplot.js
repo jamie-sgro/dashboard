@@ -172,7 +172,7 @@ class Barplot {
             checkOffScreen();
           })
 
-    // add cirlces for leadLag plot
+    // add circles for leadLag plot
     this.canvas.selectAll("circle")
       .data(dataArray)
       .enter()
@@ -323,6 +323,12 @@ class Barplot {
 
     this.canvas.selectAll("rect")
       .call(this.getAttr, ["width", "height", "y"])
+
+    this.canvas.selectAll("circle")
+      .call(this.getAttr, ["cx", "cy", "r"])
+      .attr("transform", function() {
+        return "translate(0, " + d3.select(this).attr("r") + ")"
+      })
 
     this.canvas.selectAll("g.x.axis")
       .call(this.getXAxis, this)
