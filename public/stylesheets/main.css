@@ -439,6 +439,7 @@ input[type="radio"] {
   opacity: 0;
   width: 1rem;
   z-index: -1; }
+
   input[type="checkbox"] + label,
   input[type="radio"] + label {
     text-decoration: none;
@@ -521,7 +522,7 @@ select {
   select option {
     color: #444444;
     background-color: #ffffff; }
-/*qwe*/
+
 input[type="checkbox"] + label,
 input[type="radio"] + label {
   color: #444444; }
@@ -2868,7 +2869,7 @@ body.is-menu-visible #menu {
   height: 26px;
   width: 26px;
   left: 4px;
-  bottom: 4px;
+  bottom: 3px;
   background-color: white;
   border-color: rgba(255, 255, 255, 0.25);
   -webkit-transition: .4s;
