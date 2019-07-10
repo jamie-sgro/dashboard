@@ -110,10 +110,15 @@ class Barplot {
   }
 
 
+  toggleLeadLag() {
+    console.log("toggle");
+  };
+
+
 
   plot(dataArray) {
     var widthScale = barplot.getWidthScale();
-    
+
     this.canvas.selectAll("rect")
       .data(dataArray)
       .enter()
