@@ -44,22 +44,26 @@
 					<li><a href="#dashboard" class="icon fa-globe"> Dashboard</a></li>
 					<li><a href="/public/data/sdsn_cleaned.csv" class="icon fa-download"> Download</a></li>
 					<!-- Buttons: make sure id matches .csv header for 'score' -->
+					<li><a> Select Scoring Method:</a></li>
 					<div class="col-4 col-12-small">
-						<input type="radio" id="arithmetic" name="radio" onclick=updatePanel3() checked>
+						<input type="radio" id="arithmetic" name="radio" onclick=updatePanel3()>
 						<label for="arithmetic">Arithmetic Mean</label>
 					</div>
 					<div class="col-4 col-12-small">
-						<input type="radio" id="median" name="radio" onclick=updatePanel3()>
+						<input type="radio" id="median" name="radio" onclick=updatePanel3() checked>
 						<label for="median">Median</label>
 					</div>
 					<div class="col-4 col-12-small">
 						<input type="radio" id="geometric" name="radio" onclick=updatePanel3()>
 						<label for="geometric">Geometric Mean</label>
 					</div>
-					<label class="switch">
-					  <input type="checkbox">
-					  <span class="slider round"></span>
-					</label>
+					<li><a> Toggle Leader Laggard Graph:</a></li>
+					<div class="switch col-4 col-12-small">
+						<label class="switch">
+						  <input type="checkbox">
+						  <span class="slider round"></span>
+						</label>
+					</div>
 				</ul>
 			</nav>
 
