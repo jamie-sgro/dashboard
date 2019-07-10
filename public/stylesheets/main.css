@@ -521,7 +521,7 @@ select {
   select option {
     color: #444444;
     background-color: #ffffff; }
-
+/*qwe*/
 input[type="checkbox"] + label,
 input[type="radio"] + label {
   color: #444444; }
@@ -2833,6 +2833,7 @@ body.is-menu-visible #menu {
   box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
   visibility: visible; }
 
+
 /* slider button */
 .switch {
   position: relative;
@@ -2854,7 +2855,9 @@ body.is-menu-visible #menu {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  border: solid 1px;
+  background: rgba(255, 255, 255, 0.075);
+  border-color: rgba(255, 255, 255, 0.25);
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -2867,16 +2870,13 @@ body.is-menu-visible #menu {
   left: 4px;
   bottom: 4px;
   background-color: white;
+  border-color: rgba(255, 255, 255, 0.25);
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  background: #0A97D9;
 }
 
 input:checked + .slider:before {
