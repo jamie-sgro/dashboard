@@ -177,7 +177,8 @@ class Barplot {
       .data(dataArray)
       .enter()
         .append("circle")
-          .call(this.getAttr, ["cx", "cy", "r", "fill"])
+          .call(this.getAttr, ["cx", "cy", "r"])
+          .attr("fill", "rgba(0,0,0,0)")  //invisible until first marker is selected
           .attr("transform", function() {
             return "translate(0, " + d3.select(this).attr("r") + ")"
           })
