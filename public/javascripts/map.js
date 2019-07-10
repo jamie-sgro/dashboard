@@ -232,7 +232,7 @@ async function updateGraph(id) {
 
   dataArray = reduceData(data[id]);
 
-  barplot.updatePlot(barplot.canvas, dataArray, data[id].name);
+  barplot.updatePlot(barplot.canvas, dataArray);
 };
 
 

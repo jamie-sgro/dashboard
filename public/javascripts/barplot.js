@@ -111,7 +111,11 @@ class Barplot {
 
 
   toggleLeadLag() {
-    console.log("toggle");
+    if (document.getElementById("leadLag").checked) {
+      console.log("checked")
+    } else {
+      console.log("unchecked")
+    };
   };
 
 
@@ -150,14 +154,6 @@ class Barplot {
     this.canvas.append("g")
       .attr("class", "y axis")
       .call(this.getYAxis, this);
-
-    /*this.canvas.append("text")
-      .attr("class", "title")
-      .attr("x", (this.width / 2))
-      .attr("y", 0 - (this.margin.top / 2))
-      .attr("text-anchor", "middle")
-      .style("font-size", "16px")
-      .text(this.title)*/
   };
 
 
@@ -264,17 +260,15 @@ class Barplot {
 
 
 
-  updatePlot(canvas, dataArray, name) {
-    this.title = name;
-
+/* @updatePlot(svg, data, name/title)
+  - run on marker click, resizes rectangle attributes according to data
+*/
+  updatePlot(canvas, dataArray) {
     canvas.selectAll("rect")
       .data(dataArray)
         .transition()
         .duration(800)
         .call(this.getAttr, ["width", "fill"])
-
-    this.canvas.select(".title")
-      .text(this.title)
   };
 
 
