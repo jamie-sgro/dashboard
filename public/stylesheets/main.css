@@ -2835,6 +2835,10 @@ body.is-menu-visible #menu {
   visibility: visible; }
 
 
+/* table header */
+.pointer {cursor: pointer;}
+
+
 /* slider button */
 .switch {
   position: relative;
