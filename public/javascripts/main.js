@@ -126,7 +126,7 @@ async function plotData() {
   //only return the first datapoint to populate the graph
   var id = document.getElementById("popupInfo").class;
   dataArray = reduceData(data[id]);
-  barplot.title = data[id].name; //Currently use first row of .csv on graph init
+  barplot.id = id; //Currently use first row of .csv on graph init
 
   barplot.plot(dataArray);
 };

@@ -55,6 +55,9 @@ function addMarker(map, name, lat, lng) {
   var mark = L.circleMarker([lat, lng], options).addTo(map);
 
   mark.on("click", ()=> {
+    // update identified for leader lagard graph
+    barplot.id = mark.id;
+
     //this is where hooks into .d3 should be made
     updateGraph(mark.id);
 
@@ -312,9 +315,6 @@ async function d3PopulateMarkers(map) {
           d3.select(this)
             .style("cursor", "default")
             .call(attrTween, 100, "fill", setAlpha(myCol, 1))
-        })
-        .on("click", function() {
-          updateGraph(d3.select(this).attr("id"))
         })
 
     function mouseover(obj) {
