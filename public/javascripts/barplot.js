@@ -92,6 +92,19 @@ class Barplot {
             return heightScale(d.name);
           })
           break;
+        case "cx":
+          path.attr("cx", function(d) {
+            return widthScale(d.value);
+          });
+          break;
+        case "cy":
+          path.attr("cy", function(d) {
+            return heightScale(d.name);
+          })
+          break;
+        case "r":
+          path.attr("r", heightScale.bandwidth()/2)
+          break;
       };
     };
   };
@@ -112,9 +125,23 @@ class Barplot {
 
   toggleLeadLag() {
     if (document.getElementById("leadLag").checked) {
-      console.log("checked")
+      // TEMP:
+      barplot.canvas.selectAll("rect")
+          .transition()
+          .delay(1500)  // TODO: remove line
+          .duration(800)
+          .attr("width", function() {
+            barplot.canvas.append("circle")
+              .attr("cx", d3.select(this).attr("width"))
+              .attr("cy", d3.select(this).attr("y"))
+              .attr("r", d3.select(this).attr("height") / 2)
+              .attr("transform", "translate(0, " + d3.select(this).attr("height") / 2 + ")")
+              .attr("fill", "red")
+            return d3.select(this).attr("width")
+          })
+          //.attr("transform", "translate(" + 20 + ", 0)")
     } else {
-      console.log("unchecked")
+      updateGraph(barplot.id);
     };
   };
 
@@ -144,6 +171,17 @@ class Barplot {
 
             checkOffScreen();
           })
+
+    // add cirlces for leadLag plot
+    this.canvas.selectAll("circle")
+      .data(dataArray)
+      .enter()
+        .append("circle")
+          .call(this.getAttr, ["cx", "cy", "r", "fill"])
+          .attr("transform", function() {
+            return "translate(0, " + d3.select(this).attr("r") + ")"
+          })
+          //.attr("fill", "red")
 
     // add the x Axis
     this.canvas.append("g")
@@ -260,7 +298,7 @@ class Barplot {
 
 
 
-/* @updatePlot(svg, data, name/title)
+/* @updatePlot(svg, data)
   - run on marker click, resizes rectangle attributes according to data
 */
   updatePlot(canvas, dataArray) {
@@ -269,6 +307,12 @@ class Barplot {
         .transition()
         .duration(800)
         .call(this.getAttr, ["width", "fill"])
+
+    canvas.selectAll("circle")
+      .data(dataArray)
+          .transition()
+          .duration(800)
+          .call(this.getAttr, ["cx", "fill"])
   };
 
 
@@ -288,9 +332,6 @@ class Barplot {
 
     this.svg
       .call(this.getSvgSize, this)
-
-    this.canvas.select(".title")
-      .attr("x", (this.width / 2))
   };
 };
 
