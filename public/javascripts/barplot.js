@@ -87,6 +87,12 @@ class Barplot {
             return colour(d.value)
           })
           break;
+        case "fillTransparent":
+          path.attr("fill", function(d) {
+            rtn = colour(d.value);
+            return setAlpha(rtn, 0);
+          })
+          break;
         case "y":
           path.attr("y", function(d) {
             return heightScale(d.name);
@@ -133,9 +139,6 @@ class Barplot {
           .attr("width", function() {
             return d3.select(this).attr("width")
           })
-          //.attr("transform", "translate(" + 20 + ", 0)")
-
-
 
       barplot.canvas.selectAll("circle")
         .transition()
@@ -147,8 +150,6 @@ class Barplot {
           var myCol = d3.select(this).attr("fill");
           d3.select(this).call(attrTween, 800, "fill", setAlpha(myCol, 0));
         })
-
-      updateGraph(barplot.id);
     };
   };
 
@@ -184,8 +185,8 @@ class Barplot {
       .data(dataArray)
       .enter()
         .append("circle")
-          .call(this.getAttr, ["cx", "cy", "r"])
-          .attr("fill", "rgba(255,255,255,0)") //invisible until first marker is selected
+          //invisible until first marker is selected
+          .call(this.getAttr, ["cx", "cy", "r", "fillTransparent"])
           .attr("transform", function() {
             return "translate(0, " + d3.select(this).attr("r") + ")"
           })
