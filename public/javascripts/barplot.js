@@ -131,16 +131,23 @@ class Barplot {
           .delay(1500)  // TODO: remove line
           .duration(800)
           .attr("width", function() {
-            barplot.canvas.append("circle")
-              .attr("cx", d3.select(this).attr("width"))
-              .attr("cy", d3.select(this).attr("y"))
-              .attr("r", d3.select(this).attr("height") / 2)
-              .attr("transform", "translate(0, " + d3.select(this).attr("height") / 2 + ")")
-              .attr("fill", "red")
             return d3.select(this).attr("width")
           })
           //.attr("transform", "translate(" + 20 + ", 0)")
+
+
+
+      barplot.canvas.selectAll("circle")
+        .transition()
+        .duration(800)
+          .call(this.getAttr, ["fill"])
     } else {
+      barplot.canvas.selectAll("circle")
+        .each(function() {
+          var myCol = d3.select(this).attr("fill");
+          d3.select(this).call(attrTween, 800, "fill", setAlpha(myCol, 0));
+        })
+
       updateGraph(barplot.id);
     };
   };
@@ -178,7 +185,7 @@ class Barplot {
       .enter()
         .append("circle")
           .call(this.getAttr, ["cx", "cy", "r"])
-          .attr("fill", "rgba(0,0,0,0)")  //invisible until first marker is selected
+          .attr("fill", "rgba(255,255,255,0)") //invisible until first marker is selected
           .attr("transform", function() {
             return "translate(0, " + d3.select(this).attr("r") + ")"
           })
@@ -313,7 +320,7 @@ class Barplot {
       .data(dataArray)
           .transition()
           .duration(800)
-          .call(this.getAttr, ["cx", "fill"])
+          .call(this.getAttr, ["cx"])
   };
 
 
