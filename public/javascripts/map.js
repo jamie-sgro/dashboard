@@ -239,8 +239,6 @@ async function updateGraph(id) {
 
   dataArray = reduceData(data[id]);
 
-  barplot.toggleLeadLag();
-
   barplot.updatePlot(barplot.canvas, dataArray);
 };
 

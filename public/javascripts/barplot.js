@@ -129,22 +129,22 @@ class Barplot {
   }
 
 
+  /* @toggleLeadLag()
+    - fired when switch/slider checkbox is triggered (in home.html)
+    - swithces leadLag opacity on or off
+  */
   toggleLeadLag() {
     if (document.getElementById("leadLag").checked) {
-      // TEMP:
-      barplot.canvas.selectAll("rect")
-          .transition()
-          .delay(1500)  // TODO: remove line
-          .duration(800)
-          .attr("width", function() {
-            return d3.select(this).attr("width")
-          })
+      var colour = barplot.getColour();
 
+      // turn leadLag marker visible
       barplot.canvas.selectAll("circle")
-        .transition()
-        .duration(800)
-          .call(this.getAttr, ["fill"])
+        .each(function(d,i) {
+          d3.select(this).call(attrTween, 800, "fill", colour(d.value));
+        })
     } else {
+
+      // turn leadLag marker invisible
       barplot.canvas.selectAll("circle")
         .each(function() {
           var myCol = d3.select(this).attr("fill");
@@ -206,13 +206,14 @@ class Barplot {
 
 
   onClick(data) {
-    //Change marker size based on data value
+    // change marker size based on data value
     var radiusScale = d3.scaleLinear()
       .domain([0, d3.max(dataArray, function(d){
         return d.value;
       })])
       .range([scl/2, scl*2]);
 
+    // update the map marker colour
     g.selectAll("circle")
       .each(function(d,i) {
         d3.select(this).call(attrTween, 500, "r", radiusScale(d[data.name]))
@@ -305,12 +306,32 @@ class Barplot {
     };*/
   }
 
+  /*
+  if (document.getElementById("leadLag").checked) {
+    var colour = barplot.getColour();
+
+    barplot.canvas.selectAll("circle")
+      .each(function(d,i) {
+        d3.select(this).call(attrTween, 800, "fill", colour(d.value));
+      })
+  } else {
+    barplot.canvas.selectAll("circle")
+      .each(function() {
+        var myCol = d3.select(this).attr("fill");
+        d3.select(this).call(attrTween, 800, "fill", setAlpha(myCol, 0));
+      })
+  };
+  */
+
 
 
 /* @updatePlot(svg, data)
   - run on marker click, resizes rectangle attributes according to data
 */
   updatePlot(canvas, dataArray) {
+    var widthScale = barplot.getWidthScale();
+    var colour = barplot.getColour();
+
     canvas.selectAll("rect")
       .data(dataArray)
         .transition()
@@ -319,9 +340,12 @@ class Barplot {
 
     canvas.selectAll("circle")
       .data(dataArray)
-          .transition()
-          .duration(800)
-          .call(this.getAttr, ["cx"])
+        .each(function(d, i) {
+          d3.select(this).call(attrTween, 800, "cx", widthScale(d.value));
+          if (document.getElementById("leadLag").checked) {
+            d3.select(this).call(attrTween, 800, "fill", colour(d.value));
+          };
+        })
   };
 
 
