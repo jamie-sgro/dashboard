@@ -58,10 +58,14 @@ async function updatePanel3(id) {
   for (var i = 0; i < mark.length; i++) {
     d3.select("rect#id" + i)
       .call(attrTween, 300, "fill", "#EFEFEF")
+      .on("mouseover", panel3MouseOver)
+      .on("mouseout", panel3MouseOut)
   };
 
   //highlight bar that matches the marker selected
   d3.select("rect#id" + (mark[id].score[checkedRadio] - 1))
+    .on("mouseover", null)
+    .on("mouseout", null)
     .call(attrTween, 300, "fill", "rgb(100,100,100)")
 
   //replot graph if radio button is pressed
@@ -229,6 +233,38 @@ async function initPanel3() {
           })
           .attr("fill", "#EFEFEF")
           .attr("stroke", "#D0CFD4")
+          .on("click", function() {
+            getMarkId(this.id);
+          })
+          .on("mouseover", panel3MouseOver)
+          .on("mouseout", panel3MouseOut)
+};
+
+
+
+function panel3MouseOver() {
+  d3.select(this)
+    .attr("fill", "rgb(170,170,170)");
+};
+
+
+
+function panel3MouseOut() {
+  d3.select(this)
+    .attr("fill", "#EFEFEF");
+};
+
+
+
+async function getMarkId(id) {
+  mark = await mark;
+  id = id.substring(2);
+
+  for (var i in mark) {
+    if (mark[i].score[getCheckedRadio()] == id) {
+      console.log(mark[Number(i)+1].name)
+    };
+  };
 };
 
 

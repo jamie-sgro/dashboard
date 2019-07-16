@@ -215,6 +215,7 @@ class Barplot {
           })
           .call(this.getAttr, ["height", "fill", "y"])
           .attr("stroke", "rgba(0,0,0,0)")
+          .style("cursor", "pointer")
           .on("click", this.onClick)
           .on("mouseover", this.onMouseover)
           .on("mouseout", this.onMouseOut)
@@ -276,7 +277,7 @@ class Barplot {
       d3.select(this)
         .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .4))
     };
-    
+
 
     for (i in mark) {
       var rad = Math.round(scl+radiusScale(d3.select(this).data()[0].value))
