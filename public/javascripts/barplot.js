@@ -132,8 +132,11 @@ class Barplot {
   /* @toggleLeadLag()
     - fired when switch/slider checkbox is triggered (in home.html)
     - swithces leadLag opacity on or off
+    - changes rect size to match min and max of the variable it's measuring
   */
   toggleLeadLag() {
+    var widthScale = barplot.getWidthScale();
+
     if (document.getElementById("leadLag").checked) {
       var colour = barplot.getColour();
 
@@ -141,7 +144,31 @@ class Barplot {
       barplot.canvas.selectAll("circle")
         .each(function(d,i) {
           d3.select(this).call(attrTween, 800, "fill", colour(d.value));
+          d3.select(this).call(attrTween, 800, "stroke", "white");
         })
+
+      barplot.canvas.selectAll("rect")
+        .transition()
+        .duration(800)
+        .attr("transform", function() {
+          var rtn = d3.select(this).attr("min");
+          rtn = widthScale(rtn);
+          return "translate(" + rtn + ", 0)";
+        })
+        .attr("width", function() {
+          var rtn = d3.select(this).attr("max");
+          rtn -= d3.select(this).attr("min");
+          return widthScale(rtn);
+        })
+        .attr("fill", function() {
+          rtn = Number(d3.select(this).attr("min"));
+          rtn += Number(d3.select(this).attr("max"));
+          rtn /= 2;
+          rtn = colour(rtn)
+          rtn = setAlpha(rtn, 1)
+          return rtn;
+        })
+        .attr("stroke", "black")
     } else {
 
       // turn leadLag marker invisible
@@ -149,6 +176,7 @@ class Barplot {
         .each(function() {
           var myCol = d3.select(this).attr("fill");
           d3.select(this).call(attrTween, 800, "fill", setAlpha(myCol, 0));
+          d3.select(this).call(attrTween, 800, "stroke", "none");
         })
     };
   };
@@ -195,6 +223,7 @@ class Barplot {
         .append("circle")
           //invisible until first marker is selected
           .call(this.getAttr, ["cx", "cy", "r", "fillTransparent"])
+          .attr("stroke", "rgba(0,0,0,0)")
           .attr("transform", function() {
             return "translate(0, " + d3.select(this).attr("r") + ")"
           })
@@ -213,8 +242,8 @@ class Barplot {
 
 
   onClick(data) {
-    console.log(d3.select(this).attr("max"))
     console.log(d3.select(this).attr("min"))
+    console.log(d3.select(this).attr("max"))
     // change marker size based on data value
     var radiusScale = d3.scaleLinear()
       .domain([0, d3.max(dataArray, function(d){
@@ -293,8 +322,11 @@ class Barplot {
 
     var myCol = d3.select(this).attr("fill")
 
-    d3.select(this)
-      .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .7))
+    // highlight barplot if NOT in leadLag mode
+    if (!document.getElementById("leadLag").checked) {
+      d3.select(this)
+        .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .7))
+    };
   };
 
 
@@ -324,11 +356,13 @@ class Barplot {
     var widthScale = barplot.getWidthScale();
     var colour = barplot.getColour();
 
-    canvas.selectAll("rect")
-      .data(dataArray)
-        .transition()
-        .duration(800)
-        .call(this.getAttr, ["width", "fill"])
+    if (!document.getElementById("leadLag").checked) {
+      canvas.selectAll("rect")
+        .data(dataArray)
+          .transition()
+          .duration(800)
+          .call(this.getAttr, ["width", "fill"])
+    };
 
     canvas.selectAll("circle")
       .data(dataArray)
