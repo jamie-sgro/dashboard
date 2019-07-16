@@ -391,8 +391,23 @@ class Barplot {
     this.width = ($(window).width()*panelWidth);
     this.height = ($(window).height()-50) - this.margin.top - this.margin.bottom;
 
+    // update .rect width based on if leadLag mode is toggled
+    if (document.getElementById("leadLag").checked) {
+      var widthScale = barplot.getWidthScale();
+      this.canvas.selectAll("rect")
+        .attr("width", function() {
+          var rtn = d3.select(this).attr("max");
+          rtn -= d3.select(this).attr("min");
+          return widthScale(rtn);
+        })
+    } else {
+      this.canvas.selectAll("rect")
+        .call(this.getAttr, ["width"])
+    };
+
+    // update .rect height (same regardless of leadLag toggle)
     this.canvas.selectAll("rect")
-      .call(this.getAttr, ["width", "height", "y"])
+      .call(this.getAttr, ["height", "y"])
 
     this.canvas.selectAll("circle")
       .call(this.getAttr, ["cx", "cy", "r"])
