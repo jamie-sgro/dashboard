@@ -257,12 +257,14 @@ function panel3MouseOut() {
 
 
 async function getMarkId(id) {
+  console.log(id)
   mark = await mark;
   id = id.substring(2);
 
   for (var i in mark) {
-    if (mark[i].score[getCheckedRadio()] == id) {
-      console.log(mark[Number(i)+1].name)
+    if (mark[i].score[getCheckedRadio()] == Number(id)+1) {
+      mark[Number(i)].fireEvent("click")
+      mark[Number(i)].closeTooltip()
     };
   };
 };
