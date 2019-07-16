@@ -165,7 +165,7 @@ class Barplot {
           rtn += Number(d3.select(this).attr("max"));
           rtn /= 2;
           rtn = colour(rtn)
-          rtn = setAlpha(rtn, 1)
+          rtn = setAlpha(rtn, 0.5)
           return rtn;
         })
         .attr("stroke", "black")
@@ -176,8 +176,17 @@ class Barplot {
         .each(function() {
           var myCol = d3.select(this).attr("fill");
           d3.select(this).call(attrTween, 800, "fill", setAlpha(myCol, 0));
-          d3.select(this).call(attrTween, 800, "stroke", "none");
+          d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)");
         })
+
+
+      barplot.canvas.selectAll("rect")
+        .transition()
+        .duration(800)
+        .attr("transform", "translate(0, 0)")
+        .attr("stroke", "rgba(0,0,0,0)")
+
+      updateGraph(null)
     };
   };
 
@@ -205,6 +214,7 @@ class Barplot {
             return widthScale(0);
           })
           .call(this.getAttr, ["height", "fill", "y"])
+          .attr("stroke", "rgba(0,0,0,0)")
           .on("click", this.onClick)
           .on("mouseover", this.onMouseover)
           .on("mouseout", this.onMouseOut)
@@ -359,9 +369,10 @@ class Barplot {
     if (!document.getElementById("leadLag").checked) {
       canvas.selectAll("rect")
         .data(dataArray)
-          .transition()
-          .duration(800)
-          .call(this.getAttr, ["width", "fill"])
+          .each(function(d, i) {
+            d3.select(this).call(attrTween, 800, "width", widthScale(d.value));
+            d3.select(this).call(attrTween, 800, "fill", colour(d.value));
+          })
     };
 
     canvas.selectAll("circle")
