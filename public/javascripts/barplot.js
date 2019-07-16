@@ -237,6 +237,8 @@ class Barplot {
           .attr("transform", function() {
             return "translate(0, " + d3.select(this).attr("r") + ")"
           })
+          .attr("pointer-events","none")
+
 
     // add the x Axis
     this.canvas.append("g")
@@ -267,10 +269,14 @@ class Barplot {
         d3.select(this).call(attrTween, 500, "r", radiusScale(d[data.name]))
       })
 
-    var myCol = d3.select(this).attr("fill")
 
-    d3.select(this)
-      .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .4))
+    if (!document.getElementById("leadLag").checked) {
+      var myCol = d3.select(this).attr("fill");
+
+      d3.select(this)
+        .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .4))
+    };
+    
 
     for (i in mark) {
       var rad = Math.round(scl+radiusScale(d3.select(this).data()[0].value))
