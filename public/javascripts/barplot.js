@@ -154,8 +154,10 @@ class Barplot {
   };
 
 
-
-  plot(dataArray) {
+    /* @plot(jsonArray)
+      - ran once on screen load, instantiates every d3 elem in second panel
+    */
+    plot(dataArray, min, max) {
     var widthScale = barplot.getWidthScale();
 
     this.canvas.selectAll("rect")
@@ -164,6 +166,12 @@ class Barplot {
         .append("rect")
           .attr("name", function(d) {
             return d.name;
+          })
+          .attr("min", function(d, i) {
+            return min[i];
+          })
+          .attr("max", function(d, i) {
+            return max[i];
           })
           .attr("width", function(d) {
             return widthScale(0);
@@ -190,7 +198,6 @@ class Barplot {
           .attr("transform", function() {
             return "translate(0, " + d3.select(this).attr("r") + ")"
           })
-          //.attr("fill", "red")
 
     // add the x Axis
     this.canvas.append("g")
@@ -206,6 +213,8 @@ class Barplot {
 
 
   onClick(data) {
+    console.log(d3.select(this).attr("max"))
+    console.log(d3.select(this).attr("min"))
     // change marker size based on data value
     var radiusScale = d3.scaleLinear()
       .domain([0, d3.max(dataArray, function(d){
@@ -306,27 +315,10 @@ class Barplot {
     };*/
   }
 
-  /*
-  if (document.getElementById("leadLag").checked) {
-    var colour = barplot.getColour();
-
-    barplot.canvas.selectAll("circle")
-      .each(function(d,i) {
-        d3.select(this).call(attrTween, 800, "fill", colour(d.value));
-      })
-  } else {
-    barplot.canvas.selectAll("circle")
-      .each(function() {
-        var myCol = d3.select(this).attr("fill");
-        d3.select(this).call(attrTween, 800, "fill", setAlpha(myCol, 0));
-      })
-  };
-  */
-
 
 
 /* @updatePlot(svg, data)
-  - run on marker click, resizes rectangle attributes according to data
+  - run on marker click, resizes rectangle/circle attributes according to data
 */
   updatePlot(canvas, dataArray) {
     var widthScale = barplot.getWidthScale();
