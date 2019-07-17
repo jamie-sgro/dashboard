@@ -126,9 +126,21 @@ async function plotData() {
   //only return the first datapoint to populate the graph
   var id = document.getElementById("popupInfo").class;
   dataArray = reduceData(data[id]);
-  barplot.title = data[id].name; //Currently use first row of .csv on graph init
+  barplot.id = id; //Currently use first row of .csv on graph init
 
-  barplot.plot(dataArray);
+  var min = [];
+  for (var i in dataArray) {
+
+  };
+
+  var max = [];
+  var min = [];
+  for (col in dataArray) {
+    max.push(getMax(data, dataArray[col].name))
+    min.push(getMin(data, dataArray[col].name))
+  }
+
+  barplot.plot(dataArray, min, max);
 };
 
 
@@ -148,6 +160,30 @@ function getMaxScore(data) {
     };
   };
   return maxScore;
+};
+
+
+
+function getMax(arr, key) {
+  var rtn;
+  for (var i in arr) {
+    if (rtn == undefined || rtn < Number(arr[i][key])) {
+      rtn = Number(arr[i][key]);
+    };
+  };
+  return rtn;
+};
+
+
+
+function getMin(arr, key) {
+  var rtn;
+  for (var i in arr) {
+    if (rtn == undefined || rtn > Number(arr[i][key])) {
+      rtn = Number(arr[i][key]);
+    };
+  };
+  return rtn;
 };
 
 

@@ -87,10 +87,29 @@ class Barplot {
             return colour(d.value)
           })
           break;
+        case "fillTransparent":
+          path.attr("fill", function(d) {
+            rtn = colour(d.value);
+            return setAlpha(rtn, 0);
+          })
+          break;
         case "y":
           path.attr("y", function(d) {
             return heightScale(d.name);
           })
+          break;
+        case "cx":
+          path.attr("cx", function(d) {
+            return widthScale(d.value);
+          });
+          break;
+        case "cy":
+          path.attr("cy", function(d) {
+            return heightScale(d.name);
+          })
+          break;
+        case "r":
+          path.attr("r", heightScale.bandwidth()/2)
           break;
       };
     };
@@ -110,10 +129,74 @@ class Barplot {
   }
 
 
-
-  plot(dataArray) {
+  /* @toggleLeadLag()
+    - fired when switch/slider checkbox is triggered (in home.html)
+    - swithces leadLag opacity on or off
+    - changes rect size to match min and max of the variable it's measuring
+  */
+  toggleLeadLag() {
     var widthScale = barplot.getWidthScale();
-    
+
+    if (document.getElementById("leadLag").checked) {
+      var colour = barplot.getColour();
+
+      // turn leadLag marker visible
+      barplot.canvas.selectAll("circle")
+        .each(function(d,i) {
+          d3.select(this).call(attrTween, 800, "fill", colour(d.value));
+          d3.select(this).call(attrTween, 800, "stroke", "white");
+        })
+
+      barplot.canvas.selectAll("rect")
+        .transition()
+        .duration(800)
+        .attr("transform", function() {
+          var rtn = d3.select(this).attr("min");
+          rtn = widthScale(rtn);
+          return "translate(" + rtn + ", 0)";
+        })
+        .attr("width", function() {
+          var rtn = d3.select(this).attr("max");
+          rtn -= d3.select(this).attr("min");
+          return widthScale(rtn);
+        })
+        .attr("fill", function() {
+          rtn = Number(d3.select(this).attr("min"));
+          rtn += Number(d3.select(this).attr("max"));
+          rtn /= 2;
+          rtn = colour(rtn)
+          rtn = setAlpha(rtn, 0.5)
+          return rtn;
+        })
+        .attr("stroke", "black")
+    } else {
+
+      // turn leadLag marker invisible
+      barplot.canvas.selectAll("circle")
+        .each(function() {
+          var myCol = d3.select(this).attr("fill");
+          d3.select(this).call(attrTween, 800, "fill", setAlpha(myCol, 0));
+          d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)");
+        })
+
+
+      barplot.canvas.selectAll("rect")
+        .transition()
+        .duration(800)
+        .attr("transform", "translate(0, 0)")
+        .attr("stroke", "rgba(0,0,0,0)")
+
+      updateGraph(null)
+    };
+  };
+
+
+    /* @plot(jsonArray)
+      - ran once on screen load, instantiates every d3 elem in second panel
+    */
+    plot(dataArray, min, max) {
+    var widthScale = barplot.getWidthScale();
+
     this.canvas.selectAll("rect")
       .data(dataArray)
       .enter()
@@ -121,10 +204,18 @@ class Barplot {
           .attr("name", function(d) {
             return d.name;
           })
+          .attr("min", function(d, i) {
+            return min[i];
+          })
+          .attr("max", function(d, i) {
+            return max[i];
+          })
           .attr("width", function(d) {
             return widthScale(0);
           })
           .call(this.getAttr, ["height", "fill", "y"])
+          .attr("stroke", "rgba(0,0,0,0)")
+          .style("cursor", "pointer")
           .on("click", this.onClick)
           .on("mouseover", this.onMouseover)
           .on("mouseout", this.onMouseOut)
@@ -136,6 +227,20 @@ class Barplot {
             checkOffScreen();
           })
 
+    // add circles for leadLag plot
+    this.canvas.selectAll("circle")
+      .data(dataArray)
+      .enter()
+        .append("circle")
+          //invisible until first marker is selected
+          .call(this.getAttr, ["cx", "cy", "r", "fillTransparent"])
+          .attr("stroke", "rgba(0,0,0,0)")
+          .attr("transform", function() {
+            return "translate(0, " + d3.select(this).attr("r") + ")"
+          })
+          .attr("pointer-events","none")
+
+
     // add the x Axis
     this.canvas.append("g")
       .attr("class", "x axis")
@@ -145,35 +250,34 @@ class Barplot {
     this.canvas.append("g")
       .attr("class", "y axis")
       .call(this.getYAxis, this);
-
-    /*this.canvas.append("text")
-      .attr("class", "title")
-      .attr("x", (this.width / 2))
-      .attr("y", 0 - (this.margin.top / 2))
-      .attr("text-anchor", "middle")
-      .style("font-size", "16px")
-      .text(this.title)*/
   };
 
 
 
   onClick(data) {
-    //Change marker size based on data value
+    console.log(d3.select(this).attr("min"))
+    console.log(d3.select(this).attr("max"))
+    // change marker size based on data value
     var radiusScale = d3.scaleLinear()
       .domain([0, d3.max(dataArray, function(d){
         return d.value;
       })])
       .range([scl/2, scl*2]);
 
+    // update the map marker colour
     g.selectAll("circle")
       .each(function(d,i) {
         d3.select(this).call(attrTween, 500, "r", radiusScale(d[data.name]))
       })
 
-    var myCol = d3.select(this).attr("fill")
 
-    d3.select(this)
-      .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .4))
+    if (!document.getElementById("leadLag").checked) {
+      var myCol = d3.select(this).attr("fill");
+
+      d3.select(this)
+        .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .4))
+    };
+
 
     for (i in mark) {
       var rad = Math.round(scl+radiusScale(d3.select(this).data()[0].value))
@@ -235,8 +339,11 @@ class Barplot {
 
     var myCol = d3.select(this).attr("fill")
 
-    d3.select(this)
-      .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .7))
+    // highlight barplot if NOT in leadLag mode
+    if (!document.getElementById("leadLag").checked) {
+      d3.select(this)
+        .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .7))
+    };
   };
 
 
@@ -259,17 +366,30 @@ class Barplot {
 
 
 
-  updatePlot(canvas, dataArray, name) {
-    this.title = name;
+/* @updatePlot(svg, data)
+  - run on marker click, resizes rectangle/circle attributes according to data
+*/
+  updatePlot(canvas, dataArray) {
+    var widthScale = barplot.getWidthScale();
+    var colour = barplot.getColour();
 
-    canvas.selectAll("rect")
+    if (!document.getElementById("leadLag").checked) {
+      canvas.selectAll("rect")
+        .data(dataArray)
+          .each(function(d, i) {
+            d3.select(this).call(attrTween, 800, "width", widthScale(d.value));
+            d3.select(this).call(attrTween, 800, "fill", colour(d.value));
+          })
+    };
+
+    canvas.selectAll("circle")
       .data(dataArray)
-        .transition()
-        .duration(800)
-        .call(this.getAttr, ["width", "fill"])
-
-    this.canvas.select(".title")
-      .text(this.title)
+        .each(function(d, i) {
+          d3.select(this).call(attrTween, 800, "cx", widthScale(d.value));
+          if (document.getElementById("leadLag").checked) {
+            d3.select(this).call(attrTween, 800, "fill", colour(d.value));
+          };
+        })
   };
 
 
@@ -278,8 +398,29 @@ class Barplot {
     this.width = ($(window).width()*panelWidth);
     this.height = ($(window).height()-50) - this.margin.top - this.margin.bottom;
 
+    // update .rect width based on if leadLag mode is toggled
+    if (document.getElementById("leadLag").checked) {
+      var widthScale = barplot.getWidthScale();
+      this.canvas.selectAll("rect")
+        .attr("width", function() {
+          var rtn = d3.select(this).attr("max");
+          rtn -= d3.select(this).attr("min");
+          return widthScale(rtn);
+        })
+    } else {
+      this.canvas.selectAll("rect")
+        .call(this.getAttr, ["width"])
+    };
+
+    // update .rect height (same regardless of leadLag toggle)
     this.canvas.selectAll("rect")
-      .call(this.getAttr, ["width", "height", "y"])
+      .call(this.getAttr, ["height", "y"])
+
+    this.canvas.selectAll("circle")
+      .call(this.getAttr, ["cx", "cy", "r"])
+      .attr("transform", function() {
+        return "translate(0, " + d3.select(this).attr("r") + ")"
+      })
 
     this.canvas.selectAll("g.x.axis")
       .call(this.getXAxis, this)
@@ -289,9 +430,6 @@ class Barplot {
 
     this.svg
       .call(this.getSvgSize, this)
-
-    this.canvas.select(".title")
-      .attr("x", (this.width / 2))
   };
 };
 

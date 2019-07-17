@@ -5,31 +5,54 @@
    <!-- Scripts -->
    <script type="text/javascript" src="public/libraries/sort-table.min.js"></script>
 
+   <!-- Header -->
+     <header id="header">
+       <a class="logo" href="home">SDSN Canada Dashboard</a>
+       <nav>
+         <a href="/home" class="icon fa-home shy-text"> Home</a>
+         <a href="/about" class="icon fa-info-circle shy-text"> About</a>
+         <a href="/home#dashboard" class="icon fa-globe shy-text"> Dashboard</a>
+         <a href="/public/data/sdsn_cleaned.csv" class="icon fa-download shy-text"> Download</a>
+         <a href="#menu">Menu</a>
+       </nav>
+     </header>
+
+   <!-- Nav -->
+     <nav id="menu">
+       <ul class="links">
+         <li><a href="/home" class="icon fa-home"> Home</a></li>
+         <li><a href="/about" class="icon fa-info-circle"> About</a></li>
+         <li><a href="/home#dashboard" class="icon fa-globe"> Dashboard</a></li>
+         <li><a href="/table" class="icon fa-table"> Table</a></li>
+         <li><a href="/public/data/sdsn_cleaned.csv" class="icon fa-download"> Download</a></li>
+       </ul>
+     </nav>
+
    <!-- Table -->
    <table class="js-sort-table">
 		<thead>
          <tr>
-               <th>name</th>
-               <th>lat</th>
-               <th>lng</th>
-               <th>score$arithmetic</th>
-               <th>score$median</th>
-               <th>score$geometric</th>
-               <th>SDG1</th>
-               <th>SDG2</th>
-               <th>SDG3</th>
-               <th>SDG4</th>
-               <th>SDG5</th>
-               <th>SDG6</th>
-               <th>SDG7</th>
-               <th>SDG8</th>
-               <th>SDG9</th>
-               <th>SDG10</th>
-               <th>SDG11</th>
-               <th>SDG12</th>
-               <th>SDG13</th>
-               <th>SDG15</th>
-               <th>SDG16</th>
+               <th class="pointer">name</th>
+               <th class="pointer">lat</th>
+               <th class="pointer">lng</th>
+               <th class="pointer">score$arithmetic</th>
+               <th class="pointer">score$median</th>
+               <th class="pointer">score$geometric</th>
+               <th class="pointer">SDG1</th>
+               <th class="pointer">SDG2</th>
+               <th class="pointer">SDG3</th>
+               <th class="pointer">SDG4</th>
+               <th class="pointer">SDG5</th>
+               <th class="pointer">SDG6</th>
+               <th class="pointer">SDG7</th>
+               <th class="pointer">SDG8</th>
+               <th class="pointer">SDG9</th>
+               <th class="pointer">SDG10</th>
+               <th class="pointer">SDG11</th>
+               <th class="pointer">SDG12</th>
+               <th class="pointer">SDG13</th>
+               <th class="pointer">SDG15</th>
+               <th class="pointer">SDG16</th>
          </tr>
 		 </thead>
          <tr>
@@ -2333,4 +2356,10 @@
                <td>19.78</td>
          </tr>
    </table>
+
+   <!-- Scripts -->
+     <script src="public/libraries/jquery.min.js"></script>
+     <script src="public/libraries/breakpoints.min.js"></script>
+     <script src="public/javascripts/templated-util.js"></script>
+     <script src="public/javascripts/templated-main.js"></script>
 <html>
