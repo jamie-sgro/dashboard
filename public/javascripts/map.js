@@ -36,11 +36,31 @@ function getMap() {
   legend.onAdd = function(map) {
     var div = L.DomUtil.create("div", "legend");
     div.innerHTML += "<h4>Legend</h4>";
-    div.innerHTML += '<i style="background: #477AC2"></i><span>Water</span><br>';
-    div.innerHTML += '<i style="background: #448D40"></i><span>Forest</span><br>';
-    div.innerHTML += '<i style="background: #E6E696"></i><span>Land</span><br>';
-    div.innerHTML += '<i style="background: #E8E6E0"></i><span>Residential</span><br>';
-    div.innerHTML += '<i style="background: #FFFFFF"></i><span>Ice</span><br>';
+    div.innerHTML += `<i style="background: ` + colourBottom + `"></i><span>Low Score</span><br>`;
+    div.innerHTML += `<i style="background: ` + colourTop + `"></i><span>High Score</span><br>`;
+    div.innerHTML += `<h5> Select Scoring Method:</h5>
+              <div class="col-4 col-12-small">
+    						<input type="radio" id="arithmetic" name="radio" onclick=updatePanel3()>
+    						<label for="arithmetic">Arithmetic Mean</label>
+    					</div>
+    					<div class="col-4 col-12-small">
+    						<input type="radio" id="median" name="radio" onclick=updatePanel3() checked>
+    						<label for="median">Median</label>
+    					</div>
+    					<div class="col-4 col-12-small">
+    						<input type="radio" id="geometric" name="radio" onclick=updatePanel3()>
+    						<label for="geometric">Geometric Mean</label>
+    					</div>`
+
+    myFunction = function () {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+    }
+
+    div.innerHTML = `
+    <div class="popup" onclick="myFunction()">Click me!
+      <span class="popuptext" id="myPopup">Popup text...</span>
+    </div>`
 
     return div;
   };
@@ -53,17 +73,6 @@ legend.addTo(map);
 
   return map;
 };
-
-function getColor(d) {
-  return d > 5000000 ? "#7a0177" :
-  d > 200000? "#BD0026" :
-  d > 80000? "#E31A1C" :
-  d > 10000? "#FC4E2A" :
-  d > 5000 ? "#FD8D3C" :
-  d > 500 ? "#FEB24C" :
-  d > 0 ? "#FED976" :
-  "#FFEDA0";
-}
 
 
 
