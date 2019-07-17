@@ -5,6 +5,8 @@
 var scl;
 const markRad = 15;
 const markCol = "rgba(10,151,217, .8)";
+const colourBottom = "rgb(56, 94, 231)";
+const colourTop = "rgb(34, 236, 87)";
 const scaleToZoom = false;
 const locHost = "http://localhost:3000/"
 //const locHost = "https://sdsn-dashboard.localtunnel.me/";

@@ -41,7 +41,7 @@ class Barplot {
       .domain([0, d3.max(dataArray, function(d){
         return d.value;
       })])
-      .range(["rgb(56, 94, 231)","rgb(34, 236, 87)"]);
+      .range([colourBottom,colourTop]);
   };
 
   getWidthScale() {
