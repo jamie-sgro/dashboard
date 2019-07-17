@@ -31,12 +31,39 @@ function getMap() {
         minZoom: 2,
       }).addTo(map);
 
+  var legend = L.control({position: "bottomright"});
+
+  legend.onAdd = function(map) {
+    var div = L.DomUtil.create("div", "legend");
+    div.innerHTML += "<h4>Legend</h4>";
+    div.innerHTML += '<i style="background: #477AC2"></i><span>Water</span><br>';
+    div.innerHTML += '<i style="background: #448D40"></i><span>Forest</span><br>';
+    div.innerHTML += '<i style="background: #E6E696"></i><span>Land</span><br>';
+    div.innerHTML += '<i style="background: #E8E6E0"></i><span>Residential</span><br>';
+    div.innerHTML += '<i style="background: #FFFFFF"></i><span>Ice</span><br>';
+
+    return div;
+  };
+
+legend.addTo(map);
+
   mapResize();
 
   map.doubleClickZoom.disable();
 
   return map;
 };
+
+function getColor(d) {
+  return d > 5000000 ? "#7a0177" :
+  d > 200000? "#BD0026" :
+  d > 80000? "#E31A1C" :
+  d > 10000? "#FC4E2A" :
+  d > 5000 ? "#FD8D3C" :
+  d > 500 ? "#FEB24C" :
+  d > 0 ? "#FED976" :
+  "#FFEDA0";
+}
 
 
 
