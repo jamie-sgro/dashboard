@@ -58,7 +58,7 @@ function getMap() {
     }
 
     div.innerHTML = `
-    <div class="popup" onclick="myFunction()">Click me!
+    <div class="popup" onclick="myFunction()"><a class="icon fa-4x fa-angle-double-left"></a>
       <span class="popuptext" id="myPopup">Popup text...</span>
     </div>`
 
