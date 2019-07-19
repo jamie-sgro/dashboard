@@ -212,7 +212,7 @@ The bin\www file navigates to the app and subsequent \routes folder. All user re
     └── router.js
 ```
 
-## Author
+## Authorship
 * **Jamie Sgro** - *Developer*
 * **Cameron McCordic** - *Project Manager*
 * **Bruce Frayne** - *Principal Investigator*
