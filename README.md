@@ -65,7 +65,12 @@ On a remote machine, clone the repository as before. The development team recomm
 npm install pm2
 ````
 If a web domain or static DNS has been included, be sure to edit the following line in ./public/javascripts/main.js to match your website name:
-``diff
+```diff
 -const locHost = "http://www.sdsn-canada-dashboard.tk/";
 +const locHost = "http://www.your-static-dns.com/";
 ```
+
+## Action Chain
+The bin\www file navigates to the app and subsequent \routes folder. All user related data (i.e. username & password) are passed to the user-server on port :8080. Upon authentication, users have access to http://127.0.0.1:3000/ui. All data used to generate cryptocurrency-realted graphs are fetched through \dbServer\server.js on port :8081.
+## Author
+* **Jamie Sgro** - *Developer*
