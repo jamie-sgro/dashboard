@@ -70,7 +70,83 @@ If a web domain or static DNS has been included, be sure to edit the following l
 +const locHost = "http://www.your-static-dns.com/";
 ```
 
-## Action Chain
-The bin\www file navigates to the app and subsequent \routes folder. All user related data (i.e. username & password) are passed to the user-server on port :8080. Upon authentication, users have access to http://127.0.0.1:3000/ui. All data used to generate cryptocurrency-realted graphs are fetched through \dbServer\server.js on port :8081.
-## Author
-* **Jamie Sgro** - *Developer*
+###Setting up Local Remote Repository
+The developer recommends a dual remote repository deployment structure - one titled 'origin' and another titled 'server'. While 'origin' hosts all development branches on a stable third-party provider like GitHub or GitLab, 'server' is hosted locally on the ubuntu machine that maintains the website. The 'server' should ideally only be pushed commits that are stable and intended as updates to the website itself. To configure the local remote, first navigate to the root folder that contains the /dashboard directory, then create a new .git directory with:
+````
+mkdir -p remote.git
+````
+The file structure should be the following:
+````
+.
+├── dashboard
+└── remote.git
+````
+Navigate and initialize /remote.git with:
+````
+cd remote.git
+git init --bare
+````
+The terminal should print out ````Initialized empty Git repository in /home/server/path/to/directory/````. On your local machine (not the Ubuntu server), configure the remote with:
+````
+git remote add server server@123.456.78.901:~/path/to/remote.git
+````
+... substituting the ip address and path with whatever matches your Ubuntu server. To ensure everything is working correctly, type the following:
+````
+git remote -v
+````
+Which should return:
+````
+origin  https://gitlab.com/Jamie.Sgro/dashboard.git (fetch)
+origin  https://gitlab.com/Jamie.Sgro/dashboard.git (push)
+server  server@123.456.78.901:~/path/to/remote.git (fetch)
+server  server@123.456.78.901:~/path/to/remote.git (push)
+````
+To configure the Ubuntu server to pull directly (and solely) from the remote on the same machine, type the following in the Ubuntu terminal:
+````
+git remote add server ~/path/to/remote.git
+git remote -v
+````
+Which should return:
+````
+server  /home/server/Documents/code/remote.git (fetch)
+server  /home/server/Documents/code/remote.git (push)
+````
+The file directory on your Ubuntu machine should reflect the following:
+
+````
+.
+├── dashboard
+│   ├── app.js
+│   ├── bin
+│   ├── node_modules
+│   ├── npm_start.bat
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   ├── routes
+│   └── README.md
+└── remote.git
+    ├── HEAD
+    ├── branches
+    ├── config
+    ├── description
+    ├── hooks
+    ├── info
+    ├── objects
+    └── refs
+````
+Once the remote has been set up, development should be streamlined so that when a stable version is ready to be deployed to the website, developers need only push the stable commit to the 'server' remote repository then ssh into the Ubuntu machine and execute the following:
+````
+ cd path/to/dashboard
+ npm start
+````
+The console log should include parts of the following:
+````
+From /home/server/path/to/dashboard
+ * branch            master     -> FETCH_HEAD
+[This should print of the changes since last pull]
+Use --update-env to update environment variables
+[PM2] Applying action reloadProcessId on app [./bin/www](ids: 0)
+[PM2] [www](0) ✓
+````
+This readout indicates that the website has implemented the update with zero down-time to the site itself.
