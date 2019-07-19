@@ -74,11 +74,11 @@ The developer recommends a dual remote repository deployment structure - one tit
 mkdir -p remote.git
 ````
 The file structure should be the following:
-````
+```css
 .
 ├── dashboard
 └── remote.git
-````
+```
 Navigate and initialize /remote.git with:
 ````
 cd remote.git
@@ -111,7 +111,7 @@ server  /home/server/Documents/code/remote.git (push)
 ````
 The file directory on your Ubuntu machine should reflect the following:
 
-````
+```css
 .
 ├── dashboard
 │   ├── app.js
@@ -132,7 +132,7 @@ The file directory on your Ubuntu machine should reflect the following:
     ├── info
     ├── objects
     └── refs
-````
+```
 Once the remote has been set up, development should be streamlined so that when a stable version is ready to be deployed to the website, developers need only push the stable commit to the 'server' remote repository then ssh into the Ubuntu machine and execute the following:
 ````
  cd path/to/dashboard
@@ -210,7 +210,7 @@ The bin\www file navigates to the app and subsequent \routes folder. All user re
 │   └── sdsn_cleaned.csv
 └── routes
     └── router.js
-```
+*/```
 
 ## Author
 * **Jamie Sgro** - *Developer*
