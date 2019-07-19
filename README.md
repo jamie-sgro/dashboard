@@ -214,5 +214,5 @@ The bin\www file navigates to the app and subsequent \routes folder. All user re
 
 ## Author
 * **Jamie Sgro** - *Developer*
-* **Cameron McCordic** - *Product Manager*
+* **Cameron McCordic** - *Project Manager*
 * **Bruce Frayne** - *Principal Investigator*
