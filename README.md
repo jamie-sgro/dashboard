@@ -1,3 +1,57 @@
 # dashboard
 
 This project involves building a one-page online dashboard for visualizing an SDG Cities Index that is both open-sourced and legally shareable. This includes a three-panel layout that dynamically resizes to based on the viewport. Panel-1 (top left) includes a leaflet map with interactable markers representing each city included. Panel-2 (right) contains a horizontal barplot indicating the various 'scores' for each indicator measured by the city/marker. Panel-2 can toggle a leader-laggard graph that indicates the min and max scores for each indicator with a circle marking the indicator score for the selected city. Panel-3 (bottom left) indicates the selected city name, a table including it's total score and relative ranking, and a vertical barplot sorting total scores from heighest to lowest with the current cities position highlighted.
+
+## Getting Started
+
+Open command prompt/terminal and navigate to the root folder you wish to host the file:
+````
+cd C:\Users\Name\Documents\Subfolder
+````
+Then clone the repository with:
+````
+git clone https://gitlab.com/Jamie.Sgro/dashboard.git
+````
+Navigate to the cloned repo with:
+````
+cd dashboard
+````
+
+### Install Dependencies
+
+Ensure all modules are up to date with:
+````
+npm install
+````
+
+### Boot Up Localhost Server
+
+To locally host the server and ensure everything is working correctly run the following within the 'dashboard' directory:
+````
+node ./bin/www
+````
+Note that the same function can be executed by double-clicking npm_start.bat or typing the following into your command prompt/terminal:
+````
+npm test
+````
+A server session should begin the run with a readout of the current ip-address in the command prompt/terminal.
+
+To ensure the website is running, navigate to http://localhost:3000 on your default browser. The server can be shut down by pressing ctrl-c at any time from within the command prompt/terminal.
+
+### Prerequisites
+
+````
+async
+cookie-parser
+cors
+d3
+debug
+ejs
+express
+http
+leaflet
+morgan
+npm
+papaparse
+request
+````
