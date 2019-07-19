@@ -42,21 +42,19 @@ To ensure the website is running, navigate to http://localhost:3000 on your defa
 
 Note that the dashboard requires the following libraries and their dependents:
 
-````
-async
-cookie-parser
-cors
-d3
-debug
-ejs
-express
-http
-leaflet
-morgan
-npm
-papaparse
-request
-````
+* async
+* cookie-parser
+* cors
+* d3
+* debug
+* ejs
+* express
+* http
+* leaflet
+* morgan
+* npm
+* papaparse
+* request
 
 ## Deployment
 
@@ -150,3 +148,71 @@ Use --update-env to update environment variables
 [PM2] [www](0) ✓
 ````
 This readout indicates that the website has implemented the update with zero down-time to the site itself.
+
+## File Structure
+The bin\www file navigates to the app and subsequent \routes folder. All user related data (i.e. username & password) are passed to the user-server on port :8080. Upon authentication, users have access to http://127.0.0.1:3000/ui. All data used to generate cryptocurrency-realted graphs are fetched through \dbServer\server.js on port :8081.
+
+```css
+.
+├── app.js
+├── bin
+│   └── www
+├── npm_start.bat
+├── package-lock.json
+├── package.json
+├── public
+│   ├── CREDITS.txt
+│   ├── about.html
+│   ├── data
+│   │   └── sdsn_cleaned.csv
+│   ├── dev-index.html
+│   ├── elements.html
+│   ├── fonts /* lists FontAwesome for wepage icons */
+│   ├── generic.html
+│   ├── home.html
+│   ├── images /* background images and video for homepage */
+│   │   └── sdg-icons /* contains files for SDG tooltips*/
+│   ├── index.html
+│   ├── javascripts
+│   │   ├── barplot.js
+│   │   ├── main.js
+│   │   ├── map.js
+│   │   ├── panel3.js
+│   │   ├── templated-main.js
+│   │   └── templated-util.js
+│   ├── libraries /* Support javascript files (both libraries and custom) */
+│   │   ├── async.min.js
+│   │   ├── breakpoints.min.js
+│   │   ├── browser.min.js
+│   │   ├── d3.min.js
+│   │   ├── jquery.min.js
+│   │   ├── jquery.scrollex.min.js
+│   │   ├── jquery.scrolly.min.js
+│   │   ├── leaflet.js
+│   │   └── sort-table.min.js
+│   ├── robots.html
+│   ├── stylesheets
+│   │   ├── d3-stylesheet.css
+│   │   ├── font-awesome.min.css
+│   │   ├── index.css
+│   │   ├── leaflet.css
+│   │   └── main.css
+│   ├── table.html
+│   └── ui.html
+├── r_script /* DEPRECIATED */
+│   ├── SDSN.2018.US.csv
+│   ├── app.R
+│   ├── new_app.R
+│   ├── rsconnect
+│   │   └── shinyapps.io
+│   │       └── jamie-sgro
+│   │           └── sdg-cities-index.dcf
+│   └── sdsn_cleaned.csv
+└── routes
+    └── router.js
+```
+
+## Author
+* **Jamie Sgro** - *Developer*
+* **Cameron McCordic** - *Product Manager*
+* **Bruce Frayne** - *Principal Investigator*
