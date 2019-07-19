@@ -1,4 +1,4 @@
-# dashboard
+# SDSN Cananada Dashboard
 
 This project involves building a one-page online dashboard for visualizing an SDG Cities Index that is both open-sourced and legally shareable. This includes a three-panel layout that dynamically resizes to based on the viewport. Panel-1 (top left) includes a leaflet map with interactable markers representing each city included. Panel-2 (right) contains a horizontal barplot indicating the various 'scores' for each indicator measured by the city/marker. Panel-2 can toggle a leader-laggard graph that indicates the min and max scores for each indicator with a circle marking the indicator score for the selected city. Panel-3 (bottom left) indicates the selected city name, a table including it's total score and relative ranking, and a vertical barplot sorting total scores from heighest to lowest with the current cities position highlighted.
 
@@ -40,6 +40,8 @@ To ensure the website is running, navigate to http://localhost:3000 on your defa
 
 ### Prerequisites
 
+Note that the dashboard requires the following libraries and their dependents:
+
 ````
 async
 cookie-parser
@@ -55,3 +57,15 @@ npm
 papaparse
 request
 ````
+
+## Deployment
+
+On a remote machine, clone the repository as before. The development team recommends Ubuntu (server) with an ssh key instead of a password, a root --> server account hierarchy, and Nginx with Pm2. Set up a remote proxy to redirect port :3000 using your favourite online tutorial, and pm2 using the following:
+````
+npm install pm2
+````
+If a web domain or static DNS has been included, be sure to edit the following line in ./public/javascripts/main.js to match your website name:
+``diff
+-const locHost = "http://www.sdsn-canada-dashboard.tk/";
++const locHost = "http://www.your-static-dns.com/";
+```
