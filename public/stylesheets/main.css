@@ -525,7 +525,7 @@ select {
 
 input[type="checkbox"] + label,
 input[type="radio"] + label {
-  color: #444444; }
+  color: inherit; }
   input[type="checkbox"] + label:before,
   input[type="radio"] + label:before {
     background: rgba(255, 255, 255, 0.075);
