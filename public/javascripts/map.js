@@ -282,12 +282,12 @@ async function updateGraph(id) {
 function updateMarker(id) {
   //reset pervious marker
   g.select("circle#id" + barplot.id)
-    .attr("stroke", "white")
+    .call(attrTween, 800, "stroke", "white")
 
   //highlight new marker
   g.select("circle#id" + id)
     .moveToFront()
-    .attr("stroke", "black")
+    .call(attrTween, 800, "stroke", "black")
 };
 
 
