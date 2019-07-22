@@ -27,7 +27,7 @@ router.get('/robots.txt', (req, res)=> {
   res.render('robots');
 });
 
-//GET sitemap.xml page.
+//GET sitemap & sitemap.xml page.
 router.get('/sitemap*', (req, res)=> {
   res.render('sitemap');
 });
