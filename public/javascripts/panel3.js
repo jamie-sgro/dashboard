@@ -53,14 +53,13 @@ async function updatePanel3(id) {
   d3.select("#panel3").select("svg")
     .attr("height", getPanel3Height())
 
-  //reset previous marker (do all since checking for the highlighted bar takes
-  //  longer)
-  for (var i = 0; i < mark.length; i++) {
-    d3.select("rect#id" + i)
+  //reset previous marker based on all radio buttons
+  for (var name in mark[barplot.id].score) {
+    d3.select("rect#id" + (mark[barplot.id].score[name] - 1))
       .call(attrTween, 300, "fill", "#EFEFEF")
       .on("mouseover", panel3MouseOver)
       .on("mouseout", panel3MouseOut)
-  };
+  }
 
   //highlight bar that matches the marker selected
   d3.select("rect#id" + (mark[id].score[checkedRadio] - 1))
@@ -70,6 +69,9 @@ async function updatePanel3(id) {
 
   //replot graph if radio button is pressed
   plotPanel3()
+
+  //update barplot.id
+  barplot.id = id;
 };
 
 
