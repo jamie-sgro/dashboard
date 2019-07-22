@@ -91,9 +91,6 @@ function addMarker(map, name, lat, lng) {
   var mark = L.circleMarker([lat, lng], options).addTo(map);
 
   mark.on("click", ()=> {
-    // update identified for leader lagard graph
-    barplot.id = mark.id;
-
     //this is where hooks into .d3 should be made
     updateGraph(mark.id);
 
@@ -271,11 +268,26 @@ async function updateGraph(id) {
     id = barplot.id;
   };
 
+  updateMarker(id);
+
   data = await getData();
 
   dataArray = reduceData(data[id]);
 
   barplot.updatePlot(barplot.canvas, dataArray);
+};
+
+
+
+function updateMarker(id) {
+  //reset pervious marker
+  g.select("circle#id" + barplot.id)
+    .call(attrTween, 800, "stroke", "white")
+
+  //highlight new marker
+  g.select("circle#id" + id)
+    .moveToFront()
+    .call(attrTween, 800, "stroke", "black")
 };
 
 
@@ -322,7 +334,7 @@ async function d3PopulateMarkers(map) {
       .enter()
         .append("circle")
         .attr("id", function(d, i) {
-          return i;
+          return "id" + i;
         })
         .attr("r", 0)
         .attr("cx", function(d) {
