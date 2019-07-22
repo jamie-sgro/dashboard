@@ -36,9 +36,9 @@ function getMap() {
   legend.onAdd = function(map) {
     var div = L.DomUtil.create("div", "legend");
     div.innerHTML += "<h4>Legend</h4>";
-    div.innerHTML += `<i style="background: ` + colourBottom + `"></i><span>Low Score</span><br>`;
-    div.innerHTML += `<i style="background: ` + colourTop + `"></i><span>High Score</span><br>`;
-    div.innerHTML += `<h5> Select Scoring Method:</h5>
+    div.innerHTML += `<i style="background: ` + colourBottom + `"></i><span>Minimum Score</span><br>`;
+    div.innerHTML += `<i style="background: ` + colourTop + `"></i><span>Maximum Score</span><br>`;
+    /*div.innerHTML += `<h5> Select Scoring Method:</h5>
               <div class="col-4 col-12-small">
     						<input type="radio" id="arithmetic" name="radio" onclick=updatePanel3()>
     						<label for="arithmetic">Arithmetic Mean</label>
@@ -57,15 +57,15 @@ function getMap() {
       popup.classList.toggle("show");
     }
 
-    div.innerHTML = `
-    <div class="popup" onclick="myFunction()"><a class="icon fa-4x fa-angle-double-left"></a>
+    div.innerHTML = `<div class="popup" onclick="myFunction()"><a class="icon fa-4x fa-angle-double-left"></a>
       <span class="popuptext" id="myPopup">Popup text...</span>
-    </div>`
+    </div>`*/
+
 
     return div;
   };
 
-legend.addTo(map);
+  legend.addTo(map);
 
   mapResize();
 
