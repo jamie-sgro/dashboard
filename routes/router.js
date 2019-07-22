@@ -27,11 +27,15 @@ router.get('/robots.txt', (req, res)=> {
   res.render('robots');
 });
 
+//GET sitemap.xml page.
+router.get('/sitemap*', (req, res)=> {
+  res.render('sitemap');
+});
+
 //GET User Interface page.
 router.get('/ui/', (req, res) => {
   console.log("get: '/ui/'")
   res.render('ui');
-  //res.render('index', { title: 'Express' });
   return;
 });
 
