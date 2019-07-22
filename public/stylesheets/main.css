@@ -2845,6 +2845,7 @@ body.is-menu-visible #menu {
   display: inline-block;
   width: 60px;
   height: 34px;
+  color: rgba(0,0,0,0)
 }
 
 .switch input {
