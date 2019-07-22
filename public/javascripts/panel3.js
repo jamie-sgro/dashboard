@@ -257,7 +257,6 @@ function panel3MouseOut() {
 
 
 async function getMarkId(id) {
-  console.log(id)
   mark = await mark;
   id = id.substring(2);
 
