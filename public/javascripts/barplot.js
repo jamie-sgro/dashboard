@@ -141,13 +141,13 @@ class Barplot {
       var colour = barplot.getColour();
 
       // turn leadLag marker visible
-      barplot.canvas.selectAll("circle")
+      barplot.canvas.selectAll("rect.leadLag")
         .each(function(d,i) {
           d3.select(this).call(attrTween, 800, "fill", colour(d.value));
           d3.select(this).call(attrTween, 800, "stroke", "white");
         })
 
-      barplot.canvas.selectAll("rect")
+      barplot.canvas.selectAll("rect.bar")
         .transition()
         .duration(800)
         .attr("transform", function() {
@@ -172,7 +172,7 @@ class Barplot {
     } else {
 
       // turn leadLag marker invisible
-      barplot.canvas.selectAll("circle")
+      barplot.canvas.selectAll("rect.leadLag")
         .each(function() {
           var myCol = d3.select(this).attr("fill");
           d3.select(this).call(attrTween, 800, "fill", setAlpha(myCol, 0));
@@ -180,7 +180,7 @@ class Barplot {
         })
 
 
-      barplot.canvas.selectAll("rect")
+      barplot.canvas.selectAll("rect.bar")
         .transition()
         .duration(800)
         .attr("transform", "translate(0, 0)")
@@ -197,10 +197,11 @@ class Barplot {
     plot(dataArray, min, max) {
     var widthScale = barplot.getWidthScale();
 
-    this.canvas.selectAll("rect")
+    this.canvas.selectAll("rect.bar")
       .data(dataArray)
       .enter()
         .append("rect")
+          .attr("class", "bar")
           .attr("name", function(d) {
             return d.name;
           })
@@ -227,17 +228,20 @@ class Barplot {
             checkOffScreen();
           })
 
-    // add circles for leadLag plot
-    this.canvas.selectAll("circle")
+    // add markers for leadLag plot
+    this.canvas.selectAll("rect.leadLag")
       .data(dataArray)
       .enter()
-        .append("circle")
+        .append("rect")
+          .attr("class", "leadLag")
+          .attr("widthFactor", 0.05)
           //invisible until first marker is selected
-          .call(this.getAttr, ["cx", "cy", "r", "fillTransparent"])
-          .attr("stroke", "rgba(0,0,0,0)")
-          .attr("transform", function() {
-            return "translate(0, " + d3.select(this).attr("r") + ")"
+          .call(this.getAttr, ["x", "y", "height", "fillTransparent"])
+          .attr("width", function() {
+            var widthFactor = d3.select(this).attr("widthFactor");
+            return barplot.width * widthFactor;
           })
+          .attr("stroke", "rgba(0,0,0,0)")
           .attr("pointer-events","none")
 
 
@@ -364,6 +368,13 @@ class Barplot {
     };*/
   }
 
+/*
+getWidthScale() {
+  return d3.scaleLinear()
+    .domain([0, this.max])
+    .range([0, this.width - this.margin.left - this.margin.right]);
+};
+*/
 
 
 /* @updatePlot(svg, data)
@@ -374,7 +385,7 @@ class Barplot {
     var colour = barplot.getColour();
 
     if (!document.getElementById("leadLag").checked) {
-      canvas.selectAll("rect")
+      canvas.selectAll("rect.bar")
         .data(dataArray)
           .each(function(d, i) {
             d3.select(this).call(attrTween, 800, "width", widthScale(d.value));
@@ -382,10 +393,12 @@ class Barplot {
           })
     };
 
-    canvas.selectAll("circle")
+    canvas.selectAll("rect.leadLag")
       .data(dataArray)
         .each(function(d, i) {
-          d3.select(this).call(attrTween, 800, "cx", widthScale(d.value));
+          var widthFactor = d3.select(this).attr("widthFactor");
+          var xPos = widthScale(d.value) * (1 - widthFactor);
+          d3.select(this).call(attrTween, 800, "x", xPos);
           if (document.getElementById("leadLag").checked) {
             d3.select(this).call(attrTween, 800, "fill", colour(d.value));
           };
@@ -398,29 +411,35 @@ class Barplot {
     this.width = ($(window).width()*panelWidth);
     this.height = ($(window).height()-50) - this.margin.top - this.margin.bottom;
 
+    var widthScale = barplot.getWidthScale();
+
     // update .rect width based on if leadLag mode is toggled
     if (document.getElementById("leadLag").checked) {
-      var widthScale = barplot.getWidthScale();
-      this.canvas.selectAll("rect")
+      this.canvas.selectAll("rect.bar")
         .attr("width", function() {
           var rtn = d3.select(this).attr("max");
           rtn -= d3.select(this).attr("min");
           return widthScale(rtn);
         })
     } else {
-      this.canvas.selectAll("rect")
+      this.canvas.selectAll("rect.bar")
         .call(this.getAttr, ["width"])
     };
 
     // update .rect height (same regardless of leadLag toggle)
-    this.canvas.selectAll("rect")
+    this.canvas.selectAll("rect.bar")
       .call(this.getAttr, ["height", "y"])
 
-    this.canvas.selectAll("circle")
-      .call(this.getAttr, ["cx", "cy", "r"])
-      .attr("transform", function() {
-        return "translate(0, " + d3.select(this).attr("r") + ")"
+    this.canvas.selectAll("rect.leadLag")
+      .call(this.getAttr, ["y", "height"])
+      .attr("width", function() {
+        var widthFactor = d3.select(this).attr("widthFactor");
+        return barplot.width * widthFactor;
       })
+      .attr("x", function(d) {
+        var widthFactor = d3.select(this).attr("widthFactor");
+        return widthScale(d.value) * (1 - widthFactor);
+      });
 
     this.canvas.selectAll("g.x.axis")
       .call(this.getXAxis, this)
