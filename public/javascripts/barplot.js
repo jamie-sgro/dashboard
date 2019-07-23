@@ -135,6 +135,9 @@ class Barplot {
     - changes rect size to match min and max of the variable it's measuring
   */
   toggleLeadLag() {
+    barplot.width *= 0.10;
+    this.canvas.selectAll("g.x.axis")
+      .call(this.getXAxis, this)
     var widthScale = barplot.getWidthScale();
 
     if (document.getElementById("leadLag").checked) {
