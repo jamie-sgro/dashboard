@@ -256,7 +256,7 @@ function onMapClick(e) {
   }
 
   //center screen onClick
-  window.location.href = locHost + "home#dashboard";
+  window.location.replace(locHost + "home#dashboard");
 };
 
 
