@@ -366,6 +366,13 @@ class Barplot {
     };*/
   }
 
+/*
+getWidthScale() {
+  return d3.scaleLinear()
+    .domain([0, this.max])
+    .range([0, this.width - this.margin.left - this.margin.right]);
+};
+*/
 
 
 /* @updatePlot(svg, data)
@@ -387,7 +394,8 @@ class Barplot {
     canvas.selectAll("rect.leadLag")
       .data(dataArray)
         .each(function(d, i) {
-          d3.select(this).call(attrTween, 800, "x", widthScale(d.value));
+          var xPos = widthScale(d.value) * (1 - 0.05);
+          d3.select(this).call(attrTween, 800, "x", xPos);
           if (document.getElementById("leadLag").checked) {
             d3.select(this).call(attrTween, 800, "fill", colour(d.value));
           };
@@ -400,9 +408,10 @@ class Barplot {
     this.width = ($(window).width()*panelWidth);
     this.height = ($(window).height()-50) - this.margin.top - this.margin.bottom;
 
+    var widthScale = barplot.getWidthScale();
+
     // update .rect width based on if leadLag mode is toggled
     if (document.getElementById("leadLag").checked) {
-      var widthScale = barplot.getWidthScale();
       this.canvas.selectAll("rect.bar")
         .attr("width", function() {
           var rtn = d3.select(this).attr("max");
@@ -424,8 +433,7 @@ class Barplot {
         return barplot.width * 0.05;
       })
       .attr("x", function(d) {
-        var widthScale = barplot.getWidthScale();
-        return widthScale(d.value);
+        return widthScale(d.value) * (1 - 0.05);
       });
 
     this.canvas.selectAll("g.x.axis")
