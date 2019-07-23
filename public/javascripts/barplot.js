@@ -234,10 +234,12 @@ class Barplot {
       .enter()
         .append("rect")
           .attr("class", "leadLag")
+          .attr("widthFactor", 0.05)
           //invisible until first marker is selected
           .call(this.getAttr, ["x", "y", "height", "fillTransparent"])
           .attr("width", function() {
-            return barplot.width * 0.05;
+            var widthFactor = d3.select(this).attr("widthFactor");
+            return barplot.width * widthFactor;
           })
           .attr("stroke", "rgba(0,0,0,0)")
           .attr("pointer-events","none")
@@ -394,7 +396,8 @@ getWidthScale() {
     canvas.selectAll("rect.leadLag")
       .data(dataArray)
         .each(function(d, i) {
-          var xPos = widthScale(d.value) * (1 - 0.05);
+          var widthFactor = d3.select(this).attr("widthFactor");
+          var xPos = widthScale(d.value) * (1 - widthFactor);
           d3.select(this).call(attrTween, 800, "x", xPos);
           if (document.getElementById("leadLag").checked) {
             d3.select(this).call(attrTween, 800, "fill", colour(d.value));
@@ -430,10 +433,12 @@ getWidthScale() {
     this.canvas.selectAll("rect.leadLag")
       .call(this.getAttr, ["y", "height"])
       .attr("width", function() {
-        return barplot.width * 0.05;
+        var widthFactor = d3.select(this).attr("widthFactor");
+        return barplot.width * widthFactor;
       })
       .attr("x", function(d) {
-        return widthScale(d.value) * (1 - 0.05);
+        var widthFactor = d3.select(this).attr("widthFactor");
+        return widthScale(d.value) * (1 - widthFactor);
       });
 
     this.canvas.selectAll("g.x.axis")
