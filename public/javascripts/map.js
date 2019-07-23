@@ -91,6 +91,7 @@ function addMarker(map, name, lat, lng) {
   var mark = L.circleMarker([lat, lng], options).addTo(map);
 
   mark.on("click", ()=> {
+
     //this is where hooks into .d3 should be made
     updateGraph(mark.id);
 
@@ -253,6 +254,9 @@ function onMapClick(e) {
   for (i in mark) {
     mark[i].setStyle({radius: scl})
   }
+
+  //center screen onClick
+  window.location.href = locHost + "home#dashboard";
 };
 
 
