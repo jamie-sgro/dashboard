@@ -255,10 +255,8 @@ function onMapClick(e) {
     mark[i].setStyle({radius: scl})
   }
 
-  //center screen onClick (but not the first time)
-  if (document.getElementById("popupInfo").innerHTML != "Select a city marker to begin.") {
-    window.location.replace(locHost + "home#dashboard");
-  };
+  //center screen onClick
+  $('html, body').animate({scrollTop: $("#dashboard").offset().top}, 800);
 };
 
 
