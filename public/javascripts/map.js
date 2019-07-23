@@ -256,7 +256,7 @@ function onMapClick(e) {
   }
 
   //center screen onClick (but not the first time)
-  if (document.getElementById("popupInfo").innerHTML == "Select a city marker to begin.") {
+  if (document.getElementById("popupInfo").innerHTML != "Select a city marker to begin.") {
     window.location.replace(locHost + "home#dashboard");
   };
 };
