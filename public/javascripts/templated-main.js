@@ -27,7 +27,7 @@
 
 	// Menu.
 		$('#menu')
-			.append('<a href="#menu" class="close" alt="Menu"></a>')
+			.append('<a href="#menu" class="close">Menu</a>')
 			.appendTo($body)
 			.panel({
 				target: $body,
