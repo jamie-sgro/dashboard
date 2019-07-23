@@ -334,7 +334,7 @@ class Barplot {
 
     var colour = barplot.getColour();
 
-    g.selectAll("rect.leadLag")
+    g.selectAll("circle")
       .each(function(d,i) {
         //concurrent transitions that overlap the same attribute should have the
         //same duration so that the newest tween overwrites the old one
