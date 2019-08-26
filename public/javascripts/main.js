@@ -2,6 +2,7 @@
 *** DECLARE VARIABLES ***
 ************************/
 
+console.log("hello world")
 var scl;
 const markRad = 15;
 const markCol = "rgba(10,151,217, .8)";
