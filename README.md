@@ -150,7 +150,7 @@ Use --update-env to update environment variables
 This readout indicates that the website has implemented the update with zero down-time to the site itself.
 
 ## File Structure
-The bin\www file navigates to the app and subsequent \routes folder. All user related data (i.e. username & password) are passed to the user-server on port :8080. Upon authentication, users have access to http://127.0.0.1:3000/ui. All data used to generate cryptocurrency-realted graphs are fetched through \dbServer\server.js on port :8081.
+The bin\www file navigates to the app and subsequent \routes folder. \Public contains client-side files used to serve up the front-end of the webpage. Most custom scripting used to generate maps and data visualization can be found in \public\javascripts.
 
 ```css
 .
@@ -213,6 +213,7 @@ The bin\www file navigates to the app and subsequent \routes folder. All user re
 ```
 
 ## Authorship
-* **Jamie Sgro** - *Developer*
 * **Cameron McCordic** - *Project Manager*
 * **Bruce Frayne** - *Principal Investigator*
+* **Jamie Sgro** - *Lead Developer*
+* **Snehaa Suryanarayanan** - *Developer*
