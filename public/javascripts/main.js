@@ -2,7 +2,6 @@
 *** DECLARE VARIABLES ***
 ************************/
 
-console.log("hello world");
 
 var scl;
 const markRad = 15;
