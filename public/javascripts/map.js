@@ -38,30 +38,6 @@ function getMap() {
     div.innerHTML += "<h4>Legend</h4>";
     div.innerHTML += `<i style="background: ` + colourBottom + `"></i><span>Minimum Score</span><br>`;
     div.innerHTML += `<i style="background: ` + colourTop + `"></i><span>Maximum Score</span><br>`;
-    /*div.innerHTML += `<h5> Select Scoring Method:</h5>
-              <div class="col-4 col-12-small">
-    						<input type="radio" id="arithmetic" name="radio" onclick=updatePanel3()>
-    						<label for="arithmetic">Arithmetic Mean</label>
-    					</div>
-    					<div class="col-4 col-12-small">
-    						<input type="radio" id="median" name="radio" onclick=updatePanel3() checked>
-    						<label for="median">Median</label>
-    					</div>
-    					<div class="col-4 col-12-small">
-    						<input type="radio" id="geometric" name="radio" onclick=updatePanel3()>
-    						<label for="geometric">Geometric Mean</label>
-    					</div>`
-
-    myFunction = function () {
-      var popup = document.getElementById("myPopup");
-      popup.classList.toggle("show");
-    }
-
-    div.innerHTML = `<div class="popup" onclick="myFunction()"><a class="icon fa-4x fa-angle-double-left"></a>
-      <span class="popuptext" id="myPopup">Popup text...</span>
-    </div>`*/
-
-
     return div;
   };
 
@@ -111,22 +87,6 @@ function addMarker(map, name, lat, lng) {
 
   mark.content = `<h1>name</h1>`
 
-  /*mark.bindPopup(
-    `<h1>` + name + `</h1>
-    <table style="width:100%", id="leaflet">
-      <tr>
-        <th>Score</th>
-        <th>Ranking</th>
-        <th>Standing</th>
-      </tr>
-      <tr>
-        <td>` + score + `</td>
-        <td>` + rank + `</td>
-        <td>` + standing + `</td>
-      </tr>
-    </table>`
-  );*/
-
   mark.name = name;
   return(mark);
 };
@@ -143,7 +103,7 @@ function getMarkScore(mark, data, scoreName) {
   //get relative ranking
   var arr = [];
   for (i in data) {
-    arr.push(Number(data[i][scoreName]));
+    arr.push(getAverageScore(data[i], scoreName));
   };
   var sorted = arr.slice().sort(function(a,b) {
     return b-a;
@@ -152,7 +112,7 @@ function getMarkScore(mark, data, scoreName) {
     return sorted.indexOf(v) + 1;
   });
 
-  //get average score
+  //get average score between all cities
   var sum = 0;
   var avg = 0;
   if (arr.length) {
@@ -187,8 +147,11 @@ function getMarkScore(mark, data, scoreName) {
     averageRaw =  getAverageScore(city, scoreName);
     average = Math.round(averageRaw * 100) / 100
 
-    mark[i].table[jsonName] = generateTable(city.name, average,
-      rank[i] + " (of " + rank.length + ")", standing);
+    mark[i].table[jsonName] = generateTable(
+      city.name, 
+      average,
+      rank[i] + " (of " + rank.length + ")", 
+      standing);
 
     //record relative ranking for panel3 barchart selection
     mark[i].score[jsonName] = rank[i]
@@ -248,7 +211,6 @@ async function populateMarkers(map) {
 
 
 function onMapClick(e) {
-  console.log("You clicked the map at " + e.latlng);
   g.selectAll("circle")
     .each(function(d,i) {
       d3.select(this).call(attrTween, 500, "r", scl)
