@@ -190,16 +190,48 @@ function getScoreArray(data) {
   let scoreArray = []
   for (key in data) {
     if (key.substr(0,3) != "SDG") continue;
-    scoreArray.push(data[key]);
+    scoreArray.push(Number(data[key]));
   }
   return scoreArray;
 }
 
 
+function median(data){
+  if(data.length ===0) return 0;
 
-function getAverageScore(data) {
+  data.sort(function(a,b){
+    return a-b;
+  });
+
+  var half = Math.floor(data.length / 2);
+
+  if (data.length % 2)
+    return data[half];
+
+  return (data[half - 1] + data[half]) / 2.0;
+}
+
+
+function geometric(data){
+  root = data.length
+  agg = data.reduce((a, b) => a * b);
+  return Math.pow(agg, 1/root);
+}
+
+
+
+function getAverageScore(data, averageType) {
   scoreArray = getScoreArray(data);
-  let average = (array) => array.reduce((a, b) => Number(a) + Number(b)) / array.length;
+  let average;
+  if (averageType == "score$arithmetic")  {
+    average = (array) => array.reduce((a, b) => a + b) / array.length;
+  } else if (averageType == "score$median") {
+    average = median;
+  } else if (averageType == "score$geometric") {
+    average = geometric;
+  } else {
+    throw("Averaging method not supported");
+  }
   return average(scoreArray);
 }
 
@@ -216,7 +248,7 @@ function panel3ParseData(rawData) {
   //parse needed data from rawData
   rtn = [];
   for (i in rawData) {
-    let averageScore = getAverageScore(rawData[i]);
+    let averageScore = getAverageScore(rawData[i], "score$arithmetic");
     rtn.push({
       name: rawData[i].name,
       value: averageScore

@@ -165,8 +165,9 @@ function getMarkScore(mark, data, scoreName) {
   var standing;
 
   for (i in data) {
+    let city = data[i]
     //get relative standing
-    standing = Math.round(((data[i][scoreName] / avg) - 1) * 100)
+    standing = Math.round(((city[scoreName] / avg) - 1) * 100)
 
     if (standing > 0) {
       standing = "<font color='green'>&#x25B2;" + standing + "% above average</font>";
@@ -183,8 +184,10 @@ function getMarkScore(mark, data, scoreName) {
 
     //get score type without the "score$"
     jsonName = scoreName.substring(6);
+    averageRaw =  getAverageScore(city, scoreName);
+    average = Math.round(averageRaw * 100) / 100
 
-    mark[i].table[jsonName] = generateTable(data[i].name, data[i][scoreName],
+    mark[i].table[jsonName] = generateTable(city.name, average,
       rank[i] + " (of " + rank.length + ")", standing);
 
     //record relative ranking for panel3 barchart selection
