@@ -39,6 +39,8 @@ async function updatePanel3(id) {
   };
 
   mark = await mark;
+  var rawData = await getData();
+  getMarkScore(mark, rawData, "score$" + getCheckedRadio())
 
   var checkedRadio = getCheckedRadio();
 
@@ -53,13 +55,11 @@ async function updatePanel3(id) {
   d3.select("#panel3").select("svg")
     .attr("height", getPanel3Height())
 
-  //reset previous marker based on all radio buttons
-  for (var name in mark[barplot.id].score) {
-    d3.select("rect#id" + (mark[barplot.id].score[name] - 1))
-      .call(attrTween, 300, "fill", "#EFEFEF")
-      .on("mouseover", panel3MouseOver)
-      .on("mouseout", panel3MouseOut)
-  }
+  //unhighlight previous marker
+  d3.select("#panel3").selectAll("rect")
+    .call(attrTween, 300, "fill", "#EFEFEF")
+    .on("mouseover", panel3MouseOver)
+    .on("mouseout", panel3MouseOut)
 
   //highlight bar that matches the marker selected
   d3.select("rect#id" + (mark[id].score[checkedRadio] - 1))
@@ -251,7 +251,7 @@ function getAverageScore(data, averageType) {
   } else if (averageType == "score$geometric") {
     average = geometric;
   } else {
-    throw("Averaging method not supported");
+    throw("Averaging method not supported: " + averageType);
   }
   return average(scoreArray);
 }
