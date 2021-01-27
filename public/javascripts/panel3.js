@@ -185,6 +185,24 @@ function getAttr(path, attributes) {
   };
 };
 
+// Reduce json data for city and return only arary of sdg scores
+function getScoreArray(data) {
+  let scoreArray = []
+  for (key in data) {
+    if (key.substr(0,3) != "SDG") continue;
+    scoreArray.push(data[key]);
+  }
+  return scoreArray;
+}
+
+
+
+function getAverageScore(data) {
+  scoreArray = getScoreArray(data);
+  let average = (array) => array.reduce((a, b) => Number(a) + Number(b)) / array.length;
+  return average(scoreArray);
+}
+
 
 
 /* @panel3ParseData(array)
@@ -198,7 +216,11 @@ function panel3ParseData(rawData) {
   //parse needed data from rawData
   rtn = [];
   for (i in rawData) {
-    rtn.push({name: rawData[i].name, value: rawData[i][keyPhrase]});
+    let averageScore = getAverageScore(rawData[i]);
+    rtn.push({
+      name: rawData[i].name,
+      value: averageScore
+    });
   };
 
   //sort data in descending order
