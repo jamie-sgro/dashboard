@@ -209,8 +209,15 @@ function getScoreArray(data) {
 }
 
 
+function arithmetic(data) {
+  if (data.length < 1) return 0;
+  return data.reduce((a, b) => a + b) / data.length;
+}
+
+
+
 function median(data){
-  if(data.length ===0) return 0;
+  if(data.length < 1) return 0;
 
   data.sort(function(a,b){
     return a-b;
@@ -226,6 +233,7 @@ function median(data){
 
 
 function geometric(data){
+  if (data.length < 1) return 0;
   root = data.length
   agg = data.reduce((a, b) => a * b);
   return Math.pow(agg, 1/root);
@@ -237,7 +245,7 @@ function getAverageScore(data, averageType) {
   scoreArray = getScoreArray(data);
   let average;
   if (averageType == "score$arithmetic")  {
-    average = (array) => array.reduce((a, b) => a + b) / array.length;
+    average = arithmetic;
   } else if (averageType == "score$median") {
     average = median;
   } else if (averageType == "score$geometric") {
