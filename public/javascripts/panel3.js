@@ -248,7 +248,7 @@ function panel3ParseData(rawData) {
   //parse needed data from rawData
   rtn = [];
   for (i in rawData) {
-    let averageScore = getAverageScore(rawData[i], "score$arithmetic");
+    let averageScore = getAverageScore(rawData[i], keyPhrase);
     rtn.push({
       name: rawData[i].name,
       value: averageScore
