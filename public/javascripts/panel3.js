@@ -93,6 +93,19 @@ function getCheckedRadio() {
 
 
 
+function getCheckboxes() {
+  let checkArr = document.getElementsByName("checkbox-sdg");
+  let checkList = [];
+  for (var i = 0; i < checkArr.length; i++) {
+    if (!checkArr[i].checked) continue;
+    let sdgCleaned = checkArr[i].id.replace("checkbox-", "");
+    checkList.push(sdgCleaned);
+  }
+  return checkList;
+}
+
+
+
 function panel3Resize() {
   pos = {};
   pos.top = ($(window).height()*(1-panelHeight));
@@ -188,9 +201,9 @@ function getAttr(path, attributes) {
 // Reduce json data for city and return only arary of sdg scores
 function getScoreArray(data) {
   let scoreArray = []
-  for (key in data) {
-    if (key.substr(0,3) != "SDG") continue;
-    scoreArray.push(Number(data[key]));
+  checkBoxes = getCheckboxes();
+  for (checkBox in checkBoxes) {
+    scoreArray.push(Number(data[checkBoxes[checkBox]]));
   }
   return scoreArray;
 }
