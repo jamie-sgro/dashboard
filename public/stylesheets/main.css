@@ -2899,3 +2899,24 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+#container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+#aspect-ratio {
+  margin-top: 75%;
+  /* 4:3 aspect ratio */
+}
+
+#element {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 1080px;
+  max-height: 810px;
+}

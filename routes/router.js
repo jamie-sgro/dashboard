@@ -32,6 +32,11 @@ router.get('/sitemap*', (req, res)=> {
   res.render('sitemap');
 });
 
+//GET google-data-studio page.
+router.get('/gds*', (req, res)=> {
+  res.render('google-data-studio');
+});
+
 //GET User Interface page.
 router.get('/ui/', (req, res) => {
   console.log("get: '/ui/'")
@@ -53,7 +58,6 @@ router.post('/getData', (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
   };
 
-  // TEMP: Remove before going public
   res.header("Access-Control-Allow-Origin", "*");
 
   var fs = require("fs")
