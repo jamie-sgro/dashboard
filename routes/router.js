@@ -33,8 +33,8 @@ router.get('/sitemap*', (req, res)=> {
 });
 
 //GET google-data-studio page.
-router.get('/gds*', (req, res)=> {
-  res.render('google-data-studio');
+router.get('/time-series*', (req, res)=> {
+  res.render('time-series');
 });
 
 //GET User Interface page.
