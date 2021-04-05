@@ -2899,3 +2899,33 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+/* Google Data Studio iFrame */
+:root {
+  --iframe-max-width: 1080px;
+  --iframe-max-height: 810px;
+}
+
+#container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  max-height: var(--iframe-max-height);
+}
+
+#aspect-ratio {
+  margin-top: 75%;
+  /* 4:3 aspect ratio */
+}
+
+#element {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: var(--iframe-max-width);
+  max-height: var(--iframe-max-height);
+  margin: 0 auto;
+}

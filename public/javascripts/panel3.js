@@ -39,6 +39,8 @@ async function updatePanel3(id) {
   };
 
   mark = await mark;
+  var rawData = await getData();
+  getMarkScore(mark, rawData, "score$" + getCheckedRadio())
 
   var checkedRadio = getCheckedRadio();
 
@@ -53,13 +55,11 @@ async function updatePanel3(id) {
   d3.select("#panel3").select("svg")
     .attr("height", getPanel3Height())
 
-  //reset previous marker based on all radio buttons
-  for (var name in mark[barplot.id].score) {
-    d3.select("rect#id" + (mark[barplot.id].score[name] - 1))
-      .call(attrTween, 300, "fill", "#EFEFEF")
-      .on("mouseover", panel3MouseOver)
-      .on("mouseout", panel3MouseOut)
-  }
+  //unhighlight previous marker
+  d3.select("#panel3").selectAll("rect")
+    .call(attrTween, 300, "fill", "#EFEFEF")
+    .on("mouseover", panel3MouseOver)
+    .on("mouseout", panel3MouseOut)
 
   //highlight bar that matches the marker selected
   d3.select("rect#id" + (mark[id].score[checkedRadio] - 1))
@@ -90,6 +90,19 @@ function getCheckedRadio() {
   };
   throw "no radio button pressed";
 };
+
+
+
+function getCheckboxes() {
+  let checkArr = document.getElementsByName("checkbox-sdg");
+  let checkList = [];
+  for (var i = 0; i < checkArr.length; i++) {
+    if (!checkArr[i].checked) continue;
+    let sdgCleaned = checkArr[i].id.replace("checkbox-", "");
+    checkList.push(sdgCleaned);
+  }
+  return checkList;
+}
 
 
 
@@ -185,6 +198,64 @@ function getAttr(path, attributes) {
   };
 };
 
+// Reduce json data for city and return only arary of sdg scores
+function getScoreArray(data) {
+  let scoreArray = []
+  checkBoxes = getCheckboxes();
+  for (checkBox in checkBoxes) {
+    scoreArray.push(Number(data[checkBoxes[checkBox]]));
+  }
+  return scoreArray;
+}
+
+
+function arithmetic(data) {
+  if (data.length < 1) return 0;
+  return data.reduce((a, b) => a + b) / data.length;
+}
+
+
+
+function median(data){
+  if(data.length < 1) return 0;
+
+  data.sort(function(a,b){
+    return a-b;
+  });
+
+  var half = Math.floor(data.length / 2);
+
+  if (data.length % 2)
+    return data[half];
+
+  return (data[half - 1] + data[half]) / 2.0;
+}
+
+
+function geometric(data){
+  if (data.length < 1) return 0;
+  root = data.length
+  agg = data.reduce((a, b) => a * b);
+  return Math.pow(agg, 1/root);
+}
+
+
+
+function getAverageScore(data, averageType) {
+  scoreArray = getScoreArray(data);
+  let average;
+  if (averageType == "score$arithmetic")  {
+    average = arithmetic;
+  } else if (averageType == "score$median") {
+    average = median;
+  } else if (averageType == "score$geometric") {
+    average = geometric;
+  } else {
+    throw("Averaging method not supported: " + averageType);
+  }
+  return average(scoreArray);
+}
+
 
 
 /* @panel3ParseData(array)
@@ -198,7 +269,11 @@ function panel3ParseData(rawData) {
   //parse needed data from rawData
   rtn = [];
   for (i in rawData) {
-    rtn.push({name: rawData[i].name, value: rawData[i][keyPhrase]});
+    let averageScore = getAverageScore(rawData[i], keyPhrase);
+    rtn.push({
+      name: rawData[i].name,
+      value: averageScore
+    });
   };
 
   //sort data in descending order
