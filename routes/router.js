@@ -61,7 +61,7 @@ router.post('/getData', (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
 
   var fs = require("fs")
-  var rawData = fs.readFileSync("./public/data/sdsn_cleaned.csv", "utf8");
+  var rawData = fs.readFileSync("./public/data/sdg_cities_index.csv", "utf8");
 
   var data = papa.parse(rawData, {
     header: true

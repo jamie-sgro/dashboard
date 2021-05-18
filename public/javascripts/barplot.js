@@ -191,10 +191,10 @@ class Barplot {
   };
 
 
-    /* @plot(jsonArray)
-      - ran once on screen load, instantiates every d3 elem in second panel
-    */
-    plot(dataArray, min, max) {
+  /* @plot(jsonArray)
+    - ran once on screen load, instantiates every d3 elem in second panel
+  */
+  plot(dataArray, min, max) {
     var widthScale = barplot.getWidthScale();
 
     this.canvas.selectAll("rect.bar")
@@ -203,7 +203,9 @@ class Barplot {
         .append("rect")
           .attr("class", "bar")
           .attr("name", function(d) {
-            return d.name;
+            d.name = d.name.split("|")[0]
+            d.name = d.name
+            return d.name
           })
           .attr("min", function(d, i) {
             return min[i];
@@ -303,15 +305,16 @@ class Barplot {
 
     //try to append now image
     barplot.tooltip
-      .append("img")
-        .attr("class", "picture")
-        .attr("src", function(d) {
-          return "public/images/sdg-icons/" + data.name + ".png";
-        })
-        .on("error", function(d) {
-          barplot.tooltip
-            .html(data.name)
-        })
+      .html(data.name.split("|")[1])
+      // .append("img")
+      //   .attr("class", "picture")
+      //   .attr("src", function(d) {
+      //     return "public/images/sdg-icons/" + data.name + ".png";
+      //   })
+      //   .on("error", function(d) {
+      //     barplot.tooltip
+      //       .html(data.name)
+      //   })
 
     barplot.tooltip
       .transition()
