@@ -1,0 +1,985 @@
+full,msa,province,year,indicator,value
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2001,unemployment,6.8
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2002,unemployment,7.5
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2003,unemployment,7.5
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2004,unemployment,6.5
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2005,unemployment,5.6
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2006,unemployment,4.6
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2007,unemployment,4.2
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2008,unemployment,4.9
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2009,unemployment,8
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2010,unemployment,7.9
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2011,unemployment,8.8
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2012,unemployment,8.1
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2013,unemployment,7.7
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2014,unemployment,7.4
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2015,unemployment,6.4
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2016,unemployment,6.6
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2017,unemployment,5.5
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2018,unemployment,4.5
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2019,unemployment,5.2
+"Abbotsford-Mission, British Columbia",Abbotsford-Mission, British Columbia,2020,unemployment,7.6
+"Barrie, Ontario",Barrie, Ontario,2001,unemployment,5.8
+"Barrie, Ontario",Barrie, Ontario,2002,unemployment,5.7
+"Barrie, Ontario",Barrie, Ontario,2003,unemployment,5.9
+"Barrie, Ontario",Barrie, Ontario,2004,unemployment,4.9
+"Barrie, Ontario",Barrie, Ontario,2005,unemployment,4.8
+"Barrie, Ontario",Barrie, Ontario,2006,unemployment,6.2
+"Barrie, Ontario",Barrie, Ontario,2007,unemployment,5
+"Barrie, Ontario",Barrie, Ontario,2008,unemployment,6
+"Barrie, Ontario",Barrie, Ontario,2009,unemployment,9.3
+"Barrie, Ontario",Barrie, Ontario,2010,unemployment,9.4
+"Barrie, Ontario",Barrie, Ontario,2011,unemployment,9.7
+"Barrie, Ontario",Barrie, Ontario,2012,unemployment,8.1
+"Barrie, Ontario",Barrie, Ontario,2013,unemployment,7.1
+"Barrie, Ontario",Barrie, Ontario,2014,unemployment,6
+"Barrie, Ontario",Barrie, Ontario,2015,unemployment,7
+"Barrie, Ontario",Barrie, Ontario,2016,unemployment,7.8
+"Barrie, Ontario",Barrie, Ontario,2017,unemployment,5.4
+"Barrie, Ontario",Barrie, Ontario,2018,unemployment,6.5
+"Barrie, Ontario",Barrie, Ontario,2019,unemployment,5.9
+"Barrie, Ontario",Barrie, Ontario,2020,unemployment,9.5
+"Brantford, Ontario",Brantford, Ontario,2001,unemployment,6.8
+"Brantford, Ontario",Brantford, Ontario,2002,unemployment,7.3
+"Brantford, Ontario",Brantford, Ontario,2003,unemployment,6.1
+"Brantford, Ontario",Brantford, Ontario,2004,unemployment,6.7
+"Brantford, Ontario",Brantford, Ontario,2005,unemployment,6.6
+"Brantford, Ontario",Brantford, Ontario,2006,unemployment,6.1
+"Brantford, Ontario",Brantford, Ontario,2007,unemployment,5.9
+"Brantford, Ontario",Brantford, Ontario,2008,unemployment,6
+"Brantford, Ontario",Brantford, Ontario,2009,unemployment,10
+"Brantford, Ontario",Brantford, Ontario,2010,unemployment,8.8
+"Brantford, Ontario",Brantford, Ontario,2011,unemployment,8.6
+"Brantford, Ontario",Brantford, Ontario,2012,unemployment,8.4
+"Brantford, Ontario",Brantford, Ontario,2013,unemployment,6.4
+"Brantford, Ontario",Brantford, Ontario,2014,unemployment,6.8
+"Brantford, Ontario",Brantford, Ontario,2015,unemployment,5.7
+"Brantford, Ontario",Brantford, Ontario,2016,unemployment,6
+"Brantford, Ontario",Brantford, Ontario,2017,unemployment,4.9
+"Brantford, Ontario",Brantford, Ontario,2018,unemployment,6.2
+"Brantford, Ontario",Brantford, Ontario,2019,unemployment,4.3
+"Brantford, Ontario",Brantford, Ontario,2020,unemployment,8.2
+"Calgary, Alberta",Calgary, Alberta,2001,unemployment,4.6
+"Calgary, Alberta",Calgary, Alberta,2002,unemployment,5.7
+"Calgary, Alberta",Calgary, Alberta,2003,unemployment,5.4
+"Calgary, Alberta",Calgary, Alberta,2004,unemployment,5
+"Calgary, Alberta",Calgary, Alberta,2005,unemployment,3.9
+"Calgary, Alberta",Calgary, Alberta,2006,unemployment,3.2
+"Calgary, Alberta",Calgary, Alberta,2007,unemployment,3.2
+"Calgary, Alberta",Calgary, Alberta,2008,unemployment,3.4
+"Calgary, Alberta",Calgary, Alberta,2009,unemployment,6.7
+"Calgary, Alberta",Calgary, Alberta,2010,unemployment,6.8
+"Calgary, Alberta",Calgary, Alberta,2011,unemployment,5.9
+"Calgary, Alberta",Calgary, Alberta,2012,unemployment,4.7
+"Calgary, Alberta",Calgary, Alberta,2013,unemployment,4.8
+"Calgary, Alberta",Calgary, Alberta,2014,unemployment,5
+"Calgary, Alberta",Calgary, Alberta,2015,unemployment,6.4
+"Calgary, Alberta",Calgary, Alberta,2016,unemployment,9.4
+"Calgary, Alberta",Calgary, Alberta,2017,unemployment,8.5
+"Calgary, Alberta",Calgary, Alberta,2018,unemployment,7.7
+"Calgary, Alberta",Calgary, Alberta,2019,unemployment,7.1
+"Calgary, Alberta",Calgary, Alberta,2020,unemployment,11.8
+"Edmonton, Alberta",Edmonton, Alberta,2001,unemployment,5
+"Edmonton, Alberta",Edmonton, Alberta,2002,unemployment,5.2
+"Edmonton, Alberta",Edmonton, Alberta,2003,unemployment,5
+"Edmonton, Alberta",Edmonton, Alberta,2004,unemployment,4.8
+"Edmonton, Alberta",Edmonton, Alberta,2005,unemployment,4.5
+"Edmonton, Alberta",Edmonton, Alberta,2006,unemployment,3.9
+"Edmonton, Alberta",Edmonton, Alberta,2007,unemployment,3.8
+"Edmonton, Alberta",Edmonton, Alberta,2008,unemployment,3.7
+"Edmonton, Alberta",Edmonton, Alberta,2009,unemployment,6.5
+"Edmonton, Alberta",Edmonton, Alberta,2010,unemployment,7
+"Edmonton, Alberta",Edmonton, Alberta,2011,unemployment,5.4
+"Edmonton, Alberta",Edmonton, Alberta,2012,unemployment,4.7
+"Edmonton, Alberta",Edmonton, Alberta,2013,unemployment,4.8
+"Edmonton, Alberta",Edmonton, Alberta,2014,unemployment,5.1
+"Edmonton, Alberta",Edmonton, Alberta,2015,unemployment,6
+"Edmonton, Alberta",Edmonton, Alberta,2016,unemployment,7.4
+"Edmonton, Alberta",Edmonton, Alberta,2017,unemployment,8.1
+"Edmonton, Alberta",Edmonton, Alberta,2018,unemployment,6.4
+"Edmonton, Alberta",Edmonton, Alberta,2019,unemployment,7.3
+"Edmonton, Alberta",Edmonton, Alberta,2020,unemployment,11.8
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2001,unemployment,8.8
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2002,unemployment,9.2
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2003,unemployment,8.6
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2004,unemployment,8.3
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2005,unemployment,7.8
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2006,unemployment,7.3
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2007,unemployment,5.7
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2008,unemployment,5.7
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2009,unemployment,9.3
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2010,unemployment,9.3
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2011,unemployment,7
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2012,unemployment,7.2
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2013,unemployment,7
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2014,unemployment,6.4
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2015,unemployment,7.3
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2016,unemployment,8.1
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2017,unemployment,6.7
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2018,unemployment,6.4
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2019,unemployment,5.4
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2020,unemployment,7.9
+"Guelph, Ontario",Guelph, Ontario,2001,unemployment,4.9
+"Guelph, Ontario",Guelph, Ontario,2002,unemployment,4.5
+"Guelph, Ontario",Guelph, Ontario,2003,unemployment,4.6
+"Guelph, Ontario",Guelph, Ontario,2004,unemployment,4.7
+"Guelph, Ontario",Guelph, Ontario,2005,unemployment,4.6
+"Guelph, Ontario",Guelph, Ontario,2006,unemployment,5.5
+"Guelph, Ontario",Guelph, Ontario,2007,unemployment,5.7
+"Guelph, Ontario",Guelph, Ontario,2008,unemployment,5.6
+"Guelph, Ontario",Guelph, Ontario,2009,unemployment,8.2
+"Guelph, Ontario",Guelph, Ontario,2010,unemployment,8
+"Guelph, Ontario",Guelph, Ontario,2011,unemployment,5.6
+"Guelph, Ontario",Guelph, Ontario,2012,unemployment,5.3
+"Guelph, Ontario",Guelph, Ontario,2013,unemployment,6.6
+"Guelph, Ontario",Guelph, Ontario,2014,unemployment,6.2
+"Guelph, Ontario",Guelph, Ontario,2015,unemployment,4
+"Guelph, Ontario",Guelph, Ontario,2016,unemployment,4.8
+"Guelph, Ontario",Guelph, Ontario,2017,unemployment,5.4
+"Guelph, Ontario",Guelph, Ontario,2018,unemployment,3.8
+"Guelph, Ontario",Guelph, Ontario,2019,unemployment,4.6
+"Guelph, Ontario",Guelph, Ontario,2020,unemployment,9.1
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2001,unemployment,7.1
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2002,unemployment,7.7
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2003,unemployment,6.6
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2004,unemployment,6
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2005,unemployment,5.7
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2006,unemployment,5
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2007,unemployment,5.3
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2008,unemployment,5.2
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2009,unemployment,6.5
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2010,unemployment,6.5
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2011,unemployment,6.1
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2012,unemployment,6.2
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2013,unemployment,6.5
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2014,unemployment,6.1
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2015,unemployment,6.3
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2016,unemployment,6.1
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2017,unemployment,6.8
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2018,unemployment,5.9
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2019,unemployment,5.8
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2020,unemployment,8.6
+"Hamilton, Ontario",Hamilton, Ontario,2001,unemployment,6.1
+"Hamilton, Ontario",Hamilton, Ontario,2002,unemployment,6.7
+"Hamilton, Ontario",Hamilton, Ontario,2003,unemployment,6.2
+"Hamilton, Ontario",Hamilton, Ontario,2004,unemployment,6.3
+"Hamilton, Ontario",Hamilton, Ontario,2005,unemployment,5.6
+"Hamilton, Ontario",Hamilton, Ontario,2006,unemployment,6
+"Hamilton, Ontario",Hamilton, Ontario,2007,unemployment,6
+"Hamilton, Ontario",Hamilton, Ontario,2008,unemployment,6.1
+"Hamilton, Ontario",Hamilton, Ontario,2009,unemployment,8.5
+"Hamilton, Ontario",Hamilton, Ontario,2010,unemployment,7.6
+"Hamilton, Ontario",Hamilton, Ontario,2011,unemployment,6.6
+"Hamilton, Ontario",Hamilton, Ontario,2012,unemployment,6.6
+"Hamilton, Ontario",Hamilton, Ontario,2013,unemployment,6.4
+"Hamilton, Ontario",Hamilton, Ontario,2014,unemployment,5.8
+"Hamilton, Ontario",Hamilton, Ontario,2015,unemployment,5.5
+"Hamilton, Ontario",Hamilton, Ontario,2016,unemployment,6.2
+"Hamilton, Ontario",Hamilton, Ontario,2017,unemployment,5
+"Hamilton, Ontario",Hamilton, Ontario,2018,unemployment,4.9
+"Hamilton, Ontario",Hamilton, Ontario,2019,unemployment,4.3
+"Hamilton, Ontario",Hamilton, Ontario,2020,unemployment,8.8
+"Kelowna, British Columbia",Kelowna, British Columbia,2001,unemployment,6.5
+"Kelowna, British Columbia",Kelowna, British Columbia,2002,unemployment,9.7
+"Kelowna, British Columbia",Kelowna, British Columbia,2003,unemployment,8.6
+"Kelowna, British Columbia",Kelowna, British Columbia,2004,unemployment,4.9
+"Kelowna, British Columbia",Kelowna, British Columbia,2005,unemployment,5.5
+"Kelowna, British Columbia",Kelowna, British Columbia,2006,unemployment,6
+"Kelowna, British Columbia",Kelowna, British Columbia,2007,unemployment,4.5
+"Kelowna, British Columbia",Kelowna, British Columbia,2008,unemployment,5
+"Kelowna, British Columbia",Kelowna, British Columbia,2009,unemployment,8.6
+"Kelowna, British Columbia",Kelowna, British Columbia,2010,unemployment,8
+"Kelowna, British Columbia",Kelowna, British Columbia,2011,unemployment,7.7
+"Kelowna, British Columbia",Kelowna, British Columbia,2012,unemployment,6.5
+"Kelowna, British Columbia",Kelowna, British Columbia,2013,unemployment,6.6
+"Kelowna, British Columbia",Kelowna, British Columbia,2014,unemployment,4.6
+"Kelowna, British Columbia",Kelowna, British Columbia,2015,unemployment,5.6
+"Kelowna, British Columbia",Kelowna, British Columbia,2016,unemployment,8
+"Kelowna, British Columbia",Kelowna, British Columbia,2017,unemployment,5.4
+"Kelowna, British Columbia",Kelowna, British Columbia,2018,unemployment,4.8
+"Kelowna, British Columbia",Kelowna, British Columbia,2019,unemployment,4.1
+"Kelowna, British Columbia",Kelowna, British Columbia,2020,unemployment,7.2
+"Kingston, Ontario",Kingston, Ontario,2001,unemployment,6.4
+"Kingston, Ontario",Kingston, Ontario,2002,unemployment,6.8
+"Kingston, Ontario",Kingston, Ontario,2003,unemployment,6.3
+"Kingston, Ontario",Kingston, Ontario,2004,unemployment,6.4
+"Kingston, Ontario",Kingston, Ontario,2005,unemployment,6.2
+"Kingston, Ontario",Kingston, Ontario,2006,unemployment,6.2
+"Kingston, Ontario",Kingston, Ontario,2007,unemployment,5.3
+"Kingston, Ontario",Kingston, Ontario,2008,unemployment,5.7
+"Kingston, Ontario",Kingston, Ontario,2009,unemployment,6.2
+"Kingston, Ontario",Kingston, Ontario,2010,unemployment,6.2
+"Kingston, Ontario",Kingston, Ontario,2011,unemployment,6.7
+"Kingston, Ontario",Kingston, Ontario,2012,unemployment,6.7
+"Kingston, Ontario",Kingston, Ontario,2013,unemployment,6.3
+"Kingston, Ontario",Kingston, Ontario,2014,unemployment,6.8
+"Kingston, Ontario",Kingston, Ontario,2015,unemployment,6.6
+"Kingston, Ontario",Kingston, Ontario,2016,unemployment,5.8
+"Kingston, Ontario",Kingston, Ontario,2017,unemployment,5.5
+"Kingston, Ontario",Kingston, Ontario,2018,unemployment,5.5
+"Kingston, Ontario",Kingston, Ontario,2019,unemployment,5.3
+"Kingston, Ontario",Kingston, Ontario,2020,unemployment,8.5
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2001,unemployment,6.2
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2002,unemployment,5.7
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2003,unemployment,5.9
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2004,unemployment,5.1
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2005,unemployment,5.7
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2006,unemployment,5.2
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2007,unemployment,5.6
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2008,unemployment,5.9
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2009,unemployment,9.7
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2010,unemployment,8.1
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2011,unemployment,6.7
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2012,unemployment,6.6
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2013,unemployment,6.9
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2014,unemployment,6.4
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2015,unemployment,5.9
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2016,unemployment,5.5
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2017,unemployment,5.1
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2018,unemployment,5.1
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2019,unemployment,5.3
+"Kitchener-Cambridge-Waterloo, Ontario",Kitchener-Cambridge-Waterloo, Ontario,2020,unemployment,9.8
+"London, Ontario",London, Ontario,2001,unemployment,6.4
+"London, Ontario",London, Ontario,2002,unemployment,7.1
+"London, Ontario",London, Ontario,2003,unemployment,6.8
+"London, Ontario",London, Ontario,2004,unemployment,5.8
+"London, Ontario",London, Ontario,2005,unemployment,6.6
+"London, Ontario",London, Ontario,2006,unemployment,6.2
+"London, Ontario",London, Ontario,2007,unemployment,6
+"London, Ontario",London, Ontario,2008,unemployment,7.2
+"London, Ontario",London, Ontario,2009,unemployment,10
+"London, Ontario",London, Ontario,2010,unemployment,8.6
+"London, Ontario",London, Ontario,2011,unemployment,8.9
+"London, Ontario",London, Ontario,2012,unemployment,8.7
+"London, Ontario",London, Ontario,2013,unemployment,8.6
+"London, Ontario",London, Ontario,2014,unemployment,7.5
+"London, Ontario",London, Ontario,2015,unemployment,6.5
+"London, Ontario",London, Ontario,2016,unemployment,7
+"London, Ontario",London, Ontario,2017,unemployment,5.9
+"London, Ontario",London, Ontario,2018,unemployment,5.6
+"London, Ontario",London, Ontario,2019,unemployment,5.5
+"London, Ontario",London, Ontario,2020,unemployment,8.7
+"Moncton, New Brunswick",Moncton, New Brunswick,2001,unemployment,7.6
+"Moncton, New Brunswick",Moncton, New Brunswick,2002,unemployment,6.6
+"Moncton, New Brunswick",Moncton, New Brunswick,2003,unemployment,6.3
+"Moncton, New Brunswick",Moncton, New Brunswick,2004,unemployment,6.1
+"Moncton, New Brunswick",Moncton, New Brunswick,2005,unemployment,6.4
+"Moncton, New Brunswick",Moncton, New Brunswick,2006,unemployment,6.1
+"Moncton, New Brunswick",Moncton, New Brunswick,2007,unemployment,4.8
+"Moncton, New Brunswick",Moncton, New Brunswick,2008,unemployment,5.3
+"Moncton, New Brunswick",Moncton, New Brunswick,2009,unemployment,6.3
+"Moncton, New Brunswick",Moncton, New Brunswick,2010,unemployment,6.9
+"Moncton, New Brunswick",Moncton, New Brunswick,2011,unemployment,7.2
+"Moncton, New Brunswick",Moncton, New Brunswick,2012,unemployment,6.8
+"Moncton, New Brunswick",Moncton, New Brunswick,2013,unemployment,7.2
+"Moncton, New Brunswick",Moncton, New Brunswick,2014,unemployment,6.7
+"Moncton, New Brunswick",Moncton, New Brunswick,2015,unemployment,6.9
+"Moncton, New Brunswick",Moncton, New Brunswick,2016,unemployment,7.3
+"Moncton, New Brunswick",Moncton, New Brunswick,2017,unemployment,6.1
+"Moncton, New Brunswick",Moncton, New Brunswick,2018,unemployment,5.9
+"Moncton, New Brunswick",Moncton, New Brunswick,2019,unemployment,5.7
+"Moncton, New Brunswick",Moncton, New Brunswick,2020,unemployment,7.9
+"Montréal, Quebec",Montréal, Quebec,2001,unemployment,8.3
+"Montréal, Quebec",Montréal, Quebec,2002,unemployment,8.6
+"Montréal, Quebec",Montréal, Quebec,2003,unemployment,9.5
+"Montréal, Quebec",Montréal, Quebec,2004,unemployment,8.6
+"Montréal, Quebec",Montréal, Quebec,2005,unemployment,8.6
+"Montréal, Quebec",Montréal, Quebec,2006,unemployment,8.4
+"Montréal, Quebec",Montréal, Quebec,2007,unemployment,7
+"Montréal, Quebec",Montréal, Quebec,2008,unemployment,7.4
+"Montréal, Quebec",Montréal, Quebec,2009,unemployment,9.3
+"Montréal, Quebec",Montréal, Quebec,2010,unemployment,8.7
+"Montréal, Quebec",Montréal, Quebec,2011,unemployment,8.4
+"Montréal, Quebec",Montréal, Quebec,2012,unemployment,8.4
+"Montréal, Quebec",Montréal, Quebec,2013,unemployment,7.9
+"Montréal, Quebec",Montréal, Quebec,2014,unemployment,8.2
+"Montréal, Quebec",Montréal, Quebec,2015,unemployment,8.4
+"Montréal, Quebec",Montréal, Quebec,2016,unemployment,7.7
+"Montréal, Quebec",Montréal, Quebec,2017,unemployment,6.6
+"Montréal, Quebec",Montréal, Quebec,2018,unemployment,6.1
+"Montréal, Quebec",Montréal, Quebec,2019,unemployment,5.7
+"Montréal, Quebec",Montréal, Quebec,2020,unemployment,10.1
+"Oshawa, Ontario",Oshawa, Ontario,2001,unemployment,5.6
+"Oshawa, Ontario",Oshawa, Ontario,2002,unemployment,6.8
+"Oshawa, Ontario",Oshawa, Ontario,2003,unemployment,5.1
+"Oshawa, Ontario",Oshawa, Ontario,2004,unemployment,5.4
+"Oshawa, Ontario",Oshawa, Ontario,2005,unemployment,6.5
+"Oshawa, Ontario",Oshawa, Ontario,2006,unemployment,6.6
+"Oshawa, Ontario",Oshawa, Ontario,2007,unemployment,6.2
+"Oshawa, Ontario",Oshawa, Ontario,2008,unemployment,7.1
+"Oshawa, Ontario",Oshawa, Ontario,2009,unemployment,9.1
+"Oshawa, Ontario",Oshawa, Ontario,2010,unemployment,9.9
+"Oshawa, Ontario",Oshawa, Ontario,2011,unemployment,8.2
+"Oshawa, Ontario",Oshawa, Ontario,2012,unemployment,8.7
+"Oshawa, Ontario",Oshawa, Ontario,2013,unemployment,7.5
+"Oshawa, Ontario",Oshawa, Ontario,2014,unemployment,7.1
+"Oshawa, Ontario",Oshawa, Ontario,2015,unemployment,7.5
+"Oshawa, Ontario",Oshawa, Ontario,2016,unemployment,5.9
+"Oshawa, Ontario",Oshawa, Ontario,2017,unemployment,5.5
+"Oshawa, Ontario",Oshawa, Ontario,2018,unemployment,5.1
+"Oshawa, Ontario",Oshawa, Ontario,2019,unemployment,5.4
+"Oshawa, Ontario",Oshawa, Ontario,2020,unemployment,9.2
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2001,unemployment,6.3
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2002,unemployment,7.4
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2003,unemployment,6.8
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2004,unemployment,6.7
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2005,unemployment,6.6
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2006,unemployment,5.3
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2007,unemployment,5.2
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2008,unemployment,5
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2009,unemployment,5.8
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2010,unemployment,6.6
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2011,unemployment,6.2
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2012,unemployment,6.2
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2013,unemployment,6.4
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2014,unemployment,6.7
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2015,unemployment,6.5
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2016,unemployment,6.5
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2017,unemployment,5.5
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2018,unemployment,4.6
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2019,unemployment,4.7
+"Ottawa-Gatineau, Ontario/Quebec",Ottawa-Gatineau, Ontario/Quebec,2020,unemployment,7.5
+"Peterborough, Ontario",Peterborough, Ontario,2001,unemployment,8.5
+"Peterborough, Ontario",Peterborough, Ontario,2002,unemployment,6.5
+"Peterborough, Ontario",Peterborough, Ontario,2003,unemployment,4.3
+"Peterborough, Ontario",Peterborough, Ontario,2004,unemployment,5.7
+"Peterborough, Ontario",Peterborough, Ontario,2005,unemployment,7
+"Peterborough, Ontario",Peterborough, Ontario,2006,unemployment,6.1
+"Peterborough, Ontario",Peterborough, Ontario,2007,unemployment,5.6
+"Peterborough, Ontario",Peterborough, Ontario,2008,unemployment,6.2
+"Peterborough, Ontario",Peterborough, Ontario,2009,unemployment,7.7
+"Peterborough, Ontario",Peterborough, Ontario,2010,unemployment,9.4
+"Peterborough, Ontario",Peterborough, Ontario,2011,unemployment,9.6
+"Peterborough, Ontario",Peterborough, Ontario,2012,unemployment,8.5
+"Peterborough, Ontario",Peterborough, Ontario,2013,unemployment,9.6
+"Peterborough, Ontario",Peterborough, Ontario,2014,unemployment,8.2
+"Peterborough, Ontario",Peterborough, Ontario,2015,unemployment,7.7
+"Peterborough, Ontario",Peterborough, Ontario,2016,unemployment,5.1
+"Peterborough, Ontario",Peterborough, Ontario,2017,unemployment,6.4
+"Peterborough, Ontario",Peterborough, Ontario,2018,unemployment,4.8
+"Peterborough, Ontario",Peterborough, Ontario,2019,unemployment,6
+"Peterborough, Ontario",Peterborough, Ontario,2020,unemployment,10.2
+"Québec, Quebec",Québec, Quebec,2001,unemployment,7.9
+"Québec, Quebec",Québec, Quebec,2002,unemployment,6.4
+"Québec, Quebec",Québec, Quebec,2003,unemployment,6.9
+"Québec, Quebec",Québec, Quebec,2004,unemployment,5.8
+"Québec, Quebec",Québec, Quebec,2005,unemployment,5.5
+"Québec, Quebec",Québec, Quebec,2006,unemployment,5.3
+"Québec, Quebec",Québec, Quebec,2007,unemployment,5.1
+"Québec, Quebec",Québec, Quebec,2008,unemployment,4.4
+"Québec, Quebec",Québec, Quebec,2009,unemployment,5
+"Québec, Quebec",Québec, Quebec,2010,unemployment,5.1
+"Québec, Quebec",Québec, Quebec,2011,unemployment,5.3
+"Québec, Quebec",Québec, Quebec,2012,unemployment,5
+"Québec, Quebec",Québec, Quebec,2013,unemployment,4.7
+"Québec, Quebec",Québec, Quebec,2014,unemployment,5.3
+"Québec, Quebec",Québec, Quebec,2015,unemployment,4.7
+"Québec, Quebec",Québec, Quebec,2016,unemployment,4.6
+"Québec, Quebec",Québec, Quebec,2017,unemployment,4.2
+"Québec, Quebec",Québec, Quebec,2018,unemployment,3.8
+"Québec, Quebec",Québec, Quebec,2019,unemployment,3.1
+"Québec, Quebec",Québec, Quebec,2020,unemployment,6.6
+"Regina, Saskatchewan",Regina, Saskatchewan,2001,unemployment,5.4
+"Regina, Saskatchewan",Regina, Saskatchewan,2002,unemployment,5.5
+"Regina, Saskatchewan",Regina, Saskatchewan,2003,unemployment,5.6
+"Regina, Saskatchewan",Regina, Saskatchewan,2004,unemployment,4.9
+"Regina, Saskatchewan",Regina, Saskatchewan,2005,unemployment,4.8
+"Regina, Saskatchewan",Regina, Saskatchewan,2006,unemployment,4.9
+"Regina, Saskatchewan",Regina, Saskatchewan,2007,unemployment,4.9
+"Regina, Saskatchewan",Regina, Saskatchewan,2008,unemployment,3.8
+"Regina, Saskatchewan",Regina, Saskatchewan,2009,unemployment,4.4
+"Regina, Saskatchewan",Regina, Saskatchewan,2010,unemployment,4.9
+"Regina, Saskatchewan",Regina, Saskatchewan,2011,unemployment,4.5
+"Regina, Saskatchewan",Regina, Saskatchewan,2012,unemployment,4.2
+"Regina, Saskatchewan",Regina, Saskatchewan,2013,unemployment,3.7
+"Regina, Saskatchewan",Regina, Saskatchewan,2014,unemployment,3.7
+"Regina, Saskatchewan",Regina, Saskatchewan,2015,unemployment,4.4
+"Regina, Saskatchewan",Regina, Saskatchewan,2016,unemployment,5.3
+"Regina, Saskatchewan",Regina, Saskatchewan,2017,unemployment,5.1
+"Regina, Saskatchewan",Regina, Saskatchewan,2018,unemployment,6
+"Regina, Saskatchewan",Regina, Saskatchewan,2019,unemployment,5.3
+"Regina, Saskatchewan",Regina, Saskatchewan,2020,unemployment,8.1
+"Saguenay, Quebec",Saguenay, Quebec,2001,unemployment,11.1
+"Saguenay, Quebec",Saguenay, Quebec,2002,unemployment,11.5
+"Saguenay, Quebec",Saguenay, Quebec,2003,unemployment,11.4
+"Saguenay, Quebec",Saguenay, Quebec,2004,unemployment,11
+"Saguenay, Quebec",Saguenay, Quebec,2005,unemployment,9.9
+"Saguenay, Quebec",Saguenay, Quebec,2006,unemployment,8.9
+"Saguenay, Quebec",Saguenay, Quebec,2007,unemployment,8.9
+"Saguenay, Quebec",Saguenay, Quebec,2008,unemployment,8.4
+"Saguenay, Quebec",Saguenay, Quebec,2009,unemployment,8.7
+"Saguenay, Quebec",Saguenay, Quebec,2010,unemployment,8.3
+"Saguenay, Quebec",Saguenay, Quebec,2011,unemployment,7.3
+"Saguenay, Quebec",Saguenay, Quebec,2012,unemployment,7.6
+"Saguenay, Quebec",Saguenay, Quebec,2013,unemployment,7.7
+"Saguenay, Quebec",Saguenay, Quebec,2014,unemployment,9.6
+"Saguenay, Quebec",Saguenay, Quebec,2015,unemployment,7.8
+"Saguenay, Quebec",Saguenay, Quebec,2016,unemployment,8.2
+"Saguenay, Quebec",Saguenay, Quebec,2017,unemployment,6.7
+"Saguenay, Quebec",Saguenay, Quebec,2018,unemployment,6.1
+"Saguenay, Quebec",Saguenay, Quebec,2019,unemployment,5.3
+"Saguenay, Quebec",Saguenay, Quebec,2020,unemployment,7.7
+"Saint John, New Brunswick",Saint John, New Brunswick,2001,unemployment,9.4
+"Saint John, New Brunswick",Saint John, New Brunswick,2002,unemployment,8.4
+"Saint John, New Brunswick",Saint John, New Brunswick,2003,unemployment,9.2
+"Saint John, New Brunswick",Saint John, New Brunswick,2004,unemployment,8
+"Saint John, New Brunswick",Saint John, New Brunswick,2005,unemployment,7
+"Saint John, New Brunswick",Saint John, New Brunswick,2006,unemployment,6
+"Saint John, New Brunswick",Saint John, New Brunswick,2007,unemployment,4.8
+"Saint John, New Brunswick",Saint John, New Brunswick,2008,unemployment,6.1
+"Saint John, New Brunswick",Saint John, New Brunswick,2009,unemployment,5.7
+"Saint John, New Brunswick",Saint John, New Brunswick,2010,unemployment,7.5
+"Saint John, New Brunswick",Saint John, New Brunswick,2011,unemployment,6.9
+"Saint John, New Brunswick",Saint John, New Brunswick,2012,unemployment,8.7
+"Saint John, New Brunswick",Saint John, New Brunswick,2013,unemployment,8.9
+"Saint John, New Brunswick",Saint John, New Brunswick,2014,unemployment,7.7
+"Saint John, New Brunswick",Saint John, New Brunswick,2015,unemployment,8.2
+"Saint John, New Brunswick",Saint John, New Brunswick,2016,unemployment,8
+"Saint John, New Brunswick",Saint John, New Brunswick,2017,unemployment,6
+"Saint John, New Brunswick",Saint John, New Brunswick,2018,unemployment,6.3
+"Saint John, New Brunswick",Saint John, New Brunswick,2019,unemployment,6.8
+"Saint John, New Brunswick",Saint John, New Brunswick,2020,unemployment,10.2
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2001,unemployment,6.2
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2002,unemployment,6.1
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2003,unemployment,6
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2004,unemployment,6.1
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2005,unemployment,5
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2006,unemployment,4.4
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2007,unemployment,4
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2008,unemployment,3.9
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2009,unemployment,4.7
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2010,unemployment,5.5
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2011,unemployment,5.6
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2012,unemployment,5.5
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2013,unemployment,4.3
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2014,unemployment,4.1
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2015,unemployment,5.8
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2016,unemployment,6.9
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2017,unemployment,7.9
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2018,unemployment,6.7
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2019,unemployment,5.9
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2020,unemployment,9.6
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2001,unemployment,7.9
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2002,unemployment,7.9
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2003,unemployment,7.8
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2004,unemployment,7.7
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2005,unemployment,7.5
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2006,unemployment,8.6
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2007,unemployment,6.6
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2008,unemployment,6.2
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2009,unemployment,6.6
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2010,unemployment,7.4
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2011,unemployment,6.7
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2012,unemployment,8
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2013,unemployment,7.1
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2014,unemployment,7.2
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2015,unemployment,6.8
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2016,unemployment,6.2
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2017,unemployment,5.6
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2018,unemployment,5
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2019,unemployment,4.4
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2020,unemployment,7.7
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2001,unemployment,6.3
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2002,unemployment,7.4
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2003,unemployment,6.8
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2004,unemployment,7.4
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2005,unemployment,7.1
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2006,unemployment,6.4
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2007,unemployment,6.8
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2008,unemployment,7.3
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2009,unemployment,10.4
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2010,unemployment,9.6
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2011,unemployment,8.2
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2012,unemployment,8
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2013,unemployment,8.6
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2014,unemployment,7.7
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2015,unemployment,7
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2016,unemployment,7.1
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2017,unemployment,6.5
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2018,unemployment,6.6
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2019,unemployment,5.8
+"St. Catharines-Niagara, Ontario",St. Catharines-Niagara, Ontario,2020,unemployment,9.6
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2001,unemployment,9.2
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2002,unemployment,9.2
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2003,unemployment,9.8
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2004,unemployment,8.9
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2005,unemployment,8.9
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2006,unemployment,8.1
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2007,unemployment,6.9
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2008,unemployment,7.9
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2009,unemployment,8.3
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2010,unemployment,8.1
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2011,unemployment,6.7
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2012,unemployment,7.4
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2013,unemployment,6.3
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2014,unemployment,6
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2015,unemployment,6.5
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2016,unemployment,7.8
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2017,unemployment,8.4
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2018,unemployment,8.4
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2019,unemployment,7.5
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2020,unemployment,9.6
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2001,unemployment,8
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2002,unemployment,6.5
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2003,unemployment,5.9
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2004,unemployment,8.1
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2005,unemployment,7.1
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2006,unemployment,7.6
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2007,unemployment,6.7
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2008,unemployment,5.9
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2009,unemployment,8.3
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2010,unemployment,6.8
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2011,unemployment,6.8
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2012,unemployment,5.5
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2013,unemployment,6.1
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2014,unemployment,5.2
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2015,unemployment,5.2
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2016,unemployment,6.8
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2017,unemployment,5.7
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2018,unemployment,5.1
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2019,unemployment,5.5
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2020,unemployment,8.3
+"Toronto, Ontario",Toronto, Ontario,2001,unemployment,6.3
+"Toronto, Ontario",Toronto, Ontario,2002,unemployment,7.4
+"Toronto, Ontario",Toronto, Ontario,2003,unemployment,7.7
+"Toronto, Ontario",Toronto, Ontario,2004,unemployment,7.5
+"Toronto, Ontario",Toronto, Ontario,2005,unemployment,7
+"Toronto, Ontario",Toronto, Ontario,2006,unemployment,6.6
+"Toronto, Ontario",Toronto, Ontario,2007,unemployment,6.8
+"Toronto, Ontario",Toronto, Ontario,2008,unemployment,6.9
+"Toronto, Ontario",Toronto, Ontario,2009,unemployment,9.6
+"Toronto, Ontario",Toronto, Ontario,2010,unemployment,9.1
+"Toronto, Ontario",Toronto, Ontario,2011,unemployment,8.4
+"Toronto, Ontario",Toronto, Ontario,2012,unemployment,8.7
+"Toronto, Ontario",Toronto, Ontario,2013,unemployment,8.1
+"Toronto, Ontario",Toronto, Ontario,2014,unemployment,8
+"Toronto, Ontario",Toronto, Ontario,2015,unemployment,7
+"Toronto, Ontario",Toronto, Ontario,2016,unemployment,7
+"Toronto, Ontario",Toronto, Ontario,2017,unemployment,6.4
+"Toronto, Ontario",Toronto, Ontario,2018,unemployment,6
+"Toronto, Ontario",Toronto, Ontario,2019,unemployment,6
+"Toronto, Ontario",Toronto, Ontario,2020,unemployment,10.8
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2001,unemployment,9.9
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2002,unemployment,10.2
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2003,unemployment,10.4
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2004,unemployment,10.8
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2005,unemployment,9.1
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2006,unemployment,8.1
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2007,unemployment,7.9
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2008,unemployment,8.3
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2009,unemployment,9
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2010,unemployment,9.1
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2011,unemployment,9
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2012,unemployment,7.8
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2013,unemployment,8.3
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2014,unemployment,7.3
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2015,unemployment,6.6
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2016,unemployment,7
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2017,unemployment,5.6
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2018,unemployment,5
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2019,unemployment,5.5
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2020,unemployment,7.8
+"Vancouver, British Columbia",Vancouver, British Columbia,2001,unemployment,6.6
+"Vancouver, British Columbia",Vancouver, British Columbia,2002,unemployment,7.8
+"Vancouver, British Columbia",Vancouver, British Columbia,2003,unemployment,7.2
+"Vancouver, British Columbia",Vancouver, British Columbia,2004,unemployment,6.8
+"Vancouver, British Columbia",Vancouver, British Columbia,2005,unemployment,5.7
+"Vancouver, British Columbia",Vancouver, British Columbia,2006,unemployment,4.4
+"Vancouver, British Columbia",Vancouver, British Columbia,2007,unemployment,4
+"Vancouver, British Columbia",Vancouver, British Columbia,2008,unemployment,4.2
+"Vancouver, British Columbia",Vancouver, British Columbia,2009,unemployment,7.2
+"Vancouver, British Columbia",Vancouver, British Columbia,2010,unemployment,7.4
+"Vancouver, British Columbia",Vancouver, British Columbia,2011,unemployment,7.5
+"Vancouver, British Columbia",Vancouver, British Columbia,2012,unemployment,6.8
+"Vancouver, British Columbia",Vancouver, British Columbia,2013,unemployment,6.6
+"Vancouver, British Columbia",Vancouver, British Columbia,2014,unemployment,5.8
+"Vancouver, British Columbia",Vancouver, British Columbia,2015,unemployment,5.9
+"Vancouver, British Columbia",Vancouver, British Columbia,2016,unemployment,5.4
+"Vancouver, British Columbia",Vancouver, British Columbia,2017,unemployment,4.7
+"Vancouver, British Columbia",Vancouver, British Columbia,2018,unemployment,4.4
+"Vancouver, British Columbia",Vancouver, British Columbia,2019,unemployment,4.6
+"Vancouver, British Columbia",Vancouver, British Columbia,2020,unemployment,9.1
+"Victoria, British Columbia",Victoria, British Columbia,2001,unemployment,6.3
+"Victoria, British Columbia",Victoria, British Columbia,2002,unemployment,7
+"Victoria, British Columbia",Victoria, British Columbia,2003,unemployment,6.2
+"Victoria, British Columbia",Victoria, British Columbia,2004,unemployment,5.3
+"Victoria, British Columbia",Victoria, British Columbia,2005,unemployment,4.4
+"Victoria, British Columbia",Victoria, British Columbia,2006,unemployment,3.7
+"Victoria, British Columbia",Victoria, British Columbia,2007,unemployment,3.3
+"Victoria, British Columbia",Victoria, British Columbia,2008,unemployment,3.3
+"Victoria, British Columbia",Victoria, British Columbia,2009,unemployment,6.4
+"Victoria, British Columbia",Victoria, British Columbia,2010,unemployment,5.9
+"Victoria, British Columbia",Victoria, British Columbia,2011,unemployment,6.1
+"Victoria, British Columbia",Victoria, British Columbia,2012,unemployment,5.6
+"Victoria, British Columbia",Victoria, British Columbia,2013,unemployment,5.2
+"Victoria, British Columbia",Victoria, British Columbia,2014,unemployment,5.4
+"Victoria, British Columbia",Victoria, British Columbia,2015,unemployment,5.8
+"Victoria, British Columbia",Victoria, British Columbia,2016,unemployment,5.2
+"Victoria, British Columbia",Victoria, British Columbia,2017,unemployment,3.9
+"Victoria, British Columbia",Victoria, British Columbia,2018,unemployment,4
+"Victoria, British Columbia",Victoria, British Columbia,2019,unemployment,3.4
+"Victoria, British Columbia",Victoria, British Columbia,2020,unemployment,7.7
+"Windsor, Ontario",Windsor, Ontario,2001,unemployment,6.8
+"Windsor, Ontario",Windsor, Ontario,2002,unemployment,8.1
+"Windsor, Ontario",Windsor, Ontario,2003,unemployment,7.5
+"Windsor, Ontario",Windsor, Ontario,2004,unemployment,8.6
+"Windsor, Ontario",Windsor, Ontario,2005,unemployment,8
+"Windsor, Ontario",Windsor, Ontario,2006,unemployment,9
+"Windsor, Ontario",Windsor, Ontario,2007,unemployment,9.3
+"Windsor, Ontario",Windsor, Ontario,2008,unemployment,9.3
+"Windsor, Ontario",Windsor, Ontario,2009,unemployment,13.9
+"Windsor, Ontario",Windsor, Ontario,2010,unemployment,11.7
+"Windsor, Ontario",Windsor, Ontario,2011,unemployment,9.9
+"Windsor, Ontario",Windsor, Ontario,2012,unemployment,9.7
+"Windsor, Ontario",Windsor, Ontario,2013,unemployment,8.9
+"Windsor, Ontario",Windsor, Ontario,2014,unemployment,9
+"Windsor, Ontario",Windsor, Ontario,2015,unemployment,9.8
+"Windsor, Ontario",Windsor, Ontario,2016,unemployment,6
+"Windsor, Ontario",Windsor, Ontario,2017,unemployment,5.6
+"Windsor, Ontario",Windsor, Ontario,2018,unemployment,6
+"Windsor, Ontario",Windsor, Ontario,2019,unemployment,6.4
+"Windsor, Ontario",Windsor, Ontario,2020,unemployment,11.5
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2001,unemployment,5.2
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2002,unemployment,5.2
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2003,unemployment,5.2
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2004,unemployment,5.5
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2005,unemployment,4.8
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2006,unemployment,4.6
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2007,unemployment,4.7
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2008,unemployment,4.3
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2009,unemployment,5.4
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2010,unemployment,5.8
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2011,unemployment,5.9
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2012,unemployment,5.5
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2013,unemployment,5.9
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2014,unemployment,5.8
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2015,unemployment,6
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2016,unemployment,6.6
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2017,unemployment,5.8
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2018,unemployment,6.3
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2019,unemployment,5.3
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2020,unemployment,8.7
+"Abbotsford – Mission, British Columbia",Abbotsford – Mission, British Columbia,2009,gdp,"5,421"
+"Abbotsford – Mission, British Columbia",Abbotsford – Mission, British Columbia,2010,gdp,"5,476"
+"Abbotsford – Mission, British Columbia",Abbotsford – Mission, British Columbia,2011,gdp,"5,635"
+"Abbotsford – Mission, British Columbia",Abbotsford – Mission, British Columbia,2012,gdp,"5,893"
+"Abbotsford – Mission, British Columbia",Abbotsford – Mission, British Columbia,2013,gdp,"6,145"
+"Abbotsford – Mission, British Columbia",Abbotsford – Mission, British Columbia,2014,gdp,"6,226"
+"Abbotsford – Mission, British Columbia",Abbotsford – Mission, British Columbia,2015,gdp,"6,585"
+"Abbotsford – Mission, British Columbia",Abbotsford – Mission, British Columbia,2016,gdp,"6,889"
+"Abbotsford – Mission, British Columbia",Abbotsford – Mission, British Columbia,2017,gdp,"7,205"
+"Barrie, Ontario",Barrie, Ontario,2009,gdp,"5,509"
+"Barrie, Ontario",Barrie, Ontario,2010,gdp,"5,918"
+"Barrie, Ontario",Barrie, Ontario,2011,gdp,"6,032"
+"Barrie, Ontario",Barrie, Ontario,2012,gdp,"6,145"
+"Barrie, Ontario",Barrie, Ontario,2013,gdp,"6,290"
+"Barrie, Ontario",Barrie, Ontario,2014,gdp,"6,486"
+"Barrie, Ontario",Barrie, Ontario,2015,gdp,"6,883"
+"Barrie, Ontario",Barrie, Ontario,2016,gdp,"7,436"
+"Barrie, Ontario",Barrie, Ontario,2017,gdp,"7,786"
+"Belleville, Ontario",Belleville, Ontario,2009,gdp,"3,717"
+"Belleville, Ontario",Belleville, Ontario,2010,gdp,"3,829"
+"Belleville, Ontario",Belleville, Ontario,2011,gdp,"4,190"
+"Belleville, Ontario",Belleville, Ontario,2012,gdp,"4,209"
+"Belleville, Ontario",Belleville, Ontario,2013,gdp,"4,354"
+"Belleville, Ontario",Belleville, Ontario,2014,gdp,"4,391"
+"Belleville, Ontario",Belleville, Ontario,2015,gdp,"4,681"
+"Belleville, Ontario",Belleville, Ontario,2016,gdp,"4,649"
+"Belleville, Ontario",Belleville, Ontario,2017,gdp,"5,057"
+"Brantford, Ontario",Brantford, Ontario,2009,gdp,"4,071"
+"Brantford, Ontario",Brantford, Ontario,2010,gdp,"4,288"
+"Brantford, Ontario",Brantford, Ontario,2011,gdp,"4,413"
+"Brantford, Ontario",Brantford, Ontario,2012,gdp,"4,581"
+"Brantford, Ontario",Brantford, Ontario,2013,gdp,"4,591"
+"Brantford, Ontario",Brantford, Ontario,2014,gdp,"4,751"
+"Brantford, Ontario",Brantford, Ontario,2015,gdp,"5,196"
+"Brantford, Ontario",Brantford, Ontario,2016,gdp,"5,302"
+"Brantford, Ontario",Brantford, Ontario,2017,gdp,"5,604"
+"Calgary, Alberta",Calgary, Alberta,2009,gdp,"75,386"
+"Calgary, Alberta",Calgary, Alberta,2010,gdp,"79,717"
+"Calgary, Alberta",Calgary, Alberta,2011,gdp,"87,034"
+"Calgary, Alberta",Calgary, Alberta,2012,gdp,"93,819"
+"Calgary, Alberta",Calgary, Alberta,2013,gdp,"99,146"
+"Calgary, Alberta",Calgary, Alberta,2014,gdp,"107,630"
+"Calgary, Alberta",Calgary, Alberta,2015,gdp,"105,120"
+"Calgary, Alberta",Calgary, Alberta,2016,gdp,"101,118"
+"Calgary, Alberta",Calgary, Alberta,2017,gdp,"104,829"
+"Edmonton, Alberta",Edmonton, Alberta,2009,gdp,"66,893"
+"Edmonton, Alberta",Edmonton, Alberta,2010,gdp,"69,841"
+"Edmonton, Alberta",Edmonton, Alberta,2011,gdp,"73,822"
+"Edmonton, Alberta",Edmonton, Alberta,2012,gdp,"80,878"
+"Edmonton, Alberta",Edmonton, Alberta,2013,gdp,"88,141"
+"Edmonton, Alberta",Edmonton, Alberta,2014,gdp,"89,908"
+"Edmonton, Alberta",Edmonton, Alberta,2015,gdp,"90,214"
+"Edmonton, Alberta",Edmonton, Alberta,2016,gdp,"86,839"
+"Edmonton, Alberta",Edmonton, Alberta,2017,gdp,"87,147"
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2009,gdp,"7,022"
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2010,gdp,"8,184"
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2011,gdp,"9,894"
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2012,gdp,"9,138"
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2013,gdp,"9,238"
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2014,gdp,"9,513"
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2015,gdp,"9,575"
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2016,gdp,"8,974"
+"Greater Sudbury, Ontario",Greater Sudbury, Ontario,2017,gdp,"9,527"
+"Guelph, Ontario",Guelph, Ontario,2009,gdp,"6,311"
+"Guelph, Ontario",Guelph, Ontario,2010,gdp,"7,115"
+"Guelph, Ontario",Guelph, Ontario,2011,gdp,"7,481"
+"Guelph, Ontario",Guelph, Ontario,2012,gdp,"8,013"
+"Guelph, Ontario",Guelph, Ontario,2013,gdp,"8,209"
+"Guelph, Ontario",Guelph, Ontario,2014,gdp,"8,801"
+"Guelph, Ontario",Guelph, Ontario,2015,gdp,"9,227"
+"Guelph, Ontario",Guelph, Ontario,2016,gdp,"9,520"
+"Guelph, Ontario",Guelph, Ontario,2017,gdp,"9,641"
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2009,gdp,"17,378"
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2010,gdp,"18,245"
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2011,gdp,"18,499"
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2012,gdp,"18,956"
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2013,gdp,"19,260"
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2014,gdp,"19,738"
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2015,gdp,"20,142"
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2016,gdp,"20,551"
+"Halifax, Nova Scotia",Halifax, Nova Scotia,2017,gdp,"21,945"
+"Hamilton, Ontario",Hamilton, Ontario,2009,gdp,"25,807"
+"Hamilton, Ontario",Hamilton, Ontario,2010,gdp,"26,939"
+"Hamilton, Ontario",Hamilton, Ontario,2011,gdp,"28,198"
+"Hamilton, Ontario",Hamilton, Ontario,2012,gdp,"28,863"
+"Hamilton, Ontario",Hamilton, Ontario,2013,gdp,"29,533"
+"Hamilton, Ontario",Hamilton, Ontario,2014,gdp,"31,231"
+"Hamilton, Ontario",Hamilton, Ontario,2015,gdp,"32,859"
+"Hamilton, Ontario",Hamilton, Ontario,2016,gdp,"33,197"
+"Hamilton, Ontario",Hamilton, Ontario,2017,gdp,"34,673"
+"Kelowna, British Columbia",Kelowna, British Columbia,2009,gdp,"6,586"
+"Kelowna, British Columbia",Kelowna, British Columbia,2010,gdp,"6,584"
+"Kelowna, British Columbia",Kelowna, British Columbia,2011,gdp,"6,699"
+"Kelowna, British Columbia",Kelowna, British Columbia,2012,gdp,"7,177"
+"Kelowna, British Columbia",Kelowna, British Columbia,2013,gdp,"7,700"
+"Kelowna, British Columbia",Kelowna, British Columbia,2014,gdp,"8,320"
+"Kelowna, British Columbia",Kelowna, British Columbia,2015,gdp,"8,556"
+"Kelowna, British Columbia",Kelowna, British Columbia,2016,gdp,"9,126"
+"Kelowna, British Columbia",Kelowna, British Columbia,2017,gdp,"9,659"
+"Kingston, Ontario",Kingston, Ontario,2009,gdp,"6,602"
+"Kingston, Ontario",Kingston, Ontario,2010,gdp,"7,081"
+"Kingston, Ontario",Kingston, Ontario,2011,gdp,"7,495"
+"Kingston, Ontario",Kingston, Ontario,2012,gdp,"7,497"
+"Kingston, Ontario",Kingston, Ontario,2013,gdp,"7,895"
+"Kingston, Ontario",Kingston, Ontario,2014,gdp,"8,037"
+"Kingston, Ontario",Kingston, Ontario,2015,gdp,"8,470"
+"Kingston, Ontario",Kingston, Ontario,2016,gdp,"8,707"
+"Kingston, Ontario",Kingston, Ontario,2017,gdp,"8,927"
+"Kitchener – Cambridge – Waterloo, Ontario",Kitchener – Cambridge – Waterloo, Ontario,2009,gdp,"20,908"
+"Kitchener – Cambridge – Waterloo, Ontario",Kitchener – Cambridge – Waterloo, Ontario,2010,gdp,"22,962"
+"Kitchener – Cambridge – Waterloo, Ontario",Kitchener – Cambridge – Waterloo, Ontario,2011,gdp,"23,868"
+"Kitchener – Cambridge – Waterloo, Ontario",Kitchener – Cambridge – Waterloo, Ontario,2012,gdp,"23,589"
+"Kitchener – Cambridge – Waterloo, Ontario",Kitchener – Cambridge – Waterloo, Ontario,2013,gdp,"24,033"
+"Kitchener – Cambridge – Waterloo, Ontario",Kitchener – Cambridge – Waterloo, Ontario,2014,gdp,"25,666"
+"Kitchener – Cambridge – Waterloo, Ontario",Kitchener – Cambridge – Waterloo, Ontario,2015,gdp,"27,215"
+"Kitchener – Cambridge – Waterloo, Ontario",Kitchener – Cambridge – Waterloo, Ontario,2016,gdp,"27,496"
+"Kitchener – Cambridge – Waterloo, Ontario",Kitchener – Cambridge – Waterloo, Ontario,2017,gdp,"29,273"
+"Lethbridge, Alberta",Lethbridge, Alberta,2009,gdp,"4,446"
+"Lethbridge, Alberta",Lethbridge, Alberta,2010,gdp,"4,497"
+"Lethbridge, Alberta",Lethbridge, Alberta,2011,gdp,"4,907"
+"Lethbridge, Alberta",Lethbridge, Alberta,2012,gdp,"5,084"
+"Lethbridge, Alberta",Lethbridge, Alberta,2013,gdp,"5,317"
+"Lethbridge, Alberta",Lethbridge, Alberta,2014,gdp,"5,488"
+"Lethbridge, Alberta",Lethbridge, Alberta,2015,gdp,"5,936"
+"Lethbridge, Alberta",Lethbridge, Alberta,2016,gdp,"6,133"
+"Lethbridge, Alberta",Lethbridge, Alberta,2017,gdp,"6,432"
+"London, Ontario",London, Ontario,2009,gdp,"20,357"
+"London, Ontario",London, Ontario,2010,gdp,"20,468"
+"London, Ontario",London, Ontario,2011,gdp,"20,799"
+"London, Ontario",London, Ontario,2012,gdp,"21,757"
+"London, Ontario",London, Ontario,2013,gdp,"21,900"
+"London, Ontario",London, Ontario,2014,gdp,"22,424"
+"London, Ontario",London, Ontario,2015,gdp,"23,167"
+"London, Ontario",London, Ontario,2016,gdp,"23,977"
+"London, Ontario",London, Ontario,2017,gdp,"25,536"
+"Moncton, New Brunswick",Moncton, New Brunswick,2009,gdp,"5,974"
+"Moncton, New Brunswick",Moncton, New Brunswick,2010,gdp,"6,089"
+"Moncton, New Brunswick",Moncton, New Brunswick,2011,gdp,"6,399"
+"Moncton, New Brunswick",Moncton, New Brunswick,2012,gdp,"6,506"
+"Moncton, New Brunswick",Moncton, New Brunswick,2013,gdp,"6,416"
+"Moncton, New Brunswick",Moncton, New Brunswick,2014,gdp,"6,731"
+"Moncton, New Brunswick",Moncton, New Brunswick,2015,gdp,"6,794"
+"Moncton, New Brunswick",Moncton, New Brunswick,2016,gdp,"6,945"
+"Moncton, New Brunswick",Moncton, New Brunswick,2017,gdp,"7,250"
+"Montréal, Quebec",Montréal, Quebec,2009,gdp,"159,420"
+"Montréal, Quebec",Montréal, Quebec,2010,gdp,"164,564"
+"Montréal, Quebec",Montréal, Quebec,2011,gdp,"172,361"
+"Montréal, Quebec",Montréal, Quebec,2012,gdp,"176,507"
+"Montréal, Quebec",Montréal, Quebec,2013,gdp,"183,264"
+"Montréal, Quebec",Montréal, Quebec,2014,gdp,"190,227"
+"Montréal, Quebec",Montréal, Quebec,2015,gdp,"194,119"
+"Montréal, Quebec",Montréal, Quebec,2016,gdp,"200,945"
+"Montréal, Quebec",Montréal, Quebec,2017,gdp,"211,625"
+"Oshawa, Ontario",Oshawa, Ontario,2009,gdp,"9,652"
+"Oshawa, Ontario",Oshawa, Ontario,2010,gdp,"10,202"
+"Oshawa, Ontario",Oshawa, Ontario,2011,gdp,"10,859"
+"Oshawa, Ontario",Oshawa, Ontario,2012,gdp,"10,647"
+"Oshawa, Ontario",Oshawa, Ontario,2013,gdp,"11,181"
+"Oshawa, Ontario",Oshawa, Ontario,2014,gdp,"11,598"
+"Oshawa, Ontario",Oshawa, Ontario,2015,gdp,"12,456"
+"Oshawa, Ontario",Oshawa, Ontario,2016,gdp,"12,642"
+"Oshawa, Ontario",Oshawa, Ontario,2017,gdp,"13,246"
+"Ottawa – Gatineau, Ontario part, Ontario/Quebec",Ottawa – Gatineau," Ontario part, Ontario/Quebec",2009,gdp,"54,638"
+"Ottawa – Gatineau, Ontario part, Ontario/Quebec",Ottawa – Gatineau," Ontario part, Ontario/Quebec",2010,gdp,"55,739"
+"Ottawa – Gatineau, Ontario part, Ontario/Quebec",Ottawa – Gatineau," Ontario part, Ontario/Quebec",2011,gdp,"57,517"
+"Ottawa – Gatineau, Ontario part, Ontario/Quebec",Ottawa – Gatineau," Ontario part, Ontario/Quebec",2012,gdp,"58,997"
+"Ottawa – Gatineau, Ontario part, Ontario/Quebec",Ottawa – Gatineau," Ontario part, Ontario/Quebec",2013,gdp,"60,183"
+"Ottawa – Gatineau, Ontario part, Ontario/Quebec",Ottawa – Gatineau," Ontario part, Ontario/Quebec",2014,gdp,"60,139"
+"Ottawa – Gatineau, Ontario part, Ontario/Quebec",Ottawa – Gatineau," Ontario part, Ontario/Quebec",2015,gdp,"60,989"
+"Ottawa – Gatineau, Ontario part, Ontario/Quebec",Ottawa – Gatineau," Ontario part, Ontario/Quebec",2016,gdp,"64,366"
+"Ottawa – Gatineau, Ontario part, Ontario/Quebec",Ottawa – Gatineau," Ontario part, Ontario/Quebec",2017,gdp,"67,241"
+"Ottawa – Gatineau, Quebec part, Ontario/Quebec",Ottawa – Gatineau," Quebec part, Ontario/Quebec",2009,gdp,"10,153"
+"Ottawa – Gatineau, Quebec part, Ontario/Quebec",Ottawa – Gatineau," Quebec part, Ontario/Quebec",2010,gdp,"10,523"
+"Ottawa – Gatineau, Quebec part, Ontario/Quebec",Ottawa – Gatineau," Quebec part, Ontario/Quebec",2011,gdp,"11,154"
+"Ottawa – Gatineau, Quebec part, Ontario/Quebec",Ottawa – Gatineau," Quebec part, Ontario/Quebec",2012,gdp,"11,017"
+"Ottawa – Gatineau, Quebec part, Ontario/Quebec",Ottawa – Gatineau," Quebec part, Ontario/Quebec",2013,gdp,"11,408"
+"Ottawa – Gatineau, Quebec part, Ontario/Quebec",Ottawa – Gatineau," Quebec part, Ontario/Quebec",2014,gdp,"11,645"
+"Ottawa – Gatineau, Quebec part, Ontario/Quebec",Ottawa – Gatineau," Quebec part, Ontario/Quebec",2015,gdp,"12,077"
+"Ottawa – Gatineau, Quebec part, Ontario/Quebec",Ottawa – Gatineau," Quebec part, Ontario/Quebec",2016,gdp,"12,213"
+"Ottawa – Gatineau, Quebec part, Ontario/Quebec",Ottawa – Gatineau," Quebec part, Ontario/Quebec",2017,gdp,"13,097"
+"Peterborough, Ontario",Peterborough, Ontario,2009,gdp,"4,258"
+"Peterborough, Ontario",Peterborough, Ontario,2010,gdp,"4,400"
+"Peterborough, Ontario",Peterborough, Ontario,2011,gdp,"4,507"
+"Peterborough, Ontario",Peterborough, Ontario,2012,gdp,"4,579"
+"Peterborough, Ontario",Peterborough, Ontario,2013,gdp,"4,754"
+"Peterborough, Ontario",Peterborough, Ontario,2014,gdp,"4,565"
+"Peterborough, Ontario",Peterborough, Ontario,2015,gdp,"4,758"
+"Peterborough, Ontario",Peterborough, Ontario,2016,gdp,"4,775"
+"Peterborough, Ontario",Peterborough, Ontario,2017,gdp,"4,796"
+"Québec, Quebec",Québec, Quebec,2009,gdp,"33,061"
+"Québec, Quebec",Québec, Quebec,2010,gdp,"34,196"
+"Québec, Quebec",Québec, Quebec,2011,gdp,"35,394"
+"Québec, Quebec",Québec, Quebec,2012,gdp,"37,499"
+"Québec, Quebec",Québec, Quebec,2013,gdp,"38,262"
+"Québec, Quebec",Québec, Quebec,2014,gdp,"40,177"
+"Québec, Quebec",Québec, Quebec,2015,gdp,"42,195"
+"Québec, Quebec",Québec, Quebec,2016,gdp,"42,798"
+"Québec, Quebec",Québec, Quebec,2017,gdp,"44,963"
+"Regina, Saskatchewan",Regina, Saskatchewan,2009,gdp,"12,511"
+"Regina, Saskatchewan",Regina, Saskatchewan,2010,gdp,"12,952"
+"Regina, Saskatchewan",Regina, Saskatchewan,2011,gdp,"15,235"
+"Regina, Saskatchewan",Regina, Saskatchewan,2012,gdp,"16,339"
+"Regina, Saskatchewan",Regina, Saskatchewan,2013,gdp,"16,881"
+"Regina, Saskatchewan",Regina, Saskatchewan,2014,gdp,"16,740"
+"Regina, Saskatchewan",Regina, Saskatchewan,2015,gdp,"16,779"
+"Regina, Saskatchewan",Regina, Saskatchewan,2016,gdp,"16,804"
+"Regina, Saskatchewan",Regina, Saskatchewan,2017,gdp,"16,700"
+"Saguenay, Quebec",Saguenay, Quebec,2009,gdp,"5,974"
+"Saguenay, Quebec",Saguenay, Quebec,2010,gdp,"6,200"
+"Saguenay, Quebec",Saguenay, Quebec,2011,gdp,"6,878"
+"Saguenay, Quebec",Saguenay, Quebec,2012,gdp,"6,542"
+"Saguenay, Quebec",Saguenay, Quebec,2013,gdp,"6,430"
+"Saguenay, Quebec",Saguenay, Quebec,2014,gdp,"6,720"
+"Saguenay, Quebec",Saguenay, Quebec,2015,gdp,"6,960"
+"Saguenay, Quebec",Saguenay, Quebec,2016,gdp,"6,703"
+"Saguenay, Quebec",Saguenay, Quebec,2017,gdp,"7,021"
+"Saint John, New Brunswick",Saint John, New Brunswick,2009,gdp,"5,612"
+"Saint John, New Brunswick",Saint John, New Brunswick,2010,gdp,"6,064"
+"Saint John, New Brunswick",Saint John, New Brunswick,2011,gdp,"6,093"
+"Saint John, New Brunswick",Saint John, New Brunswick,2012,gdp,"6,127"
+"Saint John, New Brunswick",Saint John, New Brunswick,2013,gdp,"6,307"
+"Saint John, New Brunswick",Saint John, New Brunswick,2014,gdp,"6,086"
+"Saint John, New Brunswick",Saint John, New Brunswick,2015,gdp,"6,537"
+"Saint John, New Brunswick",Saint John, New Brunswick,2016,gdp,"6,439"
+"Saint John, New Brunswick",Saint John, New Brunswick,2017,gdp,"6,354"
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2009,gdp,"13,825"
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2010,gdp,"14,316"
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2011,gdp,"16,642"
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2012,gdp,"17,387"
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2013,gdp,"17,849"
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2014,gdp,"18,576"
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2015,gdp,"19,920"
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2016,gdp,"19,018"
+"Saskatoon, Saskatchewan",Saskatoon, Saskatchewan,2017,gdp,"19,816"
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2009,gdp,"6,323"
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2010,gdp,"6,640"
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2011,gdp,"6,957"
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2012,gdp,"7,098"
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2013,gdp,"7,431"
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2014,gdp,"7,583"
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2015,gdp,"7,885"
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2016,gdp,"8,017"
+"Sherbrooke, Quebec",Sherbrooke, Quebec,2017,gdp,"8,559"
+"St. Catharines – Niagara, Ontario",St. Catharines – Niagara, Ontario,2009,gdp,"13,302"
+"St. Catharines – Niagara, Ontario",St. Catharines – Niagara, Ontario,2010,gdp,"14,179"
+"St. Catharines – Niagara, Ontario",St. Catharines – Niagara, Ontario,2011,gdp,"14,709"
+"St. Catharines – Niagara, Ontario",St. Catharines – Niagara, Ontario,2012,gdp,"14,585"
+"St. Catharines – Niagara, Ontario",St. Catharines – Niagara, Ontario,2013,gdp,"14,412"
+"St. Catharines – Niagara, Ontario",St. Catharines – Niagara, Ontario,2014,gdp,"14,690"
+"St. Catharines – Niagara, Ontario",St. Catharines – Niagara, Ontario,2015,gdp,"14,998"
+"St. Catharines – Niagara, Ontario",St. Catharines – Niagara, Ontario,2016,gdp,"15,230"
+"St. Catharines – Niagara, Ontario",St. Catharines – Niagara, Ontario,2017,gdp,"15,620"
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2009,gdp,"9,112"
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2010,gdp,"9,656"
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2011,gdp,"10,604"
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2012,gdp,"11,633"
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2013,gdp,"12,386"
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2014,gdp,"12,577"
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2015,gdp,"13,165"
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2016,gdp,"13,174"
+"St. John's, Newfoundland and Labrador",St. John's, Newfoundland and Labrador,2017,gdp,"13,032"
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2009,gdp,"4,921"
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2010,gdp,"5,064"
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2011,gdp,"5,480"
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2012,gdp,"5,443"
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2013,gdp,"5,499"
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2014,gdp,"5,869"
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2015,gdp,"5,987"
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2016,gdp,"5,981"
+"Thunder Bay, Ontario",Thunder Bay, Ontario,2017,gdp,"6,148"
+"Toronto, Ontario",Toronto, Ontario,2009,gdp,"282,325"
+"Toronto, Ontario",Toronto, Ontario,2010,gdp,"296,138"
+"Toronto, Ontario",Toronto, Ontario,2011,gdp,"309,981"
+"Toronto, Ontario",Toronto, Ontario,2012,gdp,"322,045"
+"Toronto, Ontario",Toronto, Ontario,2013,gdp,"332,476"
+"Toronto, Ontario",Toronto, Ontario,2014,gdp,"349,151"
+"Toronto, Ontario",Toronto, Ontario,2015,gdp,"364,219"
+"Toronto, Ontario",Toronto, Ontario,2016,gdp,"385,934"
+"Toronto, Ontario",Toronto, Ontario,2017,gdp,"405,156"
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2009,gdp,"5,028"
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2010,gdp,"5,237"
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2011,gdp,"5,480"
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2012,gdp,"5,705"
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2013,gdp,"5,685"
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2014,gdp,"5,815"
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2015,gdp,"6,105"
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2016,gdp,"6,287"
+"Trois-Rivières, Quebec",Trois-Rivières, Quebec,2017,gdp,"6,655"
+"Vancouver, British Columbia",Vancouver, British Columbia,2009,gdp,"102,194"
+"Vancouver, British Columbia",Vancouver, British Columbia,2010,gdp,"105,800"
+"Vancouver, British Columbia",Vancouver, British Columbia,2011,gdp,"110,395"
+"Vancouver, British Columbia",Vancouver, British Columbia,2012,gdp,"115,007"
+"Vancouver, British Columbia",Vancouver, British Columbia,2013,gdp,"119,746"
+"Vancouver, British Columbia",Vancouver, British Columbia,2014,gdp,"125,426"
+"Vancouver, British Columbia",Vancouver, British Columbia,2015,gdp,"131,406"
+"Vancouver, British Columbia",Vancouver, British Columbia,2016,gdp,"138,344"
+"Vancouver, British Columbia",Vancouver, British Columbia,2017,gdp,"145,756"
+"Victoria, British Columbia",Victoria, British Columbia,2009,gdp,"16,067"
+"Victoria, British Columbia",Victoria, British Columbia,2010,gdp,"16,216"
+"Victoria, British Columbia",Victoria, British Columbia,2011,gdp,"16,364"
+"Victoria, British Columbia",Victoria, British Columbia,2012,gdp,"17,196"
+"Victoria, British Columbia",Victoria, British Columbia,2013,gdp,"17,400"
+"Victoria, British Columbia",Victoria, British Columbia,2014,gdp,"18,076"
+"Victoria, British Columbia",Victoria, British Columbia,2015,gdp,"18,981"
+"Victoria, British Columbia",Victoria, British Columbia,2016,gdp,"19,656"
+"Victoria, British Columbia",Victoria, British Columbia,2017,gdp,"20,464"
+"Windsor, Ontario",Windsor, Ontario,2009,gdp,"11,570"
+"Windsor, Ontario",Windsor, Ontario,2010,gdp,"12,567"
+"Windsor, Ontario",Windsor, Ontario,2011,gdp,"12,968"
+"Windsor, Ontario",Windsor, Ontario,2012,gdp,"13,795"
+"Windsor, Ontario",Windsor, Ontario,2013,gdp,"13,742"
+"Windsor, Ontario",Windsor, Ontario,2014,gdp,"14,258"
+"Windsor, Ontario",Windsor, Ontario,2015,gdp,"15,264"
+"Windsor, Ontario",Windsor, Ontario,2016,gdp,"15,561"
+"Windsor, Ontario",Windsor, Ontario,2017,gdp,"15,649"
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2009,gdp,"31,615"
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2010,gdp,"32,826"
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2011,gdp,"34,035"
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2012,gdp,"35,711"
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2013,gdp,"36,525"
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2014,gdp,"38,591"
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2015,gdp,"40,075"
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2016,gdp,"41,444"
+"Winnipeg, Manitoba",Winnipeg, Manitoba,2017,gdp,"43,494"
