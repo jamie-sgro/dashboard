@@ -1,4 +1,5 @@
 // @ts-nocheck
+
 var Barplot = /** @class */ (function () {
     function Barplot(width, height, margin) {
         this.margin = margin;
