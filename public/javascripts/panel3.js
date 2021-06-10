@@ -85,9 +85,7 @@ function updatePanel3(id) {
                     return [4 /*yield*/, mark];
                 case 1:
                     mark = _a.sent();
-                    return [4 /*yield*/, getData()];
-                case 2:
-                    rawData = _a.sent();
+                    rawData = Data.getSyncData();
                     getMarkScore(mark, rawData, "score$" + getCheckedRadio());
                     checkedRadio = getCheckedRadio();
                     if (!mark[id].table[checkedRadio]) {
@@ -310,35 +308,31 @@ function initPanel3() {
     return __awaiter(this, void 0, void 0, function () {
         var rawData, heightScale;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, getData()];
-                case 1:
-                    rawData = _a.sent();
-                    panel3Data = panel3ParseData(rawData);
-                    heightScale = panel3GetHeightScale();
-                    d3.select("#panel3")
-                        .select("svg")
-                        .selectAll("rect")
-                        .data(panel3Data)
-                        .enter()
-                        .append("rect")
-                        .attr("id", function (d, i) {
-                        return "id" + i;
-                    })
-                        .call(this.getAttr, ["x", "width", "height"])
-                        .attr("y", function (d) {
-                        //assume no value until user prompt
-                        return heightScale(0);
-                    })
-                        .attr("fill", "#EFEFEF")
-                        .attr("stroke", "#D0CFD4")
-                        .on("click", function () {
-                        getMarkId(this.id);
-                    })
-                        .on("mouseover", panel3MouseOver)
-                        .on("mouseout", panel3MouseOut);
-                    return [2 /*return*/];
-            }
+            rawData = Data.getSyncData();
+            panel3Data = panel3ParseData(rawData);
+            heightScale = panel3GetHeightScale();
+            d3.select("#panel3")
+                .select("svg")
+                .selectAll("rect")
+                .data(panel3Data)
+                .enter()
+                .append("rect")
+                .attr("id", function (d, i) {
+                return "id" + i;
+            })
+                .call(this.getAttr, ["x", "width", "height"])
+                .attr("y", function (d) {
+                //assume no value until user prompt
+                return heightScale(0);
+            })
+                .attr("fill", "#EFEFEF")
+                .attr("stroke", "#D0CFD4")
+                .on("click", function () {
+                getMarkId(this.id);
+            })
+                .on("mouseover", panel3MouseOver)
+                .on("mouseout", panel3MouseOut);
+            return [2 /*return*/];
         });
     });
 }
@@ -385,20 +379,16 @@ function plotPanel3() {
     return __awaiter(this, void 0, void 0, function () {
         var rawData;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, getData()];
-                case 1:
-                    rawData = _a.sent();
-                    panel3Data = panel3ParseData(rawData);
-                    d3.select("#panel3")
-                        .select("svg")
-                        .selectAll("rect")
-                        .data(panel3Data)
-                        .transition()
-                        .duration(800)
-                        .call(this.getAttr, ["x", "y", "width", "height"]);
-                    return [2 /*return*/];
-            }
+            rawData = Data.getSyncData();
+            panel3Data = panel3ParseData(rawData);
+            d3.select("#panel3")
+                .select("svg")
+                .selectAll("rect")
+                .data(panel3Data)
+                .transition()
+                .duration(800)
+                .call(this.getAttr, ["x", "y", "width", "height"]);
+            return [2 /*return*/];
         });
     });
 }

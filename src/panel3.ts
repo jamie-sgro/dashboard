@@ -41,7 +41,8 @@ async function updatePanel3(id) {
   };
 
   mark = await mark;
-  var rawData = await getData();
+  let rawData = Data.getSyncData();
+
   getMarkScore(mark, rawData, "score$" + getCheckedRadio())
 
   var checkedRadio = getCheckedRadio();
@@ -291,7 +292,7 @@ function panel3ParseData(rawData) {
 //Ran first and once to get proper sizing
 //  (uses dataset, but assumes values of 0)
 async function initPanel3() {
-  var rawData = await getData();
+  let rawData = Data.getSyncData();
 
   panel3Data = panel3ParseData(rawData);
   var heightScale = panel3GetHeightScale();
@@ -355,7 +356,7 @@ async function getMarkId(id) {
   - uses a motion tween with 800ms to resize rectangles
 */
 async function plotPanel3() {
-  var rawData = await getData();
+  let rawData = Data.getSyncData();
   panel3Data = panel3ParseData(rawData);
 
   d3.select("#panel3")
