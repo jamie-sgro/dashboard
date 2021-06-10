@@ -86,10 +86,7 @@ function addMarker(map, name, lat, lng) {
     };
     var mark = L.circleMarker([lat, lng], options).addTo(map);
     mark.on("click", function () {
-        //this is where hooks into .d3 should be made
-        updateGraph(mark.id);
-        //this is where hooks into panel 3 should be made
-        updatePanel3(mark.id);
+        updateAllGraphs(mark.id);
     });
     mark.on("mouseover", function () {
         //mark.setRadius(20);
@@ -103,6 +100,12 @@ function addMarker(map, name, lat, lng) {
     return (mark);
 }
 ;
+function updateAllGraphs(id) {
+    //this is where hooks into .d3 should be made
+    updateGraph(id);
+    //this is where hooks into panel 3 should be made
+    updatePanel3(id);
+}
 // take dataset and calculate metrics for the mark[i].table element
 function getMarkScore(mark, data, scoreName) {
     //vet variable

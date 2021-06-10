@@ -69,12 +69,7 @@ function addMarker(map, name, lat, lng) {
   var mark = L.circleMarker([lat, lng], options).addTo(map);
 
   mark.on("click", ()=> {
-
-    //this is where hooks into .d3 should be made
-    updateGraph(mark.id);
-
-    //this is where hooks into panel 3 should be made
-    updatePanel3(mark.id);
+    updateAllGraphs(mark.id)
   });
 
   mark.on("mouseover", ()=> {
@@ -92,6 +87,15 @@ function addMarker(map, name, lat, lng) {
   mark.name = name;
   return(mark);
 };
+
+
+function updateAllGraphs(id: number) {
+    //this is where hooks into .d3 should be made
+    updateGraph(id);
+
+    //this is where hooks into panel 3 should be made
+    updatePanel3(id);
+}
 
 
 

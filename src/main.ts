@@ -156,7 +156,7 @@ async function plotData() {
   }
 
   barplot.plot(dataArray, min, max);
-  updateGraph(id)
+  updateAllGraphs(id)
 };
 
 
