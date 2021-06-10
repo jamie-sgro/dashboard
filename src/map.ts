@@ -241,7 +241,7 @@ async function updateGraph(id) {
 
   updateMarker(id);
 
-  data = await getData();
+  let data: DataModel[] = Data.getSyncData();
 
   dataArray = reduceData(data[id]);
 

@@ -45,8 +45,8 @@ var markCol = "rgba(10,151,217, .8)";
 var colourBottom = "rgb(56, 94, 231)";
 var colourTop = "rgb(34, 236, 87)";
 var scaleToZoom = false;
-//const locHost = "http://localhost:3000/"
-var locHost = "https://www.sdsn-canada-dashboard.tk/";
+var locHost = "http://localhost:3000/";
+// const locHost = "https://www.sdsn-canada-dashboard.tk/";
 var panelHeight = 0.40;
 var panelWidth = 0.40;
 //set default city
