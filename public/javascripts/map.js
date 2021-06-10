@@ -214,20 +214,14 @@ function onMapClick(e) {
 **********************/
 //updateGraph() is called when a leaflet marker is clicked
 function updateGraph(id) {
-    return __awaiter(this, void 0, void 0, function () {
-        var data;
-        return __generator(this, function (_a) {
-            if (!id) {
-                id = barplot.id;
-            }
-            ;
-            updateMarker(id);
-            data = Data.getSyncData();
-            dataArray = reduceData(data[id]);
-            barplot.updatePlot(barplot.canvas, dataArray);
-            return [2 /*return*/];
-        });
-    });
+    if (!id) {
+        id = barplot.id;
+    }
+    ;
+    updateMarker(id);
+    var data = Data.getSyncData();
+    dataArray = reduceData(data[id]);
+    barplot.updatePlot(barplot.canvas, dataArray);
 }
 ;
 function updateMarker(id) {

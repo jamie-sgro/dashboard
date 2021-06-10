@@ -157,6 +157,7 @@ function plotData() {
                 min.push(getMin(data, dataArray[col].name));
             }
             barplot.plot(dataArray, min, max);
+            updateGraph(id);
             return [2 /*return*/];
         });
     });

@@ -234,7 +234,7 @@ function onMapClick(e) {
 
 //updateGraph() is called when a leaflet marker is clicked
 
-async function updateGraph(id) {
+function updateGraph(id) {
   if (!id) {
     id = barplot.id;
   };
