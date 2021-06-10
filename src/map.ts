@@ -181,7 +181,7 @@ function generateTable(name, score, rank, standing) {
 
 
 async function populateMarkers(map) {
-  data = await getData();
+  data = getSyncData();
 
   // add marker
   var mark = [];

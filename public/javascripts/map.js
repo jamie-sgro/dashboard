@@ -170,33 +170,29 @@ function populateMarkers(map) {
     return __awaiter(this, void 0, void 0, function () {
         var mark;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, getData()];
-                case 1:
-                    data = _a.sent();
-                    mark = [];
-                    for (i in data) {
-                        //create marker element
-                        mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng);
-                        //attach array number to JSON object
-                        mark[i].id = i;
-                    }
-                    ;
-                    /* get metrics to create table
-                        - run through .csv headers, if header starts with "score", calculate metrics
-                          for that respective column
-                    */
-                    for (header in data[0]) {
-                        if (header.substring(0, 5) == "score") {
-                            // header variable represents the full string of a column containing raw
-                            //  score values
-                            getMarkScore(mark, data, header);
-                        }
-                        ;
-                    }
-                    ;
-                    return [2 /*return*/, mark];
+            data = getSyncData();
+            mark = [];
+            for (i in data) {
+                //create marker element
+                mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng);
+                //attach array number to JSON object
+                mark[i].id = i;
             }
+            ;
+            /* get metrics to create table
+                - run through .csv headers, if header starts with "score", calculate metrics
+                  for that respective column
+            */
+            for (header in data[0]) {
+                if (header.substring(0, 5) == "score") {
+                    // header variable represents the full string of a column containing raw
+                    //  score values
+                    getMarkScore(mark, data, header);
+                }
+                ;
+            }
+            ;
+            return [2 /*return*/, mark];
         });
     });
 }
