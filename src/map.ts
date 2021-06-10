@@ -181,7 +181,7 @@ function generateTable(name, score, rank, standing) {
 
 
 async function populateMarkers(map) {
-  data = getSyncData();
+  let data = Data.getSyncData();
 
   // add marker
   var mark = [];
@@ -298,7 +298,8 @@ function matches(key, search) {
 
 
 async function d3PopulateMarkers(map) {
-  data = await getData();
+  let data = Data.getSyncData();
+
 
     g.selectAll("circle")
       .data(data)

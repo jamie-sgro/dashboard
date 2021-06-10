@@ -168,9 +168,9 @@ function generateTable(name, score, rank, standing) {
 ;
 function populateMarkers(map) {
     return __awaiter(this, void 0, void 0, function () {
-        var mark;
+        var data, mark;
         return __generator(this, function (_a) {
-            data = getSyncData();
+            data = Data.getSyncData();
             mark = [];
             for (i in data) {
                 //create marker element
@@ -312,50 +312,47 @@ function d3PopulateMarkers(map) {
             }
             ;
         }
+        var data;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, getData()];
-                case 1:
-                    data = _a.sent();
-                    g.selectAll("circle")
-                        .data(data)
-                        .enter()
-                        .append("circle")
-                        .attr("id", function (d, i) {
-                        return "id" + i;
-                    })
-                        .attr("r", 0)
-                        .attr("cx", function (d) {
-                        // layerPointToLatLng() ran on second monitor with coords from dataset
-                        // (the variable 'd') returns uncaught promise
-                        // - relies on update() function to properly init coordinates
-                        // - currently throw a dummy coordinate [0, 0]
-                        return map.layerPointToLatLng([0, 0]).x;
-                    })
-                        .attr('cy', function (d) {
-                        return map.layerPointToLatLng([0, 0]).y;
-                    })
-                        .attr("stroke", "white")
-                        .attr("stroke-width", 1)
-                        .attr("fill", markCol)
-                        .attr("pointer-events", "visible")
-                        .on("mouseover", function () {
-                        var myCol = d3.select(this).attr("fill");
-                        d3.select(this)
-                            .style("cursor", "pointer")
-                            .call(attrTween, 100, "fill", setAlpha(myCol, .4));
-                    })
-                        .on("mouseout", function () {
-                        var myCol = d3.select(this).attr("fill");
-                        d3.select(this)
-                            .style("cursor", "default")
-                            .call(attrTween, 100, "fill", setAlpha(myCol, 1));
-                    });
-                    map.on("zoomend", update);
-                    update();
-                    ;
-                    return [2 /*return*/];
-            }
+            data = Data.getSyncData();
+            g.selectAll("circle")
+                .data(data)
+                .enter()
+                .append("circle")
+                .attr("id", function (d, i) {
+                return "id" + i;
+            })
+                .attr("r", 0)
+                .attr("cx", function (d) {
+                // layerPointToLatLng() ran on second monitor with coords from dataset
+                // (the variable 'd') returns uncaught promise
+                // - relies on update() function to properly init coordinates
+                // - currently throw a dummy coordinate [0, 0]
+                return map.layerPointToLatLng([0, 0]).x;
+            })
+                .attr('cy', function (d) {
+                return map.layerPointToLatLng([0, 0]).y;
+            })
+                .attr("stroke", "white")
+                .attr("stroke-width", 1)
+                .attr("fill", markCol)
+                .attr("pointer-events", "visible")
+                .on("mouseover", function () {
+                var myCol = d3.select(this).attr("fill");
+                d3.select(this)
+                    .style("cursor", "pointer")
+                    .call(attrTween, 100, "fill", setAlpha(myCol, .4));
+            })
+                .on("mouseout", function () {
+                var myCol = d3.select(this).attr("fill");
+                d3.select(this)
+                    .style("cursor", "default")
+                    .call(attrTween, 100, "fill", setAlpha(myCol, 1));
+            });
+            map.on("zoomend", update);
+            update();
+            ;
+            return [2 /*return*/];
         });
     });
 }
