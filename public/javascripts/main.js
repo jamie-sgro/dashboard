@@ -139,29 +139,25 @@ plotData();
 //called once when the screen renders
 function plotData() {
     return __awaiter(this, void 0, void 0, function () {
-        var id, min, i, max, min;
+        var data, id, min, i, max, min;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, getData()];
-                case 1:
-                    data = _a.sent();
-                    barplot.max = getMaxScore(data);
-                    id = document.getElementById("popupInfo").class;
-                    dataArray = reduceData(data[id]);
-                    barplot.id = id; //Currently use first row of .csv on graph init
-                    min = [];
-                    for (i in dataArray) {
-                    }
-                    ;
-                    max = [];
-                    min = [];
-                    for (col in dataArray) {
-                        max.push(getMax(data, dataArray[col].name));
-                        min.push(getMin(data, dataArray[col].name));
-                    }
-                    barplot.plot(dataArray, min, max);
-                    return [2 /*return*/];
+            data = Data.getSyncData();
+            barplot.max = getMaxScore(data);
+            id = document.getElementById("popupInfo").class;
+            dataArray = reduceData(data[id]);
+            barplot.id = id; //Currently use first row of .csv on graph init
+            min = [];
+            for (i in dataArray) {
             }
+            ;
+            max = [];
+            min = [];
+            for (col in dataArray) {
+                max.push(getMax(data, dataArray[col].name));
+                min.push(getMin(data, dataArray[col].name));
+            }
+            barplot.plot(dataArray, min, max);
+            return [2 /*return*/];
         });
     });
 }

@@ -115,7 +115,7 @@ initPanel3();
 *** CREATE BARPLOT ***
 *********************/
 
-function getHeight() {
+function getHeight(): number {
   if ($('#header').height()) {
     return $(window).height() - $('#header').height();
   } else {
@@ -134,7 +134,7 @@ plotData();
 
 //called once when the screen renders
 async function plotData() {
-  data = await getData();
+  let data = Data.getSyncData();
 
   barplot.max = getMaxScore(data)
 
