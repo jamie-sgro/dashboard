@@ -1,4 +1,3 @@
-// @ts-nocheck
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -43,11 +42,11 @@ var D3Map = /** @class */ (function () {
 }());
 ;
 function mapResize() {
-    h = ($(window).height() * (1 - panelHeight)) - 10;
+    var h = ($(window).height() * (1 - panelHeight)) - 10;
     if ($('#header').height()) {
         h -= $('#header').height();
     }
-    w = ($(window).width() * (1 - panelWidth));
+    var w = ($(window).width() * (1 - panelWidth));
     $("#map").height(h).width(w).css({ position: 'absolute' });
     map.invalidateSize();
 }
@@ -60,6 +59,7 @@ function getMap() {
         maxZoom: 8,
         minZoom: 2,
     }).addTo(map);
+    // @ts-ignore
     var legend = L.control({ position: "bottomright" });
     legend.onAdd = function (map) {
         var div = L.DomUtil.create("div", "legend");
@@ -75,7 +75,7 @@ function getMap() {
 }
 ;
 function addMarker(map, name, lat, lng) {
-    options = {
+    var options = {
         radius: scl,
         stroke: false,
         color: "black",
@@ -86,6 +86,7 @@ function addMarker(map, name, lat, lng) {
     };
     var mark = L.circleMarker([lat, lng], options).addTo(map);
     mark.on("click", function () {
+        // @ts-ignore
         updateAllGraphs(mark.id);
     });
     mark.on("mouseover", function () {
@@ -95,7 +96,9 @@ function addMarker(map, name, lat, lng) {
         //mark.setRadius(scl);
     });
     mark.bindTooltip(name, { direction: 'left' });
+    // @ts-ignore
     mark.content = "<h1>name</h1>";
+    // @ts-ignore
     mark.name = name;
     return (mark);
 }
@@ -115,7 +118,7 @@ function getMarkScore(mark, data, scoreName) {
     ;
     //get relative ranking
     var arr = [];
-    for (i in data) {
+    for (var i in data) {
         arr.push(getAverageScore(data[i], scoreName));
     }
     ;
@@ -135,7 +138,7 @@ function getMarkScore(mark, data, scoreName) {
         avg = sum / arr.length;
     }
     var standing;
-    for (i in data) {
+    for (var i in data) {
         var city = data[i];
         //get relative standing
         standing = Math.round(((city[scoreName] / avg) - 1) * 100);
@@ -155,9 +158,9 @@ function getMarkScore(mark, data, scoreName) {
         }
         ;
         //get score type without the "score$"
-        jsonName = scoreName.substring(6);
-        averageRaw = getAverageScore(city, scoreName);
-        average = Math.round(averageRaw * 100) / 100;
+        var jsonName = scoreName.substring(6);
+        var averageRaw = getAverageScore(city, scoreName);
+        var average = Math.round(averageRaw * 100) / 100;
         mark[i].table[jsonName] = generateTable(city.name, average, rank[i] + " (of " + rank.length + ")", standing);
         //record relative ranking for panel3 barchart selection
         mark[i].score[jsonName] = rank[i];
@@ -171,7 +174,7 @@ function generateTable(name, score, rank, standing) {
 ;
 function populateMarkers(map) {
     return __awaiter(this, void 0, void 0, function () {
-        var data, mark;
+        var data, mark, i, header;
         return __generator(this, function (_a) {
             data = Data.getSyncData();
             mark = [];
@@ -205,7 +208,9 @@ function onMapClick(e) {
         .each(function (d, i) {
         d3.select(this).call(attrTween, 500, "r", scl);
     });
-    for (i in mark) {
+    // @ts-ignore
+    for (var i in mark) {
+        // @ts-ignore
         mark[i].setStyle({ radius: scl });
     }
     //center screen onClick
@@ -218,12 +223,13 @@ function onMapClick(e) {
 //updateGraph() is called when a leaflet marker is clicked
 function updateGraph(id) {
     if (!id) {
+        // @ts-ignore
         id = barplot.id;
     }
     ;
     updateMarker(id);
     var data = Data.getSyncData();
-    dataArray = reduceData(data[id]);
+    var dataArray = reduceData(data[id]);
     barplot.updatePlot(barplot.canvas, dataArray);
 }
 ;
@@ -233,6 +239,7 @@ function updateMarker(id) {
         .call(attrTween, 800, "stroke", "white");
     //highlight new marker
     g.select("circle#id" + id)
+        // @ts-ignore
         .moveToFront()
         .call(attrTween, 800, "stroke", "black");
 }
@@ -242,8 +249,8 @@ function updateMarker(id) {
     and coordinates) and returns an array ready for d3 to use.
 */
 function reduceData(data) {
-    rtn = [];
-    for (key in data) {
+    var rtn = [];
+    for (var key in data) {
         if (matches(key, ["name", "lat", "lng"]) == false) {
             if (key.substring(0, 5) != "score") {
                 rtn.push({ "name": key, "value": data[key] });
@@ -260,7 +267,7 @@ function reduceData(data) {
   - if any item in the array 'search' is the key string, return true, else false
 */
 function matches(key, search) {
-    for (i in search) {
+    for (var i in search) {
         if (key == search[i]) {
             return true;
         }
@@ -289,8 +296,8 @@ function d3PopulateMarkers(map) {
         function update() {
             if (scaleToZoom) {
                 //get pxl distance between two coords
-                x1 = map.latLngToLayerPoint([0, 1]).x;
-                x2 = map.latLngToLayerPoint([0, 0]).x;
+                var x1 = map.latLngToLayerPoint([0, 1]).x;
+                var x2 = map.latLngToLayerPoint([0, 0]).x;
                 scl = (x1 - x2);
             }
             g.selectAll("circle")
@@ -300,7 +307,9 @@ function d3PopulateMarkers(map) {
                     map.latLngToLayerPoint([d.lat, d.lng]).x + "," +
                     map.latLngToLayerPoint([d.lat, d.lng]).y + ")";
             });
-            for (i in mark) {
+            // @ts-ignore
+            for (var i in mark) {
+                // @ts-ignore
                 mark[i].setStyle({ radius: scl });
             }
             ;

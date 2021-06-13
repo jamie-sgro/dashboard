@@ -28,6 +28,8 @@
   },
   "homepage": "https://gitlab.com/Jamie.Sgro/dashboard#README",
   "dependencies": {
+    "@types/d3": "^6.7.0",
+    "@types/leaflet": "^1.7.2",
     "async": "^3.0.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",

@@ -1,5 +1,8 @@
 // @ts-nocheck
 class Barplot {
+  canvas: any
+  id: number
+
     constructor(width, height, margin) {
       this.margin = margin;
       this.width = width;

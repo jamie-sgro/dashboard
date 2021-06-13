@@ -4,6 +4,7 @@
     "module": "commonjs",
     "sourceMap": false,
     "outDir": "./public/javascripts",
+    "skipLibCheck": true
   },
   "compileOnSave": true,
   "include": ["./src/**/*", "public/javascripts/barplot.js"],

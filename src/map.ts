@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 class D3Map {
   constructor(width, height, margin) {
 
@@ -9,13 +7,13 @@ class D3Map {
 
 
 function mapResize() {
-  h = ($(window).height()*(1-panelHeight)) - 10
+  let h = ($(window).height()*(1-panelHeight)) - 10
 
   if ($('#header').height()) {
     h -= $('#header').height();
   }
 
-  w = ($(window).width() * (1-panelWidth));
+  let w = ($(window).width() * (1-panelWidth));
   $("#map").height(h).width(w).css({position:'absolute'});
   map.invalidateSize();
 };
@@ -33,6 +31,7 @@ function getMap() {
         minZoom: 2,
       }).addTo(map);
 
+  // @ts-ignore
   var legend = L.control({position: "bottomright"});
 
   legend.onAdd = function(map) {
@@ -56,7 +55,7 @@ function getMap() {
 
 function addMarker(map, name, lat, lng) {
 
-  options = {
+  const options = {
     radius: scl,
     stroke: false,
     color: "black",
@@ -69,6 +68,7 @@ function addMarker(map, name, lat, lng) {
   var mark = L.circleMarker([lat, lng], options).addTo(map);
 
   mark.on("click", ()=> {
+    // @ts-ignore
     updateAllGraphs(mark.id)
   });
 
@@ -82,8 +82,10 @@ function addMarker(map, name, lat, lng) {
 
   mark.bindTooltip(name, {direction: 'left'})
 
+  // @ts-ignore
   mark.content = `<h1>name</h1>`
 
+  // @ts-ignore
   mark.name = name;
   return(mark);
 };
@@ -108,7 +110,7 @@ function getMarkScore(mark, data, scoreName) {
 
   //get relative ranking
   var arr = [];
-  for (i in data) {
+  for (let i in data) {
     arr.push(getAverageScore(data[i], scoreName));
   };
   var sorted = arr.slice().sort(function(a,b) {
@@ -130,7 +132,7 @@ function getMarkScore(mark, data, scoreName) {
 
   var standing;
 
-  for (i in data) {
+  for (let i in data) {
     let city = data[i]
     //get relative standing
     standing = Math.round(((city[scoreName] / avg) - 1) * 100)
@@ -149,9 +151,9 @@ function getMarkScore(mark, data, scoreName) {
     };
 
     //get score type without the "score$"
-    jsonName = scoreName.substring(6);
-    averageRaw =  getAverageScore(city, scoreName);
-    average = Math.round(averageRaw * 100) / 100
+    const jsonName = scoreName.substring(6);
+    const averageRaw =  getAverageScore(city, scoreName);
+    const average = Math.round(averageRaw * 100) / 100
 
     mark[i].table[jsonName] = generateTable(
       city.name, 
@@ -190,7 +192,7 @@ async function populateMarkers(map) {
   // add marker
   var mark = [];
 
-  for (i in data) {
+  for (let i in data) {
     //create marker element
     mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng);
 
@@ -202,7 +204,7 @@ async function populateMarkers(map) {
       - run through .csv headers, if header starts with "score", calculate metrics
         for that respective column
   */
-  for (header in data[0]) {
+  for (let header in data[0]) {
     if (header.substring(0, 5) == "score") {
       // header variable represents the full string of a column containing raw
       //  score values
@@ -222,7 +224,9 @@ function onMapClick(e) {
       d3.select(this).call(attrTween, 500, "r", scl)
     })
 
-  for (i in mark) {
+  // @ts-ignore
+  for (let i in mark) {
+    // @ts-ignore
     mark[i].setStyle({radius: scl})
   }
 
@@ -240,6 +244,7 @@ function onMapClick(e) {
 
 function updateGraph(id) {
   if (!id) {
+    // @ts-ignore
     id = barplot.id;
   };
 
@@ -247,7 +252,7 @@ function updateGraph(id) {
 
   let data = Data.getSyncData();
 
-  dataArray = reduceData(data[id]);
+  const dataArray = reduceData(data[id]);
 
   barplot.updatePlot(barplot.canvas, dataArray);
 };
@@ -261,6 +266,7 @@ function updateMarker(id) {
 
   //highlight new marker
   g.select("circle#id" + id)
+    // @ts-ignore
     .moveToFront()
     .call(attrTween, 800, "stroke", "black")
 };
@@ -273,8 +279,8 @@ function updateMarker(id) {
 */
 function reduceData(data) {
 
-  rtn = [];
-  for (key in data) {
+  let rtn = [];
+  for (let key in data) {
     if (matches(key, ["name","lat","lng"]) == false) {
       if (key.substring(0, 5) != "score") {
         rtn.push({"name": key, "value": data[key]});
@@ -291,7 +297,7 @@ function reduceData(data) {
 */
 
 function matches(key, search) {
-  for (i in search) {
+  for (let i in search) {
     if (key == search[i]) {
       return true;
     };
@@ -367,21 +373,23 @@ async function d3PopulateMarkers(map) {
     function update() {
       if (scaleToZoom) {
         //get pxl distance between two coords
-        x1 = map.latLngToLayerPoint([0,1]).x
-        x2 = map.latLngToLayerPoint([0,0]).x
+        const x1 = map.latLngToLayerPoint([0,1]).x
+        const x2 = map.latLngToLayerPoint([0,0]).x
 
         scl = (x1-x2);
       }
 
       g.selectAll("circle")
         .attr("r", scl)
-        .attr("transform", function(d) {
+        .attr("transform", function(d: DataModel) {
           return "translate("+
             map.latLngToLayerPoint([d.lat, d.lng]).x +","+
             map.latLngToLayerPoint([d.lat, d.lng]).y +")";
           })
 
-      for (i in mark) {
+      // @ts-ignore
+      for (let i in mark) {
+        // @ts-ignore
         mark[i].setStyle({radius: scl})
       };
     };
