@@ -1,6 +1,6 @@
 // @ts-nocheck
-var Barplot = /** @class */ (function () {
-    function Barplot(width, height, margin) {
+class Barplot {
+    constructor(width, height, margin) {
         this.margin = margin;
         this.width = width;
         this.height = height - this.margin.top - this.margin.bottom;
@@ -30,28 +30,28 @@ var Barplot = /** @class */ (function () {
             .style("opacity", 0);
     }
     ;
-    Barplot.prototype.getColour = function () {
+    getColour() {
         return d3.scaleLinear()
             .domain([0, d3.max(dataArray, function (d) {
                 return d.value;
             })])
             .range([colourBottom, colourTop]);
-    };
+    }
     ;
-    Barplot.prototype.getWidthScale = function () {
+    getWidthScale() {
         return d3.scaleLinear()
             .domain([0, this.max])
             .range([0, this.width - this.margin.left - this.margin.right]);
-    };
+    }
     ;
-    Barplot.prototype.getHeightScale = function () {
+    getHeightScale() {
         return d3.scaleBand()
             .range([this.height, 0])
             .padding(0.1)
             .domain(dataArray.map(function (d) {
             return d.name;
         }));
-    };
+    }
     ;
     /* @getAttr(d3object, oject)
       - constructor for reused attributes for barplot. All updates to common
@@ -59,7 +59,7 @@ var Barplot = /** @class */ (function () {
       - the attributes object should be an array of strings that match d3
         attributes
     */
-    Barplot.prototype.getAttr = function (path, attributes) {
+    getAttr(path, attributes) {
         var widthScale = barplot.getWidthScale();
         var heightScale = barplot.getHeightScale();
         var colour = barplot.getColour();
@@ -106,23 +106,23 @@ var Barplot = /** @class */ (function () {
             ;
         }
         ;
-    };
+    }
     ;
-    Barplot.prototype.getXAxis = function (path, obj) {
+    getXAxis(path, obj) {
         path
             .attr("transform", "translate(0," + obj.height + ")")
             .call(d3.axisBottom(obj.getWidthScale()));
-    };
-    Barplot.prototype.getYAxis = function (path, obj) {
+    }
+    getYAxis(path, obj) {
         path
             .call(d3.axisLeft(obj.getHeightScale()));
-    };
+    }
     /* @toggleLeadLag()
       - fired when switch/slider checkbox is triggered (in home.html)
       - swithces leadLag opacity on or off
       - changes rect size to match min and max of the variable it's measuring
     */
-    Barplot.prototype.toggleLeadLag = function () {
+    toggleLeadLag() {
         var widthScale = barplot.getWidthScale();
         if (document.getElementById("leadLag").checked) {
             var colour = barplot.getColour();
@@ -171,12 +171,12 @@ var Barplot = /** @class */ (function () {
             updateGraph(null);
         }
         ;
-    };
+    }
     ;
     /* @plot(jsonArray)
       - ran once on screen load, instantiates every d3 elem in second panel
     */
-    Barplot.prototype.plot = function (dataArray, min, max) {
+    plot(dataArray, min, max) {
         var widthScale = barplot.getWidthScale();
         this.canvas.selectAll("rect.bar")
             .data(dataArray)
@@ -232,9 +232,9 @@ var Barplot = /** @class */ (function () {
         this.canvas.append("g")
             .attr("class", "y axis")
             .call(this.getYAxis, this);
-    };
+    }
     ;
-    Barplot.prototype.onClick = function (data) {
+    onClick(data) {
         console.log(d3.select(this).attr("min"));
         console.log(d3.select(this).attr("max"));
         // change marker size based on data value
@@ -259,9 +259,9 @@ var Barplot = /** @class */ (function () {
             mark[i].setStyle({ radius: rad });
         }
         ;
-    };
+    }
     ;
-    Barplot.prototype.onMouseover = function (data) {
+    onMouseover(data) {
         //remove old text
         barplot.tooltip
             .html("");
@@ -310,9 +310,9 @@ var Barplot = /** @class */ (function () {
                 .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .7));
         }
         ;
-    };
+    }
     ;
-    Barplot.prototype.onMouseOut = function () {
+    onMouseOut() {
         barplot.tooltip.transition()
             .duration(200)
             .style("opacity", 0);
@@ -324,7 +324,7 @@ var Barplot = /** @class */ (function () {
         /*for (i in mark) {
           mark[i].setStyle({radius: scl})
         };*/
-    };
+    }
     /*
     getWidthScale() {
       return d3.scaleLinear()
@@ -335,7 +335,7 @@ var Barplot = /** @class */ (function () {
     /* @updatePlot(svg, data)
       - run on marker click, resizes rectangle/circle attributes according to data
     */
-    Barplot.prototype.updatePlot = function (canvas, dataArray) {
+    updatePlot(canvas, dataArray) {
         var widthScale = barplot.getWidthScale();
         var colour = barplot.getColour();
         if (!document.getElementById("leadLag").checked) {
@@ -358,9 +358,9 @@ var Barplot = /** @class */ (function () {
             }
             ;
         });
-    };
+    }
     ;
-    Barplot.prototype.resize = function () {
+    resize() {
         this.width = ($(window).width() * panelWidth);
         this.height = ($(window).height() - 50) - this.margin.top - this.margin.bottom;
         var widthScale = barplot.getWidthScale();
@@ -397,10 +397,9 @@ var Barplot = /** @class */ (function () {
             .call(this.getYAxis, this);
         this.svg
             .call(this.getSvgSize, this);
-    };
+    }
     ;
-    return Barplot;
-}());
+}
 ;
 function setAlpha(c, v) {
     var c = d3.rgb(c);
