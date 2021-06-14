@@ -1,3 +1,8 @@
+class DataPoint {
+    name: string;
+    value: string;
+}
+
 class DataModel {
   name: string;
   lat?: string;

@@ -1,4 +1,4 @@
-// @ts-nocheck
+// @ts-nocheckz
 class Barplot {
   canvas: any
   id: number
@@ -49,10 +49,12 @@ class Barplot {
   };
   
   getColour() {
+    let max = Number(d3.max(dataArray, (d: DataPoint) => {
+      return d.value;
+    }))
     return d3.scaleLinear()
-      .domain([0, d3.max(dataArray, function(d){
-        return d.value;
-      })])
+      .domain([0, max])
+      // @ts-ignore
       .range([colourBottom,colourTop]);
   };
 
