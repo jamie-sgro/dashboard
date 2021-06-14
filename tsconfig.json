@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2018",
     "module": "commonjs",
     "sourceMap": false,
     "outDir": "./public/javascripts",
     "skipLibCheck": true
   },
   "compileOnSave": true,
-  "include": ["./src/**/*", "public/javascripts/barplot.js"],
+  "include": ["./src/**/*"],
 }

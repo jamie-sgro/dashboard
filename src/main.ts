@@ -1,4 +1,4 @@
-// @ts-nocheck
+// @ts-nocheckz
 
 /************************
 *** DECLARE VARIABLES ***
@@ -18,6 +18,7 @@ const panelHeight = 0.40;
 const panelWidth = 0.40;
 
 //set default city
+// @ts-ignore
 document.getElementById("popupInfo").class = 0;
 
 
@@ -27,36 +28,36 @@ document.getElementById("popupInfo").class = 0;
 ***************/
 
 // import .csv
-function postAjax(url, data, callback) {
-  $.ajax({
-    type: "POST",
-    data: JSON.stringify(data),
-    url: url,
-  }).done(function(data) {
-    callback(null, data);
-  }).fail(function(jqXHR, textStatus, errorThrown) {
-    callback(jqXHR, null);
-  });
-};
+// function postAjax(url, data, callback) {
+//   $.ajax({
+//     type: "POST",
+//     data: JSON.stringify(data),
+//     url: url,
+//   }).done(function(data) {
+//     callback(null, data);
+//   }).fail(function(jqXHR, textStatus, errorThrown) {
+//     callback(jqXHR, null);
+//   });
+// };
 
 
 
-function getData() {
-  if (!getData.promise) {
-    getData.promise = new Promise(function(resolve, reject) {
-      postAjax(locHost + "getData", {}, function(err, cb) {
-        if (err) {
-          console.log("Error: " + err.statusText);
-          console.log(err)
-          reject(err);
-          return;
-        };
-        resolve(cb.data);
-      });
-    });
-  };
-  return getData.promise;
-};
+// function getData() {
+//   if (!getData.promise) {
+//     getData.promise = new Promise(function(resolve, reject) {
+//       postAjax(locHost + "getData", {}, function(err, cb) {
+//         if (err) {
+//           console.log("Error: " + err.statusText);
+//           console.log(err)
+//           reject(err);
+//           return;
+//         };
+//         resolve(cb.data);
+//       });
+//     });
+//   };
+//   return getData.promise;
+// };
 
 /******************
 *** ADD D3 TOOL ***
@@ -90,7 +91,7 @@ d3PopulateMarkers(map);
 
 //DEPRECIATED
 //move about d3PopulateMarkers() to use .d3 circle mouseEvents
-mark = populateMarkers(map);
+let mark = populateMarkers(map);
 
 //set up alerts
 map.on("click", onMapClick);
@@ -133,14 +134,16 @@ const barplot = new Barplot(
 plotData();
 
 //called once when the screen renders
-async function plotData() {
+function plotData() {
   let data = Data.getSyncData();
 
   barplot.max = getMaxScore(data)
 
   //only return the first datapoint to populate the graph
+  // @ts-ignore
   var id = document.getElementById("popupInfo").class;
-  dataArray = reduceData(data[id]);
+  console.log(id)
+  let dataArray = reduceData(data[id]);
   barplot.id = id; //Currently use first row of .csv on graph init
 
   var min = [];
@@ -150,7 +153,7 @@ async function plotData() {
 
   var max = [];
   var min = [];
-  for (col in dataArray) {
+  for (let col in dataArray) {
     max.push(getMax(data, dataArray[col].name))
     min.push(getMin(data, dataArray[col].name))
   }
@@ -162,10 +165,10 @@ async function plotData() {
 
 
 function getMaxScore(data) {
-  maxScore = 0;
+  let maxScore = 0;
 
-  for (rec in data) {
-    for (key in data[rec]) {
+  for (let rec in data) {
+    for (let key in data[rec]) {
       if (matches(key, ["name","lat","lng"]) == false) {
         if (key.substring(0, 5) != "score") {
           if (Number(data[rec][key]) > Number(maxScore)) {

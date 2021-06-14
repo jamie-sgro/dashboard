@@ -307,7 +307,7 @@ function matches(key, search) {
 
 
 
-async function d3PopulateMarkers(map) {
+function d3PopulateMarkers(map) {
   let data = Data.getSyncData();
 
 

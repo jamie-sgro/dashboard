@@ -2,6 +2,7 @@
 class Barplot {
   canvas: any
   id: number
+  max: number
 
     constructor(width, height, margin) {
       this.margin = margin;

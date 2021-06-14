@@ -1,12 +1,7 @@
-var DataModel = /** @class */ (function () {
-    function DataModel() {
-    }
-    return DataModel;
-}());
-var Data = /** @class */ (function () {
-    function Data() {
-    }
-    Data.getSyncData = function () {
+class DataModel {
+}
+class Data {
+    static getSyncData() {
         return [
             {
                 "name": "St. John's",
@@ -354,6 +349,5 @@ var Data = /** @class */ (function () {
                 "name": ""
             }
         ];
-    };
-    return Data;
-}());
+    }
+}
