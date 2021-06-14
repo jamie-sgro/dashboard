@@ -29,6 +29,10 @@ class Barplot {
         .style("opacity", 0);
   };
   
+  static selectAttrAsString(obj: any, attr: string): number {
+    return  Number(d3.select(obj).attr(attr))
+  }
+
   /** the (path, obj) convention is used to denote:
     path = d3 element
     obj = the barplot element typically evoked though 'this.'
@@ -80,7 +84,7 @@ class Barplot {
     var heightScale = barplot.getHeightScale();
     var colour = barplot.getColour();
 
-    for (key in attributes) {
+    for (let key in attributes) {
       switch (attributes[key]) {
         case "width":
           path.attr("width", function(d) {
@@ -97,7 +101,7 @@ class Barplot {
           break;
         case "fillTransparent":
           path.attr("fill", function(d) {
-            rtn = colour(d.value);
+            const rtn = colour(d.value);
             return setAlpha(rtn, 0);
           })
           break;
@@ -145,6 +149,7 @@ class Barplot {
   toggleLeadLag() {
     var widthScale = barplot.getWidthScale();
 
+    // @ts-ignore
     if (document.getElementById("leadLag").checked) {
       var colour = barplot.getColour();
 
@@ -159,17 +164,17 @@ class Barplot {
         .transition()
         .duration(800)
         .attr("transform", function() {
-          var rtn = d3.select(this).attr("min");
+          let rtn = this.selectAttrAsString(this, "min");
           rtn = widthScale(rtn);
           return "translate(" + rtn + ", 0)";
         })
         .attr("width", function() {
-          var rtn = d3.select(this).attr("max");
-          rtn -= d3.select(this).attr("min");
+          let rtn = this.selectAttrAsString(this, "max");
+          rtn -= Number(d3.select(this).attr("min"));
           return widthScale(rtn);
         })
         .attr("fill", function() {
-          rtn = Number(d3.select(this).attr("min"));
+          let rtn = this.selectAttrAsString(this, "min");
           rtn += Number(d3.select(this).attr("max"));
           rtn /= 2;
           rtn = colour(rtn)
@@ -232,7 +237,9 @@ class Barplot {
           .on("mouseout", this.onMouseOut)
           .on('mousemove', function() {
             barplot.tooltip
+              // @ts-ignore
               .style("left", (d3.event.pageX + 10) + "px")
+              // @ts-ignore
               .style("top", (d3.event.pageY) + "px")
 
             checkOffScreen();
@@ -248,7 +255,7 @@ class Barplot {
           //invisible until first marker is selected
           .call(this.getAttr, ["x", "y", "height", "fillTransparent"])
           .attr("width", function() {
-            var widthFactor = d3.select(this).attr("widthFactor");
+            let widthFactor = this.selectAttrAsString(this, "widthFactor")
             return barplot.width * widthFactor;
           })
           .attr("stroke", "rgba(0,0,0,0)")
