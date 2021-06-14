@@ -1,4 +1,3 @@
-// @ts-nocheckz
 /************************
 *** DECLARE VARIABLES ***
 ************************/
@@ -70,7 +69,7 @@ var g = d3.select("#map").select("svg").append("g");
 d3PopulateMarkers(map);
 //DEPRECIATED
 //move about d3PopulateMarkers() to use .d3 circle mouseEvents
-let mark = populateMarkers(map);
+var mark = populateMarkers(map);
 //set up alerts
 map.on("click", onMapClick);
 /*********************
@@ -97,15 +96,15 @@ function getHeight() {
 //Barplot(width, height, margin)
 const barplot = new Barplot(($(window).width() * panelWidth), getHeight(), { top: 10, right: 20, bottom: 30, left: 60 });
 plotData();
+var dataArray;
 //called once when the screen renders
-function plotData() {
+async function plotData() {
     let data = Data.getSyncData();
     barplot.max = getMaxScore(data);
     //only return the first datapoint to populate the graph
     // @ts-ignore
     var id = document.getElementById("popupInfo").class;
-    console.log(id);
-    let dataArray = reduceData(data[id]);
+    dataArray = reduceData(data[id]);
     barplot.id = id; //Currently use first row of .csv on graph init
     var min = [];
     for (var i in dataArray) {

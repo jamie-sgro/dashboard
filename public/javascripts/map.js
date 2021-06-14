@@ -248,7 +248,7 @@ function matches(key, search) {
     return false;
 }
 ;
-function d3PopulateMarkers(map) {
+async function d3PopulateMarkers(map) {
     let data = Data.getSyncData();
     g.selectAll("circle")
         .data(data)

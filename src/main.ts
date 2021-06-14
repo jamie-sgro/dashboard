@@ -1,5 +1,3 @@
-// @ts-nocheckz
-
 /************************
 *** DECLARE VARIABLES ***
 ************************/
@@ -132,6 +130,7 @@ const barplot = new Barplot(
 );
 
 plotData();
+var dataArray
 
 //called once when the screen renders
 function plotData() {
@@ -142,8 +141,7 @@ function plotData() {
   //only return the first datapoint to populate the graph
   // @ts-ignore
   var id = document.getElementById("popupInfo").class;
-  console.log(id)
-  let dataArray = reduceData(data[id]);
+  dataArray = reduceData(data[id]);
   barplot.id = id; //Currently use first row of .csv on graph init
 
   var min = [];
