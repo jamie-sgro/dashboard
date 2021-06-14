@@ -2,8 +2,6 @@
 *** DECLARE VARIABLES ***
 ************************/
 
-let myData = Data.getSyncData();
-
 var scl;
 const markRad = 15;
 const markCol = "rgba(10,151,217, .8)";
@@ -20,42 +18,6 @@ const panelWidth = 0.40;
 document.getElementById("popupInfo").class = 0;
 
 
-
-/***************
-*** GET DATA ***
-***************/
-
-// import .csv
-// function postAjax(url, data, callback) {
-//   $.ajax({
-//     type: "POST",
-//     data: JSON.stringify(data),
-//     url: url,
-//   }).done(function(data) {
-//     callback(null, data);
-//   }).fail(function(jqXHR, textStatus, errorThrown) {
-//     callback(jqXHR, null);
-//   });
-// };
-
-
-
-// function getData() {
-//   if (!getData.promise) {
-//     getData.promise = new Promise(function(resolve, reject) {
-//       postAjax(locHost + "getData", {}, function(err, cb) {
-//         if (err) {
-//           console.log("Error: " + err.statusText);
-//           console.log(err)
-//           reject(err);
-//           return;
-//         };
-//         resolve(cb.data);
-//       });
-//     });
-//   };
-//   return getData.promise;
-// };
 
 /******************
 *** ADD D3 TOOL ***
