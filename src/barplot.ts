@@ -255,7 +255,7 @@ class Barplot {
           //invisible until first marker is selected
           .call(this.getAttr, ["x", "y", "height", "fillTransparent"])
           .attr("width", function() {
-            let widthFactor = this.selectAttrAsString(this, "widthFactor")
+            var widthFactor = Number(d3.select(this).attr("widthFactor"));
             return barplot.width * widthFactor;
           })
           .attr("stroke", "rgba(0,0,0,0)")
