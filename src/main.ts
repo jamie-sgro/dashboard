@@ -84,11 +84,25 @@ function getHeight(): number {
   };
 };
 
+class Margin {
+  top: number
+  right: number
+  bottom: number
+  left: number
+
+  constructor(top, right, bottom, left) {
+    this.top = top;
+    this.right = right;
+    this.bottom = bottom;
+    this.left = left;
+  }
+}
+
 //Barplot(width, height, margin)
 const barplot = new Barplot(
   ($(window).width()*panelWidth),
   getHeight(),
-  {top: 10, right: 20, bottom: 30, left: 60}
+  new Margin(10, 20, 30, 60)
 );
 
 plotData();

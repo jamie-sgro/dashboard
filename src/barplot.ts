@@ -3,8 +3,13 @@ class Barplot {
   canvas: any
   id: number
   max: number
+  margin: Margin;
+  width: number;
+  height: number;
+  svg: d3.Selection<SVGSVGElement, unknown, HTMLElement, any>;
+  tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>;
 
-    constructor(width, height, margin) {
+    constructor(width, height, margin: Margin) {
       this.margin = margin;
       this.width = width;
       this.height = height - this.margin.top - this.margin.bottom;
