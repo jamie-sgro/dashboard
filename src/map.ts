@@ -270,13 +270,12 @@ function updateMarker(id) {
 
 
 
-/* @reduceData(object)
-  - provide JSON object, removes data not used in graph visualization (i.e name
+/** provide JSON object, removes data not used in graph visualization (i.e name
     and coordinates) and returns an array ready for d3 to use.
 */
-function reduceData(data) {
+function reduceData(data: DataModel): DataPoint[] {
 
-  let rtn = [];
+  let rtn: DataPoint[] = [];
   for (let key in data) {
     if (matches(key, ["name","lat","lng"]) == false) {
       if (key.substring(0, 5) != "score") {

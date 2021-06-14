@@ -106,7 +106,7 @@ const barplot = new Barplot(
 );
 
 plotData();
-var dataArray
+var dataArray: DataPoint[]
 
 //called once when the screen renders
 function plotData() {
@@ -137,7 +137,9 @@ function plotData() {
 };
 
 
-
+/** Parse maximum value of all possible values
+ * that are not an average 'score' column i.e. prepended with "score"
+ */
 function getMaxScore(data) {
   let maxScore = 0;
 

@@ -47,7 +47,7 @@ class Barplot {
 
     $(".barplot.svg").css({left: $(window).width()*(1-panelWidth), position:'relative'});
   };
-  
+
   getColour() {
     let max = Number(d3.max(dataArray, (d: DataPoint) => {
       return d.value;
@@ -276,10 +276,17 @@ class Barplot {
   };
 
 
+  /** Excplicitely cast `this` into a d3.BaseType 
+   * because d3 often co-opts the `this` keyword */
+  get baseType() {
+    return this as unknown as d3.BaseType
+  }
+
+
 
   onClick(data) {
-    console.log(d3.select(this).attr("min"))
-    console.log(d3.select(this).attr("max"))
+    console.log(d3.select(this.baseType).attr("min"))
+    console.log(d3.select(this.baseType).attr("max"))
     // change marker size based on data value
     var radiusScale = d3.scaleLinear()
       .domain([0, d3.max(dataArray, function(d){
