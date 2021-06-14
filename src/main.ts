@@ -89,7 +89,7 @@ d3PopulateMarkers(map);
 
 //DEPRECIATED
 //move about d3PopulateMarkers() to use .d3 circle mouseEvents
-let mark = populateMarkers(map);
+var mark = populateMarkers(map);
 
 //set up alerts
 map.on("click", onMapClick);

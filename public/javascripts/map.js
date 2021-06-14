@@ -179,9 +179,7 @@ function onMapClick(e) {
         .each(function (d, i) {
         d3.select(this).call(attrTween, 500, "r", scl);
     });
-    // @ts-ignore
     for (let i in mark) {
-        // @ts-ignore
         mark[i].setStyle({ radius: scl });
     }
     //center screen onClick
@@ -194,7 +192,6 @@ function onMapClick(e) {
 //updateGraph() is called when a leaflet marker is clicked
 function updateGraph(id) {
     if (!id) {
-        // @ts-ignore
         id = barplot.id;
     }
     ;
@@ -314,9 +311,7 @@ async function d3PopulateMarkers(map) {
                 map.latLngToLayerPoint([d.lat, d.lng]).x + "," +
                 map.latLngToLayerPoint([d.lat, d.lng]).y + ")";
         });
-        // @ts-ignore
         for (let i in mark) {
-            // @ts-ignore
             mark[i].setStyle({ radius: scl });
         }
         ;

@@ -224,9 +224,7 @@ function onMapClick(e) {
       d3.select(this).call(attrTween, 500, "r", scl)
     })
 
-  // @ts-ignore
   for (let i in mark) {
-    // @ts-ignore
     mark[i].setStyle({radius: scl})
   }
 
@@ -244,7 +242,6 @@ function onMapClick(e) {
 
 function updateGraph(id) {
   if (!id) {
-    // @ts-ignore
     id = barplot.id;
   };
 
@@ -307,7 +304,7 @@ function matches(key, search) {
 
 
 
-function d3PopulateMarkers(map) {
+async function d3PopulateMarkers(map) {
   let data = Data.getSyncData();
 
 
@@ -387,9 +384,7 @@ function d3PopulateMarkers(map) {
             map.latLngToLayerPoint([d.lat, d.lng]).y +")";
           })
 
-      // @ts-ignore
       for (let i in mark) {
-        // @ts-ignore
         mark[i].setStyle({radius: scl})
       };
     };

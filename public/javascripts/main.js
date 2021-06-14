@@ -98,7 +98,7 @@ const barplot = new Barplot(($(window).width() * panelWidth), getHeight(), { top
 plotData();
 var dataArray;
 //called once when the screen renders
-async function plotData() {
+function plotData() {
     let data = Data.getSyncData();
     barplot.max = getMaxScore(data);
     //only return the first datapoint to populate the graph
