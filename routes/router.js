@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var papa = require("papaparse");
 
 //GET home page.
 router.get('/index', (req, res)=> {
@@ -47,29 +46,6 @@ router.get('/ui/', (req, res) => {
 //GET home page if nothing else matches.
 router.get('*', (req, res)=> {
   res.redirect('home');
-});
-
-router.post('/getData', (req, res) => {
-
-  //detect if valid CORS req
-  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-  var urlRegExp = new RegExp("(https:\/\/)*(\.localtunnel\.me)*");
-  if (urlRegExp.test(fullUrl)) {
-    res.header("Access-Control-Allow-Origin", "*");
-  };
-
-  res.header("Access-Control-Allow-Origin", "*");
-
-  var fs = require("fs")
-  var rawData = fs.readFileSync("./public/data/sdg_cities_index.csv", "utf8");
-
-  var data = papa.parse(rawData, {
-    header: true
-  });
-
-  res.status(200);
-  res.send(data);
-  return;
 });
 
 module.exports = router;
