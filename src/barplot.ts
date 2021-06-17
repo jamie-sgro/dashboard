@@ -289,9 +289,9 @@ class Barplot {
     console.log(d3.select(this.baseType).attr("max"))
     // change marker size based on data value
     var radiusScale = d3.scaleLinear()
-      .domain([0, d3.max(dataArray, function(d){
+      .domain([0, Number(d3.max(dataArray, function(d){
         return d.value;
-      })])
+      }))])
       .range([scl/2, scl*2]);
 
     // update the map marker colour
@@ -300,17 +300,18 @@ class Barplot {
         d3.select(this).call(attrTween, 500, "r", radiusScale(d[data.name]))
       })
 
-
+    // @ts-ignore
     if (!document.getElementById("leadLag").checked) {
-      var myCol = d3.select(this).attr("fill");
+      var myCol = d3.select(this.baseType).attr("fill");
 
-      d3.select(this)
+      d3.select(this.baseType)
         .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .4))
     };
 
 
-    for (i in mark) {
-      var rad = Math.round(scl+radiusScale(d3.select(this).data()[0].value))
+    for (let i in mark) {
+      let data = d3.select(this.baseType).data()[0] as DataPoint
+      var rad = Math.round(scl+radiusScale(Number(data.value)))
       mark[i].setStyle({radius: rad})
     };
   };
@@ -346,7 +347,7 @@ class Barplot {
       .style("opacity", 1)
 
     //retrieving data from rect obj must be done outside of tooltip functions
-    var rectData = d3.select(this).data()[0]
+    var rectData = d3.select(this.baseType).data()[0] as DataPoint
 
     barplot.tooltip
       .transition()
@@ -368,11 +369,12 @@ class Barplot {
         d3.select(this).call(attrTween, 300, "fill", setAlpha(colour(d[data.name]), .8))
       })
 
-    var myCol = d3.select(this).attr("fill")
+    var myCol = d3.select(this.baseType).attr("fill")
 
     // highlight barplot if NOT in leadLag mode
+    // @ts-ignore
     if (!document.getElementById("leadLag").checked) {
-      d3.select(this)
+      d3.select(this.baseType)
         .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .7))
     };
   };
@@ -411,6 +413,7 @@ getWidthScale() {
     var widthScale = barplot.getWidthScale();
     var colour = barplot.getColour();
 
+    // @ts-ignore
     if (!document.getElementById("leadLag").checked) {
       canvas.selectAll("rect.bar")
         .data(dataArray)
@@ -423,9 +426,10 @@ getWidthScale() {
     canvas.selectAll("rect.leadLag")
       .data(dataArray)
         .each(function(d, i) {
-          var widthFactor = d3.select(this).attr("widthFactor");
+          var widthFactor = Number(d3.select(this).attr("widthFactor"));
           var xPos = widthScale(d.value) * (1 - widthFactor);
           d3.select(this).call(attrTween, 800, "x", xPos);
+          // @ts-ignore
           if (document.getElementById("leadLag").checked) {
             d3.select(this).call(attrTween, 800, "fill", colour(d.value));
           };
@@ -441,11 +445,12 @@ getWidthScale() {
     var widthScale = barplot.getWidthScale();
 
     // update .rect width based on if leadLag mode is toggled
+    // @ts-ignore
     if (document.getElementById("leadLag").checked) {
       this.canvas.selectAll("rect.bar")
         .attr("width", function() {
-          var rtn = d3.select(this).attr("max");
-          rtn -= d3.select(this).attr("min");
+          var rtn = Number(d3.select(this).attr("max"));
+          rtn -= Number(d3.select(this).attr("min"));
           return widthScale(rtn);
         })
     } else {
@@ -460,11 +465,11 @@ getWidthScale() {
     this.canvas.selectAll("rect.leadLag")
       .call(this.getAttr, ["y", "height"])
       .attr("width", function() {
-        var widthFactor = d3.select(this).attr("widthFactor");
+        var widthFactor = Number(d3.select(this).attr("widthFactor"));
         return barplot.width * widthFactor;
       })
       .attr("x", function(d) {
-        var widthFactor = d3.select(this).attr("widthFactor");
+        var widthFactor = Number(d3.select(this).attr("widthFactor"));
         return widthScale(d.value) * (1 - widthFactor);
       });
 
@@ -482,8 +487,8 @@ getWidthScale() {
   
   
   function setAlpha(c, v) {
-    var c = d3.rgb(c);
-    c.opacity = v;
+    let col = d3.rgb(c);
+    col.opacity = v;
   
     return c;
   }
@@ -491,7 +496,7 @@ getWidthScale() {
   
   
   function attrTween(path, duration, attr, endRes) {
-    var dummy = {};
+    var dummy = {}  as unknown as d3.BaseType;
     var colour = barplot.getColour();
   
     d3.select(dummy)
@@ -508,7 +513,7 @@ getWidthScale() {
   
   
   function resetTween(path, duration, attr, endRes, peakRes) {
-    var dummy = {};
+    var dummy = {}  as unknown as d3.BaseType;
     var colour = barplot.getColour();
   
     d3.select(dummy)
@@ -533,13 +538,16 @@ getWidthScale() {
   
   
   function checkOffScreen() {
+    // @ts-ignore
     var tooltipHtml = barplot.tooltip._groups[0][0]
+    // @ts-ignore
     var svgHtml = d3.select(barplot.canvas)._groups[0][0]._groups[0][0];
     var absBottom = $(svgHtml).offset().top + parseInt(barplot.svg.style("height"));
     var absToolBottom = $(tooltipHtml).offset().top + parseInt(barplot.tooltip.style("height"));
   
     //check if tooltip offscreen
     try {
+      // @ts-ignore
       var offScreenDiff = $(window).height() - event.clientY - parseInt(barplot.tooltip.style("height"))
       if (offScreenDiff < 0) {
         barplot.tooltip

@@ -1,3 +1,6 @@
+
+let panel3Data: any
+
 function getPanel3Height() {
   //start with panel3 html height
   let rtn = parseInt($("#panel3").css("height"));
@@ -158,9 +161,9 @@ function panel3GetWidthScale() {
 
 function panel3GetHeightScale() {
   return d3.scaleLinear()
-    .domain([0, d3.max(panel3Data, function(d) {
+    .domain([0, Number(d3.max(panel3Data, function(d: DataPoint) {
       return d.value
-    })])
+    }))])
     .range([getPanel3Height(), 0]);
 };
 
@@ -178,7 +181,7 @@ function getAttr(path, attributes) {
   var widthScale = panel3GetWidthScale();
   var heightScale = panel3GetHeightScale();
 
-  for (key in attributes) {
+  for (let key in attributes) {
     switch (attributes[key]) {
       case "width":
         path.attr("width", widthScale.bandwidth())
@@ -209,8 +212,8 @@ function getAttr(path, attributes) {
 // Reduce json data for city and return only arary of sdg scores
 function getScoreArray(data) {
   let scoreArray = []
-  checkBoxes = getCheckboxes();
-  for (checkBox in checkBoxes) {
+  let checkBoxes = getCheckboxes();
+  for (let checkBox in checkBoxes) {
     scoreArray.push(Number(data[checkBoxes[checkBox]]));
   }
   return scoreArray;
@@ -242,15 +245,15 @@ function median(data){
 
 function geometric(data){
   if (data.length < 1) return 0;
-  root = data.length
-  agg = data.reduce((a, b) => a * b);
+  let root = data.length
+  let agg = data.reduce((a, b) => a * b);
   return Math.pow(agg, 1/root);
 }
 
 
 
 function getAverageScore(data, averageType) {
-  scoreArray = getScoreArray(data);
+  let scoreArray = getScoreArray(data);
   let average;
   if (averageType == "score$arithmetic")  {
     average = arithmetic;
@@ -275,8 +278,8 @@ function panel3ParseData(rawData) {
   var keyPhrase = "score$" + getCheckedRadio();
 
   //parse needed data from rawData
-  rtn = [];
-  for (i in rawData) {
+  let rtn = [];
+  for (let i in rawData) {
     let averageScore = getAverageScore(rawData[i], keyPhrase);
     rtn.push({
       name: rawData[i].name,
