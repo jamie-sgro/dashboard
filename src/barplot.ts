@@ -487,8 +487,8 @@ getWidthScale() {
   
   
   function setAlpha(c, v) {
-    let col = d3.rgb(c);
-    col.opacity = v;
+    c = d3.rgb(c);
+    c.opacity = v;
   
     return c;
   }
