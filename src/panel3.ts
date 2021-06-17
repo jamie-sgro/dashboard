@@ -1,8 +1,6 @@
-// @ts-nocheck
-
 function getPanel3Height() {
   //start with panel3 html height
-  rtn = parseInt($("#panel3").css("height"));
+  let rtn = parseInt($("#panel3").css("height"));
 
   //reduce by padding in .css (if browser can detect it)
   var panel3Padding = parseInt($("#panel3").css("padding"));
@@ -32,15 +30,17 @@ function getPanel3Height() {
 
 
 
-async function updatePanel3(id) {
+function updatePanel3(id) {
   //update city id if applicable
   if (id) {
+    // @ts-ignore
     document.getElementById("popupInfo").class = id;
   } else {
+    // @ts-ignore
     id = document.getElementById("popupInfo").class
   };
 
-  mark = await mark;
+  // mark = mark;
   let rawData = Data.getSyncData();
 
   getMarkScore(mark, rawData, "score$" + getCheckedRadio())
@@ -291,7 +291,7 @@ function panel3ParseData(rawData) {
 
 //Ran first and once to get proper sizing
 //  (uses dataset, but assumes values of 0)
-async function initPanel3() {
+function initPanel3() {
   let rawData = Data.getSyncData();
 
   panel3Data = panel3ParseData(rawData);
@@ -336,8 +336,8 @@ function panel3MouseOut() {
 
 
 
-async function getMarkId(id) {
-  mark = await mark;
+function getMarkId(id) {
+  // mark = await mark;
   id = id.substring(2);
 
   for (var i in mark) {
@@ -355,7 +355,7 @@ async function getMarkId(id) {
     current button selected
   - uses a motion tween with 800ms to resize rectangles
 */
-async function plotPanel3() {
+function plotPanel3() {
   let rawData = Data.getSyncData();
   panel3Data = panel3ParseData(rawData);
 
