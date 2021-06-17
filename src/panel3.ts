@@ -100,6 +100,7 @@ function getCheckboxes() {
   let checkArr = document.getElementsByName("checkbox-sdg");
   let checkList = [];
   for (var i = 0; i < checkArr.length; i++) {
+    // @ts-ignore
     if (!checkArr[i].checked) continue;
     let sdgCleaned = checkArr[i].id.replace("checkbox-", "");
     checkList.push(sdgCleaned);
@@ -107,10 +108,14 @@ function getCheckboxes() {
   return checkList;
 }
 
-
+class Pos{
+  top: number;
+  width: number;
+  height: number;
+}
 
 function panel3Resize() {
-  pos = {};
+  let pos = new Pos;
   pos.top = ($(window).height()*(1-panelHeight));
 
   if ($('#header').height()) {
