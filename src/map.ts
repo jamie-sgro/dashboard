@@ -1,3 +1,8 @@
+// @ts-expect-error
+import d3 = require("d3")
+// @ts-expect-error
+import L = require("leaflet")
+
 import { attrTween, setAlpha } from "./barplot.js";
 import { Data, DataModel, DataPoint } from "./data.js";
 import { barplot, colourBottom, colourTop, g, map, mark, markCol, markRad, panelHeight, panelWidth, scaleToZoom, scl } from "./main.js";

@@ -1,3 +1,6 @@
+// @ts-expect-error
+import d3 = require("d3");
+
 import { DataPoint } from "./data.js";
 import { updateGraph } from "./map.js";
 import { Margin } from "./Margin.js";

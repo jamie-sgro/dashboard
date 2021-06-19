@@ -1,6 +1,8 @@
-/************************
-*** DECLARE VARIABLES ***
-************************/
+// @ts-expect-error
+import d3 = require("d3");
+// @ts-expect-error
+import L = require("leaflet");
+
 
 import { Barplot } from "./barplot.js";
 import { Data, DataPoint } from "./data.js";
