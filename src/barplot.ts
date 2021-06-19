@@ -4,6 +4,7 @@ import d3 = require("d3");
 import { DataPoint } from "./data.js";
 import { updateGraph } from "./map.js";
 import { Margin } from "./Margin.js";
+import { assertType } from "./utils.js";
 
 const markCol = "rgba(10,151,217, .8)";
 const panelWidth = 0.40;
@@ -41,7 +42,8 @@ export class Barplot {
     // Define the div for the tooltip
     this.tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")
-        .style("opacity", 0);
+        .html("sadfdsf")
+        .style("opacity", 1);
   };
   
   static selectAttrAsString(obj: any, attr: string): number {
@@ -158,11 +160,10 @@ export class Barplot {
   }
 
 
-  /* @toggleLeadLag()
-    - fired when switch/slider checkbox is triggered (in home.html)
-    - swithces leadLag opacity on or off
-    - changes rect size to match min and max of the variable it's measuring
-  */
+  /** Fired when switch/slider checkbox is triggered (in home.html)
+   * swithces leadLag opacity on or off
+   * changes rect size to match min and max of the variable it's measuring
+   */
   toggleLeadLag() {
     var widthScale = this.getWidthScale();
 
@@ -223,10 +224,9 @@ export class Barplot {
   };
 
 
-  /* @plot(jsonArray)
-    - ran once on screen load, instantiates every d3 elem in second panel
-  */
-  plot(dataArray, min, max) {
+  /** Ran once on screen load, instantiates every d3 elem in second panel
+   */
+  plot(dataArray: DataPoint[], min: number[], max: number[]): void {
     this.dataArray = dataArray
     var widthScale = this.getWidthScale();
 
@@ -253,16 +253,14 @@ export class Barplot {
           .attr("stroke", "rgba(0,0,0,0)")
           .style("cursor", "pointer")
           // .on("click", this.onClick)
-          // .on("mouseover", this.onMouseover)
-          // .on("mouseout", this.onMouseOut)
-          .on('mousemove', function() {
-            this.tooltip
-              // @ts-ignore
-              .style("left", (d3.event.pageX + 10) + "px")
-              // @ts-ignore
-              .style("top", (d3.event.pageY) + "px")
-
-            checkOffScreen(this);
+          .on("mouseover", (d, i) => {
+            this.onMouseover(d, i)
+          })
+          .on("mouseout", () => {
+            this.onMouseOut()
+          })
+          .on('mousemove', () => {
+            this.onMouseMove()
           })
           
     let width = this.width
@@ -336,11 +334,12 @@ export class Barplot {
   };
 
 
+  onMouseover(data: DataPoint, index: number) {
+    assertType(this, Barplot)
 
-  onMouseover(data) {
     //remove old text
     this.tooltip
-      .html("")
+      .html(data.name)
 
     //remove old img
     this.tooltip
@@ -360,13 +359,10 @@ export class Barplot {
       //       .html(data.name)
       //   })
 
-      this.tooltip
+    this.tooltip
       .transition()
       .duration(200)
       .style("opacity", 1)
-
-    //retrieving data from rect obj must be done outside of tooltip functions
-    var rectData = d3.select(this.baseType).data()[0] as DataPoint
 
     this.tooltip
       .transition()
@@ -374,10 +370,9 @@ export class Barplot {
       .on("end", function() {
         d3.select(this)
           .html(d3.select(this).html() +
-          " " + rectData.value)
-
-        checkOffScreen(this);
-      })
+          " " + data.value)
+        })
+    checkOffScreen(this);
 
     var colour = this.getColour();
 
@@ -387,20 +382,44 @@ export class Barplot {
         //same duration so that the newest tween overwrites the old one
         d3.select(this).call(attrTween, 300, "fill", setAlpha(colour(d[data.name]), .8))
       })
-
-    var myCol = d3.select(this.baseType).attr("fill")
-
-    // highlight barplot if NOT in leadLag mode
-    // @ts-ignore
-    if (!document.getElementById("leadLag").checked) {
-      d3.select(this.baseType)
-        .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .7))
-    };
+    
+    this.flashRect(index)
   };
+
+  /**
+   * Highlight barplot rectangle if NOT in leadLag mode
+   * @param index The index value of the barplot rectangle being modified
+   */
+  flashRect(index: number): void {
+    // @ts-ignore
+    if (document.getElementById("leadLag").checked) return;
+    
+    let currectRect = this.getRectByIndex(index)
+    let myCol = currectRect.attr("fill")
+
+    currectRect
+      .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .7))
+  }
+
+  getRectByIndex(index: number): d3.Selection<any, any, any, any> {
+    return d3.select(this.canvas.selectAll("rect.bar")._groups[0][index])
+  }
+
+  onMouseMove() {
+    assertType(this, Barplot);
+    this.tooltip
+      // @ts-ignore
+      .style("left", (d3.event.pageX + 10) + "px")
+      // @ts-ignore
+      .style("top", (d3.event.pageY) + "px")
+
+    checkOffScreen(this);
+  }
 
 
 
   onMouseOut() {
+    assertType(this, Barplot);
     this.tooltip.transition()
         .duration(200)
         .style("opacity", 0)
@@ -557,21 +576,22 @@ function resetTween(path, duration, attr, endRes, peakRes) {
   
   
   
-function checkOffScreen(barplot) {
+function checkOffScreen(barplot: Barplot) {
+  assertType(barplot, Barplot);
   // @ts-ignore
   var tooltipHtml = barplot.tooltip._groups[0][0]
   // @ts-ignore
   var svgHtml = d3.select(barplot.canvas)._groups[0][0]._groups[0][0];
-  var absBottom = $(svgHtml).offset().top + parseInt(this.svg.style("height"));
-  var absToolBottom = $(tooltipHtml).offset().top + parseInt(this.tooltip.style("height"));
+  var absBottom = $(svgHtml).offset().top + parseInt(barplot.svg.style("height"));
+  var absToolBottom = $(tooltipHtml).offset().top + parseInt(barplot.tooltip.style("height"));
 
   //check if tooltip offscreen
   try {
     // @ts-ignore
     var offScreenDiff = $(window).height() - event.clientY - parseInt(barplot.tooltip.style("height"))
     if (offScreenDiff < 0) {
-      this.tooltip
-        .style("top", parseInt(this.tooltip.style("top")) + offScreenDiff + "px");
+      barplot.tooltip
+        .style("top", parseInt(barplot.tooltip.style("top")) + offScreenDiff + "px");
       return;
     }
   } catch(error) {
@@ -580,8 +600,8 @@ function checkOffScreen(barplot) {
 
   //check if tooltip outside barplot svg offscreen
   if (absToolBottom > absBottom) {
-    this.tooltip
-      .style("top", absBottom - parseInt(this.tooltip.style("height")) + "px");
+    barplot.tooltip
+      .style("top", absBottom - parseInt(barplot.tooltip.style("height")) + "px");
     return
   };
 };
