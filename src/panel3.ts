@@ -1,3 +1,7 @@
+import { attrTween } from "./barplot.js";
+import { Data, DataPoint } from "./data.js";
+import { barplot, mark, panelHeight, panelWidth } from "./main.js";
+import { getMarkScore } from "./map.js";
 
 let panel3Data: any
 
@@ -33,7 +37,7 @@ function getPanel3Height() {
 
 
 
-function updatePanel3(id) {
+export function updatePanel3(id) {
   //update city id if applicable
   if (id) {
     // @ts-ignore
@@ -117,7 +121,7 @@ class Pos{
   height: number;
 }
 
-function panel3Resize() {
+export function panel3Resize() {
   let pos = new Pos;
   pos.top = ($(window).height()*(1-panelHeight));
 
@@ -210,11 +214,21 @@ function getAttr(path, attributes) {
 };
 
 // Reduce json data for city and return only arary of sdg scores
-function getScoreArray(data) {
+function getScoreBasedOnUserToggle(data): number[] {
   let scoreArray = []
   let checkBoxes = getCheckboxes();
   for (let checkBox in checkBoxes) {
     scoreArray.push(Number(data[checkBoxes[checkBox]]));
+  }
+  return scoreArray;
+}
+
+function getScore(data): number[] {
+  let scoreArray = []
+  for (let key in data) {
+    // TODO: Make sure we only get valid scores
+    if (key === "name") continue;
+    scoreArray.push(Number(data[key]));
   }
   return scoreArray;
 }
@@ -252,8 +266,8 @@ function geometric(data){
 
 
 
-function getAverageScore(data, averageType) {
-  let scoreArray = getScoreArray(data);
+export function getAverageScore(data, averageType) {
+  let scoreArray = getScore(data);
   let average;
   if (averageType == "score$arithmetic")  {
     average = arithmetic;
@@ -299,7 +313,7 @@ function panel3ParseData(rawData) {
 
 //Ran first and once to get proper sizing
 //  (uses dataset, but assumes values of 0)
-function initPanel3() {
+export function initPanel3() {
   let rawData = Data.getSyncData();
 
   panel3Data = panel3ParseData(rawData);
@@ -314,7 +328,7 @@ function initPanel3() {
           .attr("id", function(d, i) {
             return "id" + i;
           })
-          .call(this.getAttr, ["x", "width", "height"])
+          .call(getAttr, ["x", "width", "height"])
           .attr("y", function(d) {
             //assume no value until user prompt
             return heightScale(0);
@@ -373,7 +387,7 @@ function plotPanel3() {
         .data(panel3Data)
         .transition()
         .duration(800)
-          .call(this.getAttr, ["x", "y", "width", "height"])
+          .call(getAttr, ["x", "y", "width", "height"])
 };
 
 
@@ -382,9 +396,9 @@ function plotPanel3() {
   - ran on screen resize, moves graph to stay within the bounds of #panel3
     svg element. No delay or transiton for plot resize
 */
-function plotPanel3Resize() {
+export function plotPanel3Resize() {
   d3.select("#panel3")
     .select("svg")
       .selectAll("rect")
-          .call(this.getAttr, ["x", "y", "width", "height"])
+          .call(getAttr, ["x", "y", "width", "height"])
 };

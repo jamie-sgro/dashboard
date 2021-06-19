@@ -1,3 +1,8 @@
+import { attrTween, setAlpha } from "./barplot.js";
+import { Data, DataModel, DataPoint } from "./data.js";
+import { barplot, colourBottom, colourTop, g, map, mark, markCol, markRad, panelHeight, panelWidth, scaleToZoom, scl } from "./main.js";
+import { getAverageScore, updatePanel3 } from "./panel3.js";
+
 class D3Map {
   constructor(width, height, margin) {
 
@@ -6,7 +11,7 @@ class D3Map {
 
 
 
-function mapResize() {
+export function mapResize(map) {
   let h = ($(window).height()*(1-panelHeight)) - 10
 
   if ($('#header').height()) {
@@ -20,16 +25,16 @@ function mapResize() {
 
 
 
-function getMap() {
-  map = L.map('map');
+export function getMap() {
+  let newMap = L.map('map');
 
-  map.setView([50, -87], 4);
+  newMap.setView([50, -87], 4);
 
   L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
         attribution: '&copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
         maxZoom: 8,
         minZoom: 2,
-      }).addTo(map);
+      }).addTo(newMap);
 
   // @ts-ignore
   var legend = L.control({position: "bottomright"});
@@ -42,13 +47,13 @@ function getMap() {
     return div;
   };
 
-  legend.addTo(map);
+  legend.addTo(newMap);
 
-  mapResize();
+  mapResize(newMap);
 
-  map.doubleClickZoom.disable();
+  newMap.doubleClickZoom.disable();
 
-  return map;
+  return newMap;
 };
 
 
@@ -91,7 +96,7 @@ function addMarker(map, name, lat, lng) {
 };
 
 
-function updateAllGraphs(id: number) {
+export function updateAllGraphs(id: number) {
     //this is where hooks into .d3 should be made
     updateGraph(id);
 
@@ -102,7 +107,7 @@ function updateAllGraphs(id: number) {
 
 
 // take dataset and calculate metrics for the mark[i].table element
-function getMarkScore(mark, data, scoreName) {
+export function getMarkScore(mark, data, scoreName) {
   //vet variable
   if (typeof(scoreName) != "string") {
     throw "Error in getMarkScore()\nscoreName variable must be a string matching a .csv header";
@@ -186,7 +191,7 @@ function generateTable(name, score, rank, standing) {
 
 
 
-async function populateMarkers(map) {
+export function populateMarkers(map) {
   let data = Data.getSyncData();
 
   // add marker
@@ -218,7 +223,7 @@ async function populateMarkers(map) {
 
 
 
-function onMapClick(e) {
+export function onMapClick(e) {
   g.selectAll("circle")
     .each(function(d,i) {
       d3.select(this).call(attrTween, 500, "r", scl)
@@ -240,28 +245,28 @@ function onMapClick(e) {
 
 //updateGraph() is called when a leaflet marker is clicked
 
-function updateGraph(id) {
+export function updateGraph(id, graph = barplot) {
   if (!id) {
-    id = barplot.id;
+    id = graph.id;
   };
 
-  updateMarker(id);
+  updateMarker(id, graph);
 
   let data = Data.getSyncData();
 
   const dataArray = reduceData(data[id]);
 
-  barplot.updatePlot(barplot.canvas, dataArray);
+  graph.updatePlot(graph.canvas, dataArray);
 };
 
 
 
-function updateMarker(id) {
+function updateMarker(id, graph = barplot) {
   //reset pervious marker
-  g.select("circle#id" + barplot.id)
+  g.select("circle#id" + graph.id)
     .call(attrTween, 800, "stroke", "white")
 
-  //highlight new marker
+    //highlight new marker
   g.select("circle#id" + id)
     // @ts-ignore
     .moveToFront()
@@ -273,7 +278,7 @@ function updateMarker(id) {
 /** provide JSON object, removes data not used in graph visualization (i.e name
     and coordinates) and returns an array ready for d3 to use.
 */
-function reduceData(data: DataModel): DataPoint[] {
+export function reduceData(data: DataModel): DataPoint[] {
 
   let rtn: DataPoint[] = [];
   for (let key in data) {
@@ -292,7 +297,7 @@ function reduceData(data: DataModel): DataPoint[] {
   - if any item in the array 'search' is the key string, return true, else false
 */
 
-function matches(key, search) {
+export function matches(key, search) {
   for (let i in search) {
     if (key == search[i]) {
       return true;
@@ -303,7 +308,7 @@ function matches(key, search) {
 
 
 
-async function d3PopulateMarkers(map) {
+export function d3PopulateMarkers(map) {
   let data = Data.getSyncData();
 
 
@@ -354,35 +359,40 @@ async function d3PopulateMarkers(map) {
         .duration(300)
           .style("opacity", .3)
     }
-
+    
     function mouseout(obj) {
-      obj
-        .style("cursor", "default")
-        .transition()
-        .duration(600)
-          .style("opacity", 1)
+    obj
+    .style("cursor", "default")
+      .transition()
+      .duration(600)
+      .style("opacity", 1)
     }
-
+    
     map.on("zoomend", update);
   	update();
-
+    
     function update() {
+      let scl: any
       if (scaleToZoom) {
         //get pxl distance between two coords
         const x1 = map.latLngToLayerPoint([0,1]).x
         const x2 = map.latLngToLayerPoint([0,0]).x
-
+        
+        // TODO: This scl is mutating a global variable
         scl = (x1-x2);
+      } else {
+        scl = markRad
       }
-
+      
       g.selectAll("circle")
-        .attr("r", scl)
-        .attr("transform", function(d: DataModel) {
-          return "translate("+
-            map.latLngToLayerPoint([d.lat, d.lng]).x +","+
-            map.latLngToLayerPoint([d.lat, d.lng]).y +")";
-          })
-
+      .attr("r", scl)
+      .attr("transform", function(d: DataModel) {
+        let rtn = "translate("+
+        map.latLngToLayerPoint([d.lat, d.lng]).x +","+
+        map.latLngToLayerPoint([d.lat, d.lng]).y +")";
+        return rtn;
+      })
+      
       for (let i in mark) {
         mark[i].setStyle({radius: scl})
       };

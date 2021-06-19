@@ -6,15 +6,45 @@
 		<link rel="stylesheet" href="public/stylesheets/d3-stylesheet.css">
     <script src="public/libraries/leaflet.js"></script>
 
+		<script src="public/libraries/leaflet.js"></script>
 		<script src="public/libraries/d3.min.js" type="text/JavaScript"></script>
-		<script src="public/libraries/jquery.min.js" type="text/JavaScript"></script>
+		<script src="public/libraries/jquery.min.js"></script>
+		<script src="public/libraries/jquery.scrolly.min.js"></script>
+		<script src="public/libraries/jquery.scrollex.min.js"></script>
+		<script src="public/libraries/browser.min.js"></script>
+		<script src="public/libraries/breakpoints.min.js"></script>
 	</head>
+	<div class="switch col-4 col-12-small">
+		<label class="switch">Toggle Leader Laggard Graph
+			<input id="leadLag" type="checkbox" onclick=barplot.toggleLeadLag() title="Toggle Leader Laggard Graph">
+			<span class="slider round"></span>
+		</label>
+	</div>
+	<div class="col-4 col-12-small">
+		<input type="radio" id="arithmetic" name="radio" onclick=updatePanel3()>
+		<label for="arithmetic">Arithmetic Mean</label>
+	</div>
+	<div class="col-4 col-12-small">
+		<input type="radio" id="median" name="radio" onclick=updatePanel3() checked>
+		<label for="median">Median</label>
+	</div>
+	<div class="col-4 col-12-small">
+		<input type="radio" id="geometric" name="radio" onclick=updatePanel3()>
+		<label for="geometric">Geometric Mean</label>
+	</div>
 	<body>
-    <div id="map"</div>
-		<script src="public/javascripts/barplot.js" type="text/JavaScript"></script>
-		<script src="public/javascripts/map.js" type="text/JavaScript"></script>
-		<script src="public/javascripts/panel3.js" type="text/JavaScript"></script>
-		<script src="public/javascripts/main.js" type="text/JavaScript"></script>
-		<a href="/public/data/sdsn_cleaned.csv">Download File</a>
+		<!-- Dashboard -->
+		<section id="dashboard" class="belownav">
+			<div id="panel3">
+				<span id="popupInfo">Select a city marker to begin.</span>
+			</div>
+			<div id="map">
+				<script src="public/javascripts/data.js" type="module"></script>
+				<script src="public/javascripts/barplot.js" type="module"></script>
+				<script src="public/javascripts/map.js" type="module"></script>
+				<script src="public/javascripts/panel3.js" type="module"></script>
+				<script src="public/javascripts/main.js" type="module"></script>
+			</div>
+		</section>
 	</body>
 </html>
