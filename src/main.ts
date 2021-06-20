@@ -4,11 +4,11 @@ import d3 = require("d3");
 import L = require("leaflet");
 
 
-import { Barplot } from "./barplot.js";
-import { Data, DataPoint } from "./data.js";
-import { d3PopulateMarkers, getMap, mapResize, matches, onMapClick, populateMarkers, reduceData, updateAllGraphs } from "./map.js";
-import { Margin } from "./Margin.js";
-import { initPanel3, panel3Resize, plotPanel3Resize } from "./panel3.js";
+import { Barplot } from "./barplot";
+import { Data, DataPoint } from "./data";
+import { d3PopulateMarkers, getMap, mapResize, matches, onMapClick, populateMarkers, reduceData, updateAllGraphs } from "./map";
+import { Margin } from "./Margin";
+import { initPanel3, panel3Resize, plotPanel3Resize } from "./panel3";
 
 export var scl;
 export const markRad = 15;

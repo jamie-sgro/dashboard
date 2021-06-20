@@ -1,10 +1,10 @@
 // @ts-expect-error
 import d3 = require("d3");
 
-import { attrTween } from "./barplot.js";
-import { Data, DataPoint } from "./data.js";
-import { barplot, mark, panelHeight, panelWidth } from "./main.js";
-import { getMarkScore } from "./map.js";
+import { attrTween } from "./barplot";
+import { Data, DataPoint } from "./data";
+import { barplot, mark, panelHeight, panelWidth } from "./main";
+import { getMarkScore } from "./map";
 
 let panel3Data: any
 
