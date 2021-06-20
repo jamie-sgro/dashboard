@@ -15,7 +15,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/Jamie.Sgro/dashboard.git"
+    "url": "git+https://github.com/jamie-sgro/dashboard.git"
   },
   "keywords": [
     "Dashboard",
