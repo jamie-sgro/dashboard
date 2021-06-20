@@ -45,7 +45,7 @@ router.get('/ui/', (req, res) => {
 
 // GET all javascript files for import {} from "" statements
 router.get('/public/javascripts/*', (req, res)=> {
-  console.log(req.url)
+  if (req.url.slice(-2) == "js") return
   res.redirect(`${req.url}.js`)
   return;
 });
