@@ -38,6 +38,10 @@ A server session should begin the run with a readout of the current ip-address i
 
 To ensure the website is running, navigate to http://localhost:3000 on your default browser. The server can be shut down by pressing ctrl-c at any time from within the command prompt/terminal.
 
+### Docker
+
+- As of version 1.3.3, run `docker build .` and `docker-compose up` to boot the development server on localhost:3000
+
 ### Prerequisites
 
 Note that the dashboard requires the following libraries and their dependents:
