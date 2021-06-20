@@ -43,6 +43,13 @@ router.get('/ui/', (req, res) => {
   return;
 });
 
+// GET all javascript files for import {} from "" statements
+router.get('/public/javascripts/*', (req, res)=> {
+  console.log(req.url)
+  res.redirect(`${req.url}.js`)
+  return;
+});
+
 //GET home page if nothing else matches.
 router.get('*', (req, res)=> {
   res.redirect('home');
