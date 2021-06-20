@@ -1,0 +1,661 @@
+msa,year,value
+"Abbotsford-Mission, British Columbia",2001,6.8
+"Abbotsford-Mission, British Columbia",2002,7.5
+"Abbotsford-Mission, British Columbia",2003,7.5
+"Abbotsford-Mission, British Columbia",2004,6.5
+"Abbotsford-Mission, British Columbia",2005,5.6
+"Abbotsford-Mission, British Columbia",2006,4.6
+"Abbotsford-Mission, British Columbia",2007,4.2
+"Abbotsford-Mission, British Columbia",2008,4.9
+"Abbotsford-Mission, British Columbia",2009,8.0
+"Abbotsford-Mission, British Columbia",2010,7.9
+"Abbotsford-Mission, British Columbia",2011,8.8
+"Abbotsford-Mission, British Columbia",2012,8.1
+"Abbotsford-Mission, British Columbia",2013,7.7
+"Abbotsford-Mission, British Columbia",2014,7.4
+"Abbotsford-Mission, British Columbia",2015,6.4
+"Abbotsford-Mission, British Columbia",2016,6.6
+"Abbotsford-Mission, British Columbia",2017,5.5
+"Abbotsford-Mission, British Columbia",2018,4.5
+"Abbotsford-Mission, British Columbia",2019,5.2
+"Abbotsford-Mission, British Columbia",2020,7.6
+"Barrie, Ontario",2001,5.8
+"Barrie, Ontario",2002,5.7
+"Barrie, Ontario",2003,5.9
+"Barrie, Ontario",2004,4.9
+"Barrie, Ontario",2005,4.8
+"Barrie, Ontario",2006,6.2
+"Barrie, Ontario",2007,5.0
+"Barrie, Ontario",2008,6.0
+"Barrie, Ontario",2009,9.3
+"Barrie, Ontario",2010,9.4
+"Barrie, Ontario",2011,9.7
+"Barrie, Ontario",2012,8.1
+"Barrie, Ontario",2013,7.1
+"Barrie, Ontario",2014,6.0
+"Barrie, Ontario",2015,7.0
+"Barrie, Ontario",2016,7.8
+"Barrie, Ontario",2017,5.4
+"Barrie, Ontario",2018,6.5
+"Barrie, Ontario",2019,5.9
+"Barrie, Ontario",2020,9.5
+"Brantford, Ontario",2001,6.8
+"Brantford, Ontario",2002,7.3
+"Brantford, Ontario",2003,6.1
+"Brantford, Ontario",2004,6.7
+"Brantford, Ontario",2005,6.6
+"Brantford, Ontario",2006,6.1
+"Brantford, Ontario",2007,5.9
+"Brantford, Ontario",2008,6.0
+"Brantford, Ontario",2009,10.0
+"Brantford, Ontario",2010,8.8
+"Brantford, Ontario",2011,8.6
+"Brantford, Ontario",2012,8.4
+"Brantford, Ontario",2013,6.4
+"Brantford, Ontario",2014,6.8
+"Brantford, Ontario",2015,5.7
+"Brantford, Ontario",2016,6.0
+"Brantford, Ontario",2017,4.9
+"Brantford, Ontario",2018,6.2
+"Brantford, Ontario",2019,4.3
+"Brantford, Ontario",2020,8.2
+"Calgary, Alberta",2001,4.6
+"Calgary, Alberta",2002,5.7
+"Calgary, Alberta",2003,5.4
+"Calgary, Alberta",2004,5.0
+"Calgary, Alberta",2005,3.9
+"Calgary, Alberta",2006,3.2
+"Calgary, Alberta",2007,3.2
+"Calgary, Alberta",2008,3.4
+"Calgary, Alberta",2009,6.7
+"Calgary, Alberta",2010,6.8
+"Calgary, Alberta",2011,5.9
+"Calgary, Alberta",2012,4.7
+"Calgary, Alberta",2013,4.8
+"Calgary, Alberta",2014,5.0
+"Calgary, Alberta",2015,6.4
+"Calgary, Alberta",2016,9.4
+"Calgary, Alberta",2017,8.5
+"Calgary, Alberta",2018,7.7
+"Calgary, Alberta",2019,7.1
+"Calgary, Alberta",2020,11.8
+"Edmonton, Alberta",2001,5.0
+"Edmonton, Alberta",2002,5.2
+"Edmonton, Alberta",2003,5.0
+"Edmonton, Alberta",2004,4.8
+"Edmonton, Alberta",2005,4.5
+"Edmonton, Alberta",2006,3.9
+"Edmonton, Alberta",2007,3.8
+"Edmonton, Alberta",2008,3.7
+"Edmonton, Alberta",2009,6.5
+"Edmonton, Alberta",2010,7.0
+"Edmonton, Alberta",2011,5.4
+"Edmonton, Alberta",2012,4.7
+"Edmonton, Alberta",2013,4.8
+"Edmonton, Alberta",2014,5.1
+"Edmonton, Alberta",2015,6.0
+"Edmonton, Alberta",2016,7.4
+"Edmonton, Alberta",2017,8.1
+"Edmonton, Alberta",2018,6.4
+"Edmonton, Alberta",2019,7.3
+"Edmonton, Alberta",2020,11.8
+"Greater Sudbury, Ontario",2001,8.8
+"Greater Sudbury, Ontario",2002,9.2
+"Greater Sudbury, Ontario",2003,8.6
+"Greater Sudbury, Ontario",2004,8.3
+"Greater Sudbury, Ontario",2005,7.8
+"Greater Sudbury, Ontario",2006,7.3
+"Greater Sudbury, Ontario",2007,5.7
+"Greater Sudbury, Ontario",2008,5.7
+"Greater Sudbury, Ontario",2009,9.3
+"Greater Sudbury, Ontario",2010,9.3
+"Greater Sudbury, Ontario",2011,7.0
+"Greater Sudbury, Ontario",2012,7.2
+"Greater Sudbury, Ontario",2013,7.0
+"Greater Sudbury, Ontario",2014,6.4
+"Greater Sudbury, Ontario",2015,7.3
+"Greater Sudbury, Ontario",2016,8.1
+"Greater Sudbury, Ontario",2017,6.7
+"Greater Sudbury, Ontario",2018,6.4
+"Greater Sudbury, Ontario",2019,5.4
+"Greater Sudbury, Ontario",2020,7.9
+"Guelph, Ontario",2001,4.9
+"Guelph, Ontario",2002,4.5
+"Guelph, Ontario",2003,4.6
+"Guelph, Ontario",2004,4.7
+"Guelph, Ontario",2005,4.6
+"Guelph, Ontario",2006,5.5
+"Guelph, Ontario",2007,5.7
+"Guelph, Ontario",2008,5.6
+"Guelph, Ontario",2009,8.2
+"Guelph, Ontario",2010,8.0
+"Guelph, Ontario",2011,5.6
+"Guelph, Ontario",2012,5.3
+"Guelph, Ontario",2013,6.6
+"Guelph, Ontario",2014,6.2
+"Guelph, Ontario",2015,4.0
+"Guelph, Ontario",2016,4.8
+"Guelph, Ontario",2017,5.4
+"Guelph, Ontario",2018,3.8
+"Guelph, Ontario",2019,4.6
+"Guelph, Ontario",2020,9.1
+"Halifax, Nova Scotia",2001,7.1
+"Halifax, Nova Scotia",2002,7.7
+"Halifax, Nova Scotia",2003,6.6
+"Halifax, Nova Scotia",2004,6.0
+"Halifax, Nova Scotia",2005,5.7
+"Halifax, Nova Scotia",2006,5.0
+"Halifax, Nova Scotia",2007,5.3
+"Halifax, Nova Scotia",2008,5.2
+"Halifax, Nova Scotia",2009,6.5
+"Halifax, Nova Scotia",2010,6.5
+"Halifax, Nova Scotia",2011,6.1
+"Halifax, Nova Scotia",2012,6.2
+"Halifax, Nova Scotia",2013,6.5
+"Halifax, Nova Scotia",2014,6.1
+"Halifax, Nova Scotia",2015,6.3
+"Halifax, Nova Scotia",2016,6.1
+"Halifax, Nova Scotia",2017,6.8
+"Halifax, Nova Scotia",2018,5.9
+"Halifax, Nova Scotia",2019,5.8
+"Halifax, Nova Scotia",2020,8.6
+"Hamilton, Ontario",2001,6.1
+"Hamilton, Ontario",2002,6.7
+"Hamilton, Ontario",2003,6.2
+"Hamilton, Ontario",2004,6.3
+"Hamilton, Ontario",2005,5.6
+"Hamilton, Ontario",2006,6.0
+"Hamilton, Ontario",2007,6.0
+"Hamilton, Ontario",2008,6.1
+"Hamilton, Ontario",2009,8.5
+"Hamilton, Ontario",2010,7.6
+"Hamilton, Ontario",2011,6.6
+"Hamilton, Ontario",2012,6.6
+"Hamilton, Ontario",2013,6.4
+"Hamilton, Ontario",2014,5.8
+"Hamilton, Ontario",2015,5.5
+"Hamilton, Ontario",2016,6.2
+"Hamilton, Ontario",2017,5.0
+"Hamilton, Ontario",2018,4.9
+"Hamilton, Ontario",2019,4.3
+"Hamilton, Ontario",2020,8.8
+"Kelowna, British Columbia 5 (map)",2001,6.5
+"Kelowna, British Columbia 5 (map)",2002,9.7
+"Kelowna, British Columbia 5 (map)",2003,8.6
+"Kelowna, British Columbia 5 (map)",2004,4.9
+"Kelowna, British Columbia 5 (map)",2005,5.5
+"Kelowna, British Columbia 5 (map)",2006,6.0
+"Kelowna, British Columbia 5 (map)",2007,4.5
+"Kelowna, British Columbia 5 (map)",2008,5.0
+"Kelowna, British Columbia 5 (map)",2009,8.6
+"Kelowna, British Columbia 5 (map)",2010,8.0
+"Kelowna, British Columbia 5 (map)",2011,7.7
+"Kelowna, British Columbia 5 (map)",2012,6.5
+"Kelowna, British Columbia 5 (map)",2013,6.6
+"Kelowna, British Columbia 5 (map)",2014,4.6
+"Kelowna, British Columbia 5 (map)",2015,5.6
+"Kelowna, British Columbia 5 (map)",2016,8.0
+"Kelowna, British Columbia 5 (map)",2017,5.4
+"Kelowna, British Columbia 5 (map)",2018,4.8
+"Kelowna, British Columbia 5 (map)",2019,4.1
+"Kelowna, British Columbia 5 (map)",2020,7.2
+"Kingston, Ontario",2001,6.4
+"Kingston, Ontario",2002,6.8
+"Kingston, Ontario",2003,6.3
+"Kingston, Ontario",2004,6.4
+"Kingston, Ontario",2005,6.2
+"Kingston, Ontario",2006,6.2
+"Kingston, Ontario",2007,5.3
+"Kingston, Ontario",2008,5.7
+"Kingston, Ontario",2009,6.2
+"Kingston, Ontario",2010,6.2
+"Kingston, Ontario",2011,6.7
+"Kingston, Ontario",2012,6.7
+"Kingston, Ontario",2013,6.3
+"Kingston, Ontario",2014,6.8
+"Kingston, Ontario",2015,6.6
+"Kingston, Ontario",2016,5.8
+"Kingston, Ontario",2017,5.5
+"Kingston, Ontario",2018,5.5
+"Kingston, Ontario",2019,5.3
+"Kingston, Ontario",2020,8.5
+"Kitchener-Cambridge-Waterloo, Ontario",2001,6.2
+"Kitchener-Cambridge-Waterloo, Ontario",2002,5.7
+"Kitchener-Cambridge-Waterloo, Ontario",2003,5.9
+"Kitchener-Cambridge-Waterloo, Ontario",2004,5.1
+"Kitchener-Cambridge-Waterloo, Ontario",2005,5.7
+"Kitchener-Cambridge-Waterloo, Ontario",2006,5.2
+"Kitchener-Cambridge-Waterloo, Ontario",2007,5.6
+"Kitchener-Cambridge-Waterloo, Ontario",2008,5.9
+"Kitchener-Cambridge-Waterloo, Ontario",2009,9.7
+"Kitchener-Cambridge-Waterloo, Ontario",2010,8.1
+"Kitchener-Cambridge-Waterloo, Ontario",2011,6.7
+"Kitchener-Cambridge-Waterloo, Ontario",2012,6.6
+"Kitchener-Cambridge-Waterloo, Ontario",2013,6.9
+"Kitchener-Cambridge-Waterloo, Ontario",2014,6.4
+"Kitchener-Cambridge-Waterloo, Ontario",2015,5.9
+"Kitchener-Cambridge-Waterloo, Ontario",2016,5.5
+"Kitchener-Cambridge-Waterloo, Ontario",2017,5.1
+"Kitchener-Cambridge-Waterloo, Ontario",2018,5.1
+"Kitchener-Cambridge-Waterloo, Ontario",2019,5.3
+"Kitchener-Cambridge-Waterloo, Ontario",2020,9.8
+"London, Ontario",2001,6.4
+"London, Ontario",2002,7.1
+"London, Ontario",2003,6.8
+"London, Ontario",2004,5.8
+"London, Ontario",2005,6.6
+"London, Ontario",2006,6.2
+"London, Ontario",2007,6.0
+"London, Ontario",2008,7.2
+"London, Ontario",2009,10.0
+"London, Ontario",2010,8.6
+"London, Ontario",2011,8.9
+"London, Ontario",2012,8.7
+"London, Ontario",2013,8.6
+"London, Ontario",2014,7.5
+"London, Ontario",2015,6.5
+"London, Ontario",2016,7.0
+"London, Ontario",2017,5.9
+"London, Ontario",2018,5.6
+"London, Ontario",2019,5.5
+"London, Ontario",2020,8.7
+"Moncton, New Brunswick",2001,7.6
+"Moncton, New Brunswick",2002,6.6
+"Moncton, New Brunswick",2003,6.3
+"Moncton, New Brunswick",2004,6.1
+"Moncton, New Brunswick",2005,6.4
+"Moncton, New Brunswick",2006,6.1
+"Moncton, New Brunswick",2007,4.8
+"Moncton, New Brunswick",2008,5.3
+"Moncton, New Brunswick",2009,6.3
+"Moncton, New Brunswick",2010,6.9
+"Moncton, New Brunswick",2011,7.2
+"Moncton, New Brunswick",2012,6.8
+"Moncton, New Brunswick",2013,7.2
+"Moncton, New Brunswick",2014,6.7
+"Moncton, New Brunswick",2015,6.9
+"Moncton, New Brunswick",2016,7.3
+"Moncton, New Brunswick",2017,6.1
+"Moncton, New Brunswick",2018,5.9
+"Moncton, New Brunswick",2019,5.7
+"Moncton, New Brunswick",2020,7.9
+"Montréal, Quebec",2001,8.3
+"Montréal, Quebec",2002,8.6
+"Montréal, Quebec",2003,9.5
+"Montréal, Quebec",2004,8.6
+"Montréal, Quebec",2005,8.6
+"Montréal, Quebec",2006,8.4
+"Montréal, Quebec",2007,7.0
+"Montréal, Quebec",2008,7.4
+"Montréal, Quebec",2009,9.3
+"Montréal, Quebec",2010,8.7
+"Montréal, Quebec",2011,8.4
+"Montréal, Quebec",2012,8.4
+"Montréal, Quebec",2013,7.9
+"Montréal, Quebec",2014,8.2
+"Montréal, Quebec",2015,8.4
+"Montréal, Quebec",2016,7.7
+"Montréal, Quebec",2017,6.6
+"Montréal, Quebec",2018,6.1
+"Montréal, Quebec",2019,5.7
+"Montréal, Quebec",2020,10.1
+"Oshawa, Ontario",2001,5.6
+"Oshawa, Ontario",2002,6.8
+"Oshawa, Ontario",2003,5.1
+"Oshawa, Ontario",2004,5.4
+"Oshawa, Ontario",2005,6.5
+"Oshawa, Ontario",2006,6.6
+"Oshawa, Ontario",2007,6.2
+"Oshawa, Ontario",2008,7.1
+"Oshawa, Ontario",2009,9.1
+"Oshawa, Ontario",2010,9.9
+"Oshawa, Ontario",2011,8.2
+"Oshawa, Ontario",2012,8.7
+"Oshawa, Ontario",2013,7.5
+"Oshawa, Ontario",2014,7.1
+"Oshawa, Ontario",2015,7.5
+"Oshawa, Ontario",2016,5.9
+"Oshawa, Ontario",2017,5.5
+"Oshawa, Ontario",2018,5.1
+"Oshawa, Ontario",2019,5.4
+"Oshawa, Ontario",2020,9.2
+"Ottawa-Gatineau, Ontario/Quebec",2001,6.3
+"Ottawa-Gatineau, Ontario/Quebec",2002,7.4
+"Ottawa-Gatineau, Ontario/Quebec",2003,6.8
+"Ottawa-Gatineau, Ontario/Quebec",2004,6.7
+"Ottawa-Gatineau, Ontario/Quebec",2005,6.6
+"Ottawa-Gatineau, Ontario/Quebec",2006,5.3
+"Ottawa-Gatineau, Ontario/Quebec",2007,5.2
+"Ottawa-Gatineau, Ontario/Quebec",2008,5.0
+"Ottawa-Gatineau, Ontario/Quebec",2009,5.8
+"Ottawa-Gatineau, Ontario/Quebec",2010,6.6
+"Ottawa-Gatineau, Ontario/Quebec",2011,6.2
+"Ottawa-Gatineau, Ontario/Quebec",2012,6.2
+"Ottawa-Gatineau, Ontario/Quebec",2013,6.4
+"Ottawa-Gatineau, Ontario/Quebec",2014,6.7
+"Ottawa-Gatineau, Ontario/Quebec",2015,6.5
+"Ottawa-Gatineau, Ontario/Quebec",2016,6.5
+"Ottawa-Gatineau, Ontario/Quebec",2017,5.5
+"Ottawa-Gatineau, Ontario/Quebec",2018,4.6
+"Ottawa-Gatineau, Ontario/Quebec",2019,4.7
+"Ottawa-Gatineau, Ontario/Quebec",2020,7.5
+"Peterborough, Ontario 5 (map)",2001,8.5
+"Peterborough, Ontario 5 (map)",2002,6.5
+"Peterborough, Ontario 5 (map)",2003,4.3
+"Peterborough, Ontario 5 (map)",2004,5.7
+"Peterborough, Ontario 5 (map)",2005,7.0
+"Peterborough, Ontario 5 (map)",2006,6.1
+"Peterborough, Ontario 5 (map)",2007,5.6
+"Peterborough, Ontario 5 (map)",2008,6.2
+"Peterborough, Ontario 5 (map)",2009,7.7
+"Peterborough, Ontario 5 (map)",2010,9.4
+"Peterborough, Ontario 5 (map)",2011,9.6
+"Peterborough, Ontario 5 (map)",2012,8.5
+"Peterborough, Ontario 5 (map)",2013,9.6
+"Peterborough, Ontario 5 (map)",2014,8.2
+"Peterborough, Ontario 5 (map)",2015,7.7
+"Peterborough, Ontario 5 (map)",2016,5.1
+"Peterborough, Ontario 5 (map)",2017,6.4
+"Peterborough, Ontario 5 (map)",2018,4.8
+"Peterborough, Ontario 5 (map)",2019,6.0
+"Peterborough, Ontario 5 (map)",2020,10.2
+"Québec, Quebec",2001,7.9
+"Québec, Quebec",2002,6.4
+"Québec, Quebec",2003,6.9
+"Québec, Quebec",2004,5.8
+"Québec, Quebec",2005,5.5
+"Québec, Quebec",2006,5.3
+"Québec, Quebec",2007,5.1
+"Québec, Quebec",2008,4.4
+"Québec, Quebec",2009,5.0
+"Québec, Quebec",2010,5.1
+"Québec, Quebec",2011,5.3
+"Québec, Quebec",2012,5.0
+"Québec, Quebec",2013,4.7
+"Québec, Quebec",2014,5.3
+"Québec, Quebec",2015,4.7
+"Québec, Quebec",2016,4.6
+"Québec, Quebec",2017,4.2
+"Québec, Quebec",2018,3.8
+"Québec, Quebec",2019,3.1
+"Québec, Quebec",2020,6.6
+"Regina, Saskatchewan",2001,5.4
+"Regina, Saskatchewan",2002,5.5
+"Regina, Saskatchewan",2003,5.6
+"Regina, Saskatchewan",2004,4.9
+"Regina, Saskatchewan",2005,4.8
+"Regina, Saskatchewan",2006,4.9
+"Regina, Saskatchewan",2007,4.9
+"Regina, Saskatchewan",2008,3.8
+"Regina, Saskatchewan",2009,4.4
+"Regina, Saskatchewan",2010,4.9
+"Regina, Saskatchewan",2011,4.5
+"Regina, Saskatchewan",2012,4.2
+"Regina, Saskatchewan",2013,3.7
+"Regina, Saskatchewan",2014,3.7
+"Regina, Saskatchewan",2015,4.4
+"Regina, Saskatchewan",2016,5.3
+"Regina, Saskatchewan",2017,5.1
+"Regina, Saskatchewan",2018,6.0
+"Regina, Saskatchewan",2019,5.3
+"Regina, Saskatchewan",2020,8.1
+"Saguenay, Quebec",2001,11.1
+"Saguenay, Quebec",2002,11.5
+"Saguenay, Quebec",2003,11.4
+"Saguenay, Quebec",2004,11.0
+"Saguenay, Quebec",2005,9.9
+"Saguenay, Quebec",2006,8.9
+"Saguenay, Quebec",2007,8.9
+"Saguenay, Quebec",2008,8.4
+"Saguenay, Quebec",2009,8.7
+"Saguenay, Quebec",2010,8.3
+"Saguenay, Quebec",2011,7.3
+"Saguenay, Quebec",2012,7.6
+"Saguenay, Quebec",2013,7.7
+"Saguenay, Quebec",2014,9.6
+"Saguenay, Quebec",2015,7.8
+"Saguenay, Quebec",2016,8.2
+"Saguenay, Quebec",2017,6.7
+"Saguenay, Quebec",2018,6.1
+"Saguenay, Quebec",2019,5.3
+"Saguenay, Quebec",2020,7.7
+"Saint John, New Brunswick",2001,9.4
+"Saint John, New Brunswick",2002,8.4
+"Saint John, New Brunswick",2003,9.2
+"Saint John, New Brunswick",2004,8.0
+"Saint John, New Brunswick",2005,7.0
+"Saint John, New Brunswick",2006,6.0
+"Saint John, New Brunswick",2007,4.8
+"Saint John, New Brunswick",2008,6.1
+"Saint John, New Brunswick",2009,5.7
+"Saint John, New Brunswick",2010,7.5
+"Saint John, New Brunswick",2011,6.9
+"Saint John, New Brunswick",2012,8.7
+"Saint John, New Brunswick",2013,8.9
+"Saint John, New Brunswick",2014,7.7
+"Saint John, New Brunswick",2015,8.2
+"Saint John, New Brunswick",2016,8.0
+"Saint John, New Brunswick",2017,6.0
+"Saint John, New Brunswick",2018,6.3
+"Saint John, New Brunswick",2019,6.8
+"Saint John, New Brunswick",2020,10.2
+"Saskatoon, Saskatchewan",2001,6.2
+"Saskatoon, Saskatchewan",2002,6.1
+"Saskatoon, Saskatchewan",2003,6.0
+"Saskatoon, Saskatchewan",2004,6.1
+"Saskatoon, Saskatchewan",2005,5.0
+"Saskatoon, Saskatchewan",2006,4.4
+"Saskatoon, Saskatchewan",2007,4.0
+"Saskatoon, Saskatchewan",2008,3.9
+"Saskatoon, Saskatchewan",2009,4.7
+"Saskatoon, Saskatchewan",2010,5.5
+"Saskatoon, Saskatchewan",2011,5.6
+"Saskatoon, Saskatchewan",2012,5.5
+"Saskatoon, Saskatchewan",2013,4.3
+"Saskatoon, Saskatchewan",2014,4.1
+"Saskatoon, Saskatchewan",2015,5.8
+"Saskatoon, Saskatchewan",2016,6.9
+"Saskatoon, Saskatchewan",2017,7.9
+"Saskatoon, Saskatchewan",2018,6.7
+"Saskatoon, Saskatchewan",2019,5.9
+"Saskatoon, Saskatchewan",2020,9.6
+"Sherbrooke, Quebec",2001,7.9
+"Sherbrooke, Quebec",2002,7.9
+"Sherbrooke, Quebec",2003,7.8
+"Sherbrooke, Quebec",2004,7.7
+"Sherbrooke, Quebec",2005,7.5
+"Sherbrooke, Quebec",2006,8.6
+"Sherbrooke, Quebec",2007,6.6
+"Sherbrooke, Quebec",2008,6.2
+"Sherbrooke, Quebec",2009,6.6
+"Sherbrooke, Quebec",2010,7.4
+"Sherbrooke, Quebec",2011,6.7
+"Sherbrooke, Quebec",2012,8.0
+"Sherbrooke, Quebec",2013,7.1
+"Sherbrooke, Quebec",2014,7.2
+"Sherbrooke, Quebec",2015,6.8
+"Sherbrooke, Quebec",2016,6.2
+"Sherbrooke, Quebec",2017,5.6
+"Sherbrooke, Quebec",2018,5.0
+"Sherbrooke, Quebec",2019,4.4
+"Sherbrooke, Quebec",2020,7.7
+"St. Catharines-Niagara, Ontario",2001,6.3
+"St. Catharines-Niagara, Ontario",2002,7.4
+"St. Catharines-Niagara, Ontario",2003,6.8
+"St. Catharines-Niagara, Ontario",2004,7.4
+"St. Catharines-Niagara, Ontario",2005,7.1
+"St. Catharines-Niagara, Ontario",2006,6.4
+"St. Catharines-Niagara, Ontario",2007,6.8
+"St. Catharines-Niagara, Ontario",2008,7.3
+"St. Catharines-Niagara, Ontario",2009,10.4
+"St. Catharines-Niagara, Ontario",2010,9.6
+"St. Catharines-Niagara, Ontario",2011,8.2
+"St. Catharines-Niagara, Ontario",2012,8.0
+"St. Catharines-Niagara, Ontario",2013,8.6
+"St. Catharines-Niagara, Ontario",2014,7.7
+"St. Catharines-Niagara, Ontario",2015,7.0
+"St. Catharines-Niagara, Ontario",2016,7.1
+"St. Catharines-Niagara, Ontario",2017,6.5
+"St. Catharines-Niagara, Ontario",2018,6.6
+"St. Catharines-Niagara, Ontario",2019,5.8
+"St. Catharines-Niagara, Ontario",2020,9.6
+"St. John's, Newfoundland and Labrador",2001,9.2
+"St. John's, Newfoundland and Labrador",2002,9.2
+"St. John's, Newfoundland and Labrador",2003,9.8
+"St. John's, Newfoundland and Labrador",2004,8.9
+"St. John's, Newfoundland and Labrador",2005,8.9
+"St. John's, Newfoundland and Labrador",2006,8.1
+"St. John's, Newfoundland and Labrador",2007,6.9
+"St. John's, Newfoundland and Labrador",2008,7.9
+"St. John's, Newfoundland and Labrador",2009,8.3
+"St. John's, Newfoundland and Labrador",2010,8.1
+"St. John's, Newfoundland and Labrador",2011,6.7
+"St. John's, Newfoundland and Labrador",2012,7.4
+"St. John's, Newfoundland and Labrador",2013,6.3
+"St. John's, Newfoundland and Labrador",2014,6.0
+"St. John's, Newfoundland and Labrador",2015,6.5
+"St. John's, Newfoundland and Labrador",2016,7.8
+"St. John's, Newfoundland and Labrador",2017,8.4
+"St. John's, Newfoundland and Labrador",2018,8.4
+"St. John's, Newfoundland and Labrador",2019,7.5
+"St. John's, Newfoundland and Labrador",2020,9.6
+"Thunder Bay, Ontario",2001,8.0
+"Thunder Bay, Ontario",2002,6.5
+"Thunder Bay, Ontario",2003,5.9
+"Thunder Bay, Ontario",2004,8.1
+"Thunder Bay, Ontario",2005,7.1
+"Thunder Bay, Ontario",2006,7.6
+"Thunder Bay, Ontario",2007,6.7
+"Thunder Bay, Ontario",2008,5.9
+"Thunder Bay, Ontario",2009,8.3
+"Thunder Bay, Ontario",2010,6.8
+"Thunder Bay, Ontario",2011,6.8
+"Thunder Bay, Ontario",2012,5.5
+"Thunder Bay, Ontario",2013,6.1
+"Thunder Bay, Ontario",2014,5.2
+"Thunder Bay, Ontario",2015,5.2
+"Thunder Bay, Ontario",2016,6.8
+"Thunder Bay, Ontario",2017,5.7
+"Thunder Bay, Ontario",2018,5.1
+"Thunder Bay, Ontario",2019,5.5
+"Thunder Bay, Ontario",2020,8.3
+"Toronto, Ontario",2001,6.3
+"Toronto, Ontario",2002,7.4
+"Toronto, Ontario",2003,7.7
+"Toronto, Ontario",2004,7.5
+"Toronto, Ontario",2005,7.0
+"Toronto, Ontario",2006,6.6
+"Toronto, Ontario",2007,6.8
+"Toronto, Ontario",2008,6.9
+"Toronto, Ontario",2009,9.6
+"Toronto, Ontario",2010,9.1
+"Toronto, Ontario",2011,8.4
+"Toronto, Ontario",2012,8.7
+"Toronto, Ontario",2013,8.1
+"Toronto, Ontario",2014,8.0
+"Toronto, Ontario",2015,7.0
+"Toronto, Ontario",2016,7.0
+"Toronto, Ontario",2017,6.4
+"Toronto, Ontario",2018,6.0
+"Toronto, Ontario",2019,6.0
+"Toronto, Ontario",2020,10.8
+"Trois-Rivières, Quebec",2001,9.9
+"Trois-Rivières, Quebec",2002,10.2
+"Trois-Rivières, Quebec",2003,10.4
+"Trois-Rivières, Quebec",2004,10.8
+"Trois-Rivières, Quebec",2005,9.1
+"Trois-Rivières, Quebec",2006,8.1
+"Trois-Rivières, Quebec",2007,7.9
+"Trois-Rivières, Quebec",2008,8.3
+"Trois-Rivières, Quebec",2009,9.0
+"Trois-Rivières, Quebec",2010,9.1
+"Trois-Rivières, Quebec",2011,9.0
+"Trois-Rivières, Quebec",2012,7.8
+"Trois-Rivières, Quebec",2013,8.3
+"Trois-Rivières, Quebec",2014,7.3
+"Trois-Rivières, Quebec",2015,6.6
+"Trois-Rivières, Quebec",2016,7.0
+"Trois-Rivières, Quebec",2017,5.6
+"Trois-Rivières, Quebec",2018,5.0
+"Trois-Rivières, Quebec",2019,5.5
+"Trois-Rivières, Quebec",2020,7.8
+"Vancouver, British Columbia",2001,6.6
+"Vancouver, British Columbia",2002,7.8
+"Vancouver, British Columbia",2003,7.2
+"Vancouver, British Columbia",2004,6.8
+"Vancouver, British Columbia",2005,5.7
+"Vancouver, British Columbia",2006,4.4
+"Vancouver, British Columbia",2007,4.0
+"Vancouver, British Columbia",2008,4.2
+"Vancouver, British Columbia",2009,7.2
+"Vancouver, British Columbia",2010,7.4
+"Vancouver, British Columbia",2011,7.5
+"Vancouver, British Columbia",2012,6.8
+"Vancouver, British Columbia",2013,6.6
+"Vancouver, British Columbia",2014,5.8
+"Vancouver, British Columbia",2015,5.9
+"Vancouver, British Columbia",2016,5.4
+"Vancouver, British Columbia",2017,4.7
+"Vancouver, British Columbia",2018,4.4
+"Vancouver, British Columbia",2019,4.6
+"Vancouver, British Columbia",2020,9.1
+"Victoria, British Columbia",2001,6.3
+"Victoria, British Columbia",2002,7.0
+"Victoria, British Columbia",2003,6.2
+"Victoria, British Columbia",2004,5.3
+"Victoria, British Columbia",2005,4.4
+"Victoria, British Columbia",2006,3.7
+"Victoria, British Columbia",2007,3.3
+"Victoria, British Columbia",2008,3.3
+"Victoria, British Columbia",2009,6.4
+"Victoria, British Columbia",2010,5.9
+"Victoria, British Columbia",2011,6.1
+"Victoria, British Columbia",2012,5.6
+"Victoria, British Columbia",2013,5.2
+"Victoria, British Columbia",2014,5.4
+"Victoria, British Columbia",2015,5.8
+"Victoria, British Columbia",2016,5.2
+"Victoria, British Columbia",2017,3.9
+"Victoria, British Columbia",2018,4.0
+"Victoria, British Columbia",2019,3.4
+"Victoria, British Columbia",2020,7.7
+"Windsor, Ontario",2001,6.8
+"Windsor, Ontario",2002,8.1
+"Windsor, Ontario",2003,7.5
+"Windsor, Ontario",2004,8.6
+"Windsor, Ontario",2005,8.0
+"Windsor, Ontario",2006,9.0
+"Windsor, Ontario",2007,9.3
+"Windsor, Ontario",2008,9.3
+"Windsor, Ontario",2009,13.9
+"Windsor, Ontario",2010,11.7
+"Windsor, Ontario",2011,9.9
+"Windsor, Ontario",2012,9.7
+"Windsor, Ontario",2013,8.9
+"Windsor, Ontario",2014,9.0
+"Windsor, Ontario",2015,9.8
+"Windsor, Ontario",2016,6.0
+"Windsor, Ontario",2017,5.6
+"Windsor, Ontario",2018,6.0
+"Windsor, Ontario",2019,6.4
+"Windsor, Ontario",2020,11.5
+"Winnipeg, Manitoba",2001,5.2
+"Winnipeg, Manitoba",2002,5.2
+"Winnipeg, Manitoba",2003,5.2
+"Winnipeg, Manitoba",2004,5.5
+"Winnipeg, Manitoba",2005,4.8
+"Winnipeg, Manitoba",2006,4.6
+"Winnipeg, Manitoba",2007,4.7
+"Winnipeg, Manitoba",2008,4.3
+"Winnipeg, Manitoba",2009,5.4
+"Winnipeg, Manitoba",2010,5.8
+"Winnipeg, Manitoba",2011,5.9
+"Winnipeg, Manitoba",2012,5.5
+"Winnipeg, Manitoba",2013,5.9
+"Winnipeg, Manitoba",2014,5.8
+"Winnipeg, Manitoba",2015,6.0
+"Winnipeg, Manitoba",2016,6.6
+"Winnipeg, Manitoba",2017,5.8
+"Winnipeg, Manitoba",2018,6.3
+"Winnipeg, Manitoba",2019,5.3
+"Winnipeg, Manitoba",2020,8.7

@@ -1,6 +1,16 @@
+// @ts-expect-error
+import d3 = require("d3");
+
+import { attrTween } from "./barplot";
+import { Data, DataPoint } from "./data";
+import { barplot, mark, panelHeight, panelWidth } from "./main";
+import { getMarkScore } from "./map";
+
+let panel3Data: any
+
 function getPanel3Height() {
   //start with panel3 html height
-  rtn = parseInt($("#panel3").css("height"));
+  let rtn = parseInt($("#panel3").css("height"));
 
   //reduce by padding in .css (if browser can detect it)
   var panel3Padding = parseInt($("#panel3").css("padding"));
@@ -30,16 +40,19 @@ function getPanel3Height() {
 
 
 
-async function updatePanel3(id) {
+export function updatePanel3(id) {
   //update city id if applicable
   if (id) {
+    // @ts-ignore
     document.getElementById("popupInfo").class = id;
   } else {
+    // @ts-ignore
     id = document.getElementById("popupInfo").class
   };
 
-  mark = await mark;
-  var rawData = await getData();
+  // mark = mark;
+  let rawData = Data.getSyncData();
+
   getMarkScore(mark, rawData, "score$" + getCheckedRadio())
 
   var checkedRadio = getCheckedRadio();
@@ -97,6 +110,7 @@ function getCheckboxes() {
   let checkArr = document.getElementsByName("checkbox-sdg");
   let checkList = [];
   for (var i = 0; i < checkArr.length; i++) {
+    // @ts-ignore
     if (!checkArr[i].checked) continue;
     let sdgCleaned = checkArr[i].id.replace("checkbox-", "");
     checkList.push(sdgCleaned);
@@ -104,10 +118,14 @@ function getCheckboxes() {
   return checkList;
 }
 
+class Pos{
+  top: number;
+  width: number;
+  height: number;
+}
 
-
-function panel3Resize() {
-  pos = {};
+export function panel3Resize() {
+  let pos = new Pos;
   pos.top = ($(window).height()*(1-panelHeight));
 
   if ($('#header').height()) {
@@ -150,9 +168,9 @@ function panel3GetWidthScale() {
 
 function panel3GetHeightScale() {
   return d3.scaleLinear()
-    .domain([0, d3.max(panel3Data, function(d) {
+    .domain([0, Number(d3.max(panel3Data, function(d: DataPoint) {
       return d.value
-    })])
+    }))])
     .range([getPanel3Height(), 0]);
 };
 
@@ -170,7 +188,7 @@ function getAttr(path, attributes) {
   var widthScale = panel3GetWidthScale();
   var heightScale = panel3GetHeightScale();
 
-  for (key in attributes) {
+  for (let key in attributes) {
     switch (attributes[key]) {
       case "width":
         path.attr("width", widthScale.bandwidth())
@@ -199,11 +217,21 @@ function getAttr(path, attributes) {
 };
 
 // Reduce json data for city and return only arary of sdg scores
-function getScoreArray(data) {
+function getScoreBasedOnUserToggle(data): number[] {
   let scoreArray = []
-  checkBoxes = getCheckboxes();
-  for (checkBox in checkBoxes) {
+  let checkBoxes = getCheckboxes();
+  for (let checkBox in checkBoxes) {
     scoreArray.push(Number(data[checkBoxes[checkBox]]));
+  }
+  return scoreArray;
+}
+
+function getScore(data): number[] {
+  let scoreArray = []
+  for (let key in data) {
+    // TODO: Make sure we only get valid scores
+    if (key === "name") continue;
+    scoreArray.push(Number(data[key]));
   }
   return scoreArray;
 }
@@ -234,15 +262,15 @@ function median(data){
 
 function geometric(data){
   if (data.length < 1) return 0;
-  root = data.length
-  agg = data.reduce((a, b) => a * b);
+  let root = data.length
+  let agg = data.reduce((a, b) => a * b);
   return Math.pow(agg, 1/root);
 }
 
 
 
-function getAverageScore(data, averageType) {
-  scoreArray = getScoreArray(data);
+export function getAverageScore(data, averageType) {
+  let scoreArray = getScore(data);
   let average;
   if (averageType == "score$arithmetic")  {
     average = arithmetic;
@@ -267,8 +295,8 @@ function panel3ParseData(rawData) {
   var keyPhrase = "score$" + getCheckedRadio();
 
   //parse needed data from rawData
-  rtn = [];
-  for (i in rawData) {
+  let rtn = [];
+  for (let i in rawData) {
     let averageScore = getAverageScore(rawData[i], keyPhrase);
     rtn.push({
       name: rawData[i].name,
@@ -288,8 +316,8 @@ function panel3ParseData(rawData) {
 
 //Ran first and once to get proper sizing
 //  (uses dataset, but assumes values of 0)
-async function initPanel3() {
-  var rawData = await getData();
+export function initPanel3() {
+  let rawData = Data.getSyncData();
 
   panel3Data = panel3ParseData(rawData);
   var heightScale = panel3GetHeightScale();
@@ -303,7 +331,7 @@ async function initPanel3() {
           .attr("id", function(d, i) {
             return "id" + i;
           })
-          .call(this.getAttr, ["x", "width", "height"])
+          .call(getAttr, ["x", "width", "height"])
           .attr("y", function(d) {
             //assume no value until user prompt
             return heightScale(0);
@@ -333,8 +361,8 @@ function panel3MouseOut() {
 
 
 
-async function getMarkId(id) {
-  mark = await mark;
+function getMarkId(id) {
+  // mark = await mark;
   id = id.substring(2);
 
   for (var i in mark) {
@@ -352,8 +380,8 @@ async function getMarkId(id) {
     current button selected
   - uses a motion tween with 800ms to resize rectangles
 */
-async function plotPanel3() {
-  var rawData = await getData();
+function plotPanel3() {
+  let rawData = Data.getSyncData();
   panel3Data = panel3ParseData(rawData);
 
   d3.select("#panel3")
@@ -362,7 +390,7 @@ async function plotPanel3() {
         .data(panel3Data)
         .transition()
         .duration(800)
-          .call(this.getAttr, ["x", "y", "width", "height"])
+          .call(getAttr, ["x", "y", "width", "height"])
 };
 
 
@@ -371,9 +399,9 @@ async function plotPanel3() {
   - ran on screen resize, moves graph to stay within the bounds of #panel3
     svg element. No delay or transiton for plot resize
 */
-function plotPanel3Resize() {
+export function plotPanel3Resize() {
   d3.select("#panel3")
     .select("svg")
       .selectAll("rect")
-          .call(this.getAttr, ["x", "y", "width", "height"])
+          .call(getAttr, ["x", "y", "width", "height"])
 };
