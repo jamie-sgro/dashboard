@@ -5,9 +5,10 @@
   "description": "This project involves building a one-page online dashboard for visualizing an SDG Cities Index that is both open-sourced and legally shareable.",
   "main": "index.js",
   "scripts": {
-    "start": "git pull; npm install; npm build; pm2 reload ./bin/www; pm2 monit",
+    "start": "git pull; npm install; npm run build; pm2 reload ./bin/www; pm2 monit",
     "start:dev": "tsc; node --require esm ./bin/www",
     "test": "ts-mocha --require jsdom-global/register --require esm ./test/test.ts",
+    "ci": "echo ci",
     "dev": "nodemon",
     "build": "tsc"
   },
