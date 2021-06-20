@@ -6,11 +6,12 @@
   "main": "index.js",
   "scripts": {
     "start": "git pull; pm2 reload ./bin/www; pm2 monit",
-    "start:dev": "tsc; node ./bin/www",
-    "test": "node ./bin/www",
+    "start:dev": "tsc; node --require esm ./bin/www",
+    "test": "ts-mocha --require jsdom-global/register --require esm ./test/test.ts",
     "dev": "nodemon",
     "build": "tsc"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://gitlab.com/Jamie.Sgro/dashboard.git"
@@ -46,8 +47,14 @@
     "@types/d3": "5.5.0",
     "@types/jquery": "^3.5.5",
     "@types/leaflet": "^1.7.2",
-    "jest": "^27.0.4",
+    "@types/mocha": "^8.2.2",
+    "chai": "^4.3.4",
+    "esm": "^3.2.25",
+    "jsdom": "16.6.0",
+    "jsdom-global": "3.0.2",
+    "mocha": "^9.0.1",
     "nodemon": "^2.0.7",
+    "ts-mocha": "^8.0.0",
     "ts-node": "^10.0.0"
   }
 }
