@@ -52,7 +52,7 @@ router.get('/public/javascripts/*', (req, res)=> {
 
 //GET home page if nothing else matches.
 router.get('*', (req, res)=> {
-  res.redirect('home');
+  res.redirect('index');
 });
 
 module.exports = router;
