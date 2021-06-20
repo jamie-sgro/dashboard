@@ -6,11 +6,12 @@
   "main": "index.js",
   "scripts": {
     "start": "git pull; pm2 reload ./bin/www; pm2 monit",
-    "start:dev": "tsc; node ./bin/www",
-    "test": "node ./bin/www",
+    "start:dev": "tsc; node --require esm ./bin/www",
+    "test": "ts-mocha --require jsdom-global/register --require esm ./test/test.ts",
     "dev": "nodemon",
     "build": "tsc"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://gitlab.com/Jamie.Sgro/dashboard.git"
@@ -31,7 +32,7 @@
     "async": "^3.0.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
-    "d3": "^5.9.2",
+    "d3": "5.5.0",
     "debug": "~2.6.9",
     "ejs": "^2.6.1",
     "express": "~4.16.0",
@@ -39,13 +40,21 @@
     "leaflet": "^1.5.1",
     "morgan": "^1.9.1",
     "npm": "^6.9.0",
-    "papaparse": "^4.6.3",
     "request": "^2.88.0",
     "typescript": "^4.3.2"
   },
   "devDependencies": {
+    "@types/d3": "5.5.0",
     "@types/jquery": "^3.5.5",
+    "@types/leaflet": "^1.7.2",
+    "@types/mocha": "^8.2.2",
+    "chai": "^4.3.4",
+    "esm": "^3.2.25",
+    "jsdom": "16.6.0",
+    "jsdom-global": "3.0.2",
+    "mocha": "^9.0.1",
     "nodemon": "^2.0.7",
+    "ts-mocha": "^8.0.0",
     "ts-node": "^10.0.0"
   }
 }

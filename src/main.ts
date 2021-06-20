@@ -1,67 +1,35 @@
-// @ts-nocheck
+// @ts-expect-error
+import d3 = require("d3");
+// @ts-expect-error
+import L = require("leaflet");
 
-/************************
-*** DECLARE VARIABLES ***
-************************/
 
-let myData = Data.getSyncData();
+import { Barplot } from "./barplot";
+import { Data, DataPoint } from "./data";
+import { d3PopulateMarkers, getMap, mapResize, matches, onMapClick, populateMarkers, reduceData, updateAllGraphs } from "./map";
+import { Margin } from "./Margin";
+import { initPanel3, panel3Resize, plotPanel3Resize } from "./panel3";
 
-var scl;
-const markRad = 15;
-const markCol = "rgba(10,151,217, .8)";
-const colourBottom = "rgb(56, 94, 231)";
-const colourTop = "rgb(34, 236, 87)";
-const scaleToZoom = false;
+export var scl;
+export const markRad = 15;
+export const markCol = "rgba(10,151,217, .8)";
+export const colourBottom = "rgb(56, 94, 231)";
+export const colourTop = "rgb(34, 236, 87)";
+export const scaleToZoom = false;
 const locHost = "http://localhost:3000/"
 // const locHost = "https://www.sdsn-canada-dashboard.tk/";
-const panelHeight = 0.40;
-const panelWidth = 0.40;
+export const panelHeight = 0.40;
+export const panelWidth = 0.40;
 
 //set default city
+// @ts-ignore
 document.getElementById("popupInfo").class = 0;
 
 
 
-/***************
-*** GET DATA ***
-***************/
-
-// import .csv
-function postAjax(url, data, callback) {
-  $.ajax({
-    type: "POST",
-    data: JSON.stringify(data),
-    url: url,
-  }).done(function(data) {
-    callback(null, data);
-  }).fail(function(jqXHR, textStatus, errorThrown) {
-    callback(jqXHR, null);
-  });
-};
-
-
-
-function getData() {
-  if (!getData.promise) {
-    getData.promise = new Promise(function(resolve, reject) {
-      postAjax(locHost + "getData", {}, function(err, cb) {
-        if (err) {
-          console.log("Error: " + err.statusText);
-          console.log(err)
-          reject(err);
-          return;
-        };
-        resolve(cb.data);
-      });
-    });
-  };
-  return getData.promise;
-};
-
 /******************
 *** ADD D3 TOOL ***
 ******************/
-
 d3.selection.prototype.moveToFront = function() {
   return this.each(function(){
     this.parentNode.appendChild(this);
@@ -74,7 +42,7 @@ d3.selection.prototype.moveToFront = function() {
 *** CREATE MAP ***
 *****************/
 
-var map = getMap();
+export var map = getMap();
 
 if (scaleToZoom) {
   scl = map.latLngToLayerPoint([0,1]).x - map.latLngToLayerPoint([0,0]).x;
@@ -84,13 +52,13 @@ if (scaleToZoom) {
 
 
 L.svg().addTo(map);
-var g = d3.select("#map").select("svg").append("g")
+export var g = d3.select("#map").select("svg").append("g")
 
 d3PopulateMarkers(map);
 
 //DEPRECIATED
 //move about d3PopulateMarkers() to use .d3 circle mouseEvents
-mark = populateMarkers(map);
+export var mark = populateMarkers(map);
 
 //set up alerts
 map.on("click", onMapClick);
@@ -124,48 +92,49 @@ function getHeight(): number {
 };
 
 //Barplot(width, height, margin)
-const barplot = new Barplot(
+export const barplot = new Barplot(
   ($(window).width()*panelWidth),
   getHeight(),
-  {top: 10, right: 20, bottom: 30, left: 60}
-);
-
-plotData();
-
-//called once when the screen renders
-async function plotData() {
-  let data = Data.getSyncData();
-
-  barplot.max = getMaxScore(data)
-
-  //only return the first datapoint to populate the graph
-  var id = document.getElementById("popupInfo").class;
-  dataArray = reduceData(data[id]);
-  barplot.id = id; //Currently use first row of .csv on graph init
-
-  var min = [];
-  for (var i in dataArray) {
-
-  };
-
-  var max = [];
-  var min = [];
-  for (col in dataArray) {
-    max.push(getMax(data, dataArray[col].name))
-    min.push(getMin(data, dataArray[col].name))
-  }
-
-  barplot.plot(dataArray, min, max);
-  updateAllGraphs(id)
+  new Margin(10, 20, 30, 60),
+  g
+  );
+  plotData();
+  export var dataArray: DataPoint[]
+  
+  //called once when the screen renders
+  function plotData() {
+    let data = Data.getSyncData();
+    
+    barplot.max = getMaxScore(data)
+    
+    //only return the first datapoint to populate the graph
+    // @ts-ignore
+    var id = document.getElementById("popupInfo").class;
+    dataArray = reduceData(data[id]);
+    barplot.id = id; //Currently use first row of .csv on graph init
+    
+    var min = [];
+    
+    var max = [];
+    var min = [];
+    for (let col in dataArray) {
+      max.push(getMax(data, dataArray[col].name))
+      min.push(getMin(data, dataArray[col].name))
+    }
+    
+    barplot.plot(dataArray, min, max);
+    updateAllGraphs(id)
 };
 
 
-
+/** Parse maximum value of all possible values
+ * that are not an average 'score' column i.e. prepended with "score"
+ */
 function getMaxScore(data) {
-  maxScore = 0;
+  let maxScore = 0;
 
-  for (rec in data) {
-    for (key in data[rec]) {
+  for (let rec in data) {
+    for (let key in data[rec]) {
       if (matches(key, ["name","lat","lng"]) == false) {
         if (key.substring(0, 5) != "score") {
           if (Number(data[rec][key]) > Number(maxScore)) {
@@ -212,7 +181,7 @@ function getMin(arr, key) {
 //  at the end the end of screen change if barplot.resize() gets too costly
 $(window).on("resize", function() {
   //update leaflet map
-  mapResize();
+  mapResize(map);
 
   //update d3 barplot
   barplot.resize();
