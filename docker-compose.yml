@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  fullstack:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: "dashboard:latest"
+    volumes:
+      - ".:/app"
+      - "/app/node_modules"
+    ports:
+      - "3000:3000"
