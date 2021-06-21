@@ -11,3 +11,14 @@ services:
       - "/app/node_modules"
     ports:
       - "3000:3000"
+
+  test:
+    image: "dashboard:latest"
+    volumes:
+      - ".:/app"
+      - "/app/node_modules"
+    ports:
+      - "3000:3000"
+    depends_on: 
+      - fullstack
+    entrypoint: ["npm", "test"]
