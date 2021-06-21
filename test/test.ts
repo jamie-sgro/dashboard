@@ -1,5 +1,6 @@
 require('jsdom-global')()
 
+
 import { expect } from 'chai';
 import { setAlpha } from '../src/barplot';
 
