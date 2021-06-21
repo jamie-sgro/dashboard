@@ -40,7 +40,7 @@ To ensure the website is running, navigate to http://localhost:3000 on your defa
 
 ### Docker
 
-- As of version 1.3.3, run `docker build .` and `docker-compose up` to boot the development server on localhost:3000
+- On versions >1.3.3, run `docker build .` and `docker-compose up` to boot the development server on localhost:3000
 
 ### Prerequisites
 
