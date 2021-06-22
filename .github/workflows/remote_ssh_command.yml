@@ -58,3 +58,4 @@ jobs:
         host: ${{ secrets.PORT }}
         user: server
         key: ${{ secrets.SSH_KEY}}
+        args: -tt
