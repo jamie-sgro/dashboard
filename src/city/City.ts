@@ -1,5 +1,3 @@
-import {markRad} from "../main"
-
 export class City {
   view: HTMLButtonElement;
 
@@ -8,7 +6,6 @@ export class City {
   }
 
   private initView(name: string): HTMLButtonElement {
-    console.log(markRad)
     let elem = document.createElement("button");
     elem.innerHTML = name;
     document.body.appendChild(elem);
