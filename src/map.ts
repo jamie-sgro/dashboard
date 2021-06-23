@@ -6,7 +6,7 @@ import L = require("leaflet")
 import { attrTween, setAlpha } from "./barplot";
 import { Data, DataModel, DataPoint } from "./data";
 import { barplot, colourBottom, colourTop, g, mark, markCol, markRad, panelHeight, panelWidth, scaleToZoom, scl } from "./main";
-import { getAverageScore, getMarkScore, updatePanel3, Mark } from "./panel3";
+import { getMarkScore, updatePanel3, Mark } from "./panel3";
 
 
 
