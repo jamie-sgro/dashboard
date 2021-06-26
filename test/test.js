@@ -1,5 +1,6 @@
 var chai = require("chai")
 const clientSrc = require("../client")
+const barplotSrc = require("../barplot")
 
 describe('Array', function() {
   describe('#indexOf()', function() {
@@ -11,6 +12,12 @@ describe('Array', function() {
     it('should return "a"', function() {
       let client = new clientSrc.Client()
       chai.expect(client.get_a()).to.equal("a")
+    });
+  });
+  describe('Barplot', function() {
+    it('should return "a"', function() {
+      let result = barplotSrc.setAlpha("rgb(0,0,0,)", 1)
+      chai.expect(result.opacity).to.equal(1);
     });
   });
 });
