@@ -3,10 +3,10 @@ import d3 = require("d3")
 // @ts-expect-error
 import L = require("leaflet")
 
-import { attrTween, setAlpha } from "./barplot";
-import { Data, DataModel, DataPoint } from "./data";
-import { barplot, colourBottom, colourTop, g, mark, markCol, markRad, panelHeight, panelWidth, scaleToZoom, scl } from "./main";
-import { getMarkScore, updatePanel3, Mark } from "./panel3";
+import { attrTween, setAlpha } from "./barplot.js";
+import { Data, DataModel, DataPoint } from "./data.js";
+import { barplot, colourBottom, colourTop, g, mark, markCol, markRad, panelHeight, panelWidth, scaleToZoom, scl } from "./main.js";
+import { getMarkScore, updatePanel3, Mark } from "./panel3.js";
 
 
 
