@@ -1,6 +1,6 @@
 {
   "name": "dashboard",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "private": true,
   "description": "This project involves building a one-page online dashboard for visualizing an SDG Cities Index that is both open-sourced and legally shareable.",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "start": "git pull; npm install; npm run build; pm2 reload ./bin/www; pm2 monit",
     "start:dev": "tsc; node --require esm ./bin/www",
     "test": "tsc; mocha --require esm 'public/javascripts/tests/**/*'",
-    "ci": "npm install",
+    "ci": "git pull; docker build .; docker-compose up",
     "dev": "nodemon",
     "build": "tsc"
   },
