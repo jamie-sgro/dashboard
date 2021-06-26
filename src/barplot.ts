@@ -1,9 +1,9 @@
 // @ts-expect-error
 import d3 = require("d3");
 
-import { DataPoint } from "./data";
-import { Margin } from "./Margin";
-import { assertType } from "./utils";
+import { DataPoint } from "./data.js";
+import { Margin } from "./Margin.js";
+import { assertType } from "./utils.js";
 
 const markCol = "rgba(10,151,217, .8)";
 const panelWidth = 0.40;

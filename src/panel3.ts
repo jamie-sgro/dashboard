@@ -1,10 +1,11 @@
 // @ts-expect-error
 import d3 = require("d3");
+// @ts-expect-error
+import L = require("leaflet")
 
-import { attrTween } from "./barplot";
-import { Data, DataPoint } from "./data";
-import { barplot, mark, panelHeight, panelWidth } from "./main";
-import { getMarkScore } from "./map";
+import { attrTween } from "./barplot.js";
+import { Data, DataModel, DataPoint } from "./data.js";
+import { barplot, mark, panelHeight, panelWidth } from "./main.js";
 
 let panel3Data: any
 
@@ -85,6 +86,96 @@ export function updatePanel3(id) {
 
   //update barplot.id
   barplot.id = id;
+};
+
+
+export class Mark extends L.CircleMarker {
+  id: string
+  table: {}
+  score: {}
+}
+
+
+// take dataset and calculate metrics for the mark[i].table element
+export function getMarkScore(mark: Mark[], data: DataModel[], scoreName: string) {
+  //vet variable
+  if (typeof(scoreName) != "string") {
+    throw "Error in getMarkScore()\nscoreName variable must be a string matching a .csv header";
+  };
+
+  //get relative ranking
+  var arr = [];
+  for (let i in data) {
+    arr.push(getAverageScore(data[i], scoreName));
+  };
+  var sorted = arr.slice().sort(function(a,b) {
+    return b-a;
+  });
+  var rank = arr.slice().map(function(v){
+    return sorted.indexOf(v) + 1;
+  });
+
+  //get average score between all cities
+  var sum = 0;
+  var avg = 0;
+  if (arr.length) {
+    sum = arr.reduce(function(a, b) {
+      return a + b;
+    });
+    avg = sum / arr.length;
+  }
+
+  var standing;
+
+  for (let i in data) {
+    let city = data[i]
+    //get relative standing
+    standing = Math.round(((city[scoreName] / avg) - 1) * 100)
+
+    if (standing > 0) {
+      standing = "<font color='green'>&#x25B2;" + standing + "% above average</font>";
+    } else if (standing < 0) {
+      standing = "<font color='red'>&#x25BC;" + standing + "% below average</font>";
+    } else {
+      standing = "No average standing available";
+    };
+
+    if (mark[i].table == undefined) {
+      mark[i].table = {};
+      mark[i].score = {};
+    };
+
+    //get score type without the "score$"
+    const jsonName = scoreName.substring(6);
+    const averageRaw =  getAverageScore(city, scoreName);
+    const average = Math.round(averageRaw * 100) / 100
+
+    mark[i].table[jsonName] = generateTable(
+      city.name, 
+      average,
+      rank[i] + " (of " + rank.length + ")", 
+      standing);
+
+    //record relative ranking for panel3 barchart selection
+    mark[i].score[jsonName] = rank[i]
+  };
+};
+
+
+function generateTable(name, score, rank, standing) {
+  return `<h1 style="margin:0; padding:10">` + name + `</h1>
+  <table style="width:100%; margin:0", id="leaflet">
+    <tr>
+      <th>Score</th>
+      <th>Ranking</th>
+      <th>Standing</th>
+    </tr>
+    <tr>
+      <td>` + score + `</td>
+      <td>` + rank + `</td>
+      <td>` + standing + `</td>
+    </tr>
+  </table>`
 };
 
 
