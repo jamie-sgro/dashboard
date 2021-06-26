@@ -3,16 +3,11 @@ import d3 = require("d3")
 // @ts-expect-error
 import L = require("leaflet")
 
-import { attrTween, setAlpha } from "./barplot";
-import { Data, DataModel, DataPoint } from "./data";
-import { barplot, colourBottom, colourTop, g, map, mark, markCol, markRad, panelHeight, panelWidth, scaleToZoom, scl } from "./main";
-import { getAverageScore, updatePanel3 } from "./panel3";
+import { attrTween, setAlpha } from "./barplot.js";
+import { Data, DataModel, DataPoint } from "./data.js";
+import { barplot, colourBottom, colourTop, g, mark, markCol, markRad, panelHeight, panelWidth, scaleToZoom, scl } from "./main.js";
+import { getMarkScore, updatePanel3, Mark } from "./panel3.js";
 
-class D3Map {
-  constructor(width, height, margin) {
-
-  };
-};
 
 
 
@@ -111,100 +106,15 @@ export function updateAllGraphs(id: number) {
 
 
 
-// take dataset and calculate metrics for the mark[i].table element
-export function getMarkScore(mark, data, scoreName) {
-  //vet variable
-  if (typeof(scoreName) != "string") {
-    throw "Error in getMarkScore()\nscoreName variable must be a string matching a .csv header";
-  };
-
-  //get relative ranking
-  var arr = [];
-  for (let i in data) {
-    arr.push(getAverageScore(data[i], scoreName));
-  };
-  var sorted = arr.slice().sort(function(a,b) {
-    return b-a;
-  });
-  var rank = arr.slice().map(function(v){
-    return sorted.indexOf(v) + 1;
-  });
-
-  //get average score between all cities
-  var sum = 0;
-  var avg = 0;
-  if (arr.length) {
-    sum = arr.reduce(function(a, b) {
-      return a + b;
-    });
-    avg = sum / arr.length;
-  }
-
-  var standing;
-
-  for (let i in data) {
-    let city = data[i]
-    //get relative standing
-    standing = Math.round(((city[scoreName] / avg) - 1) * 100)
-
-    if (standing > 0) {
-      standing = "<font color='green'>&#x25B2;" + standing + "% above average</font>";
-    } else if (standing < 0) {
-      standing = "<font color='red'>&#x25BC;" + standing + "% below average</font>";
-    } else {
-      standing = "No average standing available";
-    };
-
-    if (mark[i].table == undefined) {
-      mark[i].table = {};
-      mark[i].score = {};
-    };
-
-    //get score type without the "score$"
-    const jsonName = scoreName.substring(6);
-    const averageRaw =  getAverageScore(city, scoreName);
-    const average = Math.round(averageRaw * 100) / 100
-
-    mark[i].table[jsonName] = generateTable(
-      city.name, 
-      average,
-      rank[i] + " (of " + rank.length + ")", 
-      standing);
-
-    //record relative ranking for panel3 barchart selection
-    mark[i].score[jsonName] = rank[i]
-  };
-};
-
-
-
-function generateTable(name, score, rank, standing) {
-  return `<h1 style="margin:0; padding:10">` + name + `</h1>
-  <table style="width:100%; margin:0", id="leaflet">
-    <tr>
-      <th>Score</th>
-      <th>Ranking</th>
-      <th>Standing</th>
-    </tr>
-    <tr>
-      <td>` + score + `</td>
-      <td>` + rank + `</td>
-      <td>` + standing + `</td>
-    </tr>
-  </table>`
-};
-
-
-
 export function populateMarkers(map) {
   let data = Data.getSyncData();
 
   // add marker
-  var mark = [];
+  var mark: Mark[] = [];
 
   for (let i in data) {
     //create marker element
-    mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng);
+    mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng) as Mark;
 
     //attach array number to JSON object
     mark[i].id = i;
@@ -235,6 +145,7 @@ export function onMapClick(e) {
     })
 
   for (let i in mark) {
+    // @ts-ignore
     mark[i].setStyle({radius: scl})
   }
 
@@ -399,6 +310,7 @@ export function d3PopulateMarkers(map) {
       })
       
       for (let i in mark) {
+        // @ts-ignore
         mark[i].setStyle({radius: scl})
       };
     };
