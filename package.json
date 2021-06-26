@@ -49,6 +49,7 @@
     "@types/jquery": "^3.5.5",
     "@types/leaflet": "^1.7.2",
     "@types/mocha": "^8.2.2",
+    "@types/node": "^15.12.4",
     "chai": "^4.3.4",
     "esm": "^3.2.25",
     "jsdom": "16.6.0",
