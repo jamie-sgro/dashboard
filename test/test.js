@@ -1,6 +1,7 @@
 var chai = require("chai")
 const clientSrc = require("../client")
 const barplotSrc = require("../barplot")
+d3 = require("d3")
 
 describe('Array', function() {
   describe('#indexOf()', function() {
