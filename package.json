@@ -7,7 +7,7 @@
   "scripts": {
     "start": "git pull; npm install; npm run build; pm2 reload ./bin/www; pm2 monit",
     "start:dev": "tsc; node --require esm ./bin/www",
-    "test": "mocha --require esm 'public/javascripts/tests/**/*'",
+    "test": "tsc; mocha --require esm 'public/javascripts/tests/**/*'",
     "ci": "npm install",
     "dev": "nodemon",
     "build": "tsc"
