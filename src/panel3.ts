@@ -3,9 +3,9 @@ import d3 = require("d3");
 // @ts-expect-error
 import L = require("leaflet")
 
-import { attrTween } from "./barplot";
-import { Data, DataModel, DataPoint } from "./data";
-import { barplot, mark, panelHeight, panelWidth } from "./main";
+import { attrTween } from "./barplot.js";
+import { Data, DataModel, DataPoint } from "./data.js";
+import { barplot, mark, panelHeight, panelWidth } from "./main.js";
 
 let panel3Data: any
 
