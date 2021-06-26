@@ -8,7 +8,7 @@
     "start": "git pull; npm install; npm run build; pm2 reload ./bin/www; pm2 monit",
     "start:dev": "tsc; node --require esm ./bin/www",
     "test": "tsc; mocha --require esm 'public/javascripts/tests/**/*'",
-    "ci": "npm install",
+    "ci": "git pull; docker build .; docker-compose up",
     "dev": "nodemon",
     "build": "tsc"
   },
