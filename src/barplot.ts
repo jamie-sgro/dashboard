@@ -309,12 +309,6 @@ export class Barplot {
       }))])
       .range([scl/2, scl*2]);
 
-    // update the map marker colour
-    // this.g.selectAll("circle")
-    //   .each(function(d,i) {
-    //     d3.select(this).call(attrTween, 500, "r", radiusScale(d[data.name]))
-    //   })
-
     // @ts-ignore
     if (!document.getElementById("leadLag").checked) {
       var myCol = d3.select(this.baseType).attr("fill");
@@ -322,13 +316,6 @@ export class Barplot {
       d3.select(this.baseType)
         .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .4))
     };
-
-
-    // for (let i in mark) {
-    //   let data = d3.select(this.baseType).data()[0] as DataPoint
-    //   var rad = Math.round(scl+radiusScale(Number(data.value)))
-    //   mark[i].setStyle({radius: rad})
-    // };
   };
 
 
@@ -372,15 +359,6 @@ export class Barplot {
         })
     checkOffScreen(this);
 
-    var colour = this.getColour();
-
-    // this.g.selectAll("circle")
-    //   .each(function(d,i) {
-    //     //concurrent transitions that overlap the same attribute should have the
-    //     //same duration so that the newest tween overwrites the old one
-    //     d3.select(this).call(attrTween, 300, "fill", setAlpha(colour(d[data.name]), .8))
-    //   })
-    
     this.flashRect(index)
   };
 
@@ -421,25 +399,8 @@ export class Barplot {
     this.tooltip.transition()
         .duration(200)
         .style("opacity", 0)
-
-    // this.g.selectAll("circle")
-    //   .each(function(d,i) {
-    //     d3.select(this).call(attrTween, 300, "fill", markCol)
-    //   })
-
-    //DEPRECIATED: removing marker variable
-    /*for (i in mark) {
-      mark[i].setStyle({radius: scl})
-    };*/
   }
 
-/*
-getWidthScale() {
-  return d3.scaleLinear()
-    .domain([0, this.max])
-    .range([0, this.width - this.margin.left - this.margin.right]);
-};
-*/
 
 
 /* @updatePlot(svg, data)

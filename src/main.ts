@@ -1,24 +1,19 @@
 // @ts-expect-error
 import d3 = require("d3");
-// @ts-expect-error
-import L = require("leaflet");
 
 
 import { Barplot } from "./barplot.js";
 import { Data, DataPoint } from "./data.js";
-import { d3PopulateMarkers, getMap, mapResize, matches, onMapClick, populateMarkers, reduceData, updateAllGraphs } from "./map.js";
+import { getMap, mapResize, matches, populateMarkers, reduceData, updateAllGraphs } from "./map.js";
 import { Margin } from "./Margin.js";
 import { initPanel3, panel3Resize, plotPanel3Resize } from "./panel3.js";
 import { DataList, DataListModel } from "./widgets/DataList.js";
 
-export var scl;
 export const markRad = 15;
 export const markCol = "rgba(10,151,217, .8)";
 export const colourBottom = "rgb(56, 94, 231)";
 export const colourTop = "rgb(34, 236, 87)";
 export const scaleToZoom = false;
-const locHost = "http://localhost:3000/"
-// const locHost = "https://www.sdsn-canada-dashboard.tk/";
 export const panelHeight = 0.40;
 export const panelWidth = 0.40;
 
@@ -45,24 +40,7 @@ d3.selection.prototype.moveToFront = function() {
 
 export var map = getMap();
 
-if (scaleToZoom) {
-  scl = map.latLngToLayerPoint([0,1]).x - map.latLngToLayerPoint([0,0]).x;
-} else {
-  scl = markRad;
-}
-
-
-// L.svg().addTo(map);
-// export var g = d3.select("#map").select("svg").append("g")
-
-// d3PopulateMarkers(map);
-
-//DEPRECIATED
-//move about d3PopulateMarkers() to use .d3 circle mouseEvents
 export var mark = populateMarkers(map);
-
-//set up alerts
-// map.on("click", onMapClick);
 
 
 
