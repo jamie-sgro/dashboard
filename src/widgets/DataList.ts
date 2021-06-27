@@ -47,12 +47,18 @@ export class DataList {
     document.body.appendChild(elem);
     return elem;
   }
-
+  
   convertInputToIndexAndProcessClick(userInput: string) {
     let values = this.data.map((d) => d.value);
     let id = values.indexOf(userInput);
     if (id === -1) return;
     this.onClick(id);
+    this.setUserInput("")
+  }
+  
+  private setUserInput(aString: string) {
+    // @ts-expect-error
+    document.getElementById(this.htmlId).value = "";
   }
 
   private fillDataList() {
