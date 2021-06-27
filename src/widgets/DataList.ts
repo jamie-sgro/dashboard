@@ -1,10 +1,15 @@
+export interface DataListModel {
+  id: number;
+  value: string;
+}
+
 export class DataList {
   htmlId: string;
   listAttr: string;
-  data: string[];
+  data: DataListModel[];
   view: HTMLInputElement;
 
-  constructor(htmlId: string, data: string[]) {
+  constructor(htmlId: string, data: DataListModel[]) {
     this.htmlId = htmlId;
     this.listAttr = this.uuidv4();
     this.data = data;
@@ -41,7 +46,7 @@ export class DataList {
 
   private fillDataList() {
     let datalist = this.createDataList();
-    this.data.forEach((d) => this.addSingleOption(datalist, d));
+    this.data.forEach((d) => this.addSingleOption(datalist, d.value));
   }
 
   private createDataList(): HTMLDataListElement {
