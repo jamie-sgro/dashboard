@@ -5,10 +5,12 @@ import L = require("leaflet");
 
 
 import { Barplot } from "./barplot.js";
+import { City } from "./city/City.js";
 import { Data, DataPoint } from "./data.js";
 import { d3PopulateMarkers, getMap, mapResize, matches, onMapClick, populateMarkers, reduceData, updateAllGraphs } from "./map.js";
 import { Margin } from "./Margin.js";
 import { initPanel3, panel3Resize, plotPanel3Resize } from "./panel3.js";
+import { DataList, DataListModel } from "./widgets/DataList.js";
 
 export var scl;
 export const markRad = 15;
@@ -171,6 +173,27 @@ function getMin(arr, key) {
   return rtn;
 };
 
+
+
+let datalist = populateDataList();
+
+function populateDataList(): DataList {
+  let data = Data.getSyncData();
+  const dataListModel = data.map((city, id) => {
+    return {id: id, value: city.name} as DataListModel
+  });
+  return new DataList("cities-datalist", dataListModel, updateAllGraphs);
+}
+
+
+
+let cities = populateCities();
+
+function populateCities(): City[] {
+  let data = Data.getSyncData();
+  const cities = data.map((city, id) => new City(id, city.name, updateAllGraphs));
+  return cities;
+}
 
 
 /*********************

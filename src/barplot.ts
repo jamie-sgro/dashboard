@@ -40,9 +40,8 @@ export class Barplot {
 
     // Define the div for the tooltip
     this.tooltip = d3.select("body").append("div")
-        .attr("class", "tooltip")
-        .html("sadfdsf")
-        .style("opacity", 1);
+      .attr("class", "tooltip")
+      .style("opacity", 0);
   };
   
   static selectAttrAsString(obj: any, attr: string): number {
