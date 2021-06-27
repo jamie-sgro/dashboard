@@ -177,11 +177,7 @@ let cities = populateCities();
 
 function populateCities(): City[] {
   let data = Data.getSyncData();
-  let cities = []
-
-  for (let i in data) {
-    cities[i] = new City(Number(i), data[i].name, updateAllGraphs);
-  }
+  const cities = data.map((city, id) => new City(id, city.name, updateAllGraphs));
   return cities;
 }
 
