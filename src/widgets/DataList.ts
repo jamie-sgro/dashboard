@@ -4,14 +4,21 @@ export interface DataListModel {
 }
 
 export class DataList {
-  htmlId: string;
-  listAttr: string;
-  data: DataListModel[];
-  onClick: Function;
-  view: HTMLInputElement;
+  private htmlId: string;
+  private parentId: string;
+  private listAttr: string;
+  private data: DataListModel[];
+  private onClick: Function;
+  private view: HTMLInputElement;
 
-  constructor(htmlId: string, data: DataListModel[], onClick: Function) {
+  constructor(
+    htmlId: string,
+    data: DataListModel[],
+    onClick: Function,
+    { parentId = undefined } = {}
+  ) {
     this.htmlId = htmlId;
+    this.parentId = parentId;
     this.listAttr = this.uuidv4();
     this.data = data;
     this.onClick = onClick;
@@ -44,7 +51,7 @@ export class DataList {
       let userInput = e.target.value;
       this.convertInputToIndexAndProcessClick(userInput);
     };
-    document.body.appendChild(elem);
+    this.appendToParent(elem);
     return elem;
   }
 
@@ -53,6 +60,18 @@ export class DataList {
     let id = values.indexOf(userInput);
     if (id === -1) return;
     this.onClick(id);
+    this.setUserInput("");
+  }
+
+  private appendToParent(elem: HTMLInputElement) {
+    this.parentId === "undefined"
+      ? document.body.appendChild(elem)
+      : document.getElementById(this.parentId).appendChild(elem);
+  }
+
+  private setUserInput(aString: string) {
+    // @ts-expect-error
+    document.getElementById(this.htmlId).value = "";
   }
 
   private fillDataList() {

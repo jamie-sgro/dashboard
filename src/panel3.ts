@@ -6,6 +6,7 @@ import L = require("leaflet")
 import { attrTween } from "./barplot.js";
 import { Data, DataModel, DataPoint } from "./data.js";
 import { barplot, mark, panelHeight, panelWidth } from "./main.js";
+import { updateAllGraphs } from "./map.js";
 
 let panel3Data: any
 
@@ -452,14 +453,13 @@ function panel3MouseOut() {
 
 
 
-function getMarkId(id) {
-  // mark = await mark;
+function getMarkId(id: string) {
+  // parse `11` from "id11"
   id = id.substring(2);
 
   for (var i in mark) {
     if (mark[i].score[getCheckedRadio()] == Number(id)+1) {
-      mark[Number(i)].fireEvent("click")
-      mark[Number(i)].closeTooltip()
+      updateAllGraphs(Number(i))
     };
   };
 };
