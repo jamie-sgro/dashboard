@@ -5,6 +5,7 @@ import L = require("leaflet");
 
 
 import { Barplot } from "./barplot.js";
+import { City } from "./city/City.js";
 import { Data, DataPoint } from "./data.js";
 import { d3PopulateMarkers, getMap, mapResize, matches, onMapClick, populateMarkers, reduceData, updateAllGraphs } from "./map.js";
 import { Margin } from "./Margin.js";
@@ -171,6 +172,18 @@ function getMin(arr, key) {
   return rtn;
 };
 
+
+let cities = populateCities();
+
+function populateCities(): City[] {
+  let data = Data.getSyncData();
+  let cities = []
+
+  for (let i in data) {
+    cities[i] = new City(Number(i), data[i].name, updateAllGraphs);
+  }
+  return cities;
+}
 
 
 /*********************
