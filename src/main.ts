@@ -172,6 +172,33 @@ function getMin(arr, key) {
   return rtn;
 };
 
+let elem = document.createElement("input");
+elem.id = "cities-datalist"
+elem.setAttribute("list", "cities-list");
+elem.oninput = (e) => {
+  // @ts-expect-error
+  console.log(e.target.value)
+}
+document.body.appendChild(elem);
+
+
+function fillDataList() {
+  var container = document.getElementById("cities-datalist"),
+  dl = document.createElement("datalist");
+  dl.id = "cities-list";
+
+  let data = Data.getSyncData();
+
+  data.forEach((d) => {
+    let option = document.createElement("option");
+    option.value = d.name;
+    dl.appendChild(option);
+  })
+
+  container.appendChild(dl);
+}
+fillDataList();
+
 
 let cities = populateCities();
 
