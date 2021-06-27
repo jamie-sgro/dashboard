@@ -55,7 +55,7 @@ export function getMap() {
 
 
 
-function addMarker(map, name, lat, lng) {
+function addMarker(name, lat, lng) {
   var mark = L.circleMarker([lat, lng]);
 
   // @ts-ignore
@@ -70,11 +70,13 @@ export function updateAllGraphs(id: number) {
 
     //this is where hooks into panel 3 should be made
     updatePanel3(id);
+
+    recenterDashboard();
 }
 
 
 
-export function populateMarkers(map) {
+export function populateMarkers() {
   let data = Data.getSyncData();
 
   // add marker
@@ -82,7 +84,7 @@ export function populateMarkers(map) {
 
   for (let i in data) {
     //create marker element
-    mark[i] = addMarker(map, data[i].name, data[i].lat, data[i].lng) as Mark;
+    mark[i] = addMarker(data[i].name, data[i].lat, data[i].lng) as Mark;
 
     //attach array number to JSON object
     mark[i].id = i;
@@ -106,7 +108,7 @@ export function populateMarkers(map) {
 
 
 
-export function onMapClick(e) {
+function recenterDashboard() {
   //center screen onClick
   $('html, body').animate({scrollTop: $("#dashboard").offset().top}, 800);
 };
