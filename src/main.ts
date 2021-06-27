@@ -10,6 +10,7 @@ import { Data, DataPoint } from "./data.js";
 import { d3PopulateMarkers, getMap, mapResize, matches, onMapClick, populateMarkers, reduceData, updateAllGraphs } from "./map.js";
 import { Margin } from "./Margin.js";
 import { initPanel3, panel3Resize, plotPanel3Resize } from "./panel3.js";
+import { DataList, DataListModel } from "./widgets/DataList.js";
 
 export var scl;
 export const markRad = 15;
@@ -172,32 +173,18 @@ function getMin(arr, key) {
   return rtn;
 };
 
-let elem = document.createElement("input");
-elem.id = "cities-datalist"
-elem.setAttribute("list", "cities-list");
-elem.oninput = (e) => {
-  // @ts-expect-error
-  console.log(e.target.value)
-}
-document.body.appendChild(elem);
 
 
-function fillDataList() {
-  var container = document.getElementById("cities-datalist"),
-  dl = document.createElement("datalist");
-  dl.id = "cities-list";
+let datalist = populateDataList();
 
+function populateDataList(): DataList {
   let data = Data.getSyncData();
-
-  data.forEach((d) => {
-    let option = document.createElement("option");
-    option.value = d.name;
-    dl.appendChild(option);
-  })
-
-  container.appendChild(dl);
+  const dataListModel = data.map((city, id) => {
+    return {id: id, value: city.name} as DataListModel
+  });
+  return new DataList("cities-datalist2", dataListModel);
 }
-fillDataList();
+
 
 
 let cities = populateCities();
