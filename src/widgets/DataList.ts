@@ -7,15 +7,17 @@ export class DataList {
   htmlId: string;
   listAttr: string;
   data: DataListModel[];
+  onClick: Function;
   view: HTMLInputElement;
 
-  constructor(htmlId: string, data: DataListModel[]) {
+  constructor(htmlId: string, data: DataListModel[], onClick: Function) {
     this.htmlId = htmlId;
     this.listAttr = this.uuidv4();
     this.data = data;
+    this.onClick = onClick;
     this.view = this.initView();
   }
-  
+
   private uuidv4(): string {
     // @ts-expect-error
     return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
@@ -37,8 +39,12 @@ export class DataList {
     elem.id = this.htmlId;
     elem.setAttribute("list", this.listAttr);
     elem.oninput = (e) => {
+      let values = this.data.map((d) => d.value);
       // @ts-expect-error
-      console.log(e.target.value);
+      let userInput = e.target.value;
+      let id = values.indexOf(userInput);
+      if (id === -1) return;
+      this.onClick(id);
     };
     document.body.appendChild(elem);
     return elem;

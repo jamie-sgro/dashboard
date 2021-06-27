@@ -182,7 +182,7 @@ function populateDataList(): DataList {
   const dataListModel = data.map((city, id) => {
     return {id: id, value: city.name} as DataListModel
   });
-  return new DataList("cities-datalist2", dataListModel);
+  return new DataList("cities-datalist", dataListModel, updateAllGraphs);
 }
 
 
