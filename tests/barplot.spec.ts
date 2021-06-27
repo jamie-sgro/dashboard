@@ -1,8 +1,8 @@
 // @ts-expect-error
 d3 = require("d3")
 
-const chaiSrc = require("chai")
-const barplotSrc = require("../src/barplot")
+var chaiSrc = require("chai")
+var barplotSrc = require("../src/barplot")
 
 describe('Base', function() {
   it('should have basic chai and mocha validation', function() {
