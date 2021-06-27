@@ -187,15 +187,6 @@ function populateDataList(): DataList {
 
 
 
-let cities = populateCities();
-
-function populateCities(): City[] {
-  let data = Data.getSyncData();
-  const cities = data.map((city, id) => new City(id, city.name, updateAllGraphs));
-  return cities;
-}
-
-
 /*********************
 *** DYNAMIC RESIZE ***
 *********************/
