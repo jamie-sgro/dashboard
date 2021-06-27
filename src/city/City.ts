@@ -1,16 +1,22 @@
 export class City {
+  name: string;
+  id: number;
+  onClick: Function;
   view: HTMLButtonElement;
 
-  constructor(name: string) {
-    this.view = this.initView(name)
+  constructor(id: number, name: string, onClick: Function) {
+    this.id = id;
+    this.name = name;
+    this.onClick = onClick;
+    this.view = this.initView();
   }
 
-  private initView(name: string): HTMLButtonElement {
+  private initView(): HTMLButtonElement {
     let elem = document.createElement("button");
-    elem.innerHTML = name;
+    elem.innerHTML = this.name;
     document.body.appendChild(elem);
-    elem.onclick = function () {
-      console.log(name);
+    elem.onclick = () => {
+      this.onClick(this.id);
     };
     return elem;
   }
