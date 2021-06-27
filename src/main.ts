@@ -4,7 +4,7 @@ import d3 = require("d3");
 
 import { Barplot } from "./barplot.js";
 import { Data, DataPoint } from "./data.js";
-import { getMap, mapResize, matches, populateMarkers, reduceData, updateAllGraphs } from "./map.js";
+import { matches, populateMarkers, reduceData, updateAllGraphs } from "./map.js";
 import { Margin } from "./Margin.js";
 import { initPanel3, panel3Resize, plotPanel3Resize } from "./panel3.js";
 import { DataList, DataListModel } from "./widgets/DataList.js";
@@ -35,10 +35,8 @@ d3.selection.prototype.moveToFront = function() {
 
 
 /*****************
-*** CREATE MAP ***
+*** CREATE MARK ***
 *****************/
-
-export var map = getMap();
 
 export var mark = populateMarkers();
 
@@ -158,7 +156,7 @@ function populateDataList(): DataList {
   const dataListModel = data.map((city, id) => {
     return {id: id, value: city.name} as DataListModel
   });
-  return new DataList("cities-datalist", dataListModel, updateAllGraphs);
+  return new DataList("cities-datalist", dataListModel, updateAllGraphs, {parentId: "map"});
 }
 
 

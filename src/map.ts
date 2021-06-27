@@ -23,6 +23,7 @@ export function mapResize(map) {
 
 
 export function getMap() {
+  // TODO: this function has the div dimensions we need for the new dropdown
   let newMap = L.map('map');
 
   newMap.setView([50, -87], 4);
