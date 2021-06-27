@@ -19,12 +19,13 @@ export class DataList {
   }
 
   private uuidv4(): string {
-    // @ts-expect-error
-    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
-      (
-        c ^
-        (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
-      ).toString(16)
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+      /[xy]/g,
+      function (c) {
+        var r = (Math.random() * 16) | 0,
+          v = c == "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      }
     );
   }
 
@@ -39,15 +40,19 @@ export class DataList {
     elem.id = this.htmlId;
     elem.setAttribute("list", this.listAttr);
     elem.oninput = (e) => {
-      let values = this.data.map((d) => d.value);
       // @ts-expect-error
       let userInput = e.target.value;
-      let id = values.indexOf(userInput);
-      if (id === -1) return;
-      this.onClick(id);
+      this.convertInputToIndexAndProcessClick(userInput);
     };
     document.body.appendChild(elem);
     return elem;
+  }
+
+  convertInputToIndexAndProcessClick(userInput: string) {
+    let values = this.data.map((d) => d.value);
+    let id = values.indexOf(userInput);
+    if (id === -1) return;
+    this.onClick(id);
   }
 
   private fillDataList() {
