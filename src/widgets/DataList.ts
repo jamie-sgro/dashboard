@@ -64,7 +64,7 @@ export class DataList {
   }
 
   private appendToParent(elem: HTMLInputElement) {
-    this.parentId === "undefined"
+    typeof this.parentId === "undefined"
       ? document.body.appendChild(elem)
       : document.getElementById(this.parentId).appendChild(elem);
   }
