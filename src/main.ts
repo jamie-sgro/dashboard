@@ -5,7 +5,6 @@ import L = require("leaflet");
 
 
 import { Barplot } from "./barplot.js";
-import { City } from "./city/City.js";
 import { Data, DataPoint } from "./data.js";
 import { d3PopulateMarkers, getMap, mapResize, matches, onMapClick, populateMarkers, reduceData, updateAllGraphs } from "./map.js";
 import { Margin } from "./Margin.js";
@@ -53,17 +52,17 @@ if (scaleToZoom) {
 }
 
 
-L.svg().addTo(map);
-export var g = d3.select("#map").select("svg").append("g")
+// L.svg().addTo(map);
+// export var g = d3.select("#map").select("svg").append("g")
 
-d3PopulateMarkers(map);
+// d3PopulateMarkers(map);
 
 //DEPRECIATED
 //move about d3PopulateMarkers() to use .d3 circle mouseEvents
 export var mark = populateMarkers(map);
 
 //set up alerts
-map.on("click", onMapClick);
+// map.on("click", onMapClick);
 
 
 
@@ -98,7 +97,6 @@ export const barplot = new Barplot(
   ($(window).width()*panelWidth),
   getHeight(),
   new Margin(10, 20, 30, 60),
-  g
   );
   plotData();
   export var dataArray: DataPoint[]

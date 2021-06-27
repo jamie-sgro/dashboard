@@ -18,16 +18,16 @@ export class Barplot {
   margin: Margin;
   width: number;
   height: number;
-  g: any
+  // g: any
   svg: d3.Selection<SVGSVGElement, unknown, HTMLElement, any>;
   tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>;
   dataArray: DataPoint[]
 
-  constructor(width, height, margin: Margin, g) {
+  constructor(width, height, margin: Margin) {
     this.margin = margin;
     this.width = width;
     this.height = height - this.margin.top - this.margin.bottom;
-    this.g = g
+    // this.g = g
 
     this.svg = d3.select("body")
       .append("svg")
@@ -310,10 +310,10 @@ export class Barplot {
       .range([scl/2, scl*2]);
 
     // update the map marker colour
-    this.g.selectAll("circle")
-      .each(function(d,i) {
-        d3.select(this).call(attrTween, 500, "r", radiusScale(d[data.name]))
-      })
+    // this.g.selectAll("circle")
+    //   .each(function(d,i) {
+    //     d3.select(this).call(attrTween, 500, "r", radiusScale(d[data.name]))
+    //   })
 
     // @ts-ignore
     if (!document.getElementById("leadLag").checked) {
@@ -374,12 +374,12 @@ export class Barplot {
 
     var colour = this.getColour();
 
-    this.g.selectAll("circle")
-      .each(function(d,i) {
-        //concurrent transitions that overlap the same attribute should have the
-        //same duration so that the newest tween overwrites the old one
-        d3.select(this).call(attrTween, 300, "fill", setAlpha(colour(d[data.name]), .8))
-      })
+    // this.g.selectAll("circle")
+    //   .each(function(d,i) {
+    //     //concurrent transitions that overlap the same attribute should have the
+    //     //same duration so that the newest tween overwrites the old one
+    //     d3.select(this).call(attrTween, 300, "fill", setAlpha(colour(d[data.name]), .8))
+    //   })
     
     this.flashRect(index)
   };
@@ -422,10 +422,10 @@ export class Barplot {
         .duration(200)
         .style("opacity", 0)
 
-    this.g.selectAll("circle")
-      .each(function(d,i) {
-        d3.select(this).call(attrTween, 300, "fill", markCol)
-      })
+    // this.g.selectAll("circle")
+    //   .each(function(d,i) {
+    //     d3.select(this).call(attrTween, 300, "fill", markCol)
+    //   })
 
     //DEPRECIATED: removing marker variable
     /*for (i in mark) {
