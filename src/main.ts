@@ -40,7 +40,7 @@ d3.selection.prototype.moveToFront = function() {
 
 export var map = getMap();
 
-export var mark = populateMarkers(map);
+export var mark = populateMarkers();
 
 
 
@@ -170,9 +170,6 @@ function populateDataList(): DataList {
 //currently set to resize actively, but delays can be set so resize only occurs
 //  at the end the end of screen change if barplot.resize() gets too costly
 $(window).on("resize", function() {
-  //update leaflet map
-  mapResize(map);
-
   //update d3 barplot
   barplot.resize();
 
