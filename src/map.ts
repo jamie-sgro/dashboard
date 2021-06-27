@@ -5,7 +5,7 @@ import L = require("leaflet")
 
 import { attrTween, setAlpha } from "./barplot.js";
 import { Data, DataModel, DataPoint } from "./data.js";
-import { barplot, colourBottom, colourTop, g, mark, markCol, markRad, panelHeight, panelWidth, scaleToZoom, scl } from "./main.js";
+import { barplot, colourBottom, colourTop, mark, markCol, markRad, panelHeight, panelWidth, scaleToZoom, scl } from "./main.js";
 import { getMarkScore, updatePanel3, Mark } from "./panel3.js";
 
 
@@ -70,7 +70,7 @@ function addMarker(map, name, lat, lng) {
     fillOpacity: 0,
   };
 
-  var mark = L.circleMarker([lat, lng], options).addTo(map);
+  var mark = L.circleMarker([lat, lng], options);
 
   mark.on("click", ()=> {
     // @ts-ignore
@@ -139,15 +139,15 @@ export function populateMarkers(map) {
 
 
 export function onMapClick(e) {
-  g.selectAll("circle")
-    .each(function(d,i) {
-      d3.select(this).call(attrTween, 500, "r", scl)
-    })
+  // g.selectAll("circle")
+  //   .each(function(d,i) {
+  //     d3.select(this).call(attrTween, 500, "r", scl)
+  //   })
 
-  for (let i in mark) {
-    // @ts-ignore
-    mark[i].setStyle({radius: scl})
-  }
+  // for (let i in mark) {
+  //   // @ts-ignore
+  //   mark[i].setStyle({radius: scl})
+  // }
 
   //center screen onClick
   $('html, body').animate({scrollTop: $("#dashboard").offset().top}, 800);
@@ -179,14 +179,14 @@ export function updateGraph(id, graph = barplot) {
 
 function updateMarker(id, graph = barplot) {
   //reset pervious marker
-  g.select("circle#id" + graph.id)
-    .call(attrTween, 800, "stroke", "white")
+  // g.select("circle#id" + graph.id)
+  //   .call(attrTween, 800, "stroke", "white")
 
-    //highlight new marker
-  g.select("circle#id" + id)
-    // @ts-ignore
-    .moveToFront()
-    .call(attrTween, 800, "stroke", "black")
+  //   //highlight new marker
+  // g.select("circle#id" + id)
+  //   // @ts-ignore
+  //   .moveToFront()
+  //   .call(attrTween, 800, "stroke", "black")
 };
 
 
@@ -228,90 +228,90 @@ export function d3PopulateMarkers(map) {
   let data = Data.getSyncData();
 
 
-    g.selectAll("circle")
-      .data(data)
-      .enter()
-        .append("circle")
-        .attr("id", function(d, i) {
-          return "id" + i;
-        })
-        .attr("r", 0)
-        .attr("cx", function(d) {
+    // g.selectAll("circle")
+    //   .data(data)
+    //   .enter()
+    //     .append("circle")
+    //     .attr("id", function(d, i) {
+    //       return "id" + i;
+    //     })
+    //     .attr("r", 0)
+    //     .attr("cx", function(d) {
 
-          // layerPointToLatLng() ran on second monitor with coords from dataset
-          // (the variable 'd') returns uncaught promise
-          // - relies on update() function to properly init coordinates
-          // - currently throw a dummy coordinate [0, 0]
-          return map.layerPointToLatLng([0, 0]).x;
-        })
-        .attr('cy', function(d) {
-          return map.layerPointToLatLng([0, 0]).y;
-        })
-        .attr("stroke","white")
-        .attr("stroke-width", 1)
-        .attr("fill", markCol)
-        .attr("pointer-events","visible")
-        .on("mouseover", function() {
+    //       // layerPointToLatLng() ran on second monitor with coords from dataset
+    //       // (the variable 'd') returns uncaught promise
+    //       // - relies on update() function to properly init coordinates
+    //       // - currently throw a dummy coordinate [0, 0]
+    //       return map.layerPointToLatLng([0, 0]).x;
+    //     })
+    //     .attr('cy', function(d) {
+    //       return map.layerPointToLatLng([0, 0]).y;
+    //     })
+    //     .attr("stroke","white")
+    //     .attr("stroke-width", 1)
+    //     .attr("fill", markCol)
+    //     .attr("pointer-events","visible")
+    //     .on("mouseover", function() {
 
-          var myCol = d3.select(this).attr("fill")
+    //       var myCol = d3.select(this).attr("fill")
 
-          d3.select(this)
-            .style("cursor", "pointer")
-            .call(attrTween, 100, "fill", setAlpha(myCol, .4))
-        })
-        .on("mouseout", function() {
+    //       d3.select(this)
+    //         .style("cursor", "pointer")
+    //         .call(attrTween, 100, "fill", setAlpha(myCol, .4))
+    //     })
+    //     .on("mouseout", function() {
 
-          var myCol = d3.select(this).attr("fill")
+    //       var myCol = d3.select(this).attr("fill")
 
-          d3.select(this)
-            .style("cursor", "default")
-            .call(attrTween, 100, "fill", setAlpha(myCol, 1))
-        })
+    //       d3.select(this)
+    //         .style("cursor", "default")
+    //         .call(attrTween, 100, "fill", setAlpha(myCol, 1))
+    //     })
 
-    function mouseover(obj) {
-      obj
-        .style("cursor", "pointer")
-        .transition()
-        .duration(300)
-          .style("opacity", .3)
-    }
+    // function mouseover(obj) {
+    //   obj
+    //     .style("cursor", "pointer")
+    //     .transition()
+    //     .duration(300)
+    //       .style("opacity", .3)
+    // }
     
-    function mouseout(obj) {
-    obj
-    .style("cursor", "default")
-      .transition()
-      .duration(600)
-      .style("opacity", 1)
-    }
+    // function mouseout(obj) {
+    // obj
+    // .style("cursor", "default")
+    //   .transition()
+    //   .duration(600)
+    //   .style("opacity", 1)
+    // }
     
-    map.on("zoomend", update);
-  	update();
+    // map.on("zoomend", update);
+  	// update();
     
-    function update() {
-      let scl: any
-      if (scaleToZoom) {
-        //get pxl distance between two coords
-        const x1 = map.latLngToLayerPoint([0,1]).x
-        const x2 = map.latLngToLayerPoint([0,0]).x
+    // function update() {
+    //   let scl: any
+    //   if (scaleToZoom) {
+    //     //get pxl distance between two coords
+    //     const x1 = map.latLngToLayerPoint([0,1]).x
+    //     const x2 = map.latLngToLayerPoint([0,0]).x
         
-        // TODO: This scl is mutating a global variable
-        scl = (x1-x2);
-      } else {
-        scl = markRad
-      }
+    //     // TODO: This scl is mutating a global variable
+    //     scl = (x1-x2);
+    //   } else {
+    //     scl = markRad
+    //   }
       
-      g.selectAll("circle")
-      .attr("r", scl)
-      .attr("transform", function(d: DataModel) {
-        let rtn = "translate("+
-        map.latLngToLayerPoint([d.lat, d.lng]).x +","+
-        map.latLngToLayerPoint([d.lat, d.lng]).y +")";
-        return rtn;
-      })
+    //   g.selectAll("circle")
+    //   .attr("r", scl)
+    //   .attr("transform", function(d: DataModel) {
+    //     let rtn = "translate("+
+    //     map.latLngToLayerPoint([d.lat, d.lng]).x +","+
+    //     map.latLngToLayerPoint([d.lat, d.lng]).y +")";
+    //     return rtn;
+    //   })
       
-      for (let i in mark) {
-        // @ts-ignore
-        mark[i].setStyle({radius: scl})
-      };
-    };
+    //   for (let i in mark) {
+    //     // @ts-ignore
+    //     mark[i].setStyle({radius: scl})
+    //   };
+    // };
 };
