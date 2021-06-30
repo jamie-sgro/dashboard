@@ -15,7 +15,7 @@ export const colourBottom = "rgb(56, 94, 231)";
 export const colourTop = "rgb(34, 236, 87)";
 export const scaleToZoom = false;
 export const panelHeight = 0.40;
-export const panelWidth = 0.40;
+export const panelWidth = 0.33;
 
 //set default city
 // @ts-ignore
