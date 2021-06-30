@@ -29,7 +29,7 @@ export class Barplot {
     this.height = height - this.margin.top - this.margin.bottom;
     // this.g = g
 
-    this.svg = d3.select("body")
+    this.svg = d3.select("#col-3")
       .append("svg")
         .attr("class", "barplot svg")
         .call(this.getSvgSize, this);
@@ -60,7 +60,7 @@ export class Barplot {
       .attr("width", obj.width)
       .attr("height", obj.height + obj.margin.top + obj.margin.bottom)
 
-    $(".barplot.svg").css({left: $(window).width()*(1-panelWidth), position:'relative'});
+    $(".barplot.svg").css({left: $(window).width()*(1-panelWidth)});
   };
 
   getColour() {
