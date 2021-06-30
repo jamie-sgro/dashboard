@@ -19,7 +19,7 @@ export const panelWidth = 0.33;
 
 //set default city
 // @ts-ignore
-document.getElementById("popupInfo").class = 0;
+// document.getElementById("popupInfo").class = 0;
 
 
 
@@ -50,9 +50,9 @@ export var mark = populateMarkers();
 d3.select("#panel3")
   .append("svg")
 
-panel3Resize();
+// panel3Resize();
 
-initPanel3();
+// initPanel3();
 
 
 
@@ -85,7 +85,7 @@ export const barplot = new Barplot(
     
     //only return the first datapoint to populate the graph
     // @ts-ignore
-    var id = document.getElementById("popupInfo").class;
+    var id = 0
     dataArray = reduceData(data[id]);
     barplot.id = id; //Currently use first row of .csv on graph init
     
@@ -174,5 +174,5 @@ $(window).on("resize", function() {
   //update panel3
   panel3Resize();
 
-  plotPanel3Resize();
+  // plotPanel3Resize();
 });
