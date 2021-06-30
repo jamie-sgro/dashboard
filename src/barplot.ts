@@ -5,7 +5,6 @@ import { DataPoint } from "./data.js";
 import { Margin } from "./Margin.js";
 import { assertType } from "./utils.js";
 
-const markCol = "rgba(10,151,217, .8)";
 const panelWidth = 0.33;
 const scl = 15;
 const colourBottom = "rgb(56, 94, 231)";
@@ -29,7 +28,7 @@ export class Barplot {
     this.height = height - this.margin.top - this.margin.bottom;
     // this.g = g
 
-    this.svg = d3.select("#col-3")
+    this.svg = d3.select("#column-3")
       .append("svg")
         .attr("class", "barplot svg")
         .call(this.getSvgSize, this);
