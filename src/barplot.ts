@@ -6,7 +6,7 @@ import { Margin } from "./Margin.js";
 import { assertType } from "./utils.js";
 
 const markCol = "rgba(10,151,217, .8)";
-const panelWidth = 0.40;
+const panelWidth = 0.33;
 const scl = 15;
 const colourBottom = "rgb(56, 94, 231)";
 const colourTop = "rgb(34, 236, 87)";
