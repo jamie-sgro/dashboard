@@ -11,6 +11,7 @@ const colourBottom = "rgb(56, 94, 231)";
 const colourTop = "rgb(34, 236, 87)";
    
 export class Barplot {
+  parentId: string
   canvas: any
   id: number
   max: number
@@ -23,12 +24,13 @@ export class Barplot {
   dataArray: DataPoint[]
 
   constructor(width, height, margin: Margin, { parentId = undefined } = {}) {
+    this.parentId ="#column-3"
     this.margin = margin;
     this.width = width;
     this.height = height - this.margin.top - this.margin.bottom;
     // this.g = g
 
-    this.svg = d3.select("#column-3")
+    this.svg = d3.select(this.parentId)
       .append("svg")
         .attr("class", "barplot svg")
         .call(this.getSvgSize, this);
@@ -436,7 +438,8 @@ export class Barplot {
 
 
   resize() {
-    this.width = ($(window).width()*panelWidth);
+    this.width = Number(d3.select(this.parentId).style("width").replace("px", ""))
+    // this.width = ($(window).width()*panelWidth);
     this.height = ($(window).height()-50) - this.margin.top - this.margin.bottom;
 
     var widthScale = this.getWidthScale();
