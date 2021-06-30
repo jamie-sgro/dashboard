@@ -14,3 +14,7 @@ div.tooltip {
 div.tooltip .picture {
 	width: 100%;
 }
+
+#cities-datalist {
+	width: 100%;
+}
