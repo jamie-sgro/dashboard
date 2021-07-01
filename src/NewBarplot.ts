@@ -18,17 +18,17 @@ export class NewBarplot {
 
     this.rect = this.svg.svg
       .append("rect")
-      .attr("x", 10)
-      .attr("y", 10)
+      .attr("x", this.margin.left)
+      .attr("y", this.margin.top)
       .attr("width", this.width)
       .attr("height", this.height);
   }
 
-  get height(): number {
+  private get height(): number {
     return this.svg.height - (this.margin.top + this.margin.bottom);
   }
 
-  get width(): number {
+  private get width(): number {
     return this.svg.width - (this.margin.left + this.margin.right);
   }
 
