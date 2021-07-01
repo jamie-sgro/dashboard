@@ -25,6 +25,9 @@ export const panelWidth = 0.33;
 
 
 let newBarplot = new NewBarplot("#column-2")
+$(window).on("resize", function() {
+  newBarplot.resize();
+});
 
 /******************
 *** ADD D3 TOOL ***

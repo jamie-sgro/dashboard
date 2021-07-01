@@ -6,7 +6,7 @@ export class NewBarplot {
   private parentId: string;
   private htmlId: string;
   private svg: d3.Selection<SVGSVGElement, unknown, HTMLElement, any>;
-  private canvas: d3.Selection<SVGGElement, unknown, HTMLElement, any>;
+  private rect: d3.Selection<SVGGElement, unknown, HTMLElement, any>;
   width: number;
   height: number;
 
@@ -20,7 +20,7 @@ export class NewBarplot {
       .attr("id", this.htmlId)
       .call(this.getSvgSize, this);
 
-    this.canvas = this.svg
+    this.rect = this.svg
       .append("rect")
       .attr("x", 0)
       .attr("y", 0)
@@ -28,7 +28,7 @@ export class NewBarplot {
       .attr("height", this.height);
   }
 
-  getSvgSize(path, obj) {
+  private getSvgSize(path, obj) {
     let clientRect: ClientRect = d3
       .select(obj.parentId)
       .node()
@@ -36,8 +36,18 @@ export class NewBarplot {
     obj.width = clientRect.width;
     obj.height = clientRect.height;
 
-    path.attr("width", obj.width).attr("height", obj.height);
+    // path.attr("width", obj.width).attr("height", obj.height);
 
     // $(`#${obj.htmlId}`).css({ left: $(window).width() });
+  }
+
+  resize() {
+    this.svg.call(this.getSvgSize, this);
+    console.log(d3
+      .select(this.parentId)
+      .node()
+      .getBoundingClientRect())
+
+    // this.rect.attr("width", this.width).attr("height", this.height);
   }
 }
