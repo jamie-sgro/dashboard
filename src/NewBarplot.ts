@@ -1,53 +1,43 @@
 // @ts-expect-error
 import d3 = require("d3");
-import { uuidv4, assert } from "./utils";
+import { Svg } from "./Svg";
+import { assert } from "./utils";
+import { Margin } from "./Margin.js";
 
 export class NewBarplot {
   private parentId: string;
-  private htmlId: string;
-  private svg: d3.Selection<SVGSVGElement, unknown, HTMLElement, any>;
+  private margin: Margin;
+  private svg: Svg;
   private rect: d3.Selection<SVGGElement, unknown, HTMLElement, any>;
-  width: number;
-  height: number;
 
-  constructor(parentId: string) {
+  constructor(parentId: string, { margin = new Margin(10, 10, 10, 10) } = {}) {
     assert(parentId.charAt(0) === "#");
     this.parentId = parentId;
-    this.htmlId = uuidv4();
-    this.svg = d3
-      .select(this.parentId)
-      .append("svg")
-      .attr("id", this.htmlId)
-      .call(this.getSvgSize, this);
+    this.margin = margin;
+    this.svg = new Svg(this.parentId);
 
-    this.rect = this.svg
+    this.rect = this.svg.svg
       .append("rect")
-      .attr("x", 0)
-      .attr("y", 0)
+      .attr("x", 10)
+      .attr("y", 10)
       .attr("width", this.width)
       .attr("height", this.height);
   }
 
-  private getSvgSize(path, obj) {
-    let clientRect: ClientRect = d3
-      .select(obj.parentId)
-      .node()
-      .getBoundingClientRect();
-    obj.width = clientRect.width;
-    obj.height = clientRect.height;
-
-    // path.attr("width", obj.width).attr("height", obj.height);
-
-    // $(`#${obj.htmlId}`).css({ left: $(window).width() });
+  get height(): number {
+    return this.svg.clientRect.height - (this.margin.top + this.margin.bottom);
+  }
+  
+  get width(): number {
+    return this.svg.clientRect.width - (this.margin.left + this.margin.right);
   }
 
   resize() {
-    this.svg.call(this.getSvgSize, this);
-    console.log(d3
-      .select(this.parentId)
-      .node()
-      .getBoundingClientRect())
+    console.log(this.svg.clientRect);
+    this.rect
+      .attr("width", this.svg.clientRect.width - 20)
+      .attr("height", this.svg.clientRect.height - 20);
 
-    // this.rect.attr("width", this.width).attr("height", this.height);
+    this.svg.resize();
   }
 }
