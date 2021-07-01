@@ -25,18 +25,17 @@ export class NewBarplot {
   }
 
   get height(): number {
-    return this.svg.clientRect.height - (this.margin.top + this.margin.bottom);
+    return this.svg.height - (this.margin.top + this.margin.bottom);
   }
-  
+
   get width(): number {
-    return this.svg.clientRect.width - (this.margin.left + this.margin.right);
+    return this.svg.width - (this.margin.left + this.margin.right);
   }
 
   resize() {
-    console.log(this.svg.clientRect);
     this.rect
-      .attr("width", this.svg.clientRect.width - 20)
-      .attr("height", this.svg.clientRect.height - 20);
+      .attr("width", this.svg.width - 20)
+      .attr("height", this.svg.height - 20);
 
     this.svg.resize();
   }
