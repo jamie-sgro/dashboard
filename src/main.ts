@@ -24,7 +24,7 @@ export const panelWidth = 0.33;
 
 
 
-let newBarplot = new NewBarplot("column-2")
+let newBarplot = new NewBarplot("#column-2")
 
 /******************
 *** ADD D3 TOOL ***
