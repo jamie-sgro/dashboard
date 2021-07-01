@@ -6,6 +6,7 @@ import { Barplot } from "./barplot.js";
 import { Data, DataPoint } from "./data.js";
 import { matches, populateMarkers, reduceData, updateAllGraphs } from "./map.js";
 import { Margin } from "./Margin.js";
+import { NewBarplot } from "./NewBarplot.js";
 import { initPanel3, panel3Resize, plotPanel3Resize } from "./panel3.js";
 import { DataList, DataListModel } from "./widgets/DataList.js";
 
@@ -22,6 +23,8 @@ export const panelWidth = 0.33;
 // document.getElementById("popupInfo").class = 0;
 
 
+
+let newBarplot = new NewBarplot("column-2")
 
 /******************
 *** ADD D3 TOOL ***
