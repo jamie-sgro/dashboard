@@ -21,7 +21,15 @@ export class Svg {
       .attr("height", this.clientRect.height);
   }
 
-  get clientRect(): ClientRect {
+  get width() {
+    return this.clientRect.width;
+  }
+
+  get height() {
+    return this.clientRect.height;
+  }
+
+  private get clientRect(): ClientRect {
     return (
       d3
         .select(this.parentId)
