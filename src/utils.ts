@@ -11,3 +11,9 @@ export function uuidv4(): string {
     return v.toString(16);
   });
 }
+
+export function assert(condition, message =  "Assertion failed") {
+  if (!condition) {
+      throw new Error(message);
+  }
+}
