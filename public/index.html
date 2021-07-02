@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="public/stylesheets/index.css" />
+		<!-- <link rel="stylesheet" href="public/stylesheets/index.css" /> -->
+		<link rel="stylesheet" href="public/stylesheets/main.css" />
+
     <link rel="stylesheet" href="public/stylesheets/leaflet.css" />
 		<link rel="stylesheet" href="public/stylesheets/d3-stylesheet.css">
 
@@ -13,33 +15,104 @@
 		<script src="public/libraries/browser.min.js"></script>
 		<script src="public/libraries/breakpoints.min.js"></script>
 	</head>
-	<div class="switch col-4 col-12-small">
-		<label class="switch">Toggle Leader Laggard Graph
-			<input id="leadLag" type="checkbox" onclick=barplot.toggleLeadLag() title="Toggle Leader Laggard Graph">
-			<span class="slider round"></span>
-		</label>
-	</div>
-	<div class="col-4 col-12-small">
-		<input type="radio" id="arithmetic" name="radio" onclick=updatePanel3()>
-		<label for="arithmetic">Arithmetic Mean</label>
-	</div>
-	<div class="col-4 col-12-small">
-		<input type="radio" id="median" name="radio" onclick=updatePanel3() checked>
-		<label for="median">Median</label>
-	</div>
-	<div class="col-4 col-12-small">
-		<input type="radio" id="geometric" name="radio" onclick=updatePanel3()>
-		<label for="geometric">Geometric Mean</label>
-	</div>
+
 	<body>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			
+			/* Create three equal columns that floats next to each other */
+			.column {
+				float: left;
+				width: 33.33%;
+				padding: 0px;
+			}
+
+			.row {
+				height: 100vh;
+			}
+			
+			/* Clear floats after the columns */
+			.row:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			</style>
+
+
+	<div class="row">
+		<div class="column" id="column-1" >
+			<div class="switch col-4 col-12-small">
+				<label class="switch">Toggle Leader Laggard Graph
+					<input id="leadLag" type="checkbox" onclick=barplot.toggleLeadLag() title="Toggle Leader Laggard Graph">
+					<span class="slider round"></span>
+				</label>
+			</div>
+			<div class="col-4 col-12-small">
+				<input type="radio" id="arithmetic" name="radio" onclick=updatePanel3()>
+				<label for="arithmetic">Arithmetic Mean</label>
+			</div>
+			<div class="col-4 col-12-small">
+				<input type="radio" id="median" name="radio" onclick=updatePanel3() checked>
+				<label for="median">Median</label>
+			</div>
+			<div class="col-4 col-12-small">
+				<input type="radio" id="geometric" name="radio" onclick=updatePanel3()>
+				<label for="geometric">Geometric Mean</label>
+			</div>
+		</div>
+		<div class="column" id="column-2" style="background-color:#bbb;">
+		</div>
+		<div class="column" id="column-3" >
+		</div>
+	</div>
+
 		<!-- Dashboard -->
 		<section id="dashboard" class="belownav">
-			<div id="panel3">
+			<!-- <div id="panel3">
 				<span id="popupInfo">Select a city marker to begin.</span>
-			</div>
+			</div> -->
 			<div id="map">
 				<script src="public/javascripts/src/main.js" type="module"></script>
 			</div>
 		</section>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<div class="content">
+							<section>
+								<h3>Accumsan montes viverra</h3>
+								<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
+							</section>
+							<section>
+								<h4>Want to Learn More?</h4>
+								<ul class="alt">
+									<li><a href="https://uwaterloo.ca/sustainable-development-solutions-network-canada/">SDSN Canada Home</a></li>
+									<li><a href="https://uwaterloo.ca/sustainable-development-solutions-network-canada/about">About SDSN Canada</a></li>
+									<li><a href="https://uwaterloo.ca/sustainable-development-solutions-network-canada/resources-and-publications">Resources and Publications</a></li>
+									<li><a href="https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/01/SDG_Guidelines_January_2019.pdf">View SDG Guidelines Documentation</a></li>
+								</ul>
+							</section>
+							<section>
+								<h4>Connect With Us</h4>
+								<ul class="plain">
+									<li><a href="https://twitter.com/sdsncanada?lang=en"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+									<li><a href="https://www.facebook.com/SDSNCanada1/"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+									<li><a href="https://www.instagram.com/sdsncanada/"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+									<li><a href="https://gitlab.com/Jamie.Sgro/dashboard.git"><i class="icon fa-gitlab">&nbsp;</i>Gitlab</a></li>
+								</ul>
+							</section>
+						</div>
+						<div class="copyright">
+							<p>Sustainable Development Solutions Network Canada, Copyright &copy; 2020</p>
+						</div>
+					</div>
+				</footer>
+	
+				<script src="public/javascripts/templated-util.js"></script>
+				<script src="public/javascripts/templated-main.js"></script>
 	</body>
 </html>
