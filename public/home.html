@@ -253,8 +253,17 @@
 		<!-- CTA -->
 			<section id="cta" class="wrapper">
 				<div class="inner">
-					<h2>Curabitur ullamcorper ultricies</h2>
-					<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
+					<h2>Indicator Normalization</h2>
+					<p>As you may have guessed, each of the indicators included in the bar charts are measured on very different scales
+						(percentages, proportions, ratios, dollars). So, how do we compare numbers across such different scales? We
+						transform (normalize) all of the numbers so that they are on the same scale. In this case, we transformed each
+						indicator so that it was on a scale of 0 to 100.</p>
+					<p>All the indicators were normalized onto the same scale from 0 to 100 using the min-max normalization. This
+						method transforms the indicator scores relative to two numbers: “100” (the highest achievable value or the
+						development target) and “0” (the lowest achievable value or the farthest from a development targets). In the
+						case of this dashboard, we made the development target of each indicator the “100” value for that indicator. The
+						“0” value represented the indicator value that was the farthest from the development target for the indicator
+						among the CMAs included in the data set.</p>
 				</div>
 			</section>
 
