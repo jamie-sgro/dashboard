@@ -198,7 +198,6 @@ export class Barplot {
         .attr("stroke", "rgba(0,0,0,0)")
 
 
-      console.log(this.id)
       // updateGraph(null, this)
     };
   };
@@ -520,30 +519,31 @@ function resetTween(path, duration, attr, endRes, peakRes) {
   
 function checkOffScreen(barplot: Barplot) {
   assertType(barplot, Barplot);
+  resizeHeightIfOffscreen(barplot);
+  resizeHeightIfSpilledOverSvg(barplot);
+};
+
+function resizeHeightIfOffscreen(barplot: Barplot) {
+  // @ts-ignore
+  var offScreenDiff = $(window).height() - event.clientY - parseInt(barplot.tooltip.style("height"))
+  if (offScreenDiff < 0) {
+    barplot.tooltip
+    .style("top", parseInt(barplot.tooltip.style("top")) + offScreenDiff + "px");
+    return;
+  }
+}
+
+function resizeHeightIfSpilledOverSvg(barplot: Barplot) {
   // @ts-ignore
   var tooltipHtml = barplot.tooltip._groups[0][0]
+  var absToolBottom = $(tooltipHtml).offset().top + parseInt(barplot.tooltip.style("height"));
   // @ts-ignore
   var svgHtml = d3.select(barplot.canvas)._groups[0][0]._groups[0][0];
   var absBottom = $(svgHtml).offset().top + barplot.svg.height;
-  var absToolBottom = $(tooltipHtml).offset().top + parseInt(barplot.tooltip.style("height"));
-
-  //check if tooltip offscreen
-  try {
-    // @ts-ignore
-    var offScreenDiff = $(window).height() - event.clientY - parseInt(barplot.tooltip.style("height"))
-    if (offScreenDiff < 0) {
-      barplot.tooltip
-        .style("top", parseInt(barplot.tooltip.style("top")) + offScreenDiff + "px");
-      return;
-    }
-  } catch(error) {
-    console.log(error);
-  }
-
-  //check if tooltip outside barplot svg offscreen
   if (absToolBottom > absBottom) {
     barplot.tooltip
       .style("top", absBottom - parseInt(barplot.tooltip.style("height")) + "px");
     return
   };
-};
+}
+   
