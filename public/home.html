@@ -4,7 +4,7 @@
 -->
 <html lang="en">
 	<head>
-		<title>SDSN Canada | Dashboard</title>
+		<title>Cities Index | Dashboard</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="This project involves building a one-page online dashboard for visualizing an SDG Cities Index that is both open-sourced and legally shareable">
@@ -26,7 +26,7 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a class="logo" href="home">SDSN Canada Dashboard</a>
+				<a class="logo" href="home">Canada SDG Cities Index Dashboard</a>
 				<nav>
 					<a href="/home" class="icon fa-home shy-text"> Home</a>
 					<a href="/about" class="icon fa-info-circle shy-text"> About</a>
@@ -130,8 +130,8 @@
 		<!-- Banner -->
 			<section id="banner">
 				<div class="inner">
-					<h1>SDSN Canada Dashboard</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+					<h1>Canada SDG Cities Index Dashboard</h1>
+					<p>Want to see how each Canadian Census Metropolitan Area (CMA) is performing on the Sustainable Development Goal 11 indicators?</p>
 					<a href="#dashboard" class="button scrolly">Get Started</a>
 				</div>
 				<video autoplay loop muted playsinline title="Drone Footage of City Skyline" src="public/images/banner.mp4"></video>
@@ -141,97 +141,360 @@
 			<section class="wrapper">
 				<div class="inner">
 					<header class="special">
-						<h2>Sem turpis amet semper</h2>
-						<p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet accumsan erat tempus amet porttitor.</p>
+						<h2>What is Sustainable Development Goal 11?</h2>
+						<p>The United Nations Sustainable Development Goals (SDGs) were adopted in 2015 as a set of transformative
+							goals towards more sustainable development around the world by the year 2030. Among the 17 goals included
+							in the SDGs, goal 11 specifically focuses on sustainable cities and communities, providing a set of aspirational
+							targets and indicators for achieving more sustainable development in cities.</p>
 					</header>
 					<div class="highlights">
 						<section>
 							<div class="content">
 								<header>
-									<a href="#" class="icon fa-globe"><span class="label">Icon</span></a>
-									<h3>Feugiat consequat</h3>
-								</header>
-								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+									<p>Want to learn more about
+										how this dashboard was
+										created? Check out the
+										methodology here:</p>
+										<a href="#methodology">
+											<img src="public/images/sdg-icons/SDG11.png" style="width: 8rem;">
+										</a>
+									</header>
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<header>
-									<a href="#" class="icon fa-files-o"><span class="label">Icon</span></a>
-									<h3>View Documentation</h3>
+									<p>Want to Learn more about
+										SDSN Canada? Check out
+										the website here:</p>
+									<a href="https://uwaterloo.ca/sustainable-development-solutions-network-canada/">
+										<img src="public/images/sdsn-canada-logo.jpg" style="width: 8rem;">
+									</a>
 								</header>
-								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<header>
-									<a href="#" class="icon fa-bar-chart"><span class="label">Icon</span></a>
-									<h3>Accumsan viverra</h3>
+										<p>Want to Learn more about
+											SDG Localization in Cities?
+											Find tools and guides here:</p>
+										<a href="#methodology">
+											<img src="public/images/global-goals.png" style="width: 8rem;">
+										</a>
 								</header>
-								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
 							</div>
 						</section>
 					</div>
+					<header class="special">
+						<p>Instructions: Please start by selecting a CMA from the list below to see its performance on each SDG 11
+							indicator and its overall ranking. You can change the settings used to rank the cities using the settings icon on
+							the top right of the screen.</p>
+					</header>
 				</div>
 			</section>
 
 		<!-- Dashboard -->
-			<section id="dashboard" class="belownav">
-				<div id="panel3">
-					<span id="popupInfo">Select a city marker to begin.</span>
-				</div>
-				<div id="map">
-					<script src="public/javascripts/data.js" type="module"></script>
-					<script src="public/javascripts/barplot.js" type="module"></script>
-					<script src="public/javascripts/map.js" type="module"></script>
-					<script src="public/javascripts/panel3.js" type="module"></script>
-					<script src="public/javascripts/main.js" type="module"></script>
-				</div>
-			</section>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			
+			/* Create three equal columns that floats next to each other */
+			.column {
+				float: left;
+				width: 33.33%;
+				padding: 0px;
+			}
+
+			.row {
+				height: 100vh;
+			}
+			
+			/* Clear floats after the columns */
+			.row:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			</style>
+
+	<section class="belownav" id="dashboard"></section>
+	<div class="row">
+		<div class="column" id="column-1" style="padding: 10%;">
+			<div class="switch col-4 col-12-small" >
+				<label class="switch">Toggle Leader Laggard Graph
+					<input id="leadLag" type="checkbox" onclick=barplot.toggleLeadLag() title="Toggle Leader Laggard Graph">
+					<span class="slider round"></span>
+				</label>
+			</div>
+			<div class="col-4 col-12-small">
+				<input type="radio" id="arithmetic" name="radio" onclick=updatePanel3()>
+				<label for="arithmetic">[Disabled] Arithmetic Mean</label>
+			</div>
+			<div class="col-4 col-12-small">
+				<input type="radio" id="median" name="radio" onclick=updatePanel3() checked>
+				<label for="median">[Disabled] Median</label>
+			</div>
+			<div class="col-4 col-12-small">
+				<input type="radio" id="geometric" name="radio" onclick=updatePanel3()>
+				<label for="geometric">[Disabled] Geometric Mean</label>
+			</div>
+		</div>
+		<div class="column" id="column-2" >
+		</div>
+		<div class="column" id="column-3" >
+		</div>
+	</div>
+
+		<section class="belownav">
+			<div id="map">
+				<script src="public/javascripts/src/main.js" type="module"></script>
+			</div>
+		</section>
 
 		<!-- CTA -->
 			<section id="cta" class="wrapper">
 				<div class="inner">
-					<h2>Curabitur ullamcorper ultricies</h2>
-					<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
+					<h2>Indicator Normalization</h2>
+					<p>As you may have guessed, each of the indicators included in the bar charts are measured on very different scales
+						(percentages, proportions, ratios, dollars). So, how do we compare numbers across such different scales? We
+						transform (normalize) all of the numbers so that they are on the same scale. In this case, we transformed each
+						indicator so that it was on a scale of 0 to 100.</p>
+					<p>All the indicators were normalized onto the same scale from 0 to 100 using the min-max normalization. This
+						method transforms the indicator scores relative to two numbers: “100” (the highest achievable value or the
+						development target) and “0” (the lowest achievable value or the farthest from a development targets). In the
+						case of this dashboard, we made the development target of each indicator the “100” value for that indicator. The
+						“0” value represented the indicator value that was the farthest from the development target for the indicator
+						among the CMAs included in the data set.</p>
 				</div>
 			</section>
 
-		<!-- Testimonials -->
+		<!-- Methodology -->
+		<div id="methodology">
 			<section class="wrapper">
 				<div class="inner">
 					<header class="special">
-						<h2>Faucibus consequat lorem</h2>
-						<p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet accumsan erat tempus amet porttitor.</p>
+						<h2>Ranking Methodology</h2>
 					</header>
-					<div class="testimonials">
-						<section>
-							<div class="content">
-								<blockquote>
-									<p><b>Nunc lacinia ante</b> nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
-								</blockquote>
-							</div>
-						</section>
-						<section>
-							<div class="content">
-								<blockquote>
-									<p><b>Nunc lacinia ante</b> nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
-								</blockquote>
-							</div>
-						</section>
-						<section>
-							<div class="content">
-								<blockquote>
-									<p><b>Nunc lacinia ante</b> nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
-								</blockquote>
-							</div>
-						</section>
+					<div class="row" style="height: 100%;">
+						<div class="col-3 ">
+							<h1>Arithmetic Mean</h1>
+						</div>
+						<div class="col-9 ">
+							<p>This is the sum of n normalized indicator scores divided by n. While easy to
+								interpret, the arithmetic mean also allows for trade-offs among the indicators (e.g. a
+								poor performance on one indicator can be off set by a strong performance on
+								another indicator). This is known as compensability and the arithmetic mean allows
+								for perfect compensability.</p>
+						</div>
+					</div>
+
+					<div class="row" style="height: 100%;">
+						<div class="col-3">
+							<h1>Geometric Mean</h1>
+						</div>
+						<div class="col-9">
+							<p>This is the nth root of the product of n normalized indicator scores. Geometric
+								means allow for only imperfect compensability in that the geometric mean is more
+								sensitive to improvements among low indicator scores than it is to improvements
+								among high indicator scores.</p>
+						</div>
+					</div>
+
+					<div class="row" style="height: 100%;">
+						<div class="col-3">
+							<h1>Condorcet Ranking</h1>
+						</div>
+						<div class="col-9">
+							<p>This method will rank CMAs according to the CMAs who would achieve the
+								higher indicator score in the majority of head-to-head comparisons with other
+								CMAs. While a bit more difficult to interpret, Condorcet methods have the
+								advantage of being perfectly non-compensable (the rankings do not allow for the
+								trade-off of indicator performance).</p>
+						</div>
 					</div>
 				</div>
 			</section>
+		</div>
 
-		<!-- Footer -->
+		<!-- Table -->
+		<div>
+			<h3>Indicator Descriptions</h3>
+			<div class="table-wrapper">
+				<table>
+					<thead>
+					</thead>
+					<tbody>
+						<tr>
+							<td>			
+								<p><img src="public/images/sdg-icons/SDG11.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>SDG 11.1.1: Proportion of Households in Core Housing Need</p>
+								<p>Target: 0% of the population</p>
+								<p>Year: 2016</p>
+								<p>Source: <a href="https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/chn-biml/index-eng.cfm">Statistics Canada</a></p>
+							</td>
+						</tr>
+
+						<tr>
+							<td>			
+								<p><img src="public/images/sdg-icons/SDG11.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>SDG 11.2.1: Percentage of population less than 500 metres from public transit access point</p>
+								<p>Target: 100% of the population</p>
+								<p>Year: 2020</p>
+								<p>Source: <a href="https://www150.statcan.gc.ca/n1/daily-quotidien/200602/t001a-eng.htm">Statistics Canada</a></p>
+							</td>
+						</tr>
+
+						<tr>
+							<td>			
+								<p><img src="public/images/sdg-icons/SDG11.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>SDG 11.3.1: Ratio of land consumption rate to population growth rate (1971 to
+									2011)</p>
+								<p>Target: a ratio of 1</p>
+								<p>Year: 2011</p>
+								<p>Source: <a href="https://www150.statcan.gc.ca/n1/pub/16-201-x/16-201-x2016000-eng.htm">Statistics Canada</a></p>
+							</td>
+						</tr>
+
+						<tr>
+							<td>			
+								<p><img src="public/images/sdg-icons/SDG11.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>SDG 11.3.2: Proportion of cities with a direct participation structure of civil society
+									in urban planning and management that operate regularly and democratically
+									Target: a score of 5 on the UN-Habitat survey</p>
+								<p>Target: a ratio of 1</p>
+								<p>Year: 2019</p>
+								<p>Source: Calculations based on <a href="https://unhabitat.org/sites/default/files/2020/07/metadata_on_sdg_indicator_11.3.2.pdf">UN-Habitat Methodology</a>. The data was collected
+									from the largest city in each CMA. The UN-Habitat scale for civil participation in
+									municipal government was then applied to publicly available provincial legislation,
+									municipal public engagement policies, and other public information on the
+									municipal government website.</p>
+							</td>
+						</tr>
+
+						<tr>
+							<td>			
+								<p><img src="public/images/sdg-icons/SDG11.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>11.4.1 Total expenditure (public and private) per capita spent on the preservation,
+									protection and conservation of all cultural and natural heritage, by type of heritage
+									(cultural, natural, mixed and World Heritage Centre designation), level of
+									government (national, regional and local/municipal), type of expenditure (operating
+									expenditure/investment) and type of private funding (donations in kind, private
+									non-profit sector and sponsorship)</p>
+								<p>Target: $1,000 per capita in total expenditures</p>
+								<p>Year: 2018</p>
+								<p>Source: Calculations based on the total public and private expenditures provided
+									for environmental protection and natural heritage in the largest cities in each CMA
+									from Federal, Provincial and Municipal sources. Calculations are given per
+									inhabitant and in constant PPP$.</p>
+							</td>
+						</tr>
+
+						<tr>
+							<td>			
+								<p><img src="public/images/sdg-icons/SDG11.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>SDG 11.5.1: Number of people who died, went missing or were directly affected
+									by disasters per 100,000 population</p>
+								<p>Target: 0</p>
+								<p>Year: 2008-2016</p>
+								<p>Source: <a href="https://cdd.publicsafety.gc.ca/srchpg-eng.aspx?dynamic=false">Disaster Database</a></p>
+								<p><i>Own Calculation: a record of all disasters that impacted the included CMAs were
+									recorded. For any disasters affecting broader regions that the individual CMAs, the
+									toll of these disasters was calculated as the proportion of the population in the
+									broader region taken up by the CMA.</i></p>
+							</td>
+						</tr>
+						
+						<tr>
+							<td>			
+								<p><img src="public/images/sdg-icons/SDG11.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>SDG 11.5.2: Direct economic loss: the monetary value of total or partial
+									destruction of physical assets existing in the affected area. Direct economic loss is
+									nearly equivalent to physical damage</p>
+								<p>Target: 0</p>
+								<p>Year: 2008-2016</p>
+								<p>Source: <a href="https://cdd.publicsafety.gc.ca/srchpg-eng.aspx?dynamic=false">Disaster Database</a></p>
+								<p><i>Own Calculation: a record of all disasters that impacted the included CMAs were
+									recorded. For any disasters affecting broader regions that the individual CMAs, the
+									toll of these disasters was calculated as the proportion of the population in the
+									broader region taken up by the CMA.</i></p>
+							</td>
+						</tr>		
+
+						<tr>
+							<td>			
+								<p><img src="public/images/sdg-icons/SDG11.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>SDG 11.6.1: Proportion of urban solid waste regularly collected and with adequate
+									final discharge out of total urban solid waste generated by cities</p>
+								<p>Target: 100% of urban solid waste</p>
+								<p>Year: 2020</p>
+								<p>Source: Own consultations with municipalities.</p>
+							</td>
+						</tr>	
+
+						<tr>
+							<td>			
+								<p><img src="public/images/sdg-icons/SDG11.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>SDG 11.6.2: Average fine particulate matter concentrations (PM 2.5)</p>
+								<p>Target: 10 (per recommendations from the CDC)</p>
+								<p>Year: 2016</p>
+								<p>Source: <a href="https://www.canada.ca/en/environment-climate-change/services/environmental-indicators/air-quality.html">Government of Canada</a></p>
+							</td>
+						</tr>	
+
+						<tr>
+							<td>			
+								<p><img src="public/images/sdg-icons/SDG11.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>SDG 11.7.1: Average share of the built-up area of cities that is open space for
+									public use for all, by sex, age and persons with disabilities</p>
+								<p>Target: 50% of the built up area of cities</p>
+								<p>Year: 2021</p>
+								<p>Source: Calculations based on <a href="https://unhabitat.org/sites/default/files/2020/07/metadata_on_sdg_indicator_11.7.1.pdf">UN-Habitat Methodology</a>. The GIS data to support
+									these calculations was collected from publicly available data sets and municipal
+									open data portals. The average area taken up by city streets was estimated at a
+									width of 3.5 meters.</p>
+							</td>
+						</tr>
+
+						<tr>
+							<td>			
+								<p><img src="public/images/sdg-icons/SDG11.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>SDG 11.7.2: Sexual assault (rate per 100,000 population)</p>
+								<p>Target: 0 per 100,000 population</p>
+								<p>Year: 2018</p>
+								<p>Source: <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3510017701">Statistics Canada</a></p>
+							</td>
+						</tr>	
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+			<!-- Footer -->
 			<footer id="footer">
 				<div class="inner">
 					<div class="content">
