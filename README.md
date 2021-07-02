@@ -44,6 +44,8 @@ To ensure the website is running, navigate to http://localhost:3000 on your defa
 ## Deployment
 
 On a remote machine, run `npm run ci` to pull the repository and rebuild the docker container and spin-up the container. The development team recommends Ubuntu (server) with an ssh key instead of a password, a root --> server account hierarchy, and Nginx with Docker. Set up a remote proxy to redirect port :3000 using your favourite online tutorial
+- For those with access to the current production server, a shorthand command would be:
+  `sudo su;cd Documents/code/dashboard;npm run ci;`
 
 ## Authorship
 * **Cameron McCordic** - *Project Manager*

@@ -70,9 +70,7 @@ export function updateAllGraphs(id: number) {
     updateGraph(id);
 
     //this is where hooks into panel 3 should be made
-    updatePanel3(id);
-
-    recenterDashboard();
+    // updatePanel3(id);
 }
 
 
@@ -109,7 +107,7 @@ export function populateMarkers() {
 
 
 
-function recenterDashboard() {
+export function recenterDashboard() {
   //center screen onClick
   $('html, body').animate({scrollTop: $("#dashboard").offset().top}, 800);
 };

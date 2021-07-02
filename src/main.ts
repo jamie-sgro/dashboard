@@ -4,8 +4,9 @@ import d3 = require("d3");
 
 import { Barplot } from "./barplot.js";
 import { Data, DataPoint } from "./data.js";
-import { matches, populateMarkers, reduceData, updateAllGraphs } from "./map.js";
+import { matches, populateMarkers, recenterDashboard, reduceData, updateAllGraphs } from "./map.js";
 import { Margin } from "./Margin.js";
+import { NewBarplot } from "./NewBarplot.js";
 import { initPanel3, panel3Resize, plotPanel3Resize } from "./panel3.js";
 import { DataList, DataListModel } from "./widgets/DataList.js";
 
@@ -15,13 +16,30 @@ export const colourBottom = "rgb(56, 94, 231)";
 export const colourTop = "rgb(34, 236, 87)";
 export const scaleToZoom = false;
 export const panelHeight = 0.40;
-export const panelWidth = 0.40;
+export const panelWidth = 0.33;
 
 //set default city
 // @ts-ignore
-document.getElementById("popupInfo").class = 0;
+// document.getElementById("popupInfo").class = 0;
 
 
+
+let newBarplot = new Barplot(
+  "#column-2",
+  ($(window).width()*panelWidth),
+  getHeight(),
+  {margin: new Margin(10, 20, 30, 60)}
+);
+$(window).on("resize", function() {
+  newBarplot.resize();
+});
+let data: DataPoint[]
+data = [
+  {name: "test_a", value: "1"},
+  {name: "test_b", value: "2"},
+]
+newBarplot.plot(data, [0,2], [0,2])
+newBarplot.updatePlot(newBarplot.canvas, data)
 
 /******************
 *** ADD D3 TOOL ***
@@ -50,9 +68,9 @@ export var mark = populateMarkers();
 d3.select("#panel3")
   .append("svg")
 
-panel3Resize();
+// panel3Resize();
 
-initPanel3();
+// initPanel3();
 
 
 
@@ -70,9 +88,10 @@ function getHeight(): number {
 
 //Barplot(width, height, margin)
 export const barplot = new Barplot(
+  "#column-3",
   ($(window).width()*panelWidth),
   getHeight(),
-  new Margin(10, 20, 30, 60),
+  {margin: new Margin(10, 20, 30, 60)},
   );
   plotData();
   export var dataArray: DataPoint[]
@@ -85,7 +104,7 @@ export const barplot = new Barplot(
     
     //only return the first datapoint to populate the graph
     // @ts-ignore
-    var id = document.getElementById("popupInfo").class;
+    var id = 0
     dataArray = reduceData(data[id]);
     barplot.id = id; //Currently use first row of .csv on graph init
     
@@ -151,12 +170,17 @@ function getMin(arr, key) {
 
 let datalist = populateDataList();
 
+function  onClick(id: number) {
+  recenterDashboard();
+  updateAllGraphs(id);
+}
+
 function populateDataList(): DataList {
   let data = Data.getSyncData();
   const dataListModel = data.map((city, id) => {
     return {id: id, value: city.name} as DataListModel
   });
-  return new DataList("cities-datalist", dataListModel, updateAllGraphs, {parentId: "map"});
+  return new DataList("cities-datalist", dataListModel, onClick, {parentId: "column-1"});
 }
 
 
@@ -174,5 +198,5 @@ $(window).on("resize", function() {
   //update panel3
   panel3Resize();
 
-  plotPanel3Resize();
+  // plotPanel3Resize();
 });
