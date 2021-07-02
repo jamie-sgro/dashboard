@@ -4,7 +4,7 @@ import d3 = require("d3");
 import { DataPoint } from "./data.js";
 import { Margin } from "./Margin.js";
 import { Svg } from "./Svg.js";
-import { assertType } from "./utils.js";
+import { assert, assertType } from "./utils.js";
 
 const panelWidth = 0.33;
 const scl = 15;
@@ -206,7 +206,6 @@ export class Barplot {
   /** Ran once on screen load, instantiates every d3 elem in second panel
    */
   plot(dataArray: DataPoint[], min: number[], max: number[]): void {
-    console.log(min)
     this.dataArray = dataArray
     var widthScale = this.getWidthScale();
 
@@ -339,7 +338,7 @@ export class Barplot {
           .html(d3.select(this).html() +
           " " + data.value)
         })
-    checkOffScreen(this);
+    resizeTooltipIfOffscreen(this);
 
     this.flashRect(index)
   };
@@ -371,7 +370,7 @@ export class Barplot {
       // @ts-ignore
       .style("top", (d3.event.pageY) + "px")
 
-    checkOffScreen(this);
+    resizeTooltipIfOffscreen(this);
   }
 
 
@@ -461,6 +460,8 @@ export class Barplot {
       .call(this.getYAxis, this)
 
     this.svg.resize();
+
+    resizeTooltipIfOffscreen(this)
   };
 };
   
@@ -517,7 +518,7 @@ function resetTween(path, duration, attr, endRes, peakRes) {
   
   
   
-function checkOffScreen(barplot: Barplot) {
+function resizeTooltipIfOffscreen(barplot: Barplot) {
   assertType(barplot, Barplot);
   resizeHeightIfOffscreen(barplot);
   resizeHeightIfSpilledOverSvg(barplot);
@@ -525,8 +526,12 @@ function checkOffScreen(barplot: Barplot) {
 };
 
 function resizeHeightIfOffscreen(barplot: Barplot) {
-  // @ts-ignore
-  let offScreenDiff = $(window).height() - event.clientY - parseInt(barplot.tooltip.style("height"))
+  let offScreenDiff =
+    $(window).height() -
+    parseInt(barplot.tooltip.style("top")) -
+    parseInt(barplot.tooltip.style("height"))
+    
+  assert(!isNaN(offScreenDiff), "Variable is NaN");
   if (offScreenDiff < 0) {
     barplot.tooltip
     .style("top", parseInt(barplot.tooltip.style("top")) + offScreenDiff + "px");
@@ -548,8 +553,13 @@ function resizeHeightIfSpilledOverSvg(barplot: Barplot) {
 
 function resizeWidthIfOffScreen(barplot: Barplot) {
   let horizontalPadding = 2 * parseInt(barplot.tooltip.style("padding"))
-  // @ts-ignore
-  let offScreenDiff = $(window).width() - event.clientX - parseInt(barplot.tooltip.style("width")) - horizontalPadding;
+  let offScreenDiff = $(window).width() -
+    // @ts-ignore
+    parseInt(barplot.tooltip.style("left")) -
+    parseInt(barplot.tooltip.style("width")) -
+    horizontalPadding;
+
+  assert(!isNaN(offScreenDiff), "Variable is NaN");
   if (offScreenDiff < 0) {
     barplot.tooltip
     .style("left", parseInt(barplot.tooltip.style("left")) + offScreenDiff + "px");
