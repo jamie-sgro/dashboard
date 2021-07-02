@@ -22,7 +22,7 @@ export class Barplot {
   tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>;
   dataArray: DataPoint[]
 
-  constructor(parentId, width, height, margin: Margin) {
+  constructor(parentId, width, height, { margin = new Margin(10, 10, 10, 10) } = {}) {
     this.parentId = parentId
     this.margin = margin;
     this.width = width;
