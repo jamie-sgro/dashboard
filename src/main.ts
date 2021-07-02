@@ -24,10 +24,17 @@ export const panelWidth = 0.33;
 
 
 
-let newBarplot = new NewBarplot("#column-2.column")
+let newBarplot = new Barplot("#column-2", 100, 100, new Margin(10, 20, 30, 60))
 $(window).on("resize", function() {
   newBarplot.resize();
 });
+let data: DataPoint[]
+data = [
+  {name: "a", value: "1"},
+  {name: "b", value: "2"},
+]
+newBarplot.plot(data, [0,0], [2,2])
+newBarplot.updatePlot(newBarplot.canvas, data)
 
 /******************
 *** ADD D3 TOOL ***
@@ -76,6 +83,7 @@ function getHeight(): number {
 
 //Barplot(width, height, margin)
 export const barplot = new Barplot(
+  "#column-3",
   ($(window).width()*panelWidth),
   getHeight(),
   new Margin(10, 20, 30, 60),

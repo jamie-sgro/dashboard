@@ -18,17 +18,15 @@ export class Barplot {
   margin: Margin;
   width: number;
   height: number;
-  // g: any
   svg: d3.Selection<SVGSVGElement, unknown, HTMLElement, any>;
   tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>;
   dataArray: DataPoint[]
 
-  constructor(width, height, margin: Margin, { parentId = undefined } = {}) {
-    this.parentId ="#column-3"
+  constructor(parentId, width, height, margin: Margin) {
+    this.parentId = parentId
     this.margin = margin;
     this.width = width;
     this.height = height - this.margin.top - this.margin.bottom;
-    // this.g = g
 
     this.svg = d3.select(this.parentId)
       .append("svg")
@@ -226,6 +224,7 @@ export class Barplot {
   /** Ran once on screen load, instantiates every d3 elem in second panel
    */
   plot(dataArray: DataPoint[], min: number[], max: number[]): void {
+    console.log(min)
     this.dataArray = dataArray
     var widthScale = this.getWidthScale();
 
