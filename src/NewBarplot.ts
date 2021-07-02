@@ -16,12 +16,12 @@ export class NewBarplot {
     this.margin = margin;
     this.svg = new Svg(this.parentId);
 
-    this.rect = this.svg.svg
-      .append("rect")
-      .attr("x", this.margin.left)
-      .attr("y", this.margin.top)
-      .attr("width", this.width)
-      .attr("height", this.height);
+    // this.rect = this.svg.svg
+    //   .append("rect")
+    //   .attr("x", this.margin.left)
+    //   .attr("y", this.margin.top)
+    //   .attr("width", this.width)
+    //   .attr("height", this.height);
   }
 
   private get height(): number {
@@ -33,9 +33,9 @@ export class NewBarplot {
   }
 
   resize() {
-    this.rect
-      .attr("width", this.svg.width - 20)
-      .attr("height", this.svg.height - 20);
+  //   this.rect
+  //     .attr("width", this.svg.width - 20)
+  //     .attr("height", this.svg.height - 20);
 
     this.svg.resize();
   }
