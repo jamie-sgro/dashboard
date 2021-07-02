@@ -618,7 +618,11 @@ table {
     border-left: 0;
     border-right: 0; }
   table td {
+    vertical-align: top;
     padding: 0.75rem 0.75rem; }
+  table td p {
+    margin: 0;
+  }
   table th {
     font-size: 0.9rem;
     font-weight: 600;
