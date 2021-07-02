@@ -24,7 +24,7 @@ export const panelWidth = 0.33;
 
 
 
-let newBarplot = new Barplot("#column-2", 100, 100, new Margin(10, 20, 30, 60))
+let newBarplot = new Barplot("#column-2", 100, 100, {margin: new Margin(10, 20, 30, 60)})
 $(window).on("resize", function() {
   newBarplot.resize();
 });
@@ -86,7 +86,7 @@ export const barplot = new Barplot(
   "#column-3",
   ($(window).width()*panelWidth),
   getHeight(),
-  new Margin(10, 20, 30, 60),
+  {margin: new Margin(10, 20, 30, 60)},
   );
   plotData();
   export var dataArray: DataPoint[]
