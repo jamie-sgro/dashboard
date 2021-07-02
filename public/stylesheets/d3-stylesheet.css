@@ -1,6 +1,6 @@
 /* D3 */
 div.tooltip {
-	max-width: 10%;
+	max-width: 20%;
 	color: white;
 	position: absolute;
 	text-align: left;
@@ -12,5 +12,9 @@ div.tooltip {
 }
 
 div.tooltip .picture {
+	width: 100%;
+}
+
+#cities-datalist {
 	width: 100%;
 }

@@ -1,3 +1,5 @@
+import { uuidv4 } from "../utils";
+
 export interface DataListModel {
   id: number;
   value: string;
@@ -19,21 +21,10 @@ export class DataList {
   ) {
     this.htmlId = htmlId;
     this.parentId = parentId;
-    this.listAttr = this.uuidv4();
+    this.listAttr = uuidv4();
     this.data = data;
     this.onClick = onClick;
     this.view = this.initView();
-  }
-
-  private uuidv4(): string {
-    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
-      /[xy]/g,
-      function (c) {
-        var r = (Math.random() * 16) | 0,
-          v = c == "x" ? r : (r & 0x3) | 0x8;
-        return v.toString(16);
-      }
-    );
   }
 
   private initView(): HTMLInputElement {

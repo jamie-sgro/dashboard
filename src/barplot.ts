@@ -3,38 +3,35 @@ import d3 = require("d3");
 
 import { DataPoint } from "./data.js";
 import { Margin } from "./Margin.js";
-import { assertType } from "./utils.js";
+import { Svg } from "./Svg.js";
+import { assert, assertType } from "./utils.js";
 
-const markCol = "rgba(10,151,217, .8)";
-const panelWidth = 0.40;
+const panelWidth = 0.33;
 const scl = 15;
 const colourBottom = "rgb(56, 94, 231)";
 const colourTop = "rgb(34, 236, 87)";
    
 export class Barplot {
+  parentId: string
   canvas: any
   id: number
   max: number
   margin: Margin;
   width: number;
   height: number;
-  // g: any
-  svg: d3.Selection<SVGSVGElement, unknown, HTMLElement, any>;
+  svg: Svg;
   tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>;
   dataArray: DataPoint[]
 
-  constructor(width, height, margin: Margin) {
+  constructor(parentId, width, height, { margin = new Margin(10, 10, 10, 10) } = {}) {
+    this.parentId = parentId
     this.margin = margin;
     this.width = width;
     this.height = height - this.margin.top - this.margin.bottom;
-    // this.g = g
 
-    this.svg = d3.select("body")
-      .append("svg")
-        .attr("class", "barplot svg")
-        .call(this.getSvgSize, this);
+    this.svg = new Svg(this.parentId);
 
-    this.canvas = this.svg
+    this.canvas = this.svg.svg
       .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -47,21 +44,6 @@ export class Barplot {
   static selectAttrAsString(obj: any, attr: string): number {
     return  Number(d3.select(obj).attr(attr))
   }
-
-  /** the (path, obj) convention is used to denote:
-    path = d3 element
-    obj = the barplot element typically evoked though 'this.'
-
-  - note that the 'this.' element is overwritten by d3 regardless of the
-    class
-  */
-  getSvgSize(path, obj) {
-    path
-      .attr("width", obj.width)
-      .attr("height", obj.height + obj.margin.top + obj.margin.bottom)
-
-    $(".barplot.svg").css({left: $(window).width()*(1-panelWidth), position:'relative'});
-  };
 
   getColour() {
     let max = Number(d3.max(this.dataArray, (d: DataPoint) => {
@@ -216,7 +198,6 @@ export class Barplot {
         .attr("stroke", "rgba(0,0,0,0)")
 
 
-      console.log(this.id)
       // updateGraph(null, this)
     };
   };
@@ -357,7 +338,7 @@ export class Barplot {
           .html(d3.select(this).html() +
           " " + data.value)
         })
-    checkOffScreen(this);
+    resizeTooltipIfOffscreen(this);
 
     this.flashRect(index)
   };
@@ -389,7 +370,7 @@ export class Barplot {
       // @ts-ignore
       .style("top", (d3.event.pageY) + "px")
 
-    checkOffScreen(this);
+    resizeTooltipIfOffscreen(this);
   }
 
 
@@ -437,7 +418,8 @@ export class Barplot {
 
 
   resize() {
-    this.width = ($(window).width()*panelWidth);
+    this.width = Number(d3.select(this.parentId).style("width").replace("px", ""))
+    // this.width = ($(window).width()*panelWidth);
     this.height = ($(window).height()-50) - this.margin.top - this.margin.bottom;
 
     var widthScale = this.getWidthScale();
@@ -477,8 +459,9 @@ export class Barplot {
     this.canvas.selectAll("g.y.axis")
       .call(this.getYAxis, this)
 
-    this.svg
-      .call(this.getSvgSize, this)
+    this.svg.resize();
+
+    resizeTooltipIfOffscreen(this)
   };
 };
   
@@ -535,32 +518,51 @@ function resetTween(path, duration, attr, endRes, peakRes) {
   
   
   
-function checkOffScreen(barplot: Barplot) {
+function resizeTooltipIfOffscreen(barplot: Barplot) {
   assertType(barplot, Barplot);
-  // @ts-ignore
-  var tooltipHtml = barplot.tooltip._groups[0][0]
-  // @ts-ignore
-  var svgHtml = d3.select(barplot.canvas)._groups[0][0]._groups[0][0];
-  var absBottom = $(svgHtml).offset().top + parseInt(barplot.svg.style("height"));
-  var absToolBottom = $(tooltipHtml).offset().top + parseInt(barplot.tooltip.style("height"));
+  resizeHeightIfOffscreen(barplot);
+  resizeHeightIfSpilledOverSvg(barplot);
+  resizeWidthIfOffScreen(barplot);
+};
 
-  //check if tooltip offscreen
-  try {
-    // @ts-ignore
-    var offScreenDiff = $(window).height() - event.clientY - parseInt(barplot.tooltip.style("height"))
-    if (offScreenDiff < 0) {
-      barplot.tooltip
-        .style("top", parseInt(barplot.tooltip.style("top")) + offScreenDiff + "px");
-      return;
-    }
-  } catch(error) {
-    console.log(error);
+function resizeHeightIfOffscreen(barplot: Barplot) {
+  let offScreenDiff =
+    $(window).height() -
+    parseInt(barplot.tooltip.style("top")) -
+    parseInt(barplot.tooltip.style("height"))
+    
+  assert(!isNaN(offScreenDiff), "Variable is NaN");
+  if (offScreenDiff < 0) {
+    barplot.tooltip
+    .style("top", parseInt(barplot.tooltip.style("top")) + offScreenDiff + "px");
   }
+}
 
-  //check if tooltip outside barplot svg offscreen
+function resizeHeightIfSpilledOverSvg(barplot: Barplot) {
+  // @ts-ignore
+  let tooltipHtml = barplot.tooltip._groups[0][0]
+  let absToolBottom = $(tooltipHtml).offset().top + parseInt(barplot.tooltip.style("height"));
+  // @ts-ignore
+  let svgHtml = d3.select(barplot.canvas)._groups[0][0]._groups[0][0];
+  let absBottom = $(svgHtml).offset().top + barplot.svg.height;
   if (absToolBottom > absBottom) {
     barplot.tooltip
       .style("top", absBottom - parseInt(barplot.tooltip.style("height")) + "px");
-    return
   };
-};
+}
+
+function resizeWidthIfOffScreen(barplot: Barplot) {
+  let horizontalPadding = 2 * parseInt(barplot.tooltip.style("padding"))
+  let offScreenDiff = $(window).width() -
+    // @ts-ignore
+    parseInt(barplot.tooltip.style("left")) -
+    parseInt(barplot.tooltip.style("width")) -
+    horizontalPadding;
+
+  assert(!isNaN(offScreenDiff), "Variable is NaN");
+  if (offScreenDiff < 0) {
+    barplot.tooltip
+    .style("left", parseInt(barplot.tooltip.style("left")) + offScreenDiff + "px");
+  }
+}
+   
