@@ -110,7 +110,6 @@ export function populateMarkers() {
 
 
 function recenterDashboard() {
-  return
   //center screen onClick
   $('html, body').animate({scrollTop: $("#dashboard").offset().top}, 800);
 };
