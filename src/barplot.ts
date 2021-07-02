@@ -3,6 +3,7 @@ import d3 = require("d3");
 
 import { DataPoint } from "./data.js";
 import { Margin } from "./Margin.js";
+import { Svg } from "./Svg.js";
 import { assertType } from "./utils.js";
 
 const panelWidth = 0.33;
@@ -18,7 +19,7 @@ export class Barplot {
   margin: Margin;
   width: number;
   height: number;
-  svg: d3.Selection<SVGSVGElement, unknown, HTMLElement, any>;
+  svg: Svg;
   tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>;
   dataArray: DataPoint[]
 
@@ -28,12 +29,9 @@ export class Barplot {
     this.width = width;
     this.height = height - this.margin.top - this.margin.bottom;
 
-    this.svg = d3.select(this.parentId)
-      .append("svg")
-        .attr("class", "barplot svg")
-        .call(this.getSvgSize, this);
+    this.svg = new Svg(this.parentId);
 
-    this.canvas = this.svg
+    this.canvas = this.svg.svg
       .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -46,21 +44,6 @@ export class Barplot {
   static selectAttrAsString(obj: any, attr: string): number {
     return  Number(d3.select(obj).attr(attr))
   }
-
-  /** the (path, obj) convention is used to denote:
-    path = d3 element
-    obj = the barplot element typically evoked though 'this.'
-
-  - note that the 'this.' element is overwritten by d3 regardless of the
-    class
-  */
-  getSvgSize(path, obj) {
-    path
-      .attr("width", obj.width)
-      .attr("height", obj.height + obj.margin.top + obj.margin.bottom)
-
-    $(".barplot.svg").css({left: $(window).width()*(1-panelWidth)});
-  };
 
   getColour() {
     let max = Number(d3.max(this.dataArray, (d: DataPoint) => {
@@ -478,8 +461,7 @@ export class Barplot {
     this.canvas.selectAll("g.y.axis")
       .call(this.getYAxis, this)
 
-    this.svg
-      .call(this.getSvgSize, this)
+    this.svg.resize();
   };
 };
   
@@ -542,7 +524,7 @@ function checkOffScreen(barplot: Barplot) {
   var tooltipHtml = barplot.tooltip._groups[0][0]
   // @ts-ignore
   var svgHtml = d3.select(barplot.canvas)._groups[0][0]._groups[0][0];
-  var absBottom = $(svgHtml).offset().top + parseInt(barplot.svg.style("height"));
+  var absBottom = $(svgHtml).offset().top + barplot.svg.height;
   var absToolBottom = $(tooltipHtml).offset().top + parseInt(barplot.tooltip.style("height"));
 
   //check if tooltip offscreen
