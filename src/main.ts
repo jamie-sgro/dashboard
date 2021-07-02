@@ -24,16 +24,21 @@ export const panelWidth = 0.33;
 
 
 
-let newBarplot = new Barplot("#column-2", 100, 100, {margin: new Margin(10, 20, 30, 60)})
+let newBarplot = new Barplot(
+  "#column-2",
+  ($(window).width()*panelWidth),
+  getHeight(),
+  {margin: new Margin(10, 20, 30, 60)}
+);
 $(window).on("resize", function() {
   newBarplot.resize();
 });
 let data: DataPoint[]
 data = [
-  {name: "a", value: "1"},
-  {name: "b", value: "2"},
+  {name: "test_a", value: "1"},
+  {name: "test_b", value: "2"},
 ]
-newBarplot.plot(data, [0,0], [2,2])
+newBarplot.plot(data, [0,2], [0,2])
 newBarplot.updatePlot(newBarplot.canvas, data)
 
 /******************

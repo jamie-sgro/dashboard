@@ -177,18 +177,63 @@
 			</section>
 
 		<!-- Dashboard -->
-			<section id="dashboard" class="belownav">
-				<div id="panel3">
-					<span id="popupInfo">Select a city marker to begin.</span>
-				</div>
-				<div id="map">
-					<script src="public/javascripts/data.js" type="module"></script>
-					<script src="public/javascripts/barplot.js" type="module"></script>
-					<script src="public/javascripts/map.js" type="module"></script>
-					<script src="public/javascripts/panel3.js" type="module"></script>
-					<script src="public/javascripts/main.js" type="module"></script>
-				</div>
-			</section>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			
+			/* Create three equal columns that floats next to each other */
+			.column {
+				float: left;
+				width: 33.33%;
+				padding: 0px;
+			}
+
+			.row {
+				height: 100vh;
+			}
+			
+			/* Clear floats after the columns */
+			.row:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			</style>
+
+
+	<div class="row">
+		<div class="column" id="column-1" style="padding: 10%;">
+			<div class="switch col-4 col-12-small" >
+				<label class="switch">Toggle Leader Laggard Graph
+					<input id="leadLag" type="checkbox" onclick=barplot.toggleLeadLag() title="Toggle Leader Laggard Graph">
+					<span class="slider round"></span>
+				</label>
+			</div>
+			<div class="col-4 col-12-small">
+				<input type="radio" id="arithmetic" name="radio" onclick=updatePanel3()>
+				<label for="arithmetic">[Disabled] Arithmetic Mean</label>
+			</div>
+			<div class="col-4 col-12-small">
+				<input type="radio" id="median" name="radio" onclick=updatePanel3() checked>
+				<label for="median">[Disabled] Median</label>
+			</div>
+			<div class="col-4 col-12-small">
+				<input type="radio" id="geometric" name="radio" onclick=updatePanel3()>
+				<label for="geometric">[Disabled] Geometric Mean</label>
+			</div>
+		</div>
+		<div class="column" id="column-2" >
+		</div>
+		<div class="column" id="column-3" >
+		</div>
+	</div>
+
+		<section id="dashboard" class="belownav">
+			<div id="map">
+				<script src="public/javascripts/src/main.js" type="module"></script>
+			</div>
+		</section>
 
 		<!-- CTA -->
 			<section id="cta" class="wrapper">

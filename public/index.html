@@ -17,6 +17,7 @@
 	</head>
 
 	<body>
+		<!-- Dashboard -->
 		<style>
 			* {
 				box-sizing: border-box;
@@ -43,8 +44,8 @@
 
 
 	<div class="row">
-		<div class="column" id="column-1" >
-			<div class="switch col-4 col-12-small">
+		<div class="column" id="column-1" style="padding: 30px;">
+			<div class="switch col-4 col-12-small" >
 				<label class="switch">Toggle Leader Laggard Graph
 					<input id="leadLag" type="checkbox" onclick=barplot.toggleLeadLag() title="Toggle Leader Laggard Graph">
 					<span class="slider round"></span>
@@ -52,28 +53,24 @@
 			</div>
 			<div class="col-4 col-12-small">
 				<input type="radio" id="arithmetic" name="radio" onclick=updatePanel3()>
-				<label for="arithmetic">Arithmetic Mean</label>
+				<label for="arithmetic">[Disabled] Arithmetic Mean</label>
 			</div>
 			<div class="col-4 col-12-small">
 				<input type="radio" id="median" name="radio" onclick=updatePanel3() checked>
-				<label for="median">Median</label>
+				<label for="median">[Disabled] Median</label>
 			</div>
 			<div class="col-4 col-12-small">
 				<input type="radio" id="geometric" name="radio" onclick=updatePanel3()>
-				<label for="geometric">Geometric Mean</label>
+				<label for="geometric">[Disabled] Geometric Mean</label>
 			</div>
 		</div>
-		<div class="column" id="column-2" style="background-color:#bbb;">
+		<div class="column" id="column-2" >
 		</div>
 		<div class="column" id="column-3" >
 		</div>
 	</div>
 
-		<!-- Dashboard -->
 		<section id="dashboard" class="belownav">
-			<!-- <div id="panel3">
-				<span id="popupInfo">Select a city marker to begin.</span>
-			</div> -->
 			<div id="map">
 				<script src="public/javascripts/src/main.js" type="module"></script>
 			</div>
