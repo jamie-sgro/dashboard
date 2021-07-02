@@ -4,7 +4,7 @@ import d3 = require("d3");
 
 import { Barplot } from "./barplot.js";
 import { Data, DataPoint } from "./data.js";
-import { matches, populateMarkers, reduceData, updateAllGraphs } from "./map.js";
+import { matches, populateMarkers, recenterDashboard, reduceData, updateAllGraphs } from "./map.js";
 import { Margin } from "./Margin.js";
 import { NewBarplot } from "./NewBarplot.js";
 import { initPanel3, panel3Resize, plotPanel3Resize } from "./panel3.js";
@@ -170,12 +170,17 @@ function getMin(arr, key) {
 
 let datalist = populateDataList();
 
+function  onClick(id: number) {
+  recenterDashboard();
+  updateAllGraphs(id);
+}
+
 function populateDataList(): DataList {
   let data = Data.getSyncData();
   const dataListModel = data.map((city, id) => {
     return {id: id, value: city.name} as DataListModel
   });
-  return new DataList("cities-datalist", dataListModel, updateAllGraphs, {parentId: "column-1"});
+  return new DataList("cities-datalist", dataListModel, onClick, {parentId: "column-1"});
 }
 
 
