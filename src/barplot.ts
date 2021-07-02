@@ -521,29 +521,38 @@ function checkOffScreen(barplot: Barplot) {
   assertType(barplot, Barplot);
   resizeHeightIfOffscreen(barplot);
   resizeHeightIfSpilledOverSvg(barplot);
+  resizeWidthIfOffScreen(barplot);
 };
 
 function resizeHeightIfOffscreen(barplot: Barplot) {
   // @ts-ignore
-  var offScreenDiff = $(window).height() - event.clientY - parseInt(barplot.tooltip.style("height"))
+  let offScreenDiff = $(window).height() - event.clientY - parseInt(barplot.tooltip.style("height"))
   if (offScreenDiff < 0) {
     barplot.tooltip
     .style("top", parseInt(barplot.tooltip.style("top")) + offScreenDiff + "px");
-    return;
   }
 }
 
 function resizeHeightIfSpilledOverSvg(barplot: Barplot) {
   // @ts-ignore
-  var tooltipHtml = barplot.tooltip._groups[0][0]
-  var absToolBottom = $(tooltipHtml).offset().top + parseInt(barplot.tooltip.style("height"));
+  let tooltipHtml = barplot.tooltip._groups[0][0]
+  let absToolBottom = $(tooltipHtml).offset().top + parseInt(barplot.tooltip.style("height"));
   // @ts-ignore
-  var svgHtml = d3.select(barplot.canvas)._groups[0][0]._groups[0][0];
-  var absBottom = $(svgHtml).offset().top + barplot.svg.height;
+  let svgHtml = d3.select(barplot.canvas)._groups[0][0]._groups[0][0];
+  let absBottom = $(svgHtml).offset().top + barplot.svg.height;
   if (absToolBottom > absBottom) {
     barplot.tooltip
       .style("top", absBottom - parseInt(barplot.tooltip.style("height")) + "px");
-    return
   };
+}
+
+function resizeWidthIfOffScreen(barplot: Barplot) {
+  let horizontalPadding = 2 * parseInt(barplot.tooltip.style("padding"))
+  // @ts-ignore
+  let offScreenDiff = $(window).width() - event.clientX - parseInt(barplot.tooltip.style("width")) - horizontalPadding;
+  if (offScreenDiff < 0) {
+    barplot.tooltip
+    .style("left", parseInt(barplot.tooltip.style("left")) + offScreenDiff + "px");
+  }
 }
    
