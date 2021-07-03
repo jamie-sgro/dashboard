@@ -1,5 +1,6 @@
 // @ts-expect-error
 import d3 = require("d3");
+import { assert } from "./utils";
 
 class Point {
   x: number;
@@ -88,5 +89,39 @@ export class Tooltip {
   setPosition(aPoint: Point) {
     this.left = aPoint.x;
     this.top = aPoint.y;
+  }
+
+  repositionTooltipIfOffscreen(svgBottom: number) {
+    this.resizeHeightIfOffscreen();
+    this.resizeHeightIfSpilledOverSvg(svgBottom);
+    this.resizeWidthIfOffScreen();
+  }
+
+  private resizeHeightIfOffscreen() {
+    const pixelsToBottomOfWindowPosition =
+      $(window).height() + $(window).scrollTop();
+    const offScreenDiff = pixelsToBottomOfWindowPosition - this.bottom;
+
+    assert(!isNaN(offScreenDiff), "Variable is NaN");
+    if (offScreenDiff < 0) {
+      this.top += offScreenDiff;
+    }
+  }
+
+  private resizeHeightIfSpilledOverSvg(svgBottom: number) {
+    if (this.bottom > svgBottom) {
+      this.top = svgBottom - this.height;
+    }
+  }
+
+  private resizeWidthIfOffScreen() {
+    const horizontalPadding = 2 * this.padding;
+    const offScreenDiff =
+      $(window).width() - this.left - this.width - horizontalPadding;
+
+    assert(!isNaN(offScreenDiff), "Variable is NaN");
+    if (offScreenDiff < 0) {
+      this.left += offScreenDiff;
+    }
   }
 }

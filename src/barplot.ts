@@ -485,38 +485,5 @@ function resetTween(path, duration, attr, endRes, peakRes) {
 
 function repositionTooltipIfOffscreen(barplot: Barplot) {
   assertType(barplot, Barplot);
-  resizeHeightIfOffscreen(barplot);
-  resizeHeightIfSpilledOverSvg(barplot);
-  resizeWidthIfOffScreen(barplot);
-}
-
-function resizeHeightIfOffscreen(barplot: Barplot) {
-  const pixelsToBottomOfWindowPosition =
-    $(window).height() + $(window).scrollTop();
-  const offScreenDiff = pixelsToBottomOfWindowPosition - barplot.tooltip.bottom;
-
-  assert(!isNaN(offScreenDiff), "Variable is NaN");
-  if (offScreenDiff < 0) {
-    barplot.tooltip.top += offScreenDiff;
-  }
-}
-
-function resizeHeightIfSpilledOverSvg(barplot: Barplot) {
-  if (barplot.tooltip.bottom > barplot.svg.bottom) {
-    barplot.tooltip.top = barplot.svg.bottom - barplot.tooltip.height;
-  }
-}
-
-function resizeWidthIfOffScreen(barplot: Barplot) {
-  const horizontalPadding = 2 * barplot.tooltip.padding;
-  const offScreenDiff =
-    $(window).width() -
-    barplot.tooltip.left -
-    barplot.tooltip.width -
-    horizontalPadding;
-
-  assert(!isNaN(offScreenDiff), "Variable is NaN");
-  if (offScreenDiff < 0) {
-    barplot.tooltip.left += offScreenDiff;
-  }
+  barplot.tooltip.repositionTooltipIfOffscreen(barplot.svg.bottom);
 }
