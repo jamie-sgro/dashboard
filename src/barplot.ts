@@ -7,7 +7,6 @@ import { Svg } from "./Svg.js";
 import { Tooltip } from "./Tooltip.js";
 import { assert, assertType } from "./utils.js";
 
-const panelWidth = 0.33;
 const scl = 15;
 const colourBottom = "rgb(56, 94, 231)";
 const colourTop = "rgb(34, 236, 87)";
@@ -307,33 +306,13 @@ export class Barplot {
 
   onMouseover(data: DataPoint, index: number) {
     assertType(this, Barplot);
+    const initialText = data.name.split("|")[1];
+    this.tooltip.text = initialText;
+    this.tooltip.fadeIn();
 
-    //remove old text
-    this.tooltip.d3Element.html(data.name);
+    const newText = `${initialText} ${data.value}`;
+    this.tooltip.setTextAfterDelay(newText);
 
-    //remove old img
-    this.tooltip.d3Element.selectAll("img").remove();
-
-    //try to append now image
-    this.tooltip.d3Element.html(data.name.split("|")[1]);
-    // .append("img")
-    //   .attr("class", "picture")
-    //   .attr("src", function(d) {
-    //     return "public/images/sdg-icons/" + data.name + ".png";
-    //   })
-    //   .on("error", function(d) {
-    //     barplot.tooltip.d3Element
-    //       .html(data.name)
-    //   })
-
-    this.tooltip.d3Element.transition().duration(200).style("opacity", 1);
-
-    this.tooltip.d3Element
-      .transition()
-      .delay(2000)
-      .on("end", function () {
-        d3.select(this).html(d3.select(this).html() + " " + data.value);
-      });
     resizeTooltipIfOffscreen(this);
 
     this.flashRect(index);
@@ -365,18 +344,18 @@ export class Barplot {
 
   onMouseMove() {
     assertType(this, Barplot);
-    this.tooltip.d3Element
-      // @ts-ignore
-      .style("left", d3.event.pageX + 10 + "px")
-      // @ts-ignore
-      .style("top", d3.event.pageY + "px");
+    // @ts-ignore
+    const x = d3.event.pageX + 10;
+    // @ts-ignore
+    const y = d3.event.pageY;
+    this.tooltip.setPosition({ x: x, y: y });
 
     resizeTooltipIfOffscreen(this);
   }
 
   onMouseOut() {
     assertType(this, Barplot);
-    this.tooltip.d3Element.transition().duration(200).style("opacity", 0);
+    this.tooltip.fadeOut();
   }
 
   /* @updatePlot(svg, data)
@@ -514,10 +493,9 @@ function resizeTooltipIfOffscreen(barplot: Barplot) {
 function resizeHeightIfOffscreen(barplot: Barplot) {
   const pixelsToBottomOfWindowPosition =
     $(window).height() + $(window).scrollTop();
-  const pixelsToBottomOfTooltip =
-    parseInt(barplot.tooltip.d3Element.style("top")) +
-    parseInt(barplot.tooltip.d3Element.style("height"));
-  const offScreenDiff = pixelsToBottomOfWindowPosition - pixelsToBottomOfTooltip;
+  const pixelsToBottomOfTooltip = barplot.tooltip.bottom;
+  const offScreenDiff =
+    pixelsToBottomOfWindowPosition - pixelsToBottomOfTooltip;
 
   assert(!isNaN(offScreenDiff), "Variable is NaN");
   if (offScreenDiff < 0) {
