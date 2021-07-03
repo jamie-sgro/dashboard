@@ -2,7 +2,7 @@
 import d3 = require("d3");
 
 import { Barplot } from "./Barplot.js";
-import { Data, DataPoint } from "./data.js";
+import { Data, DataPoint } from "./Data.js";
 import {
   matches,
   populateMarkers,
