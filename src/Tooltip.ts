@@ -7,7 +7,7 @@ class Point {
 }
 
 export class Tooltip {
-  d3Element: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>;
+  private d3Element: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>;
   private transitionDuration = 200;
 
   constructor() {
@@ -18,16 +18,28 @@ export class Tooltip {
       .style("opacity", 0);
   }
 
-  get top(): number {
-    return this.getStyle("top");
-  }
-
   private getStyle(styleName: string): number {
     return parseInt(this.d3Element.style(styleName));
   }
 
+  private setStyle(styleName: string, aNumber: number) {
+    this.d3Element.style(styleName, aNumber + "px");
+  }
+
+  get top(): number {
+    return this.getStyle("top");
+  }
+
+  set top(y: number) {
+    this.setStyle("top", y);
+  }
+
   get left(): number {
     return this.getStyle("left");
+  }
+
+  set left(x: number) {
+    this.setStyle("left", x);
   }
 
   get bottom(): number {
@@ -48,14 +60,6 @@ export class Tooltip {
 
   set text(aString: string) {
     this.d3Element.html(aString);
-  }
-
-  set x(x: number) {
-    this.d3Element.style("left", x + "px");
-  }
-
-  set y(y: number) {
-    this.d3Element.style("top", y + "px");
   }
 
   setTextAfterDelay(aString: string) {
@@ -82,7 +86,7 @@ export class Tooltip {
   }
 
   setPosition(aPoint: Point) {
-    this.x = aPoint.x;
-    this.y = aPoint.y;
+    this.left = aPoint.x;
+    this.top = aPoint.y;
   }
 }

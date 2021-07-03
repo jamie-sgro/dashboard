@@ -499,22 +499,16 @@ function resizeHeightIfOffscreen(barplot: Barplot) {
 
   assert(!isNaN(offScreenDiff), "Variable is NaN");
   if (offScreenDiff < 0) {
-    barplot.tooltip.d3Element.style(
-      "top",
-      parseInt(barplot.tooltip.d3Element.style("top")) + offScreenDiff + "px"
-    );
+    barplot.tooltip.top += offScreenDiff;
   }
 }
 
 function resizeHeightIfSpilledOverSvg(barplot: Barplot) {
   // @ts-ignore
-  let tooltipHtml = barplot.tooltip.d3Element._groups[0][0];
-  let absToolBottom = $(tooltipHtml).offset().top + barplot.tooltip.height;
-  // @ts-ignore
   let svgHtml = d3.select(barplot.canvas)._groups[0][0]._groups[0][0];
   let absBottom = $(svgHtml).offset().top + barplot.svg.height;
-  if (absToolBottom > absBottom) {
-    barplot.tooltip.y = absBottom - barplot.tooltip.height;
+  if (barplot.tooltip.bottom > absBottom) {
+    barplot.tooltip.top = absBottom - barplot.tooltip.height;
   }
 }
 
@@ -528,6 +522,6 @@ function resizeWidthIfOffScreen(barplot: Barplot) {
 
   assert(!isNaN(offScreenDiff), "Variable is NaN");
   if (offScreenDiff < 0) {
-    barplot.tooltip.x = barplot.tooltip.left + offScreenDiff;
+    barplot.tooltip.left += offScreenDiff;
   }
 }
