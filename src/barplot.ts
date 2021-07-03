@@ -313,7 +313,7 @@ export class Barplot {
     const newText = `${initialText} ${data.value}`;
     this.tooltip.setTextAfterDelay(newText);
 
-    repositionTooltipIfOffscreen(this);
+    this.tooltip.repositionTooltipIfOffscreen(this.svg.bottom);
 
     this.flashRect(index);
   }
@@ -350,7 +350,7 @@ export class Barplot {
     const y = d3.event.pageY;
     this.tooltip.setPosition({ x: x, y: y });
 
-    repositionTooltipIfOffscreen(this);
+    this.tooltip.repositionTooltipIfOffscreen(this.svg.bottom);
   }
 
   onMouseOut() {
@@ -434,7 +434,7 @@ export class Barplot {
 
     this.svg.resize();
 
-    repositionTooltipIfOffscreen(this);
+    this.tooltip.repositionTooltipIfOffscreen(this.svg.bottom);
   }
 }
 
@@ -481,9 +481,4 @@ function resetTween(path, duration, attr, endRes, peakRes) {
         path.attr(attr, lerp(t));
       };
     });
-}
-
-function repositionTooltipIfOffscreen(barplot: Barplot) {
-  assertType(barplot, Barplot);
-  barplot.tooltip.repositionTooltipIfOffscreen(barplot.svg.bottom);
 }
