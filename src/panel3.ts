@@ -3,7 +3,7 @@ import d3 = require("d3");
 // @ts-expect-error
 import L = require("leaflet")
 
-import { attrTween } from "./barplot.js";
+import { attrTween } from "./Barplot.js";
 import { Data, DataModel, DataPoint } from "./data.js";
 import { barplot, mark, panelHeight, panelWidth } from "./main.js";
 import { updateAllGraphs } from "./map.js";
