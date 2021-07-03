@@ -18,14 +18,44 @@ export class Tooltip {
       .style("opacity", 0);
   }
 
+  get top(): number {
+    return this.getStyle("top");
+  }
+
+  private getStyle(styleName: string): number {
+    return parseInt(this.d3Element.style(styleName));
+  }
+
+  get left(): number {
+    return this.getStyle("left");
+  }
+
   get bottom(): number {
-    const top =  parseInt(this.d3Element.style("top"));
-    const height =  parseInt(this.d3Element.style("height"));
-    return top + height
+    return this.top + this.height;
+  }
+
+  get height(): number {
+    return this.getStyle("height");
+  }
+
+  get width(): number {
+    return this.getStyle("width");
+  }
+
+  get padding(): number {
+    return this.getStyle("padding");
   }
 
   set text(aString: string) {
     this.d3Element.html(aString);
+  }
+
+  set x(x: number) {
+    this.d3Element.style("left", x + "px");
+  }
+
+  set y(y: number) {
+    this.d3Element.style("top", y + "px");
   }
 
   setTextAfterDelay(aString: string) {
@@ -52,10 +82,7 @@ export class Tooltip {
   }
 
   setPosition(aPoint: Point) {
-    this.d3Element
-      // @ts-ignore
-      .style("left", aPoint.x + "px")
-      // @ts-ignore
-      .style("top", aPoint.y + "px");
+    this.x = aPoint.x;
+    this.y = aPoint.y;
   }
 }
