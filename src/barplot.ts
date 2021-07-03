@@ -361,14 +361,14 @@ export class Barplot {
   /* @updatePlot(svg, data)
   - run on marker click, resizes rectangle/circle attributes according to data
 */
-  updatePlot(canvas, dataArray) {
+  updatePlot(dataArray) {
     this.dataArray = dataArray;
     var widthScale = this.getWidthScale();
     var colour = this.getColour();
 
     // @ts-ignore
     if (!document.getElementById("leadLag").checked) {
-      canvas
+      this.canvas
         .selectAll("rect.bar")
         .data(this.dataArray)
         .each(function (d, i) {
@@ -377,7 +377,7 @@ export class Barplot {
         });
     }
 
-    canvas
+    this.canvas
       .selectAll("rect.leadLag")
       .data(this.dataArray)
       .each(function (d, i) {

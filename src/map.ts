@@ -129,7 +129,7 @@ export function updateGraph(id, graph = barplot) {
 
   const dataArray = reduceData(data[id]);
 
-  graph.updatePlot(graph.canvas, dataArray);
+  graph.updatePlot(dataArray);
 };
 
 
