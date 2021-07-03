@@ -87,18 +87,17 @@ export const barplot = new Barplot(
   getHeight(),
   { margin: new Margin(10, 20, 30, 60) }
 );
-plotData();
-export var dataArray: DataPoint[];
+plotData(barplot);
 
 //called once when the screen renders
-function plotData() {
+function plotData(barplot: Barplot) {
   let data = Data.getSyncData();
 
   barplot.max = getMaxScore(data);
 
   //only return the first datapoint to populate the graph
   var id = 0;
-  dataArray = reduceData(data[id]);
+  let dataArray = reduceData(data[id]);
   barplot.id = id; //Currently use first row of .csv on graph init
 
   var min = [];
