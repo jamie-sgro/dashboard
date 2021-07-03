@@ -281,8 +281,6 @@ export class Barplot {
 
 
   onClick(data) {
-    console.log(d3.select(this.baseType).attr("min"))
-    console.log(d3.select(this.baseType).attr("max"))
     // change marker size based on data value
     var radiusScale = d3.scaleLinear()
       .domain([0, Number(d3.max(this.dataArray, function(d: DataPoint){
