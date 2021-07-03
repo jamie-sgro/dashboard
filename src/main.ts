@@ -1,7 +1,7 @@
 // @ts-expect-error
 import d3 = require("d3");
 
-import { Barplot } from "./barplot.js";
+import { Barplot } from "./Barplot.js";
 import { Data, DataPoint } from "./data.js";
 import {
   matches,
