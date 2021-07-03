@@ -4,6 +4,7 @@ import d3 = require("d3");
 import { DataPoint } from "./Data.js";
 import { Margin } from "./Margin.js";
 import { Svg } from "./Svg.js";
+import { Tooltip } from "./Tooltip.js";
 import { assert, assertType } from "./utils.js";
 
 const panelWidth = 0.33;
@@ -20,7 +21,7 @@ export class Barplot {
   width: number;
   height: number;
   svg: Svg;
-  tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>;
+  tooltip: Tooltip
   dataArray: DataPoint[];
 
   constructor(
@@ -41,11 +42,7 @@ export class Barplot {
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     // Define the div for the tooltip
-    this.tooltip = d3
-      .select("body")
-      .append("div")
-      .attr("class", "tooltip")
-      .style("opacity", 0);
+    this.tooltip = new Tooltip();
   }
 
   static selectAttrAsNumber(obj: any, attr: string): number {
@@ -312,26 +309,26 @@ export class Barplot {
     assertType(this, Barplot);
 
     //remove old text
-    this.tooltip.html(data.name);
+    this.tooltip.d3Element.html(data.name);
 
     //remove old img
-    this.tooltip.selectAll("img").remove();
+    this.tooltip.d3Element.selectAll("img").remove();
 
     //try to append now image
-    this.tooltip.html(data.name.split("|")[1]);
+    this.tooltip.d3Element.html(data.name.split("|")[1]);
     // .append("img")
     //   .attr("class", "picture")
     //   .attr("src", function(d) {
     //     return "public/images/sdg-icons/" + data.name + ".png";
     //   })
     //   .on("error", function(d) {
-    //     barplot.tooltip
+    //     barplot.tooltip.d3Element
     //       .html(data.name)
     //   })
 
-    this.tooltip.transition().duration(200).style("opacity", 1);
+    this.tooltip.d3Element.transition().duration(200).style("opacity", 1);
 
-    this.tooltip
+    this.tooltip.d3Element
       .transition()
       .delay(2000)
       .on("end", function () {
@@ -368,7 +365,7 @@ export class Barplot {
 
   onMouseMove() {
     assertType(this, Barplot);
-    this.tooltip
+    this.tooltip.d3Element
       // @ts-ignore
       .style("left", d3.event.pageX + 10 + "px")
       // @ts-ignore
@@ -379,7 +376,7 @@ export class Barplot {
 
   onMouseOut() {
     assertType(this, Barplot);
-    this.tooltip.transition().duration(200).style("opacity", 0);
+    this.tooltip.d3Element.transition().duration(200).style("opacity", 0);
   }
 
   /* @updatePlot(svg, data)
@@ -517,48 +514,48 @@ function resizeTooltipIfOffscreen(barplot: Barplot) {
 function resizeHeightIfOffscreen(barplot: Barplot) {
   let offScreenDiff =
     $(window).height() -
-    parseInt(barplot.tooltip.style("top")) -
-    parseInt(barplot.tooltip.style("height"));
+    parseInt(barplot.tooltip.d3Element.style("top")) -
+    parseInt(barplot.tooltip.d3Element.style("height"));
 
   assert(!isNaN(offScreenDiff), "Variable is NaN");
   if (offScreenDiff < 0) {
-    barplot.tooltip.style(
+    barplot.tooltip.d3Element.style(
       "top",
-      parseInt(barplot.tooltip.style("top")) + offScreenDiff + "px"
+      parseInt(barplot.tooltip.d3Element.style("top")) + offScreenDiff + "px"
     );
   }
 }
 
 function resizeHeightIfSpilledOverSvg(barplot: Barplot) {
   // @ts-ignore
-  let tooltipHtml = barplot.tooltip._groups[0][0];
+  let tooltipHtml = barplot.tooltip.d3Element._groups[0][0];
   let absToolBottom =
-    $(tooltipHtml).offset().top + parseInt(barplot.tooltip.style("height"));
+    $(tooltipHtml).offset().top + parseInt(barplot.tooltip.d3Element.style("height"));
   // @ts-ignore
   let svgHtml = d3.select(barplot.canvas)._groups[0][0]._groups[0][0];
   let absBottom = $(svgHtml).offset().top + barplot.svg.height;
   if (absToolBottom > absBottom) {
-    barplot.tooltip.style(
+    barplot.tooltip.d3Element.style(
       "top",
-      absBottom - parseInt(barplot.tooltip.style("height")) + "px"
+      absBottom - parseInt(barplot.tooltip.d3Element.style("height")) + "px"
     );
   }
 }
 
 function resizeWidthIfOffScreen(barplot: Barplot) {
-  let horizontalPadding = 2 * parseInt(barplot.tooltip.style("padding"));
+  let horizontalPadding = 2 * parseInt(barplot.tooltip.d3Element.style("padding"));
   let offScreenDiff =
     $(window).width() -
     // @ts-ignore
-    parseInt(barplot.tooltip.style("left")) -
-    parseInt(barplot.tooltip.style("width")) -
+    parseInt(barplot.tooltip.d3Element.style("left")) -
+    parseInt(barplot.tooltip.d3Element.style("width")) -
     horizontalPadding;
 
   assert(!isNaN(offScreenDiff), "Variable is NaN");
   if (offScreenDiff < 0) {
-    barplot.tooltip.style(
+    barplot.tooltip.d3Element.style(
       "left",
-      parseInt(barplot.tooltip.style("left")) + offScreenDiff + "px"
+      parseInt(barplot.tooltip.d3Element.style("left")) + offScreenDiff + "px"
     );
   }
 }
