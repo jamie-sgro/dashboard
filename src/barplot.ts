@@ -21,7 +21,7 @@ export class Barplot {
   width: number;
   height: number;
   svg: Svg;
-  tooltip: Tooltip
+  tooltip: Tooltip;
   dataArray: DataPoint[];
 
   constructor(
@@ -512,10 +512,12 @@ function resizeTooltipIfOffscreen(barplot: Barplot) {
 }
 
 function resizeHeightIfOffscreen(barplot: Barplot) {
-  let offScreenDiff =
-    $(window).height() -
-    parseInt(barplot.tooltip.d3Element.style("top")) -
+  const pixelsToBottomOfWindowPosition =
+    $(window).height() + $(window).scrollTop();
+  const pixelsToBottomOfTooltip =
+    parseInt(barplot.tooltip.d3Element.style("top")) +
     parseInt(barplot.tooltip.d3Element.style("height"));
+  const offScreenDiff = pixelsToBottomOfWindowPosition - pixelsToBottomOfTooltip;
 
   assert(!isNaN(offScreenDiff), "Variable is NaN");
   if (offScreenDiff < 0) {
@@ -530,7 +532,8 @@ function resizeHeightIfSpilledOverSvg(barplot: Barplot) {
   // @ts-ignore
   let tooltipHtml = barplot.tooltip.d3Element._groups[0][0];
   let absToolBottom =
-    $(tooltipHtml).offset().top + parseInt(barplot.tooltip.d3Element.style("height"));
+    $(tooltipHtml).offset().top +
+    parseInt(barplot.tooltip.d3Element.style("height"));
   // @ts-ignore
   let svgHtml = d3.select(barplot.canvas)._groups[0][0]._groups[0][0];
   let absBottom = $(svgHtml).offset().top + barplot.svg.height;
@@ -543,7 +546,8 @@ function resizeHeightIfSpilledOverSvg(barplot: Barplot) {
 }
 
 function resizeWidthIfOffScreen(barplot: Barplot) {
-  let horizontalPadding = 2 * parseInt(barplot.tooltip.d3Element.style("padding"));
+  let horizontalPadding =
+    2 * parseInt(barplot.tooltip.d3Element.style("padding"));
   let offScreenDiff =
     $(window).width() -
     // @ts-ignore
