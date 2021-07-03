@@ -493,9 +493,7 @@ function resizeTooltipIfOffscreen(barplot: Barplot) {
 function resizeHeightIfOffscreen(barplot: Barplot) {
   const pixelsToBottomOfWindowPosition =
     $(window).height() + $(window).scrollTop();
-  const pixelsToBottomOfTooltip = barplot.tooltip.bottom;
-  const offScreenDiff =
-    pixelsToBottomOfWindowPosition - pixelsToBottomOfTooltip;
+  const offScreenDiff = pixelsToBottomOfWindowPosition - barplot.tooltip.bottom;
 
   assert(!isNaN(offScreenDiff), "Variable is NaN");
   if (offScreenDiff < 0) {
