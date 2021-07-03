@@ -97,7 +97,6 @@ function plotData() {
   barplot.max = getMaxScore(data);
 
   //only return the first datapoint to populate the graph
-  // @ts-ignore
   var id = 0;
   dataArray = reduceData(data[id]);
   barplot.id = id; //Currently use first row of .csv on graph init
