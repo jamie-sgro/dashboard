@@ -1,7 +1,7 @@
 // @ts-expect-error
 import d3 = require("d3");
 
-import { DataPoint } from "./data.js";
+import { DataPoint } from "./Data.js";
 import { Margin } from "./Margin.js";
 import { Svg } from "./Svg.js";
 import { assert, assertType } from "./utils.js";
@@ -41,7 +41,7 @@ export class Barplot {
       .style("opacity", 0);
   };
   
-  static selectAttrAsString(obj: any, attr: string): number {
+  static selectAttrAsNumber(obj: any, attr: string): number {
     return  Number(d3.select(obj).attr(attr))
   }
 
