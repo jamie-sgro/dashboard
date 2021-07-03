@@ -17,8 +17,8 @@ export class Svg {
       .select(this.parentId)
       .append("svg")
       .attr("id", this.htmlId)
-      .attr("width", this.clientRect.width)
-      .attr("height", this.clientRect.height);
+      .attr("width", this.width)
+      .attr("height", this.height);
   }
 
   get width() {
@@ -41,7 +41,7 @@ export class Svg {
 
   resize() {
     this.svg
-      .attr("width", this.clientRect.width)
-      .attr("height", this.clientRect.height - this.bottomPadding);
+      .attr("width", this.width)
+      .attr("height", this.height - this.bottomPadding);
   }
 }
