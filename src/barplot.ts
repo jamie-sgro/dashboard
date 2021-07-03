@@ -509,35 +509,25 @@ function resizeHeightIfOffscreen(barplot: Barplot) {
 function resizeHeightIfSpilledOverSvg(barplot: Barplot) {
   // @ts-ignore
   let tooltipHtml = barplot.tooltip.d3Element._groups[0][0];
-  let absToolBottom =
-    $(tooltipHtml).offset().top +
-    parseInt(barplot.tooltip.d3Element.style("height"));
+  let absToolBottom = $(tooltipHtml).offset().top + barplot.tooltip.height;
   // @ts-ignore
   let svgHtml = d3.select(barplot.canvas)._groups[0][0]._groups[0][0];
   let absBottom = $(svgHtml).offset().top + barplot.svg.height;
   if (absToolBottom > absBottom) {
-    barplot.tooltip.d3Element.style(
-      "top",
-      absBottom - parseInt(barplot.tooltip.d3Element.style("height")) + "px"
-    );
+    barplot.tooltip.y = absBottom - barplot.tooltip.height;
   }
 }
 
 function resizeWidthIfOffScreen(barplot: Barplot) {
-  let horizontalPadding =
-    2 * parseInt(barplot.tooltip.d3Element.style("padding"));
-  let offScreenDiff =
+  const horizontalPadding = 2 * barplot.tooltip.padding;
+  const offScreenDiff =
     $(window).width() -
-    // @ts-ignore
-    parseInt(barplot.tooltip.d3Element.style("left")) -
-    parseInt(barplot.tooltip.d3Element.style("width")) -
+    barplot.tooltip.left -
+    barplot.tooltip.width -
     horizontalPadding;
 
   assert(!isNaN(offScreenDiff), "Variable is NaN");
   if (offScreenDiff < 0) {
-    barplot.tooltip.d3Element.style(
-      "left",
-      parseInt(barplot.tooltip.d3Element.style("left")) + offScreenDiff + "px"
-    );
+    barplot.tooltip.x = barplot.tooltip.left + offScreenDiff;
   }
 }
