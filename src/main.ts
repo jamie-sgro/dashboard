@@ -41,7 +41,7 @@ data = [
   { name: "test_b", value: "2" },
 ];
 newBarplot.plot(data, [0, 2], [0, 2]);
-newBarplot.updatePlot(newBarplot.canvas, data);
+newBarplot.updatePlot(data);
 
 /******************
  *** ADD D3 TOOL ***
