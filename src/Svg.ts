@@ -21,12 +21,20 @@ export class Svg {
       .attr("height", this.height);
   }
 
-  get width() {
+  get width(): number {
     return this.clientRect.width;
   }
 
-  get height() {
+  get height(): number {
     return this.clientRect.height;
+  }
+
+  get top(): number {
+    return $(this.parentId).offset().top + this.bottomPadding
+  }
+
+  get bottom(): number {
+    return this.top + this.height;
   }
 
   private get clientRect(): ClientRect {

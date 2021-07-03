@@ -502,11 +502,8 @@ function resizeHeightIfOffscreen(barplot: Barplot) {
 }
 
 function resizeHeightIfSpilledOverSvg(barplot: Barplot) {
-  // @ts-ignore
-  let svgHtml = d3.select(barplot.canvas)._groups[0][0]._groups[0][0];
-  let absBottom = $(svgHtml).offset().top + barplot.svg.height;
-  if (barplot.tooltip.bottom > absBottom) {
-    barplot.tooltip.top = absBottom - barplot.tooltip.height;
+  if (barplot.tooltip.bottom > barplot.svg.bottom) {
+    barplot.tooltip.top = barplot.svg.bottom - barplot.tooltip.height;
   }
 }
 
