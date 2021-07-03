@@ -66,7 +66,7 @@ export class Barplot {
   getWidthScale() {
     return d3
       .scaleLinear()
-      .domain([0, this.max])
+      .domain([0, this.max]) // TODO: This .max should be inferred
       .range([0, this.width - this.margin.left - this.margin.right]);
   }
 

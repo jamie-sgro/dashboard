@@ -9,6 +9,7 @@ import {
   recenterDashboard,
   reduceData,
   updateAllGraphs,
+  updateGraphById,
 } from "./map.js";
 import { Margin } from "./Margin.js";
 import { panel3Resize } from "./panel3.js";
@@ -37,9 +38,10 @@ $(window).on("resize", function () {
 });
 let data: DataPoint[];
 data = [
-  { name: "test_a", value: "1" },
-  { name: "test_b", value: "2" },
+  { name: "test_a|test_a", value: "1" },
+  { name: "test_b|test_b", value: "2" },
 ];
+newBarplot.max = 2;
 newBarplot.plot(data, [0, 2], [0, 2]);
 newBarplot.updatePlot(data);
 
@@ -89,7 +91,6 @@ export const barplot = new Barplot(
 );
 plotData(barplot);
 
-//called once when the screen renders
 function plotData(barplot: Barplot) {
   let data = Data.getSyncData();
 
@@ -100,8 +101,6 @@ function plotData(barplot: Barplot) {
   let dataArray = reduceData(data[id]);
   barplot.id = id; //Currently use first row of .csv on graph init
 
-  var min = [];
-
   var max = [];
   var min = [];
   for (let col in dataArray) {
@@ -110,7 +109,7 @@ function plotData(barplot: Barplot) {
   }
 
   barplot.plot(dataArray, min, max);
-  updateAllGraphs(id);
+  updateGraphById(id, barplot);
 }
 
 /** Parse maximum value of all possible values
