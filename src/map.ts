@@ -104,8 +104,9 @@ export function populateMarkers() {
   var mark: Mark[] = [];
 
   for (let i in data) {
-    //create marker element
-    mark[i] = addMarker(data[i].name, data[i].lat, data[i].lng) as Mark;
+    /* Create marker element
+      Note: stubbed lat lng since this is currently deprecated */
+    mark[i] = addMarker(data[i].name, 0, 0) as Mark;
 
     //attach array number to JSON object
     mark[i].id = i;
