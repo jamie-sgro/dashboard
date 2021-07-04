@@ -3,7 +3,7 @@ import L = require("leaflet")
 
 import { Data, DataModel, DataPoint } from "./Data.js";
 import { barplot, colourBottom, colourTop, panelHeight, panelWidth } from "./main.js";
-import { getMarkScore, updatePanel3, Mark } from "./panel3.js";
+import { getMarkScore, Mark } from "./panel3.js";
 
 
 
@@ -81,16 +81,17 @@ export function updateGraphById(id, graph = barplot) {
   graph.updatePlot(dataArray);
 };
 
-/** provide JSON object, removes data not used in graph visualization (i.e name
-    and coordinates) and returns an array ready for d3 to use.
+/** provide JSON object, removes data not used in graph visualization (i.e name) 
+ * and returns an array ready for d3 to use.
 */
 export function reduceData(data: DataModel): DataPoint[] {
+  return data.data;
 
   let rtn: DataPoint[] = [];
   for (let key in data) {
     if (matches(key, ["name"]) == false) {
       if (key.substring(0, 5) != "score") {
-        rtn.push({ "name": key.split("|")[0], "value": data[key], "description": key.split("|")[1] });
+        rtn.push({ "name": key.split("|")[0], "value": data[key], "description": key.split("|")[1] }); // TODO: decouple at the data model level
       };
     };
   };
