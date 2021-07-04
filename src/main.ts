@@ -1,8 +1,8 @@
 // @ts-expect-error
 import d3 = require("d3");
 
-import { Barplot } from "./Barplot.js";
-import { Data, DataModel, DataPoint } from "./Data.js";
+import { Barplot } from "./barplot.js";
+import { Data, DataModel, DataPoint } from "./data.js";
 import {
   matches,
   populateMarkers,
