@@ -1,5 +1,6 @@
 // @ts-expect-error
 import d3 = require("d3");
+import { AxisImage } from "./AxisImage.js";
 
 import { DataPoint } from "./Data.js";
 import { Margin } from "./Margin.js";
@@ -144,31 +145,7 @@ export class Barplot {
 
   getYAxis(path, obj: Barplot): void {
     path.call(d3.axisLeft(obj.getHeightScale()));
-    obj.updateAxisImage(obj);
-  }
-
-  /** Adds a new image to the x-axis
-   * Note: On resize, currently computationally epxensive to
-   * delete and append images so rapidly
-   */
-  updateAxisImage(obj: Barplot): void {
-    obj.canvas.select(".y.axis").selectAll("text").remove();
-    obj.canvas.select(".y.axis").selectAll(".image").remove();
-    const barWidth = obj.getHeightScale().bandwidth();
-    let imageSize = Math.min(obj.margin.left, barWidth);
-
-    obj.canvas
-      .select(".y.axis")
-      .selectAll(".tick")
-      .append("svg:image")
-      .attr("class", "y axis image")
-      .attr("xlink:href", function (d) {
-        return "public/images/axis-icons/sdg-11.1.1.png";
-      })
-      .attr("width", imageSize)
-      .attr("height", imageSize)
-      .attr("x", -imageSize)
-      .attr("y", -(imageSize/2));
+    AxisImage.update(obj);
   }
 
   /** Fired when switch/slider checkbox is triggered (in home.html)
