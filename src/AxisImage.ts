@@ -1,4 +1,5 @@
 import { Barplot } from "./barplot";
+import { imageDirectory } from "./Data";
 
 export class AxisImage {
   /** Adds a new image to the x-axis
@@ -28,7 +29,7 @@ export class AxisImage {
       .append("svg:image")
       .attr("class", "y axis image")
       .attr("xlink:href", function (d) {
-        return "public/images/axis-icons/sdg-11.1.1.png";
+        return imageDirectory[d];
       })
       .attr("width", size)
       .attr("height", size)
