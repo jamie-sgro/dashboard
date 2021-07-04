@@ -61,7 +61,7 @@ export class Data {
           },
           {
             name: "House Need",
-            description: "NeedProportion of households in core housing need",
+            description: "Proportion of households in core housing need",
             value: "0.99885",
           },
           {
