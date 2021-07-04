@@ -1,7 +1,7 @@
 // @ts-expect-error
 import L = require("leaflet")
 
-import { Data, DataModel, DataPoint } from "./Data.js";
+import { Data, DataModel, DataPoint } from "./data.js";
 import { barplot, colourBottom, colourTop, panelHeight, panelWidth } from "./main.js";
 import { getMarkScore, Mark } from "./panel3.js";
 

@@ -2,7 +2,7 @@
 import d3 = require("d3");
 import { AxisImage } from "./AxisImage.js";
 
-import { DataPoint } from "./Data.js";
+import { DataPoint } from "./data.js";
 import { Margin } from "./Margin.js";
 import { Svg } from "./Svg.js";
 import { Tooltip } from "./Tooltip.js";
