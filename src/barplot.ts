@@ -268,6 +268,14 @@ export class Barplot {
 
     // add the y Axis
     this.canvas.append("g").attr("class", "y axis").call(this.getYAxis, this);
+    this.canvas.select(".y.axis").selectAll("text").remove();
+    this.canvas.select(".y.axis").selectAll(".tick")
+                    .append("svg:image")
+                    .attr("xlink:href", function (d) { return "https://www.dcode.fr/tools/image-randomness/images/random-dcode.png" ; })
+                    .attr("width", 50)
+                    .attr("height", 50)
+                    .attr("x", -50)
+                    .attr("y", -25);
   }
 
   /** Excplicitely cast `this` into a d3.BaseType
