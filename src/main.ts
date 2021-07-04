@@ -113,27 +113,6 @@ function plotData(barplot: Barplot) {
   updateGraphById(id, barplot);
 }
 
-/** Parse maximum value of all possible values
- * that are not an average 'score' column i.e. prepended with "score"
- */
-function getMaxScore(data: DataModel[]) {
-  let maxScore = 0;
-
-  for (let rec in data) {
-    for (let key in data[rec].data) {
-      console.log(data[rec].data)
-      if (matches(key, ["name"]) == false) {
-        if (key.substring(0, 5) != "score") {
-          if (Number(data[rec][key]) > Number(maxScore)) {
-            maxScore = data[rec][key];
-          }
-        }
-      }
-    }
-  }
-  return maxScore;
-}
-
 function getMax(arr, key) {
   var rtn;
   for (var i in arr) {
