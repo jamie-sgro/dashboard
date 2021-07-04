@@ -7,9 +7,6 @@ export class DataModel {
   name: string;
   lat?: string;
   lng?: string;
-  ["score$arithmetic"]?: string;
-  ["score$median"]?: string;
-  ["score$geometric"]?: string;
   ["PM|Average fine particule matter concentrations (PM 2.5)"]?: string;
   ["Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)"]?: string;
   ["Assult|Sexual assault (rate per 100,000 population)"]?: string;
@@ -28,11 +25,6 @@ export class Data {
     return [
       {
           "name": "St. John's",
-          "lat": "47.5615",
-          "lng": "-52.7126",
-          "score$arithmetic": "0.53",
-          "score$median": "0.55",
-          "score$geometric": "0.5",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.196",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.549820379",
           "Assult|Sexual assault (rate per 100,000 population)": "0.3375",
@@ -47,11 +39,6 @@ export class Data {
       },
       {
           "name": "Halifax",
-          "lat": "44.6488",
-          "lng": "-63.5752",
-          "score$arithmetic": "0.39",
-          "score$median": "0.29",
-          "score$geometric": "0",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.2",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.536434783",
           "Assult|Sexual assault (rate per 100,000 population)": "0",
@@ -66,11 +53,6 @@ export class Data {
       },
       {
           "name": "Quebec City",
-          "lat": "46.8139",
-          "lng": "-71.208",
-          "score$arithmetic": "0.5",
-          "score$median": "0.65",
-          "score$geometric": "0.46",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.072",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.655235282",
           "Assult|Sexual assault (rate per 100,000 population)": "0.4288",
@@ -85,11 +67,6 @@ export class Data {
       },
       {
           "name": "Sherbrooke",
-          "lat": "45.4042",
-          "lng": "-71.8929",
-          "score$arithmetic": "0.47",
-          "score$median": "0.39",
-          "score$geometric": "0.41",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.2",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.387392585",
           "Assult|Sexual assault (rate per 100,000 population)": "0.2546",
@@ -104,11 +81,6 @@ export class Data {
       },
       {
           "name": "Montreal",
-          "lat": "45.5017",
-          "lng": "-73.5673",
-          "score$arithmetic": "0.44",
-          "score$median": "0.36",
-          "score$geometric": "0.37",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.116",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.645690609",
           "Assult|Sexual assault (rate per 100,000 population)": "0.3645",
@@ -123,11 +95,6 @@ export class Data {
       },
       {
           "name": "Toronto",
-          "lat": "43.6532",
-          "lng": "-79.3832",
-          "score$arithmetic": "0.41",
-          "score$median": "0.4",
-          "score$geometric": "0.29",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.12",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.979448204",
           "Assult|Sexual assault (rate per 100,000 population)": "0.4039",
@@ -142,11 +109,6 @@ export class Data {
       },
       {
           "name": "Hamilton",
-          "lat": "43.2557",
-          "lng": "-79.8711",
-          "score$arithmetic": "0.52",
-          "score$median": "0.69",
-          "score$geometric": "0.45",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.088",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.688080807",
           "Assult|Sexual assault (rate per 100,000 population)": "0.153",
@@ -161,11 +123,6 @@ export class Data {
       },
       {
           "name": "St. Catharines, Niagara",
-          "lat": "43.1594",
-          "lng": "-79.2469",
-          "score$arithmetic": "0.48",
-          "score$median": "0.24",
-          "score$geometric": "0.42",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.124",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.227583306",
           "Assult|Sexual assault (rate per 100,000 population)": "0.2423",
@@ -180,11 +137,6 @@ export class Data {
       },
       {
           "name": "Kitchener, Cambridge, Waterloo",
-          "lat": "43.4758",
-          "lng": "-80.5438",
-          "score$arithmetic": "0.53",
-          "score$median": "0.8",
-          "score$geometric": "0.44",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.108",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.938148814",
           "Assult|Sexual assault (rate per 100,000 population)": "0.1522",
@@ -199,11 +151,6 @@ export class Data {
       },
       {
           "name": "London",
-          "lat": "42.9849",
-          "lng": "-81.2453",
-          "score$arithmetic": "0.52",
-          "score$median": "0.73",
-          "score$geometric": "0.46",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.128",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.726802178",
           "Assult|Sexual assault (rate per 100,000 population)": "0.1831",
@@ -218,11 +165,6 @@ export class Data {
       },
       {
           "name": "Windsor",
-          "lat": "42.3149",
-          "lng": "-83.0364",
-          "score$arithmetic": "0.49",
-          "score$median": "0.34",
-          "score$geometric": "0.45",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.068",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.257336486",
           "Assult|Sexual assault (rate per 100,000 population)": "0.3367",
@@ -237,11 +179,6 @@ export class Data {
       },
       {
           "name": "Winnipeg",
-          "lat": "49.8951",
-          "lng": "-97.1384",
-          "score$arithmetic": "0.47",
-          "score$median": "0.61",
-          "score$geometric": "0.31",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.168",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.731442514",
           "Assult|Sexual assault (rate per 100,000 population)": "0.0082",
@@ -256,11 +193,6 @@ export class Data {
       },
       {
           "name": "Regina",
-          "lat": "50.4452",
-          "lng": "-104.6189",
-          "score$arithmetic": "0.49",
-          "score$median": "0.45",
-          "score$geometric": "0.4",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.076",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.69016505",
           "Assult|Sexual assault (rate per 100,000 population)": "0.1563",
@@ -275,11 +207,6 @@ export class Data {
       },
       {
           "name": "Saskatoon",
-          "lat": "52.1579",
-          "lng": "-106.6702",
-          "score$arithmetic": "0.52",
-          "score$median": "0.75",
-          "score$geometric": "0",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.128",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.789715092",
           "Assult|Sexual assault (rate per 100,000 population)": "0",
@@ -294,11 +221,6 @@ export class Data {
       },
       {
           "name": "Calgary",
-          "lat": "51.0447",
-          "lng": "-114.0719",
-          "score$arithmetic": "0.45",
-          "score$median": "0.2",
-          "score$geometric": "0.35",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.192",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "1.029322572",
           "Assult|Sexual assault (rate per 100,000 population)": "0.2922",
@@ -313,11 +235,6 @@ export class Data {
       },
       {
           "name": "Edmonton",
-          "lat": "53.5461",
-          "lng": "-113.4938",
-          "score$arithmetic": "0.53",
-          "score$median": "0.65",
-          "score$geometric": "0.45",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.144",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.878202354",
           "Assult|Sexual assault (rate per 100,000 population)": "0.1443",
@@ -332,11 +249,6 @@ export class Data {
       },
       {
           "name": "Vancouver",
-          "lat": "49.2827",
-          "lng": "-123.1207",
-          "score$arithmetic": "0.49",
-          "score$median": "0.48",
-          "score$geometric": "0.42",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.22",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "1.01814951",
           "Assult|Sexual assault (rate per 100,000 population)": "0.4772",
@@ -351,11 +263,6 @@ export class Data {
       },
       {
           "name": "Victoria",
-          "lat": "48.4284",
-          "lng": "-123.3656",
-          "score$arithmetic": "0.54",
-          "score$median": "0.8",
-          "score$geometric": "0.46",
           "PM|Average fine particule matter concentrations (PM 2.5)": "1.228",
           "Consumption|Ratio of land consumption rate to population growth rate (1971 to 2011)": "0.945180333",
           "Assult|Sexual assault (rate per 100,000 population)": "0.2873",
