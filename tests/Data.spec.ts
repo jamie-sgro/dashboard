@@ -1,4 +1,4 @@
-import { Data, DataModel } from "../src/Data";
+import { Data, DataModel } from "../src/data";
 
 var chaiSrc = require("chai");
 var src = require("../src/data");
