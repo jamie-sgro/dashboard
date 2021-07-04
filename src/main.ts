@@ -38,8 +38,8 @@ $(window).on("resize", function () {
 });
 let data: DataPoint[];
 data = [
-  { name: "test_a|test_a", value: "1" },
-  { name: "test_b|test_b", value: "2" },
+  { name: "test_a|test_a", value: "1", description: "description for test_a" },
+  { name: "test_b|test_b", value: "2", description: "description for test_b" },
 ];
 newBarplot.max = 2;
 newBarplot.plot(data, [0, 2], [0, 2]);

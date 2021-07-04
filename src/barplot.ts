@@ -220,8 +220,6 @@ export class Barplot {
       .append("rect")
       .attr("class", "bar")
       .attr("name", function (d) {
-        d.name = d.name.split("|")[0];
-        d.name = d.name;
         return d.name;
       })
       .attr("min", function (d, i) {
@@ -308,7 +306,7 @@ export class Barplot {
 
   onMouseover(data: DataPoint, index: number) {
     assertType(this, Barplot);
-    const initialText = data.name.split("|")[1];
+    const initialText = data.description;
     this.tooltip.text = initialText;
     this.tooltip.fadeIn();
 
@@ -363,7 +361,7 @@ export class Barplot {
   /* @updatePlot(svg, data)
   - run on marker click, resizes rectangle/circle attributes according to data
 */
-  updatePlot(dataArray) {
+  updatePlot(dataArray: DataPoint[]) {
     this.dataArray = dataArray;
     var widthScale = this.getWidthScale();
     var colour = this.getColour();

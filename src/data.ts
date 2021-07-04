@@ -1,6 +1,7 @@
 export class DataPoint {
     name: string;
     value: string;
+    description?: string;
 }
 
 export const imageDirectory = {
