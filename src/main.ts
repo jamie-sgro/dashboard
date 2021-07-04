@@ -2,7 +2,7 @@
 import d3 = require("d3");
 
 import { Barplot } from "./Barplot.js";
-import { Data, DataPoint } from "./Data.js";
+import { Data, DataModel, DataPoint } from "./Data.js";
 import {
   matches,
   populateMarkers,
@@ -94,7 +94,8 @@ plotData(barplot);
 function plotData(barplot: Barplot) {
   let data = Data.getSyncData();
 
-  barplot.max = getMaxScore(data);
+  barplot.max = Data.getAbsoluteMax(data);
+  console.log(barplot.max)
 
   //only return the first datapoint to populate the graph
   var id = 0;
@@ -115,12 +116,13 @@ function plotData(barplot: Barplot) {
 /** Parse maximum value of all possible values
  * that are not an average 'score' column i.e. prepended with "score"
  */
-function getMaxScore(data) {
+function getMaxScore(data: DataModel[]) {
   let maxScore = 0;
 
   for (let rec in data) {
-    for (let key in data[rec]) {
-      if (matches(key, ["name", "lat", "lng"]) == false) {
+    for (let key in data[rec].data) {
+      console.log(data[rec].data)
+      if (matches(key, ["name"]) == false) {
         if (key.substring(0, 5) != "score") {
           if (Number(data[rec][key]) > Number(maxScore)) {
             maxScore = data[rec][key];
