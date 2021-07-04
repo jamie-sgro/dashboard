@@ -1,5 +1,5 @@
 import { Barplot } from "./barplot";
-import { imageDirectory } from "./Data";
+import { imageDirectory } from "./data";
 
 export class AxisImage {
   /** Adds a new image to the x-axis
