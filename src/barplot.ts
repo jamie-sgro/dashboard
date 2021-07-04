@@ -142,8 +142,33 @@ export class Barplot {
       .call(d3.axisBottom(obj.getWidthScale()));
   }
 
-  getYAxis(path, obj) {
+  getYAxis(path, obj: Barplot): void {
     path.call(d3.axisLeft(obj.getHeightScale()));
+    obj.updateAxisImage(obj);
+  }
+
+  /** Adds a new image to the x-axis
+   * Note: On resize, currently computationally epxensive to
+   * delete and append images so rapidly
+   */
+  updateAxisImage(obj: Barplot): void {
+    obj.canvas.select(".y.axis").selectAll("text").remove();
+    obj.canvas.select(".y.axis").selectAll(".image").remove();
+    const barWidth = obj.getHeightScale().bandwidth();
+    let imageSize = Math.min(obj.margin.left, barWidth);
+
+    obj.canvas
+      .select(".y.axis")
+      .selectAll(".tick")
+      .append("svg:image")
+      .attr("class", "y axis image")
+      .attr("xlink:href", function (d) {
+        return "public/images/axis-icons/sdg-11.1.1.png";
+      })
+      .attr("width", imageSize)
+      .attr("height", imageSize)
+      .attr("x", -imageSize)
+      .attr("y", -(imageSize/2));
   }
 
   /** Fired when switch/slider checkbox is triggered (in home.html)
@@ -268,18 +293,6 @@ export class Barplot {
 
     // add the y Axis
     this.canvas.append("g").attr("class", "y axis").call(this.getYAxis, this);
-    this.canvas.select(".y.axis").selectAll("text").remove();
-    this.canvas
-      .select(".y.axis")
-      .selectAll(".tick")
-      .append("svg:image")
-      .attr("xlink:href", function (d) {
-        return "public/images/axis-icons/sdg-11.1.1.png";
-      })
-      .attr("width", 50)
-      .attr("height", 50)
-      .attr("x", -50)
-      .attr("y", -25);
   }
 
   /** Excplicitely cast `this` into a d3.BaseType
