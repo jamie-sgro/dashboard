@@ -17,16 +17,24 @@ export class Svg {
       .select(this.parentId)
       .append("svg")
       .attr("id", this.htmlId)
-      .attr("width", this.clientRect.width)
-      .attr("height", this.clientRect.height);
+      .attr("width", this.width)
+      .attr("height", this.height);
   }
 
-  get width() {
+  get width(): number {
     return this.clientRect.width;
   }
 
-  get height() {
+  get height(): number {
     return this.clientRect.height;
+  }
+
+  get top(): number {
+    return $(this.parentId).offset().top + this.bottomPadding
+  }
+
+  get bottom(): number {
+    return this.top + this.height;
   }
 
   private get clientRect(): ClientRect {
@@ -41,7 +49,7 @@ export class Svg {
 
   resize() {
     this.svg
-      .attr("width", this.clientRect.width)
-      .attr("height", this.clientRect.height - this.bottomPadding);
+      .attr("width", this.width)
+      .attr("height", this.height - this.bottomPadding);
   }
 }
