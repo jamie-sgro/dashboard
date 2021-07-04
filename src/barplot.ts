@@ -1,30 +1,36 @@
 // @ts-expect-error
 import d3 = require("d3");
+import { AxisImage } from "./AxisImage.js";
 
-import { DataPoint } from "./data.js";
+import { DataPoint } from "./Data.js";
 import { Margin } from "./Margin.js";
 import { Svg } from "./Svg.js";
+import { Tooltip } from "./Tooltip.js";
 import { assert, assertType } from "./utils.js";
 
-const panelWidth = 0.33;
 const scl = 15;
 const colourBottom = "rgb(56, 94, 231)";
 const colourTop = "rgb(34, 236, 87)";
-   
+
 export class Barplot {
-  parentId: string
-  canvas: any
-  id: number
-  max: number
+  parentId: string;
+  canvas: any;
+  id: number;
+  max: number;
   margin: Margin;
   width: number;
   height: number;
   svg: Svg;
-  tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>;
-  dataArray: DataPoint[]
+  tooltip: Tooltip;
+  dataArray: DataPoint[];
 
-  constructor(parentId, width, height, { margin = new Margin(10, 10, 10, 10) } = {}) {
-    this.parentId = parentId
+  constructor(
+    parentId,
+    width,
+    height,
+    { margin = new Margin(10, 10, 10, 10) } = {}
+  ) {
+    this.parentId = parentId;
     this.margin = margin;
     this.width = width;
     this.height = height - this.margin.top - this.margin.bottom;
@@ -33,45 +39,50 @@ export class Barplot {
 
     this.canvas = this.svg.svg
       .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     // Define the div for the tooltip
-    this.tooltip = d3.select("body").append("div")
-      .attr("class", "tooltip")
-      .style("opacity", 0);
-  };
-  
-  static selectAttrAsString(obj: any, attr: string): number {
-    return  Number(d3.select(obj).attr(attr))
+    this.tooltip = new Tooltip();
+  }
+
+  static selectAttrAsNumber(obj: any, attr: string): number {
+    return Number(d3.select(obj).attr(attr));
   }
 
   getColour() {
-    let max = Number(d3.max(this.dataArray, (d: DataPoint) => {
-      return d.value;
-    }))
-    return d3.scaleLinear()
-      .domain([0, max])
-      // @ts-ignore
-      .range([colourBottom,colourTop]);
-  };
+    let max = Number(
+      d3.max(this.dataArray, (d: DataPoint) => {
+        return d.value;
+      })
+    );
+    return (
+      d3
+        .scaleLinear()
+        .domain([0, max])
+        // @ts-ignore
+        .range([colourBottom, colourTop])
+    );
+  }
 
   getWidthScale() {
-    return d3.scaleLinear()
-      .domain([0, this.max])
+    return d3
+      .scaleLinear()
+      .domain([0, this.max]) // TODO: This .max should be inferred
       .range([0, this.width - this.margin.left - this.margin.right]);
-  };
+  }
 
   getHeightScale() {
-    return d3.scaleBand()
+    return d3
+      .scaleBand()
       .range([this.height, 0])
       .padding(0.1)
-      .domain(this.dataArray.map(function(d) {
-        return d.name;
-      }));
-  };
-  
-  
-  
+      .domain(
+        this.dataArray.map(function (d) {
+          return d.name;
+        })
+      );
+  }
+
   /* @getAttr(d3object, oject)
     - constructor for reused attributes for barplot. All updates to common
       atrributes are stored in this single function for rapid updating
@@ -86,47 +97,45 @@ export class Barplot {
     for (let key in attributes) {
       switch (attributes[key]) {
         case "width":
-          path.attr("width", function(d) {
+          path.attr("width", function (d) {
             return widthScale(d.value);
           });
           break;
         case "height":
-          path.attr("height", heightScale.bandwidth())
+          path.attr("height", heightScale.bandwidth());
           break;
         case "fill":
-          path.attr("fill", function(d) {
-            return colour(d.value)
-          })
+          path.attr("fill", function (d) {
+            return colour(d.value);
+          });
           break;
         case "fillTransparent":
-          path.attr("fill", function(d) {
+          path.attr("fill", function (d) {
             const rtn = colour(d.value);
             return setAlpha(rtn, 0);
-          })
+          });
           break;
         case "y":
-          path.attr("y", function(d) {
+          path.attr("y", function (d) {
             return heightScale(d.name);
-          })
+          });
           break;
         case "cx":
-          path.attr("cx", function(d) {
+          path.attr("cx", function (d) {
             return widthScale(d.value);
           });
           break;
         case "cy":
-          path.attr("cy", function(d) {
+          path.attr("cy", function (d) {
             return heightScale(d.name);
-          })
+          });
           break;
         case "r":
-          path.attr("r", heightScale.bandwidth()/2)
+          path.attr("r", heightScale.bandwidth() / 2);
           break;
-      };
-    };
-  };
-
-
+      }
+    }
+  }
 
   getXAxis(path, obj) {
     path
@@ -134,11 +143,10 @@ export class Barplot {
       .call(d3.axisBottom(obj.getWidthScale()));
   }
 
-  getYAxis(path, obj) {
-    path
-      .call(d3.axisLeft(obj.getHeightScale()));
+  getYAxis(path, obj: Barplot): void {
+    path.call(d3.axisLeft(obj.getHeightScale()));
+    AxisImage.update(obj);
   }
-
 
   /** Fired when switch/slider checkbox is triggered (in home.html)
    * swithces leadLag opacity on or off
@@ -152,196 +160,163 @@ export class Barplot {
       var colour = this.getColour();
 
       // turn leadLag marker visible
-      this.canvas.selectAll("rect.leadLag")
-        .each(function(d,i) {
-          d3.select(this).call(attrTween, 800, "fill", colour(d.value));
-          d3.select(this).call(attrTween, 800, "stroke", "white");
-        })
+      this.canvas.selectAll("rect.leadLag").each(function (d, i) {
+        d3.select(this).call(attrTween, 800, "fill", colour(d.value));
+        d3.select(this).call(attrTween, 800, "stroke", "white");
+      });
 
-        this.canvas.selectAll("rect.bar")
+      this.canvas
+        .selectAll("rect.bar")
         .transition()
         .duration(800)
-        .attr("transform", function() {
+        .attr("transform", function () {
           let rtn = this.selectAttrAsString(this, "min");
           rtn = widthScale(rtn);
           return "translate(" + rtn + ", 0)";
         })
-        .attr("width", function() {
+        .attr("width", function () {
           let rtn = this.selectAttrAsString(this, "max");
           rtn -= Number(d3.select(this).attr("min"));
           return widthScale(rtn);
         })
-        .attr("fill", function() {
+        .attr("fill", function () {
           let rtn = this.selectAttrAsString(this, "min");
           rtn += Number(d3.select(this).attr("max"));
           rtn /= 2;
-          rtn = colour(rtn)
-          rtn = setAlpha(rtn, 0.5)
+          rtn = colour(rtn);
+          rtn = setAlpha(rtn, 0.5);
           return rtn;
         })
-        .attr("stroke", "black")
+        .attr("stroke", "black");
     } else {
-
       // turn leadLag marker invisible
-      this.canvas.selectAll("rect.leadLag")
-        .each(function() {
-          var myCol = d3.select(this).attr("fill");
-          d3.select(this).call(attrTween, 800, "fill", setAlpha(myCol, 0));
-          d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)");
-        })
+      this.canvas.selectAll("rect.leadLag").each(function () {
+        var myCol = d3.select(this).attr("fill");
+        d3.select(this).call(attrTween, 800, "fill", setAlpha(myCol, 0));
+        d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)");
+      });
 
-
-      this.canvas.selectAll("rect.bar")
+      this.canvas
+        .selectAll("rect.bar")
         .transition()
         .duration(800)
         .attr("transform", "translate(0, 0)")
-        .attr("stroke", "rgba(0,0,0,0)")
-
+        .attr("stroke", "rgba(0,0,0,0)");
 
       // updateGraph(null, this)
-    };
-  };
-
+    }
+  }
 
   /** Ran once on screen load, instantiates every d3 elem in second panel
    */
   plot(dataArray: DataPoint[], min: number[], max: number[]): void {
-    this.dataArray = dataArray
+    this.dataArray = dataArray;
     var widthScale = this.getWidthScale();
 
-    this.canvas.selectAll("rect.bar")
+    this.canvas
+      .selectAll("rect.bar")
       .data(this.dataArray)
       .enter()
-        .append("rect")
-          .attr("class", "bar")
-          .attr("name", function(d) {
-            d.name = d.name.split("|")[0]
-            d.name = d.name
-            return d.name
-          })
-          .attr("min", function(d, i) {
-            return min[i];
-          })
-          .attr("max", function(d, i) {
-            return max[i];
-          })
-          .attr("width", function(d) {
-            return widthScale(0);
-          })
-          .call(this.getAttr, this, ["height", "fill", "y"])
-          .attr("stroke", "rgba(0,0,0,0)")
-          .style("cursor", "pointer")
-          // .on("click", this.onClick)
-          .on("mouseover", (d, i) => {
-            this.onMouseover(d, i)
-          })
-          .on("mouseout", () => {
-            this.onMouseOut()
-          })
-          .on('mousemove', () => {
-            this.onMouseMove()
-          })
-          
-    let width = this.width
+      .append("rect")
+      .attr("class", "bar")
+      .attr("name", function (d) {
+        return d.name;
+      })
+      .attr("min", function (d, i) {
+        return min[i];
+      })
+      .attr("max", function (d, i) {
+        return max[i];
+      })
+      .attr("width", function (d) {
+        return widthScale(0);
+      })
+      .call(this.getAttr, this, ["height", "fill", "y"])
+      .attr("stroke", "rgba(0,0,0,0)")
+      .style("cursor", "pointer")
+      // .on("click", this.onClick)
+      .on("mouseover", (d, i) => {
+        this.onMouseover(d, i);
+      })
+      .on("mouseout", () => {
+        this.onMouseOut();
+      })
+      .on("mousemove", () => {
+        this.onMouseMove();
+      });
+
+    let width = this.width;
     // add markers for leadLag plot
-    this.canvas.selectAll("rect.leadLag")
+    this.canvas
+      .selectAll("rect.leadLag")
       .data(dataArray)
       .enter()
-        .append("rect")
-          .attr("class", "leadLag")
-          .attr("widthFactor", 0.05)
-          //invisible until first marker is selected
-          .call(this.getAttr, this, ["x", "y", "height", "fillTransparent"])
-          .attr("width", function() {
-            var widthFactor = Number(d3.select(this).attr("widthFactor"));
-            return width * widthFactor;
-          })
-          .attr("stroke", "rgba(0,0,0,0)")
-          .attr("pointer-events","none")
-
+      .append("rect")
+      .attr("class", "leadLag")
+      .attr("widthFactor", 0.05)
+      //invisible until first marker is selected
+      .call(this.getAttr, this, ["x", "y", "height", "fillTransparent"])
+      .attr("width", function () {
+        var widthFactor = Number(d3.select(this).attr("widthFactor"));
+        return width * widthFactor;
+      })
+      .attr("stroke", "rgba(0,0,0,0)")
+      .attr("pointer-events", "none");
 
     // add the x Axis
-    this.canvas.append("g")
-      .attr("class", "x axis")
-      .call(this.getXAxis, this);
+    this.canvas.append("g").attr("class", "x axis").call(this.getXAxis, this);
 
     // add the y Axis
-    this.canvas.append("g")
-      .attr("class", "y axis")
-      .call(this.getYAxis, this);
-  };
-
-
-  /** Excplicitely cast `this` into a d3.BaseType 
-   * because d3 often co-opts the `this` keyword */
-  get baseType() {
-    return this as unknown as d3.BaseType
+    this.canvas.append("g").attr("class", "y axis").call(this.getYAxis, this);
   }
 
-
+  /** Excplicitely cast `this` into a d3.BaseType
+   * because d3 often co-opts the `this` keyword */
+  get baseType() {
+    return this as unknown as d3.BaseType;
+  }
 
   onClick(data) {
-    console.log(d3.select(this.baseType).attr("min"))
-    console.log(d3.select(this.baseType).attr("max"))
     // change marker size based on data value
-    var radiusScale = d3.scaleLinear()
-      .domain([0, Number(d3.max(this.dataArray, function(d: DataPoint){
-        return d.value;
-      }))])
-      .range([scl/2, scl*2]);
+    var radiusScale = d3
+      .scaleLinear()
+      .domain([
+        0,
+        Number(
+          d3.max(this.dataArray, function (d: DataPoint) {
+            return d.value;
+          })
+        ),
+      ])
+      .range([scl / 2, scl * 2]);
 
     // @ts-ignore
     if (!document.getElementById("leadLag").checked) {
       var myCol = d3.select(this.baseType).attr("fill");
 
-      d3.select(this.baseType)
-        .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .4))
-    };
-  };
-
+      d3.select(this.baseType).call(
+        resetTween,
+        100,
+        "fill",
+        setAlpha(myCol, 1),
+        setAlpha(myCol, 0.4)
+      );
+    }
+  }
 
   onMouseover(data: DataPoint, index: number) {
-    assertType(this, Barplot)
+    assertType(this, Barplot);
+    const initialText = data.description;
+    this.tooltip.text = initialText;
+    this.tooltip.fadeIn();
 
-    //remove old text
-    this.tooltip
-      .html(data.name)
+    const newText = `${initialText} ${data.value}`;
+    this.tooltip.setTextAfterDelay(newText);
 
-    //remove old img
-    this.tooltip
-      .selectAll("img")
-      .remove()
+    this.tooltip.repositionTooltipIfOffscreen(this.svg.bottom);
 
-    //try to append now image
-    this.tooltip
-      .html(data.name.split("|")[1])
-      // .append("img")
-      //   .attr("class", "picture")
-      //   .attr("src", function(d) {
-      //     return "public/images/sdg-icons/" + data.name + ".png";
-      //   })
-      //   .on("error", function(d) {
-      //     barplot.tooltip
-      //       .html(data.name)
-      //   })
-
-    this.tooltip
-      .transition()
-      .duration(200)
-      .style("opacity", 1)
-
-    this.tooltip
-      .transition()
-      .delay(2000)
-      .on("end", function() {
-        d3.select(this)
-          .html(d3.select(this).html() +
-          " " + data.value)
-        })
-    resizeTooltipIfOffscreen(this);
-
-    this.flashRect(index)
-  };
+    this.flashRect(index);
+  }
 
   /**
    * Highlight barplot rectangle if NOT in leadLag mode
@@ -350,219 +325,160 @@ export class Barplot {
   flashRect(index: number): void {
     // @ts-ignore
     if (document.getElementById("leadLag").checked) return;
-    
-    let currectRect = this.getRectByIndex(index)
-    let myCol = currectRect.attr("fill")
 
-    currectRect
-      .call(resetTween, 100, "fill", setAlpha(myCol, 1), setAlpha(myCol, .7))
+    let currectRect = this.getRectByIndex(index);
+    let myCol = currectRect.attr("fill");
+
+    currectRect.call(
+      resetTween,
+      100,
+      "fill",
+      setAlpha(myCol, 1),
+      setAlpha(myCol, 0.7)
+    );
   }
 
   getRectByIndex(index: number): d3.Selection<any, any, any, any> {
-    return d3.select(this.canvas.selectAll("rect.bar")._groups[0][index])
+    return d3.select(this.canvas.selectAll("rect.bar")._groups[0][index]);
   }
 
   onMouseMove() {
     assertType(this, Barplot);
-    this.tooltip
-      // @ts-ignore
-      .style("left", (d3.event.pageX + 10) + "px")
-      // @ts-ignore
-      .style("top", (d3.event.pageY) + "px")
+    // @ts-ignore
+    const x = d3.event.pageX + 10;
+    // @ts-ignore
+    const y = d3.event.pageY;
+    this.tooltip.setPosition({ x: x, y: y });
 
-    resizeTooltipIfOffscreen(this);
+    this.tooltip.repositionTooltipIfOffscreen(this.svg.bottom);
   }
-
-
 
   onMouseOut() {
     assertType(this, Barplot);
-    this.tooltip.transition()
-        .duration(200)
-        .style("opacity", 0)
+    this.tooltip.fadeOut();
   }
 
-
-
-/* @updatePlot(svg, data)
+  /* @updatePlot(svg, data)
   - run on marker click, resizes rectangle/circle attributes according to data
 */
-  updatePlot(canvas, dataArray) {
-    this.dataArray = dataArray
+  updatePlot(dataArray: DataPoint[]) {
+    this.dataArray = dataArray;
     var widthScale = this.getWidthScale();
     var colour = this.getColour();
 
     // @ts-ignore
     if (!document.getElementById("leadLag").checked) {
-      canvas.selectAll("rect.bar")
+      this.canvas
+        .selectAll("rect.bar")
         .data(this.dataArray)
-          .each(function(d, i) {
-            d3.select(this).call(attrTween, 800, "width", widthScale(d.value));
-            d3.select(this).call(attrTween, 800, "fill", colour(d.value));
-          })
-    };
+        .each(function (d, i) {
+          d3.select(this).call(attrTween, 800, "width", widthScale(d.value));
+          d3.select(this).call(attrTween, 800, "fill", colour(d.value));
+        });
+    }
 
-    canvas.selectAll("rect.leadLag")
+    this.canvas
+      .selectAll("rect.leadLag")
       .data(this.dataArray)
-        .each(function(d, i) {
-          var widthFactor = Number(d3.select(this).attr("widthFactor"));
-          var xPos = widthScale(d.value) * (1 - widthFactor);
-          d3.select(this).call(attrTween, 800, "x", xPos);
-          // @ts-ignore
-          if (document.getElementById("leadLag").checked) {
-            d3.select(this).call(attrTween, 800, "fill", colour(d.value));
-          };
-        })
-  };
-
-
+      .each(function (d, i) {
+        var widthFactor = Number(d3.select(this).attr("widthFactor"));
+        var xPos = widthScale(d.value) * (1 - widthFactor);
+        d3.select(this).call(attrTween, 800, "x", xPos);
+        // @ts-ignore
+        if (document.getElementById("leadLag").checked) {
+          d3.select(this).call(attrTween, 800, "fill", colour(d.value));
+        }
+      });
+  }
 
   resize() {
-    this.width = Number(d3.select(this.parentId).style("width").replace("px", ""))
+    this.width = Number(
+      d3.select(this.parentId).style("width").replace("px", "")
+    );
     // this.width = ($(window).width()*panelWidth);
-    this.height = ($(window).height()-50) - this.margin.top - this.margin.bottom;
+    this.height =
+      $(window).height() - 50 - this.margin.top - this.margin.bottom;
 
     var widthScale = this.getWidthScale();
 
     // update .rect width based on if leadLag mode is toggled
     // @ts-ignore
     if (document.getElementById("leadLag").checked) {
-      this.canvas.selectAll("rect.bar")
-        .attr("width", function() {
-          var rtn = Number(d3.select(this).attr("max"));
-          rtn -= Number(d3.select(this).attr("min"));
-          return widthScale(rtn);
-        })
+      this.canvas.selectAll("rect.bar").attr("width", function () {
+        var rtn = Number(d3.select(this).attr("max"));
+        rtn -= Number(d3.select(this).attr("min"));
+        return widthScale(rtn);
+      });
     } else {
-      this.canvas.selectAll("rect.bar")
-        .call(this.getAttr, this, ["width"])
-    };
+      this.canvas.selectAll("rect.bar").call(this.getAttr, this, ["width"]);
+    }
 
     // update .rect height (same regardless of leadLag toggle)
-    this.canvas.selectAll("rect.bar")
-      .call(this.getAttr, this, ["height", "y"])
+    this.canvas.selectAll("rect.bar").call(this.getAttr, this, ["height", "y"]);
 
-    this.canvas.selectAll("rect.leadLag")
+    this.canvas
+      .selectAll("rect.leadLag")
       .call(this.getAttr, this, ["y", "height"])
-      .attr("width", function() {
+      .attr("width", function () {
         var widthFactor = Number(d3.select(this).attr("widthFactor"));
         return this.width * widthFactor;
       })
-      .attr("x", function(d) {
+      .attr("x", function (d) {
         var widthFactor = Number(d3.select(this).attr("widthFactor"));
         return widthScale(d.value) * (1 - widthFactor);
       });
 
-    this.canvas.selectAll("g.x.axis")
-      .call(this.getXAxis, this)
+    this.canvas.selectAll("g.x.axis").call(this.getXAxis, this);
 
-    this.canvas.selectAll("g.y.axis")
-      .call(this.getYAxis, this)
+    this.canvas.selectAll("g.y.axis").call(this.getYAxis, this);
 
     this.svg.resize();
 
-    resizeTooltipIfOffscreen(this)
-  };
-};
-  
-  
-  
+    this.tooltip.repositionTooltipIfOffscreen(this.svg.bottom);
+  }
+}
+
 export function setAlpha(c, v) {
   c = d3.rgb(c);
   c.opacity = v;
 
   return c;
 }
-  
-  
-  
+
 export function attrTween(path, duration, attr, endRes) {
-  var dummy = {}  as unknown as d3.BaseType;
+  var dummy = {} as unknown as d3.BaseType;
   // var colour = this.getColour();
   d3.select(dummy)
-  .transition()
-  .duration(duration)
-  .tween(attr, function() {
-    if (path.empty()) return
-    var lerp = d3.interpolate(path.attr(attr), endRes);
-    return function(t) {
-      path.attr(attr, lerp(t));
-    };
-  })
+    .transition()
+    .duration(duration)
+    .tween(attr, function () {
+      if (path.empty()) return;
+      var lerp = d3.interpolate(path.attr(attr), endRes);
+      return function (t) {
+        path.attr(attr, lerp(t));
+      };
+    });
 }
-  
-  
-  
+
 function resetTween(path, duration, attr, endRes, peakRes) {
-  var dummy = {}  as unknown as d3.BaseType;
+  var dummy = {} as unknown as d3.BaseType;
   // var colour = this.getColour();
 
   d3.select(dummy)
     .transition()
     .duration(duration)
-    .tween(attr, function() {
+    .tween(attr, function () {
       var lerp = d3.interpolate(path.attr(attr), peakRes);
-      return function(t) {
+      return function (t) {
         path.attr(attr, lerp(t));
       };
     })
     .transition()
-    .duration(duration*3)
-    .tween(attr, function() {
+    .duration(duration * 3)
+    .tween(attr, function () {
       var lerp = d3.interpolate(peakRes, endRes);
-      return function(t) {
+      return function (t) {
         path.attr(attr, lerp(t));
       };
-    })
+    });
 }
-  
-  
-  
-function resizeTooltipIfOffscreen(barplot: Barplot) {
-  assertType(barplot, Barplot);
-  resizeHeightIfOffscreen(barplot);
-  resizeHeightIfSpilledOverSvg(barplot);
-  resizeWidthIfOffScreen(barplot);
-};
-
-function resizeHeightIfOffscreen(barplot: Barplot) {
-  let offScreenDiff =
-    $(window).height() -
-    parseInt(barplot.tooltip.style("top")) -
-    parseInt(barplot.tooltip.style("height"))
-    
-  assert(!isNaN(offScreenDiff), "Variable is NaN");
-  if (offScreenDiff < 0) {
-    barplot.tooltip
-    .style("top", parseInt(barplot.tooltip.style("top")) + offScreenDiff + "px");
-  }
-}
-
-function resizeHeightIfSpilledOverSvg(barplot: Barplot) {
-  // @ts-ignore
-  let tooltipHtml = barplot.tooltip._groups[0][0]
-  let absToolBottom = $(tooltipHtml).offset().top + parseInt(barplot.tooltip.style("height"));
-  // @ts-ignore
-  let svgHtml = d3.select(barplot.canvas)._groups[0][0]._groups[0][0];
-  let absBottom = $(svgHtml).offset().top + barplot.svg.height;
-  if (absToolBottom > absBottom) {
-    barplot.tooltip
-      .style("top", absBottom - parseInt(barplot.tooltip.style("height")) + "px");
-  };
-}
-
-function resizeWidthIfOffScreen(barplot: Barplot) {
-  let horizontalPadding = 2 * parseInt(barplot.tooltip.style("padding"))
-  let offScreenDiff = $(window).width() -
-    // @ts-ignore
-    parseInt(barplot.tooltip.style("left")) -
-    parseInt(barplot.tooltip.style("width")) -
-    horizontalPadding;
-
-  assert(!isNaN(offScreenDiff), "Variable is NaN");
-  if (offScreenDiff < 0) {
-    barplot.tooltip
-    .style("left", parseInt(barplot.tooltip.style("left")) + offScreenDiff + "px");
-  }
-}
-   

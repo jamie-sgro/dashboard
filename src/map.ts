@@ -1,9 +1,9 @@
 // @ts-expect-error
 import L = require("leaflet")
 
-import { Data, DataModel, DataPoint } from "./data.js";
+import { Data, DataModel, DataPoint } from "./Data.js";
 import { barplot, colourBottom, colourTop, panelHeight, panelWidth } from "./main.js";
-import { getMarkScore, updatePanel3, Mark } from "./panel3.js";
+import { getMarkScore, Mark } from "./panel3.js";
 
 
 
@@ -67,13 +67,36 @@ function addMarker(name, lat, lng) {
 
 export function updateAllGraphs(id: number) {
     //this is where hooks into .d3 should be made
-    updateGraph(id);
+    updateGraphById(id);
 
     //this is where hooks into panel 3 should be made
     // updatePanel3(id);
 }
 
+export function updateGraphById(id, graph = barplot) {
+  let data = Data.getSyncData();
 
+  const dataArray = reduceData(data[id]);
+
+  graph.updatePlot(dataArray);
+};
+
+/** provide JSON object, removes data not used in graph visualization (i.e name) 
+ * and returns an array ready for d3 to use.
+*/
+export function reduceData(data: DataModel): DataPoint[] {
+  return data.data;
+
+  let rtn: DataPoint[] = [];
+  for (let key in data) {
+    if (matches(key, ["name"]) == false) {
+      if (key.substring(0, 5) != "score") {
+        rtn.push({ "name": key.split("|")[0], "value": data[key], "description": key.split("|")[1] }); // TODO: decouple at the data model level
+      };
+    };
+  };
+  return rtn;
+};
 
 export function populateMarkers() {
   let data = Data.getSyncData();
@@ -82,8 +105,9 @@ export function populateMarkers() {
   var mark: Mark[] = [];
 
   for (let i in data) {
-    //create marker element
-    mark[i] = addMarker(data[i].name, data[i].lat, data[i].lng) as Mark;
+    /* Create marker element
+      Note: stubbed lat lng since this is currently deprecated */
+    mark[i] = addMarker(data[i].name, 0, 0) as Mark;
 
     //attach array number to JSON object
     mark[i].id = i;
@@ -114,41 +138,6 @@ export function recenterDashboard() {
 
 
 
-/**********************
-*** UPDATE BARCHART ***
-**********************/
-
-//updateGraph() is called when a leaflet marker is clicked
-
-export function updateGraph(id, graph = barplot) {
-  if (!id) {
-    id = graph.id;
-  };
-
-  let data = Data.getSyncData();
-
-  const dataArray = reduceData(data[id]);
-
-  graph.updatePlot(graph.canvas, dataArray);
-};
-
-
-
-/** provide JSON object, removes data not used in graph visualization (i.e name
-    and coordinates) and returns an array ready for d3 to use.
-*/
-export function reduceData(data: DataModel): DataPoint[] {
-
-  let rtn: DataPoint[] = [];
-  for (let key in data) {
-    if (matches(key, ["name","lat","lng"]) == false) {
-      if (key.substring(0, 5) != "score") {
-        rtn.push({"name": key, "value": data[key]});
-      };
-    };
-  };
-  return rtn;
-};
 
 
 
