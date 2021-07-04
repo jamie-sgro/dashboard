@@ -88,9 +88,9 @@ export function reduceData(data: DataModel): DataPoint[] {
 
   let rtn: DataPoint[] = [];
   for (let key in data) {
-    if (matches(key, ["name","lat","lng"]) == false) {
+    if (matches(key, ["name"]) == false) {
       if (key.substring(0, 5) != "score") {
-        rtn.push({"name": key, "value": data[key]});
+        rtn.push({ "name": key.split("|")[0], "value": data[key], "description": key.split("|")[1] });
       };
     };
   };
