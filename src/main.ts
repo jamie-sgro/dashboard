@@ -107,8 +107,7 @@ function plotData(barplot: Barplot) {
 }
 
 function leadLagOnClick() {
-  document.getElementById("leadLag").checked = true;
-  barplot.toggleLeadLag();
+  barplot.isLeadLag = barplot.isLeadLag ? false : true;
 }
 
 let btn = new ToggleButton("btn-lead-lag", leadLagOnClick, {

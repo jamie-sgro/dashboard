@@ -21,21 +21,26 @@ export class Barplot {
   margin: Margin;
   width: number;
   height: number;
-  readonly widthFactor: number
+  readonly widthFactor: number;
   svg: Svg;
   tooltip: Tooltip;
   dataArray: DataPoint[];
+  private _isLeadLag: boolean;
 
   constructor(
     parentId,
     width,
     height,
-    { margin = new Margin(10, 10, 10, 10),
-      widthFactor = 0.05 } = {}
+    {
+      margin = new Margin(10, 10, 10, 10),
+      widthFactor = 0.05,
+      isLeadLag = false,
+    } = {}
   ) {
     this.parentId = parentId;
     this.margin = margin;
     this.widthFactor = widthFactor;
+    this._isLeadLag = isLeadLag;
     this.width = width;
     this.height = height - this.margin.top - this.margin.bottom;
 
@@ -47,6 +52,14 @@ export class Barplot {
 
     // Define the div for the tooltip
     this.tooltip = new Tooltip();
+  }
+
+  public get isLeadLag(): boolean {
+    return this._isLeadLag;
+  }
+  public set isLeadLag(v: boolean) {
+    this._isLeadLag = v;
+    this.toggleLeadLag();
   }
 
   getColour() {
@@ -148,15 +161,14 @@ export class Barplot {
     AxisImage.update(obj);
   }
 
-  /** Fired when switch/slider checkbox is triggered (in home.html)
-   * swithces leadLag opacity on or off
+  /** Fired when this.isLeadLag is changed
+   * switches leadLag opacity on or off
    * changes rect size to match min and max of the variable it's measuring
    */
   toggleLeadLag() {
     var widthScale = this.getWidthScale();
 
-    // @ts-ignore
-    if (document.getElementById("leadLag").checked) {
+    if (this.isLeadLag) {
       var colour = this.getColour();
 
       // turn leadLag marker visible
@@ -200,10 +212,12 @@ export class Barplot {
         .selectAll("rect.bar")
         .transition()
         .duration(800)
+        .each(function () {
+          var myCol = d3.select(this).attr("fill");
+          d3.select(this).call(attrTween, 800, "fill", setAlpha(myCol, 1));
+        })
         .attr("transform", "translate(0, 0)")
         .attr("stroke", "rgba(0,0,0,0)");
-
-      // updateGraph(null, this)
     }
   }
 
@@ -291,8 +305,7 @@ export class Barplot {
       ])
       .range([scl / 2, scl * 2]);
 
-    // @ts-ignore
-    if (!document.getElementById("leadLag").checked) {
+    if (this.isLeadLag === false) {
       var myCol = d3.select(this.baseType).attr("fill");
 
       d3.select(this.baseType).call(
@@ -324,8 +337,7 @@ export class Barplot {
    * @param index The index value of the barplot rectangle being modified
    */
   flashRect(index: number): void {
-    // @ts-ignore
-    if (document.getElementById("leadLag").checked) return;
+    if (this.isLeadLag) return;
 
     let currectRect = this.getRectByIndex(index);
     let myCol = currectRect.attr("fill");
@@ -367,8 +379,7 @@ export class Barplot {
     var widthScale = this.getWidthScale();
     var colour = this.getColour();
 
-    // @ts-ignore
-    if (!document.getElementById("leadLag").checked) {
+    if (this.isLeadLag === false) {
       this.canvas
         .selectAll("rect.bar")
         .data(this.dataArray)
@@ -385,8 +396,7 @@ export class Barplot {
         var widthFactor = Number(d3.select(this).attr("widthFactor"));
         var xPos = widthScale(d.value) * (1 - widthFactor);
         d3.select(this).call(attrTween, 800, "x", xPos);
-        // @ts-ignore
-        if (document.getElementById("leadLag").checked) {
+        if (this.isLeadLag) {
           d3.select(this).call(attrTween, 800, "fill", colour(d.value));
         }
       });
@@ -403,9 +413,9 @@ export class Barplot {
     var widthScale = this.getWidthScale();
 
     // update .rect width based on if leadLag mode is toggled
-    // @ts-ignore
-    if (document.getElementById("leadLag").checked) {
-      this.canvas.selectAll("rect.bar")
+    if (this.isLeadLag) {
+      this.canvas
+        .selectAll("rect.bar")
         .attr("width", function () {
           var rtn = Number(d3.select(this).attr("max"));
           rtn -= Number(d3.select(this).attr("min"));
