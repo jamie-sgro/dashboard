@@ -1,6 +1,6 @@
 {
   "name": "dashboard",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "private": true,
   "description": "This project involves building a one-page online dashboard for visualizing an SDG Cities Index that is both open-sourced and legally shareable.",
   "main": "index.js",
