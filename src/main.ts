@@ -39,10 +39,34 @@ $(window).on("resize", function () {
 });
 let data: DataPoint[];
 data = [
-  { name: "test_a|test_a", value: "1", description: "description for test_a" },
-  { name: "test_b|test_b", value: "2", description: "description for test_b" },
+  { name: "Victoria", value: "5", description: "Victoria" },
+  { name: "Vancouver", value: "10", description: "Vancouver" },
+  { name: "Edmonton", value: "20", description: "Edmonton" },
+  { name: "Calgary", value: "28", description: "Calgary" },
+  { name: "Saskatoon", value: "34", description: "Saskatoon" },
+  { name: "Regina", value: "38", description: "Regina" },
+  { name: "Winnipeg", value: "40", description: "Winnipeg" },
+  { name: "Windsor", value: "43", description: "Windsor" },
+  { name: "London", value: "54", description: "London" },
+  {
+    name: "Kitchener, Cambridge, Waterloo",
+    value: "55",
+    description: "Kitchener, Cambridge, Waterloo",
+  },
+  {
+    name: "St. Catharines, Niagara",
+    value: "60",
+    description: "St. Catharines, Niagara",
+  },
+  { name: "Hamilton", value: "70", description: "Hamilton" },
+  { name: "Toronto", value: "81", description: "Toronto" },
+  { name: "Montreal", value: "84", description: "Montreal" },
+  { name: "Sherbrooke", value: "84", description: "Sherbrooke" },
+  { name: "Quebec City", value: "94", description: "Quebec City" },
+  { name: "Halifax", value: "98", description: "Halifax" },
+  { name: "St. John's", value: "100", description: "St. John's" },
 ];
-newBarplot.plot(data, [0, 2], [0, 2]);
+newBarplot.plot(data, [0, 0], [100, 100]);
 newBarplot.updatePlot(data);
 
 /******************
@@ -106,6 +130,10 @@ function plotData(barplot: Barplot) {
   updateGraphById(id, barplot);
 }
 
+let header = document.createElement("h1");
+header.textContent = Data.getSyncData()[0].name;
+document.getElementById("column-1").appendChild(header);
+
 function leadLagOnClick() {
   barplot.isLeadLag = barplot.isLeadLag ? false : true;
 }
@@ -118,6 +146,9 @@ let btn = new ToggleButton("btn-lead-lag", leadLagOnClick, {
 let datalist = populateDataList();
 
 function onClick(id: number) {
+  let name = Data.getSyncData()[id].name;
+  header.textContent = name;
+  newBarplot.applyStrokeByName(name);
   recenterDashboard();
   updateAllGraphs(id);
 }
