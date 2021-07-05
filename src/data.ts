@@ -37,6 +37,26 @@ export class Data {
     return [].concat.apply([], nestedArray);
   }
 
+  /** Given a DataModel[], get the max value of every common data.name variable */
+  static getMaxPerVariable(data: DataModel[]): number[] {
+    return this.runOperationOnGroupOfVariables(data, Math.max);
+  }
+
+  /** Given a DataModel[], get the min value of every common data.name variable */
+  static getMinPerVariable(data: DataModel[]): number[] {
+    return this.runOperationOnGroupOfVariables(data, Math.min);
+  }
+
+  private static runOperationOnGroupOfVariables(data: DataModel[], operation) {
+    const numberMatrix = data.map((d) => d.data.map((x) => Number(x.value)));
+    let maxOfVariable: number[] = [];
+    for (let i in numberMatrix[0]) {
+      let groupValuesByVariable = numberMatrix.map((d) => d[i]);
+      maxOfVariable.push(operation(...groupValuesByVariable));
+    }
+    return maxOfVariable;
+  }
+
   static getSyncData(): DataModel[] {
     return [
       {

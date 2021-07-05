@@ -13,6 +13,7 @@ import {
 } from "./map.js";
 import { Margin } from "./Margin.js";
 import { panel3Resize } from "./panel3.js";
+import { ToggleButton } from "./widgets/ToggleButton.js";
 import { DataList, DataListModel } from "./widgets/DataList.js";
 
 export const markRad = 15;
@@ -41,7 +42,6 @@ data = [
   { name: "test_a|test_a", value: "1", description: "description for test_a" },
   { name: "test_b|test_b", value: "2", description: "description for test_b" },
 ];
-newBarplot.max = 2;
 newBarplot.plot(data, [0, 2], [0, 2]);
 newBarplot.updatePlot(data);
 
@@ -94,44 +94,26 @@ plotData(barplot);
 function plotData(barplot: Barplot) {
   let data = Data.getSyncData();
 
-  barplot.max = Data.getAbsoluteMax(data);
-  console.log(barplot.max)
-
   //only return the first datapoint to populate the graph
   var id = 0;
   let dataArray = reduceData(data[id]);
   barplot.id = id; //Currently use first row of .csv on graph init
 
-  var max = [];
-  var min = [];
-  for (let col in dataArray) {
-    max.push(getMax(data, dataArray[col].name));
-    min.push(getMin(data, dataArray[col].name));
-  }
+  let min = Data.getMinPerVariable(data);
+  let max = Data.getMaxPerVariable(data);
 
   barplot.plot(dataArray, min, max);
   updateGraphById(id, barplot);
 }
 
-function getMax(arr, key) {
-  var rtn;
-  for (var i in arr) {
-    if (rtn == undefined || rtn < Number(arr[i][key])) {
-      rtn = Number(arr[i][key]);
-    }
-  }
-  return rtn;
+function leadLagOnClick() {
+  barplot.isLeadLag = barplot.isLeadLag ? false : true;
 }
 
-function getMin(arr, key) {
-  var rtn;
-  for (var i in arr) {
-    if (rtn == undefined || rtn > Number(arr[i][key])) {
-      rtn = Number(arr[i][key]);
-    }
-  }
-  return rtn;
-}
+let btn = new ToggleButton("btn-lead-lag", leadLagOnClick, {
+  text: "Toggle Barplot",
+  parentId: "column-1",
+});
 
 let datalist = populateDataList();
 
