@@ -41,7 +41,6 @@ data = [
   { name: "test_a|test_a", value: "1", description: "description for test_a" },
   { name: "test_b|test_b", value: "2", description: "description for test_b" },
 ];
-newBarplot.max = 2;
 newBarplot.plot(data, [0, 2], [0, 2]);
 newBarplot.updatePlot(data);
 
@@ -93,8 +92,6 @@ plotData(barplot);
 
 function plotData(barplot: Barplot) {
   let data = Data.getSyncData();
-
-  barplot.max = Data.getAbsoluteMax(data);
 
   //only return the first datapoint to populate the graph
   var id = 0;
