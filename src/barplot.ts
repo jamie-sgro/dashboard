@@ -21,6 +21,7 @@ export class Barplot {
   margin: Margin;
   width: number;
   height: number;
+  readonly widthFactor: number
   svg: Svg;
   tooltip: Tooltip;
   dataArray: DataPoint[];
@@ -29,10 +30,12 @@ export class Barplot {
     parentId,
     width,
     height,
-    { margin = new Margin(10, 10, 10, 10) } = {}
+    { margin = new Margin(10, 10, 10, 10),
+      widthFactor = 0.05 } = {}
   ) {
     this.parentId = parentId;
     this.margin = margin;
+    this.widthFactor = widthFactor;
     this.width = width;
     this.height = height - this.margin.top - this.margin.bottom;
 
@@ -44,10 +47,6 @@ export class Barplot {
 
     // Define the div for the tooltip
     this.tooltip = new Tooltip();
-  }
-
-  static selectAttrAsNumber(obj: any, attr: string): number {
-    return Number(d3.select(obj).attr(attr));
   }
 
   getColour() {
@@ -171,17 +170,17 @@ export class Barplot {
         .transition()
         .duration(800)
         .attr("transform", function () {
-          let rtn = this.selectAttrAsString(this, "min");
+          let rtn = Number(d3.select(this).attr("min"));
           rtn = widthScale(rtn);
           return "translate(" + rtn + ", 0)";
         })
         .attr("width", function () {
-          let rtn = this.selectAttrAsString(this, "max");
+          let rtn = Number(d3.select(this).attr("max"));
           rtn -= Number(d3.select(this).attr("min"));
           return widthScale(rtn);
         })
         .attr("fill", function () {
-          let rtn = this.selectAttrAsString(this, "min");
+          let rtn = Number(d3.select(this).attr("min"));
           rtn += Number(d3.select(this).attr("max"));
           rtn /= 2;
           rtn = colour(rtn);
@@ -256,12 +255,11 @@ export class Barplot {
       .enter()
       .append("rect")
       .attr("class", "leadLag")
-      .attr("widthFactor", 0.05)
+      .attr("widthFactor", this.widthFactor)
       //invisible until first marker is selected
       .call(this.getAttr, this, ["x", "y", "height", "fillTransparent"])
-      .attr("width", function () {
-        var widthFactor = Number(d3.select(this).attr("widthFactor"));
-        return width * widthFactor;
+      .attr("width", () => {
+        return width * this.widthFactor;
       })
       .attr("stroke", "rgba(0,0,0,0)")
       .attr("pointer-events", "none");
@@ -407,11 +405,17 @@ export class Barplot {
     // update .rect width based on if leadLag mode is toggled
     // @ts-ignore
     if (document.getElementById("leadLag").checked) {
-      this.canvas.selectAll("rect.bar").attr("width", function () {
-        var rtn = Number(d3.select(this).attr("max"));
-        rtn -= Number(d3.select(this).attr("min"));
-        return widthScale(rtn);
-      });
+      this.canvas.selectAll("rect.bar")
+        .attr("width", function () {
+          var rtn = Number(d3.select(this).attr("max"));
+          rtn -= Number(d3.select(this).attr("min"));
+          return widthScale(rtn);
+        })
+        .attr("transform", function () {
+          let rtn = Number(d3.select(this).attr("min"));
+          rtn = widthScale(rtn);
+          return "translate(" + rtn + ", 0)";
+        });
     } else {
       this.canvas.selectAll("rect.bar").call(this.getAttr, this, ["width"]);
     }
@@ -422,13 +426,11 @@ export class Barplot {
     this.canvas
       .selectAll("rect.leadLag")
       .call(this.getAttr, this, ["y", "height"])
-      .attr("width", function () {
-        var widthFactor = Number(d3.select(this).attr("widthFactor"));
-        return this.width * widthFactor;
+      .attr("width", () => {
+        return this.width * this.widthFactor;
       })
-      .attr("x", function (d) {
-        var widthFactor = Number(d3.select(this).attr("widthFactor"));
-        return widthScale(d.value) * (1 - widthFactor);
+      .attr("x", (d) => {
+        return widthScale(d.value) * (1 - this.widthFactor);
       });
 
     this.canvas.selectAll("g.x.axis").call(this.getXAxis, this);
