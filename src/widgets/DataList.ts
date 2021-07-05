@@ -36,6 +36,7 @@ export class DataList {
   private createInput() {
     let elem = document.createElement("input");
     elem.id = this.htmlId;
+    elem.style.margin = "10px 00px";
     elem.setAttribute("list", this.listAttr);
     elem.oninput = (e) => {
       // @ts-expect-error
@@ -54,7 +55,7 @@ export class DataList {
     this.setUserInput("");
   }
 
-  private appendToParent(elem: HTMLInputElement) {
+  private appendToParent(elem: HTMLInputElement): void {
     typeof this.parentId === "undefined"
       ? document.body.appendChild(elem)
       : document.getElementById(this.parentId).appendChild(elem);

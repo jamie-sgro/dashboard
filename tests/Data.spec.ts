@@ -41,14 +41,50 @@ describe("data", () => {
           },
         ],
       },
+      {
+        name: "c",
+        data: [
+          {
+            name: "name_a",
+            value: "2",
+            description: "desc_a",
+          },
+          {
+            name: "name_b",
+            value: "3",
+            description: "desc_b",
+          },
+        ],
+      },
     ];
   });
-
-  it("should return a number for max", () => {
-    expect(Data.getAbsoluteMax(data)).to.be.a("number");
+  describe("absolute max", () => {
+    it("should return a number for max", () => {
+      expect(Data.getAbsoluteMax(data)).to.be.a("number");
+    });
+      
+    it("should return highest value", () => {
+      expect(Data.getAbsoluteMax(data)).to.equal(4);
+    });
   });
+
+  describe("grouped max", () => {
+    it("should have length equal to number of variables", () => {
+      expect(Data.getMaxPerVariable(data).length).to.equal(2);
+    });
+
+    it("should return highest values per variable", () => {
+      expect(Data.getMaxPerVariable(data)).to.eql([3, 4]);
+    });
+  });
+
+  describe("grouped min", () => {
+    it("should have length equal to number of variables", () => {
+      expect(Data.getMaxPerVariable(data).length).to.equal(2);
+    });
     
-  it("should return highest value", () => {
-    expect(Data.getAbsoluteMax(data)).to.equal(4);
+    it("should return lowest values per variable", () => {
+      expect(Data.getMinPerVariable(data)).to.eql([1, 2]);
+    });
   });
 });
