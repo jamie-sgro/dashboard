@@ -122,6 +122,10 @@ function plotData(barplot: Barplot) {
   updateGraphById(id, barplot);
 }
 
+let header = document.createElement("h1");
+header.textContent = Data.getSyncData()[0].name;
+document.getElementById("column-1").appendChild(header);
+
 function leadLagOnClick() {
   barplot.isLeadLag = barplot.isLeadLag ? false : true;
 }
@@ -134,6 +138,7 @@ let btn = new ToggleButton("btn-lead-lag", leadLagOnClick, {
 let datalist = populateDataList();
 
 function onClick(id: number) {
+  header.textContent = Data.getSyncData()[id].name;
   recenterDashboard();
   updateAllGraphs(id);
 }
