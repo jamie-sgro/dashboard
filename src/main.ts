@@ -13,6 +13,7 @@ import {
 } from "./map.js";
 import { Margin } from "./Margin.js";
 import { panel3Resize } from "./panel3.js";
+import { ToggleButton } from "./widgets/ToggleButton.js";
 import { DataList, DataListModel } from "./widgets/DataList.js";
 
 export const markRad = 15;
@@ -104,6 +105,16 @@ function plotData(barplot: Barplot) {
   barplot.plot(dataArray, min, max);
   updateGraphById(id, barplot);
 }
+
+function leadLagOnClick() {
+  document.getElementById("leadLag").checked = true;
+  barplot.toggleLeadLag();
+}
+
+let btn = new ToggleButton("btn-lead-lag", leadLagOnClick, {
+  text: "Toggle Barplot",
+  parentId: "column-1",
+});
 
 let datalist = populateDataList();
 
