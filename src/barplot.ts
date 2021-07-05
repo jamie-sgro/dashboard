@@ -16,7 +16,8 @@ export class Barplot {
   parentId: string;
   canvas: any;
   id: number;
-  max: number;
+  min: number[];
+  max: number[];
   margin: Margin;
   width: number;
   height: number;
@@ -67,7 +68,7 @@ export class Barplot {
   getWidthScale() {
     return d3
       .scaleLinear()
-      .domain([0, this.max]) // TODO: This .max should be inferred
+      .domain([0, Math.max(...this.max)])
       .range([0, this.width - this.margin.left - this.margin.right]);
   }
 
@@ -210,6 +211,8 @@ export class Barplot {
   /** Ran once on screen load, instantiates every d3 elem in second panel
    */
   plot(dataArray: DataPoint[], min: number[], max: number[]): void {
+    this.min = min;
+    this.max = max;
     this.dataArray = dataArray;
     var widthScale = this.getWidthScale();
 
