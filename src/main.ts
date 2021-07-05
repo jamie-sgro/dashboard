@@ -48,8 +48,16 @@ data = [
   { name: "Winnipeg", value: "40", description: "Winnipeg" },
   { name: "Windsor", value: "43", description: "Windsor" },
   { name: "London", value: "54", description: "London" },
-  { name: "Kitchener, Cambridge, Waterloo", value: "55", description: "Kitchener, Cambridge, Waterloo" },
-  { name: "St. Catharines, Niagara", value: "60", description: "St. Catharines, Niagara" },
+  {
+    name: "Kitchener, Cambridge, Waterloo",
+    value: "55",
+    description: "Kitchener, Cambridge, Waterloo",
+  },
+  {
+    name: "St. Catharines, Niagara",
+    value: "60",
+    description: "St. Catharines, Niagara",
+  },
   { name: "Hamilton", value: "70", description: "Hamilton" },
   { name: "Toronto", value: "81", description: "Toronto" },
   { name: "Montreal", value: "84", description: "Montreal" },
@@ -138,7 +146,9 @@ let btn = new ToggleButton("btn-lead-lag", leadLagOnClick, {
 let datalist = populateDataList();
 
 function onClick(id: number) {
-  header.textContent = Data.getSyncData()[id].name;
+  let name = Data.getSyncData()[id].name;
+  header.textContent = name;
+  newBarplot.applyStrokeByName(name);
   recenterDashboard();
   updateAllGraphs(id);
 }

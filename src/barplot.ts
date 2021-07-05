@@ -452,6 +452,20 @@ export class Barplot {
 
     this.tooltip.repositionTooltipIfOffscreen(this.svg.bottom);
   }
+
+  applyStrokeByName(nameToSelect: string) {
+    this.canvas
+      .selectAll("rect.bar")
+      .each(function(d, i) {
+        // Turn off stroke from previous selection
+        d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)");
+        let currentName = d3.select(this).attr("name")
+        if (currentName === nameToSelect) {
+          // Turn on stroke to new selection
+          d3.select(this).call(attrTween, 800, "stroke", "black");
+        }
+      })
+  }
 }
 
 export function setAlpha(c, v) {
