@@ -16,22 +16,31 @@ export class Barplot {
   parentId: string;
   canvas: any;
   id: number;
-  max: number;
+  min: number[];
+  max: number[];
   margin: Margin;
   width: number;
   height: number;
+  readonly widthFactor: number;
   svg: Svg;
   tooltip: Tooltip;
   dataArray: DataPoint[];
+  private _isLeadLag: boolean;
 
   constructor(
     parentId,
     width,
     height,
-    { margin = new Margin(10, 10, 10, 10) } = {}
+    {
+      margin = new Margin(10, 10, 10, 10),
+      widthFactor = 0.05,
+      isLeadLag = false,
+    } = {}
   ) {
     this.parentId = parentId;
     this.margin = margin;
+    this.widthFactor = widthFactor;
+    this._isLeadLag = isLeadLag;
     this.width = width;
     this.height = height - this.margin.top - this.margin.bottom;
 
@@ -45,8 +54,12 @@ export class Barplot {
     this.tooltip = new Tooltip();
   }
 
-  static selectAttrAsNumber(obj: any, attr: string): number {
-    return Number(d3.select(obj).attr(attr));
+  public get isLeadLag(): boolean {
+    return this._isLeadLag;
+  }
+  public set isLeadLag(v: boolean) {
+    this._isLeadLag = v;
+    this.toggleLeadLag();
   }
 
   getColour() {
@@ -67,7 +80,7 @@ export class Barplot {
   getWidthScale() {
     return d3
       .scaleLinear()
-      .domain([0, this.max]) // TODO: This .max should be inferred
+      .domain([0, Math.max(...this.max)])
       .range([0, this.width - this.margin.left - this.margin.right]);
   }
 
@@ -148,15 +161,14 @@ export class Barplot {
     AxisImage.update(obj);
   }
 
-  /** Fired when switch/slider checkbox is triggered (in home.html)
-   * swithces leadLag opacity on or off
+  /** Fired when this.isLeadLag is changed
+   * switches leadLag opacity on or off
    * changes rect size to match min and max of the variable it's measuring
    */
   toggleLeadLag() {
     var widthScale = this.getWidthScale();
 
-    // @ts-ignore
-    if (document.getElementById("leadLag").checked) {
+    if (this.isLeadLag) {
       var colour = this.getColour();
 
       // turn leadLag marker visible
@@ -170,17 +182,17 @@ export class Barplot {
         .transition()
         .duration(800)
         .attr("transform", function () {
-          let rtn = this.selectAttrAsString(this, "min");
+          let rtn = Number(d3.select(this).attr("min"));
           rtn = widthScale(rtn);
           return "translate(" + rtn + ", 0)";
         })
         .attr("width", function () {
-          let rtn = this.selectAttrAsString(this, "max");
+          let rtn = Number(d3.select(this).attr("max"));
           rtn -= Number(d3.select(this).attr("min"));
           return widthScale(rtn);
         })
         .attr("fill", function () {
-          let rtn = this.selectAttrAsString(this, "min");
+          let rtn = Number(d3.select(this).attr("min"));
           rtn += Number(d3.select(this).attr("max"));
           rtn /= 2;
           rtn = colour(rtn);
@@ -200,16 +212,21 @@ export class Barplot {
         .selectAll("rect.bar")
         .transition()
         .duration(800)
+        .each(function (d) {
+          var myCol = d3.select(this).attr("fill");
+          d3.select(this).call(attrTween, 800, "fill", setAlpha(myCol, 1));
+          d3.select(this).call(attrTween, 800, "width", widthScale(d.value));
+        })
         .attr("transform", "translate(0, 0)")
         .attr("stroke", "rgba(0,0,0,0)");
-
-      // updateGraph(null, this)
     }
   }
 
   /** Ran once on screen load, instantiates every d3 elem in second panel
    */
   plot(dataArray: DataPoint[], min: number[], max: number[]): void {
+    this.min = min;
+    this.max = max;
     this.dataArray = dataArray;
     var widthScale = this.getWidthScale();
 
@@ -253,12 +270,11 @@ export class Barplot {
       .enter()
       .append("rect")
       .attr("class", "leadLag")
-      .attr("widthFactor", 0.05)
+      .attr("widthFactor", this.widthFactor)
       //invisible until first marker is selected
       .call(this.getAttr, this, ["x", "y", "height", "fillTransparent"])
-      .attr("width", function () {
-        var widthFactor = Number(d3.select(this).attr("widthFactor"));
-        return width * widthFactor;
+      .attr("width", () => {
+        return width * this.widthFactor;
       })
       .attr("stroke", "rgba(0,0,0,0)")
       .attr("pointer-events", "none");
@@ -290,8 +306,7 @@ export class Barplot {
       ])
       .range([scl / 2, scl * 2]);
 
-    // @ts-ignore
-    if (!document.getElementById("leadLag").checked) {
+    if (this.isLeadLag === false) {
       var myCol = d3.select(this.baseType).attr("fill");
 
       d3.select(this.baseType).call(
@@ -323,8 +338,7 @@ export class Barplot {
    * @param index The index value of the barplot rectangle being modified
    */
   flashRect(index: number): void {
-    // @ts-ignore
-    if (document.getElementById("leadLag").checked) return;
+    if (this.isLeadLag) return;
 
     let currectRect = this.getRectByIndex(index);
     let myCol = currectRect.attr("fill");
@@ -366,8 +380,7 @@ export class Barplot {
     var widthScale = this.getWidthScale();
     var colour = this.getColour();
 
-    // @ts-ignore
-    if (!document.getElementById("leadLag").checked) {
+    if (this.isLeadLag === false) {
       this.canvas
         .selectAll("rect.bar")
         .data(this.dataArray)
@@ -384,8 +397,7 @@ export class Barplot {
         var widthFactor = Number(d3.select(this).attr("widthFactor"));
         var xPos = widthScale(d.value) * (1 - widthFactor);
         d3.select(this).call(attrTween, 800, "x", xPos);
-        // @ts-ignore
-        if (document.getElementById("leadLag").checked) {
+        if (this.isLeadLag) {
           d3.select(this).call(attrTween, 800, "fill", colour(d.value));
         }
       });
@@ -402,13 +414,19 @@ export class Barplot {
     var widthScale = this.getWidthScale();
 
     // update .rect width based on if leadLag mode is toggled
-    // @ts-ignore
-    if (document.getElementById("leadLag").checked) {
-      this.canvas.selectAll("rect.bar").attr("width", function () {
-        var rtn = Number(d3.select(this).attr("max"));
-        rtn -= Number(d3.select(this).attr("min"));
-        return widthScale(rtn);
-      });
+    if (this.isLeadLag) {
+      this.canvas
+        .selectAll("rect.bar")
+        .attr("width", function () {
+          var rtn = Number(d3.select(this).attr("max"));
+          rtn -= Number(d3.select(this).attr("min"));
+          return widthScale(rtn);
+        })
+        .attr("transform", function () {
+          let rtn = Number(d3.select(this).attr("min"));
+          rtn = widthScale(rtn);
+          return "translate(" + rtn + ", 0)";
+        });
     } else {
       this.canvas.selectAll("rect.bar").call(this.getAttr, this, ["width"]);
     }
@@ -419,13 +437,11 @@ export class Barplot {
     this.canvas
       .selectAll("rect.leadLag")
       .call(this.getAttr, this, ["y", "height"])
-      .attr("width", function () {
-        var widthFactor = Number(d3.select(this).attr("widthFactor"));
-        return this.width * widthFactor;
+      .attr("width", () => {
+        return this.width * this.widthFactor;
       })
-      .attr("x", function (d) {
-        var widthFactor = Number(d3.select(this).attr("widthFactor"));
-        return widthScale(d.value) * (1 - widthFactor);
+      .attr("x", (d) => {
+        return widthScale(d.value) * (1 - this.widthFactor);
       });
 
     this.canvas.selectAll("g.x.axis").call(this.getXAxis, this);
@@ -435,6 +451,20 @@ export class Barplot {
     this.svg.resize();
 
     this.tooltip.repositionTooltipIfOffscreen(this.svg.bottom);
+  }
+
+  applyStrokeByName(nameToSelect: string) {
+    this.canvas
+      .selectAll("rect.bar")
+      .each(function(d, i) {
+        // Turn off stroke from previous selection
+        d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)");
+        let currentName = d3.select(this).attr("name")
+        if (currentName === nameToSelect) {
+          // Turn on stroke to new selection
+          d3.select(this).call(attrTween, 800, "stroke", "black");
+        }
+      })
   }
 }
 
