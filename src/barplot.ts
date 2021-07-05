@@ -212,9 +212,10 @@ export class Barplot {
         .selectAll("rect.bar")
         .transition()
         .duration(800)
-        .each(function () {
+        .each(function (d) {
           var myCol = d3.select(this).attr("fill");
           d3.select(this).call(attrTween, 800, "fill", setAlpha(myCol, 1));
+          d3.select(this).call(attrTween, 800, "width", widthScale(d.value));
         })
         .attr("transform", "translate(0, 0)")
         .attr("stroke", "rgba(0,0,0,0)");
@@ -450,6 +451,20 @@ export class Barplot {
     this.svg.resize();
 
     this.tooltip.repositionTooltipIfOffscreen(this.svg.bottom);
+  }
+
+  applyStrokeByName(nameToSelect: string) {
+    this.canvas
+      .selectAll("rect.bar")
+      .each(function(d, i) {
+        // Turn off stroke from previous selection
+        d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)");
+        let currentName = d3.select(this).attr("name")
+        if (currentName === nameToSelect) {
+          // Turn on stroke to new selection
+          d3.select(this).call(attrTween, 800, "stroke", "black");
+        }
+      })
   }
 }
 
