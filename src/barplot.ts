@@ -212,9 +212,10 @@ export class Barplot {
         .selectAll("rect.bar")
         .transition()
         .duration(800)
-        .each(function () {
+        .each(function (d) {
           var myCol = d3.select(this).attr("fill");
           d3.select(this).call(attrTween, 800, "fill", setAlpha(myCol, 1));
+          d3.select(this).call(attrTween, 800, "width", widthScale(d.value));
         })
         .attr("transform", "translate(0, 0)")
         .attr("stroke", "rgba(0,0,0,0)");
