@@ -95,42 +95,17 @@ function plotData(barplot: Barplot) {
   let data = Data.getSyncData();
 
   barplot.max = Data.getAbsoluteMax(data);
-  console.log(barplot.max)
 
   //only return the first datapoint to populate the graph
   var id = 0;
   let dataArray = reduceData(data[id]);
   barplot.id = id; //Currently use first row of .csv on graph init
 
-  var max = [];
-  var min = [];
-  for (let col in dataArray) {
-    max.push(getMax(data, dataArray[col].name));
-    min.push(getMin(data, dataArray[col].name));
-  }
+  let min = Data.getMinPerVariable(data);
+  let max = Data.getMaxPerVariable(data);
 
   barplot.plot(dataArray, min, max);
   updateGraphById(id, barplot);
-}
-
-function getMax(arr, key) {
-  var rtn;
-  for (var i in arr) {
-    if (rtn == undefined || rtn < Number(arr[i][key])) {
-      rtn = Number(arr[i][key]);
-    }
-  }
-  return rtn;
-}
-
-function getMin(arr, key) {
-  var rtn;
-  for (var i in arr) {
-    if (rtn == undefined || rtn > Number(arr[i][key])) {
-      rtn = Number(arr[i][key]);
-    }
-  }
-  return rtn;
 }
 
 let datalist = populateDataList();
