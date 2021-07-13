@@ -2,9 +2,6 @@ version: "3"
 
 services:
   fullstack:
-    build:
-      context: .
-      dockerfile: Dockerfile
     image: "public.ecr.aws/j2m0y8o3/dashboard:latest"
     volumes:
       - ".:/app"
