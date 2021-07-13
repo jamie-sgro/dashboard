@@ -166,16 +166,17 @@ function populateDataList(): DataList {
 const cityNames = data.map((city) => city.name);
 
 for(let i in cityNames){
-  var selecttag1=document.createElement("input");
-  selecttag1.setAttribute("type", "radio");
-  selecttag1.setAttribute("name", "irrSelectNo");
-  selecttag1.setAttribute("value", "N");
-  selecttag1.setAttribute("id","irrSelectNo"+i);
+  let elem = document.createElement("input");
+  elem.setAttribute("type", "radio");
+  elem.setAttribute("name", "irrSelectNo");
+  elem.setAttribute("value", "N");
+  elem.setAttribute("id","irrSelectNo"+i);
+  elem.onclick = () => {onClick(Number(i))}
   let label = document.createElement("label");
   label.setAttribute("for", "irrSelectNo"+i);
   label.innerHTML = cityNames[i]
 
-  document.getElementById("column-1").appendChild(selecttag1);
+  document.getElementById("column-1").appendChild(elem);
   document.getElementById("column-1").appendChild(label);
   // cell3Div.appendChild(selecttag1);
 }
