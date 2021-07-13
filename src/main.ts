@@ -170,7 +170,7 @@ for(let i in cityNames){
   elem.setAttribute("type", "radio");
   elem.setAttribute("name", "irrSelectNo");
   elem.setAttribute("value", "N");
-  elem.setAttribute("id","irrSelectNo"+i);
+  elem.setAttribute("id", "irrSelectNo"+i);
   elem.onclick = () => {onClick(Number(i))}
   let label = document.createElement("label");
   label.setAttribute("for", "irrSelectNo"+i);
@@ -178,7 +178,6 @@ for(let i in cityNames){
 
   document.getElementById("column-1").appendChild(elem);
   document.getElementById("column-1").appendChild(label);
-  // cell3Div.appendChild(selecttag1);
 }
 
 /*********************
