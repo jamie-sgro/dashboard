@@ -178,6 +178,8 @@ for(let i in cityNames){
 
   document.getElementById("column-1").appendChild(elem);
   document.getElementById("column-1").appendChild(label);
+  let brTag = document.createElement("br")
+  document.getElementById("column-1").appendChild(brTag);
 }
 
 /*********************
