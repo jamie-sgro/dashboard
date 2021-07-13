@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: "dashboard:latest"
+    image: "public.ecr.aws/j2m0y8o3/dashboard:latest"
     volumes:
       - ".:/app"
       - "/app/node_modules"
@@ -14,7 +14,7 @@ services:
     entrypoint: ["npm", "run", "dev"]
 
   test:
-    image: "dashboard:latest"
+    image: "public.ecr.aws/j2m0y8o3/dashboard:latest"
     volumes:
       - ".:/app"
       - "/app/node_modules"
