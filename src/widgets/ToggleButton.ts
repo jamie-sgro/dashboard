@@ -1,7 +1,8 @@
+import { Widget } from "./Widget";
+
 /** Button that acts as a switch with on/off properties */
-export class ToggleButton {
+export class ToggleButton extends Widget {
   private htmlId: string;
-  private parentId: string;
   private text: string;
   private onClick: Function;
   private view: HTMLButtonElement;
@@ -11,15 +12,16 @@ export class ToggleButton {
     onClick: Function,
     { parentId = undefined, text = "Click Me!" } = {}
   ) {
+    super(parentId);
     this.htmlId = htmlId;
     this.onClick = onClick;
-    this.parentId = parentId;
     this.text = text;
     this.view = this.initView();
   }
 
-  private initView(): HTMLButtonElement {
+  protected initView(): HTMLButtonElement {
     let elem = document.createElement("button");
+    elem.style.margin = "10px 0px";
     elem.innerHTML = this.text;
     this.setOnClick(elem);
     this.appendToParent(elem);
@@ -37,11 +39,5 @@ export class ToggleButton {
     elem.classList.contains("primary")
       ? elem.classList.remove("primary")
       : elem.classList.add("primary");
-  }
-
-  private appendToParent(elem: HTMLButtonElement): void {
-    typeof this.parentId === "undefined"
-      ? document.body.appendChild(elem)
-      : document.getElementById(this.parentId).appendChild(elem);
   }
 }
