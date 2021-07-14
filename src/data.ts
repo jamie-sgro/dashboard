@@ -74,7 +74,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.196",
-            nonNormalValue: "",
+            nonNormalValue: "5.1",
           },
           {
             name: "Consumption",
@@ -154,7 +154,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.2",
-            nonNormalValue: "",
+            nonNormalValue: "5.0",
           },
           {
             name: "Consumption",
@@ -235,7 +235,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.072",
-            nonNormalValue: "",
+            nonNormalValue: "8.2",
           },
           {
             name: "Consumption",
@@ -315,7 +315,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.2",
-            nonNormalValue: "",
+            nonNormalValue: "5.0",
           },
           {
             name: "Consumption",
@@ -395,7 +395,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.116",
-            nonNormalValue: "",
+            nonNormalValue: "7.1",
           },
           {
             name: "Consumption",
@@ -475,7 +475,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.12",
-            nonNormalValue: "",
+            nonNormalValue: "7.0",
           },
           {
             name: "Consumption",
@@ -555,7 +555,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.088",
-            nonNormalValue: "",
+            nonNormalValue: "7.8",
           },
           {
             name: "Consumption",
@@ -635,7 +635,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.124",
-            nonNormalValue: "",
+            nonNormalValue: "6.9",
           },
           {
             name: "Consumption",
@@ -715,7 +715,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.108",
-            nonNormalValue: "",
+            nonNormalValue: "7.3",
           },
           {
             name: "Consumption",
@@ -795,7 +795,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.128",
-            nonNormalValue: "",
+            nonNormalValue: "6.8",
           },
           {
             name: "Consumption",
@@ -875,7 +875,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.068",
-            nonNormalValue: "",
+            nonNormalValue: "8.3",
           },
           {
             name: "Consumption",
@@ -955,7 +955,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.168",
-            nonNormalValue: "",
+            nonNormalValue: "5.8",
           },
           {
             name: "Consumption",
@@ -1035,7 +1035,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.076",
-            nonNormalValue: "",
+            nonNormalValue: "8.1",
           },
           {
             name: "Consumption",
@@ -1115,7 +1115,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.128",
-            nonNormalValue: "",
+            nonNormalValue: "6.8",
           },
           {
             name: "Consumption",
@@ -1195,7 +1195,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.192",
-            nonNormalValue: "",
+            nonNormalValue: "5.2",
           },
           {
             name: "Consumption",
@@ -1275,7 +1275,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.144",
-            nonNormalValue: "",
+            nonNormalValue: "6.4",
           },
           {
             name: "Consumption",
@@ -1355,7 +1355,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.22",
-            nonNormalValue: "",
+            nonNormalValue: "4.5",
           },
           {
             name: "Consumption",
@@ -1435,7 +1435,7 @@ export class Data {
             description:
               "Average fine particule matter concentrations (PM 2.5)",
             value: "1.228",
-            nonNormalValue: "",
+            nonNormalValue: "4.3",
           },
           {
             name: "Consumption",
