@@ -1,7 +1,8 @@
+import { Widget } from "./Widget";
+
 /** Button that acts as a switch with on/off properties */
-export class ToggleButton {
+export class ToggleButton extends Widget {
   private htmlId: string;
-  private parentId: string;
   private text: string;
   private onClick: Function;
   private view: HTMLButtonElement;
@@ -11,37 +12,39 @@ export class ToggleButton {
     onClick: Function,
     { parentId = undefined, text = "Click Me!" } = {}
   ) {
+    super(parentId);
     this.htmlId = htmlId;
     this.onClick = onClick;
-    this.parentId = parentId;
     this.text = text;
     this.view = this.initView();
   }
 
-  private initView(): HTMLButtonElement {
+  protected initView(): HTMLButtonElement {
     let elem = document.createElement("button");
+    elem.style.margin = "10px 0px";
     elem.innerHTML = this.text;
     this.setOnClick(elem);
     this.appendToParent(elem);
+    this.addBrTag(elem);
     return elem;
   }
-
+  
   private setOnClick(elem: HTMLButtonElement): void {
     elem.onclick = () => {
       this.toggleCss(elem);
       this.onClick();
     };
   }
+  
+    private addBrTag(elem: HTMLButtonElement): void {
+      document.getElementById(this.parentId).appendChild(elem);
+      let brTag = document.createElement("br");
+      document.getElementById(this.parentId).appendChild(brTag);
+    }
 
   private toggleCss(elem: HTMLButtonElement): void {
     elem.classList.contains("primary")
       ? elem.classList.remove("primary")
       : elem.classList.add("primary");
-  }
-
-  private appendToParent(elem: HTMLButtonElement): void {
-    typeof this.parentId === "undefined"
-      ? document.body.appendChild(elem)
-      : document.getElementById(this.parentId).appendChild(elem);
   }
 }

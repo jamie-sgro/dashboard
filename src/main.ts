@@ -14,7 +14,9 @@ import {
 import { Margin } from "./Margin.js";
 import { panel3Resize } from "./panel3.js";
 import { ToggleButton } from "./widgets/ToggleButton.js";
-import { DataList, DataListModel } from "./widgets/DataList.js";
+import { DataList } from "./widgets/DataList.js";
+import { DataListModel } from "./widgets/DataListModel.js";
+import { RadioButton } from "./widgets/RadioButton.js";
 
 export const markRad = 15;
 export const markCol = "rgba(10,151,217, .8)";
@@ -28,14 +30,14 @@ export const panelWidth = 0.33;
 // @ts-ignore
 // document.getElementById("popupInfo").class = 0;
 
-let newBarplot = new Barplot(
+let avgBarplot = new Barplot(
   "#column-2",
   $(window).width() * panelWidth,
   getHeight(),
   { margin: new Margin(10, 20, 30, 60) }
 );
 $(window).on("resize", function () {
-  newBarplot.resize();
+  avgBarplot.resize();
 });
 let data: DataPoint[];
 data = [
@@ -66,8 +68,8 @@ data = [
   { name: "Halifax", value: "98", description: "Halifax" },
   { name: "St. John's", value: "100", description: "St. John's" },
 ];
-newBarplot.plot(data, [0, 0], [100, 100]);
-newBarplot.updatePlot(data);
+avgBarplot.plot(data, [0, 0], [100, 100]);
+avgBarplot.updatePlot(data);
 
 /******************
  *** ADD D3 TOOL ***
@@ -143,22 +145,46 @@ let btn = new ToggleButton("btn-lead-lag", leadLagOnClick, {
   parentId: "column-1",
 });
 
-let datalist = populateDataList();
+let datalist = populateRadioButton();
 
+/**
+ * \brief   Is called when the user clicks on any city radio button.
+ *          Rerenders the city bar plot with values form the city.
+ * @param   id : Index of the radio button.
+ */
 function onClick(id: number) {
-  let name = Data.getSyncData()[id].name;
+  let city = Data.getSyncData()[id];
+  let name = city.name;
   header.textContent = name;
-  newBarplot.applyStrokeByName(name);
+  avgBarplot.applyStrokeByName(name);
   recenterDashboard();
+  avgCityData(city.data);
   updateAllGraphs(id);
 }
 
-function populateDataList(): DataList {
+/**
+ * \brief   Averages the city data.
+ * @param   cityData : The array of DataPoint describing the city.
+ * @returns Returns the average of the city's DataPoint values.
+ */
+function avgCityData(cityData: DataPoint[]) : number {
+  let sum = 0.0;
+  let numElements = 0;
+  cityData.forEach((d) => addDataPointElement(d.value));
+  function addDataPointElement(dataPointValue: string) {
+    sum +=  parseFloat(dataPointValue);
+    ++numElements;
+  }
+  let avg = sum / numElements;
+  return avg;
+}
+
+function populateRadioButton(): RadioButton {
   let data = Data.getSyncData();
   const dataListModel = data.map((city, id) => {
     return { id: id, value: city.name } as DataListModel;
   });
-  return new DataList("cities-datalist", dataListModel, onClick, {
+  return new RadioButton("cities-radiobutton", dataListModel, onClick, {
     parentId: "column-1",
   });
 }

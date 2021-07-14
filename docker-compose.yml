@@ -2,10 +2,7 @@ version: "3"
 
 services:
   fullstack:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: "dashboard:latest"
+    image: "public.ecr.aws/j2m0y8o3/dashboard:latest"
     volumes:
       - ".:/app"
       - "/app/node_modules"
@@ -14,10 +11,8 @@ services:
     entrypoint: ["npm", "run", "dev"]
 
   test:
-    image: "dashboard:latest"
+    image: "public.ecr.aws/j2m0y8o3/dashboard:latest"
     volumes:
       - ".:/app"
       - "/app/node_modules"
-    depends_on: 
-      - fullstack
     entrypoint: ["npm", "test"]
