@@ -151,7 +151,7 @@ export class Data {
           {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0
+            value: "0",
           },
           {
             name: "House Need",
@@ -968,7 +968,7 @@ export class Data {
           {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.373116963
+            value: "0.373116963"
           },
           {
             name: "House Need",
