@@ -121,7 +121,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.974706398",
-            nonNormalValue: "",
+            nonNormalValue: "$43,180,205",
           },
           {
             name: "Transit",
@@ -202,7 +202,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.990115769",
-            nonNormalValue: "",
+            nonNormalValue: "$16,873,956",
           },
           {
             name: "Transit",
@@ -282,7 +282,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.990840169",
-            nonNormalValue: "",
+            nonNormalValue: "$15,637,289",
           },
           {
             name: "Transit",
@@ -362,7 +362,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.997588007",
-            nonNormalValue: "",
+            nonNormalValue: "$4,117,656",
           },
           {
             name: "Transit",
@@ -442,7 +442,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.952931592",
-            nonNormalValue: "",
+            nonNormalValue: "$80,353,265",
           },
           {
             name: "Transit",
@@ -522,7 +522,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.35264643",
-            nonNormalValue: "",
+            nonNormalValue: "$1,105,135,591",
           },
           {
             name: "Transit",
@@ -602,7 +602,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.991023047",
-            nonNormalValue: "",
+            nonNormalValue: "$15,325,088",
           },
           {
             name: "Transit",
@@ -682,7 +682,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.99515785",
-            nonNormalValue: "",
+            nonNormalValue: "$8,266,321",
           },
           {
             name: "Transit",
@@ -762,7 +762,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.993778421",
-            nonNormalValue: "",
+            nonNormalValue: "$10,621,226",
           },
           {
             name: "Transit",
@@ -842,7 +842,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.994104631",
-            nonNormalValue: "",
+            nonNormalValue: "$10,064,333",
           },
           {
             name: "Transit",
@@ -922,7 +922,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.996009291",
-            nonNormalValue: "",
+            nonNormalValue: "$6,812,775",
           },
           {
             name: "Transit",
@@ -1002,7 +1002,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.538371893",
-            nonNormalValue: "",
+            nonNormalValue: "$788,072,661",
           },
           {
             name: "Transit",
@@ -1082,7 +1082,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.967789841",
-            nonNormalValue: "",
+            nonNormalValue: "$54,987,869",
           },
           {
             name: "Transit",
@@ -1162,7 +1162,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.957170803",
-            nonNormalValue: "",
+            nonNormalValue: "$73,116,256",
           },
           {
             name: "Transit",
@@ -1242,7 +1242,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0",
-            nonNormalValue: "",
+            nonNormalValue: "$1,707,159,182",
           },
           {
             name: "Transit",
@@ -1322,7 +1322,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.994536848",
-            nonNormalValue: "",
+            nonNormalValue: "$9,326,471",
           },
           {
             name: "Transit",
@@ -1402,7 +1402,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.800183756",
-            nonNormalValue: "",
+            nonNormalValue: "$341,118,136",
           },
           {
             name: "Transit",
@@ -1482,7 +1482,7 @@ export class Data {
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
             value: "0.984893508",
-            nonNormalValue: "",
+            nonNormalValue: "$25,789,187",
           },
           {
             name: "Transit",
