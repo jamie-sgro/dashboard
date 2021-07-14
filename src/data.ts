@@ -135,7 +135,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.583333333",
-            nonNormalValue: "",
+            nonNormalValue: "3.75",
           },
           {
             name: "Waste",
@@ -216,7 +216,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.583333333",
-            nonNormalValue: "",
+            nonNormalValue: "3.75",
           },
           {
             name: "Waste",
@@ -296,7 +296,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.416666667",
-            nonNormalValue: "",
+            nonNormalValue: "3.25",
           },
           {
             name: "Waste",
@@ -376,7 +376,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0",
-            nonNormalValue: "",
+            nonNormalValue: "2",
           },
           {
             name: "Waste",
@@ -456,7 +456,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.416666667",
-            nonNormalValue: "",
+            nonNormalValue: "3.25",
           },
           {
             name: "Waste",
@@ -536,7 +536,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.75",
-            nonNormalValue: "",
+            nonNormalValue: "4.25",
           },
           {
             name: "Waste",
@@ -616,7 +616,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.916666667",
-            nonNormalValue: "",
+            nonNormalValue: "4.75",
           },
           {
             name: "Waste",
@@ -696,7 +696,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.5",
-            nonNormalValue: "",
+            nonNormalValue: "3.5",
           },
           {
             name: "Waste",
@@ -776,7 +776,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.666666667",
-            nonNormalValue: "",
+            nonNormalValue: "4",
           },
           {
             name: "Waste",
@@ -856,7 +856,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.666666667",
-            nonNormalValue: "",
+            nonNormalValue: "4",
           },
           {
             name: "Waste",
@@ -936,7 +936,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.416666667",
-            nonNormalValue: "",
+            nonNormalValue: "3.25",
           },
           {
             name: "Waste",
@@ -1016,7 +1016,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.666666667",
-            nonNormalValue: "",
+            nonNormalValue: "4",
           },
           {
             name: "Waste",
@@ -1096,7 +1096,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.083333333",
-            nonNormalValue: "",
+            nonNormalValue: "2.25",
           },
           {
             name: "Waste",
@@ -1176,7 +1176,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.583333333",
-            nonNormalValue: "",
+            nonNormalValue: "3.75",
           },
           {
             name: "Waste",
@@ -1256,7 +1256,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.666666667",
-            nonNormalValue: "",
+            nonNormalValue: "4",
           },
           {
             name: "Waste",
@@ -1336,7 +1336,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.416666667",
-            nonNormalValue: "",
+            nonNormalValue: "3.25",
           },
           {
             name: "Waste",
@@ -1416,7 +1416,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.666666667",
-            nonNormalValue: "",
+            nonNormalValue: "4",
           },
           {
             name: "Waste",
@@ -1496,7 +1496,7 @@ export class Data {
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
             value: "0.666666667",
-            nonNormalValue: "",
+            nonNormalValue: "4",
           },
           {
             name: "Waste",
