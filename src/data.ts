@@ -16,7 +16,7 @@ export const imageDirectory = {
   Waste: "public/images/axis-icons/sdg-11.6.1.png",
   PM: "public/images/axis-icons/sdg-11.6.2.png",
   // TODO: Add 11.7.1
-  Assult: "public/images/axis-icons/sdg-11.7.2.png",
+  Assault: "public/images/axis-icons/sdg-11.7.2.png",
 };
 
 export class DataModel {
@@ -81,9 +81,9 @@ export class Data {
             value: "0.41912307",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.3375",
+            value: "0.59430496",
           },
           {
             name: "House Need",
@@ -149,9 +149,9 @@ export class Data {
             value: "0.401851333",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0",
+            value: "0
           },
           {
             name: "House Need",
@@ -218,9 +218,9 @@ export class Data {
             value: "0.555142299",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.4288",
+            value: "0.650214329",
           },
           {
             name: "House Need",
@@ -286,9 +286,9 @@ export class Data {
             value: "0.20953882",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.2546",
+            value: "0.543539498",
           },
           {
             name: "House Need",
@@ -354,9 +354,9 @@ export class Data {
             value: "0.542826593",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.3645",
+            value: "0.610838947",
           },
           {
             name: "House Need",
@@ -422,9 +422,9 @@ export class Data {
             value: "0.973481553",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.4039",
+            value: "0.63496632",
           },
           {
             name: "House Need",
@@ -490,9 +490,9 @@ export class Data {
             value: "0.597523622",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.153",
+            value: "0.481322719",
           },
           {
             name: "House Need",
@@ -558,9 +558,9 @@ export class Data {
             value: "0.003333298",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.2423",
+            value: "0.536007348",
           },
           {
             name: "House Need",
@@ -626,9 +626,9 @@ export class Data {
             value: "0.920192018",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.1522",
+            value: "0.480832823",
           },
           {
             name: "House Need",
@@ -694,9 +694,9 @@ export class Data {
             value: "0.647486682",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.1831",
+            value: "0.499755052",
           },
           {
             name: "House Need",
@@ -762,9 +762,9 @@ export class Data {
             value: "0.041724498",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.3367",
+            value: "0.593815064",
           },
           {
             name: "House Need",
@@ -830,9 +830,9 @@ export class Data {
             value: "0.653474212",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.0082",
+            value: "0.392651562",
           },
           {
             name: "House Need",
@@ -898,9 +898,9 @@ export class Data {
             value: "0.600212968",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.1563",
+            value: "0.483343539",
           },
           {
             name: "House Need",
@@ -966,9 +966,9 @@ export class Data {
             value: "0.728664635",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0",
+            value: "0.373116963
           },
           {
             name: "House Need",
@@ -1034,9 +1034,9 @@ export class Data {
             value: "1.037835577",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.2922",
+            value: "0.566564605",
           },
           {
             name: "House Need",
@@ -1102,9 +1102,9 @@ export class Data {
             value: "0.842841747",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.1443",
+            value: "0.475995101",
           },
           {
             name: "House Need",
@@ -1170,9 +1170,9 @@ export class Data {
             value: "1.023418723",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.4772",
+            value: "0.679853031",
           },
           {
             name: "House Need",
@@ -1238,9 +1238,9 @@ export class Data {
             value: "0.929264945",
           },
           {
-            name: "Assult",
+            name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.2873",
+            value: "0.563563993",
           },
           {
             name: "House Need",
