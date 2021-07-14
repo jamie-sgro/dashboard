@@ -99,7 +99,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.735821209",
+            value: "0.735469986",
           },
           {
             name: "Econ Loss1",
@@ -123,7 +123,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.75",
+            value: "0.583333333",
           },
           {
             name: "Waste",
@@ -167,7 +167,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.001327723",
+            value: "0",
           },
           {
             name: "Econ Loss1",
@@ -191,7 +191,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.75",
+            value: "0.583333333",
           },
           {
             name: "Waste",
@@ -235,7 +235,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.67901811",
+            value: "0.678591369",
           },
           {
             name: "Econ Loss1",
@@ -259,7 +259,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.65",
+            value: "0.416666667",
           },
           {
             name: "Waste",
@@ -303,7 +303,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.568067252",
+            value: "0.567493002",
           },
           {
             name: "Econ Loss1",
@@ -327,7 +327,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.4",
+            value: "0",
           },
           {
             name: "Waste",
@@ -371,7 +371,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.667936388",
+            value: "0.667494914",
           },
           {
             name: "Econ Loss1",
@@ -395,7 +395,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.65",
+            value: "0.416666667",
           },
           {
             name: "Waste",
@@ -439,7 +439,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.724516178",
+            value: "0.724149925",
           },
           {
             name: "Econ Loss1",
@@ -463,7 +463,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.85",
+            value: "0.75",
           },
           {
             name: "Waste",
@@ -507,7 +507,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.810179056",
+            value: "0.809926691",
           },
           {
             name: "Econ Loss1",
@@ -531,7 +531,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.95",
+            value: "0.916666667",
           },
           {
             name: "Waste",
@@ -575,7 +575,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.811449338",
+            value: "0.811198662",
           },
           {
             name: "Econ Loss1",
@@ -599,7 +599,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.7",
+            value: "0.5",
           },
           {
             name: "Waste",
@@ -643,7 +643,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.809236346",
+            value: "0.808982728",
           },
           {
             name: "Econ Loss1",
@@ -667,7 +667,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.8",
+            value: "0.666666667",
           },
           {
             name: "Waste",
@@ -711,7 +711,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.810670649",
+            value: "0.810418937",
           },
           {
             name: "Econ Loss1",
@@ -735,7 +735,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.8",
+            value: "0.666666667",
           },
           {
             name: "Waste",
@@ -779,7 +779,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.760449643",
+            value: "0.760131164",
           },
           {
             name: "Econ Loss1",
@@ -803,7 +803,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.65",
+            value: "0.416666667",
           },
           {
             name: "Waste",
@@ -847,7 +847,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.970952269",
+            value: "0.97091365",
           },
           {
             name: "Econ Loss1",
@@ -871,7 +871,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.8",
+            value: "0.666666667",
           },
           {
             name: "Waste",
@@ -915,7 +915,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.954289297",
+            value: "0.954228525",
           },
           {
             name: "Econ Loss1",
@@ -939,7 +939,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.45",
+            value: "0.083333333",
           },
           {
             name: "Waste",
@@ -983,7 +983,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.998381243",
+            value: "0.998379091",
           },
           {
             name: "Econ Loss1",
@@ -1007,7 +1007,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.75",
+            value: "0.583333333",
           },
           {
             name: "Waste",
@@ -1051,7 +1051,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.961480235",
+            value: "0.961429024",
           },
           {
             name: "Econ Loss1",
@@ -1075,7 +1075,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.8",
+            value: "0.666666667",
           },
           {
             name: "Waste",
@@ -1119,7 +1119,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.999016644",
+            value: "0.999015336",
           },
           {
             name: "Econ Loss1",
@@ -1143,7 +1143,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.65",
+            value: "0.416666667",
           },
           {
             name: "Waste",
@@ -1187,7 +1187,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.631343497",
+            value: "0.630853372",
           },
           {
             name: "Econ Loss1",
@@ -1211,7 +1211,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.8",
+            value: "0.666666667",
           },
           {
             name: "Waste",
@@ -1255,7 +1255,7 @@ export class Data {
             name: "Disaster",
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
-            value: "0.851876173",
+            value: "0.851679244",
           },
           {
             name: "Econ Loss1",
@@ -1279,7 +1279,7 @@ export class Data {
             name: "Civility",
             description:
               "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ",
-            value: "0.8",
+            value: "0.666666667",
           },
           {
             name: "Waste",
