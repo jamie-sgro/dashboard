@@ -11,7 +11,7 @@ export const imageDirectory = {
   Civility: "public/images/axis-icons/sdg-11.3.2.png",
   Affected: "public/images/axis-icons/sdg-11.5.1.1.png",
   Disaster: "public/images/axis-icons/sdg-11.5.1.2.png",
-  "Econ Loss1": "public/images/axis-icons/sdg-11.5.2.png",
+  "Heritage": "public/images/sdg-icons/SDG11.png",
   "Econ Loss2": "public/images/axis-icons/sdg-11.5.2.png",
   Waste: "public/images/axis-icons/sdg-11.6.1.png",
   PM: "public/images/axis-icons/sdg-11.6.2.png",
@@ -102,16 +102,16 @@ export class Data {
             value: "0.735469986",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.980259785",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.978409898",
+            value: "0.974706398",
           },
           {
             name: "Transit",
@@ -163,6 +163,7 @@ export class Data {
             description: "Total Affected",
             value: "0.758780432",
           },
+          
           {
             name: "Disaster",
             description:
@@ -170,16 +171,16 @@ export class Data {
             value: "0",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.991863667",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.27556745",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.991563022",
+            value: "0.990115769",
           },
           {
             name: "Transit",
@@ -238,16 +239,16 @@ export class Data {
             value: "0.678591369",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.992612202",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.15587496",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.992181355",
+            value: "0.990840169",
           },
           {
             name: "Transit",
@@ -306,16 +307,16 @@ export class Data {
             value: "0.567493002",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.998054561",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.38804851",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.997941172",
+            value: "0.997588007",
           },
           {
             name: "Transit",
@@ -374,16 +375,16 @@ export class Data {
             value: "0.667494914",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.962036346",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.145046924",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.959823367",
+            value: "0.952931592",
           },
           {
             name: "Transit",
@@ -442,16 +443,16 @@ export class Data {
             value: "0.724149925",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.472314916",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.209202403",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.447432205",
+            value: "0.35264643",
           },
           {
             name: "Transit",
@@ -510,16 +511,16 @@ export class Data {
             value: "0.809926691",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.992682509",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.226784553",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.992337456",
+            value: "0.991023047",
           },
           {
             name: "Transit",
@@ -578,16 +579,16 @@ export class Data {
             value: "0.811198662",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.99605296",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.047672447",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.995866839",
+            value: "0.99515785",
           },
           {
             name: "Transit",
@@ -646,16 +647,16 @@ export class Data {
             value: "0.808982728",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.99492853",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.066812117",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.994689387",
+            value: "0.993778421",
           },
           {
             name: "Transit",
@@ -714,16 +715,16 @@ export class Data {
             value: "0.810418937",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.995194437",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.22963834",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.994967834",
+            value: "0.994104631",
           },
           {
             name: "Transit",
@@ -782,16 +783,16 @@ export class Data {
             value: "0.760131164",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.996747006",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.319730698",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.996593613",
+            value: "0.996009291",
           },
           {
             name: "Transit",
@@ -850,16 +851,16 @@ export class Data {
             value: "0.97091365",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.617834473",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.276811915",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.605963669",
+            value: "0.538371893",
           },
           {
             name: "Transit",
@@ -918,16 +919,16 @@ export class Data {
             value: "0.954228525",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.975137073",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.340729319",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.972506065",
+            value: "0.967789841",
           },
           {
             name: "Transit",
@@ -986,16 +987,16 @@ export class Data {
             value: "0.998379091",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.966749603",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.286369616",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.963441872",
+            value: "0.957170803",
           },
           {
             name: "Transit",
@@ -1054,16 +1055,16 @@ export class Data {
             value: "0.961429024",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.204076288",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.624227317",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.146420409",
+            value: "0",
           },
           {
             name: "Transit",
@@ -1122,16 +1123,16 @@ export class Data {
             value: "0.999015336",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.995613356",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.64384356",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.80",
+            value: "0.994536848",
           },
           {
             name: "Transit",
@@ -1190,16 +1191,16 @@ export class Data {
             value: "0.630853372",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.839610176",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.405696012",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.829440932",
+            value: "0.800183756",
           },
           {
             name: "Transit",
@@ -1258,16 +1259,16 @@ export class Data {
             value: "0.851679244",
           },
           {
-            name: "Econ Loss1",
+            name: "Heritage",
             description:
-              "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)",
-            value: "0.987398785",
+              "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
+            value: "0.415613018",
           },
           {
             name: "Econ Loss2",
             description:
               "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)",
-            value: "0.987105407",
+            value: "0.984893508",
           },
           {
             name: "Transit",
