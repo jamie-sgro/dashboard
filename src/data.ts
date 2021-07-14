@@ -88,7 +88,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99885",
+            value: "0.397905759",
           },
           {
             name: "Affected",
@@ -156,7 +156,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99863",
+            value: "0.282722513",
           },
           {
             name: "Affected",
@@ -224,7 +224,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99928",
+            value: "0.623036649",
           },
           {
             name: "Affected",
@@ -292,7 +292,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99928",
+            value: "0.623036649",
           },
           {
             name: "Affected",
@@ -360,7 +360,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99891",
+            value: "0.429319372",
           },
           {
             name: "Affected",
@@ -428,7 +428,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99809",
+            value: "0",
           },
           {
             name: "Affected",
@@ -496,7 +496,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.9987",
+            value: "0.319371728",
           },
           {
             name: "Affected",
@@ -564,7 +564,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99861",
+            value: "0.272251309",
           },
           {
             name: "Affected",
@@ -632,7 +632,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99886",
+            value: "0.403141361",
           },
           {
             name: "Affected",
@@ -700,7 +700,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99861",
+            value: "0.272251309",
           },
           {
             name: "Affected",
@@ -768,7 +768,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99883",
+            value: "0.387434555",
           },
           {
             name: "Affected",
@@ -836,7 +836,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99879",
+            value: "0.366492147",
           },
           {
             name: "Affected",
@@ -904,7 +904,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99867",
+            value: "0.303664921",
           },
           {
             name: "Affected",
@@ -972,7 +972,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99882",
+            value: "0.382198953",
           },
           {
             name: "Affected",
@@ -1040,7 +1040,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99887",
+            value: "0.408376963",
           },
           {
             name: "Affected",
@@ -1108,7 +1108,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.80",
+            value: "0.356020942",
           },
           {
             name: "Affected",
@@ -1176,7 +1176,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99824",
+            value: "0.078534031",
           },
           {
             name: "Affected",
@@ -1244,7 +1244,7 @@ export class Data {
           {
             name: "House Need",
             description: "Proportion of households in core housing need",
-            value: "0.99858",
+            value: "0.256544503",
           },
           {
             name: "Affected",
