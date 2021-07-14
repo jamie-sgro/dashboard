@@ -25,15 +25,22 @@ export class ToggleButton extends Widget {
     elem.innerHTML = this.text;
     this.setOnClick(elem);
     this.appendToParent(elem);
+    this.addBrTag(elem);
     return elem;
   }
-
+  
   private setOnClick(elem: HTMLButtonElement): void {
     elem.onclick = () => {
       this.toggleCss(elem);
       this.onClick();
     };
   }
+  
+    private addBrTag(elem: HTMLButtonElement): void {
+      document.getElementById(this.parentId).appendChild(elem);
+      let brTag = document.createElement("br");
+      document.getElementById(this.parentId).appendChild(brTag);
+    }
 
   private toggleCss(elem: HTMLButtonElement): void {
     elem.classList.contains("primary")
