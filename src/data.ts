@@ -9,7 +9,7 @@ export const imageDirectory = {
   Transit: "public/images/axis-icons/sdg-11.2.1.png",
   Consumption: "public/images/axis-icons/sdg-11.3.1.png",
   Civility: "public/images/axis-icons/sdg-11.3.2.png",
-  Affected: "public/images/axis-icons/sdg-11.5.1.1.png",
+  Affected: "public/images/axis-icons/sdg-11.7.1.png",
   Disaster: "public/images/axis-icons/sdg-11.5.1.2.png",
   Heritage: "public/images/axis-icons/sdg-11.4.1.png",
   "Econ Loss2": "public/images/axis-icons/sdg-11.5.2.png",
