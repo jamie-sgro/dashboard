@@ -78,7 +78,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.549820379",
+            value: "0.41912307",
           },
           {
             name: "Assult",
@@ -117,7 +117,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.401",
+            value: "0",
           },
           {
             name: "Civility",
@@ -146,7 +146,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.536434783",
+            value: "0.401851333",
           },
           {
             name: "Assult",
@@ -185,7 +185,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.291",
+            value: "0.274314214",
           },
           {
             name: "Civility",
@@ -214,7 +214,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.655235282",
+            value: "0.555142299",
           },
           {
             name: "Assult",
@@ -253,7 +253,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.169",
+            value: "0.578553616",
           },
           {
             name: "Civility",
@@ -282,7 +282,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.387392585",
+            value: "0.20953882",
           },
           {
             name: "Assult",
@@ -321,7 +321,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.236",
+            value: "0.411471322",
           },
           {
             name: "Civility",
@@ -350,7 +350,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.645690609",
+            value: "0.542826593",
           },
           {
             name: "Assult",
@@ -389,7 +389,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.084",
+            value: "0.790523691",
           },
           {
             name: "Civility",
@@ -418,7 +418,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.979448204",
+            value: "0.973481553",
           },
           {
             name: "Assult",
@@ -457,7 +457,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.07",
+            value: "0.825436409",
           },
           {
             name: "Civility",
@@ -486,7 +486,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.688080807",
+            value: "0.597523622",
           },
           {
             name: "Assult",
@@ -525,7 +525,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.189",
+            value: "0.528678304",
           },
           {
             name: "Civility",
@@ -554,7 +554,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.227583306",
+            value: "0.003333298",
           },
           {
             name: "Assult",
@@ -593,7 +593,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.191",
+            value: "0.523690773",
           },
           {
             name: "Civility",
@@ -622,7 +622,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.938148814",
+            value: "0.920192018",
           },
           {
             name: "Assult",
@@ -661,7 +661,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.138",
+            value: "0.655860349",
           },
           {
             name: "Civility",
@@ -690,7 +690,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.726802178",
+            value: "0.647486682",
           },
           {
             name: "Assult",
@@ -729,7 +729,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.223",
+            value: "0.443890274",
           },
           {
             name: "Civility",
@@ -758,7 +758,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.257336486",
+            value: "0.041724498",
           },
           {
             name: "Assult",
@@ -797,7 +797,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.329",
+            value: "0.179551122",
           },
           {
             name: "Civility",
@@ -826,7 +826,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.731442514",
+            value: "0.653474212",
           },
           {
             name: "Assult",
@@ -865,7 +865,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.118",
+            value: "0.705735661",
           },
           {
             name: "Civility",
@@ -894,7 +894,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.69016505",
+            value: "0.600212968",
           },
           {
             name: "Assult",
@@ -933,7 +933,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.096",
+            value: "0.760598504",
           },
           {
             name: "Civility",
@@ -962,7 +962,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.789715092",
+            value: "0.728664635",
           },
           {
             name: "Assult",
@@ -1001,7 +1001,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.174",
+            value: "0.566084788",
           },
           {
             name: "Civility",
@@ -1030,7 +1030,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "1.029322572",
+            value: "1.037835577",
           },
           {
             name: "Assult",
@@ -1069,7 +1069,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.111",
+            value: "0.72319202",
           },
           {
             name: "Civility",
@@ -1098,7 +1098,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.878202354",
+            value: "0.842841747",
           },
           {
             name: "Assult",
@@ -1137,7 +1137,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.173",
+            value: "0.568578554",
           },
           {
             name: "Civility",
@@ -1166,7 +1166,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "1.01814951",
+            value: "1.023418723",
           },
           {
             name: "Assult",
@@ -1205,7 +1205,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.073",
+            value: "0.817955112",
           },
           {
             name: "Civility",
@@ -1234,7 +1234,7 @@ export class Data {
             name: "Consumption",
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
-            value: "0.945180333",
+            value: "0.929264945",
           },
           {
             name: "Assult",
@@ -1273,7 +1273,7 @@ export class Data {
             name: "Transit",
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
-            value: "0.096",
+            value: "0.760598504",
           },
           {
             name: "Civility",
