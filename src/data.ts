@@ -81,7 +81,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.41912307",
-            nonNormalValue: "",
+            nonNormalValue: "2.8",
           },
           {
             name: "Assault",
@@ -161,7 +161,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.401851333",
-            nonNormalValue: "",
+            nonNormalValue: "2.9",
           },
           {
             name: "Assault",
@@ -242,7 +242,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.555142299",
-            nonNormalValue: "",
+            nonNormalValue: "2.4",
           },
           {
             name: "Assault",
@@ -322,7 +322,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.20953882",
-            nonNormalValue: "",
+            nonNormalValue: "3.5",
           },
           {
             name: "Assault",
@@ -402,7 +402,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.542826593",
-            nonNormalValue: "",
+            nonNormalValue: "2.4",
           },
           {
             name: "Assault",
@@ -482,7 +482,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.973481553",
-            nonNormalValue: "",
+            nonNormalValue: "1.1",
           },
           {
             name: "Assault",
@@ -562,7 +562,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.597523622",
-            nonNormalValue: "",
+            nonNormalValue: "2.2",
           },
           {
             name: "Assault",
@@ -642,7 +642,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.003333298",
-            nonNormalValue: "",
+            nonNormalValue: "4.1",
           },
           {
             name: "Assault",
@@ -722,7 +722,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.920192018",
-            nonNormalValue: "",
+            nonNormalValue: "1.2",
           },
           {
             name: "Assault",
@@ -802,7 +802,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.647486682",
-            nonNormalValue: "",
+            nonNormalValue: "2.1",
           },
           {
             name: "Assault",
@@ -882,7 +882,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.041724498",
-            nonNormalValue: "",
+            nonNormalValue: "4.0",
           },
           {
             name: "Assault",
@@ -962,7 +962,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.653474212",
-            nonNormalValue: "",
+            nonNormalValue: "2.1",
           },
           {
             name: "Assault",
@@ -1042,7 +1042,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.600212968",
-            nonNormalValue: "",
+            nonNormalValue: "2.2",
           },
           {
             name: "Assault",
@@ -1122,7 +1122,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.728664635",
-            nonNormalValue: "",
+            nonNormalValue: "1.8",
           },
           {
             name: "Assault",
@@ -1202,7 +1202,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "1.037835577",
-            nonNormalValue: "",
+            nonNormalValue: "0.9",
           },
           {
             name: "Assault",
@@ -1282,7 +1282,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.842841747",
-            nonNormalValue: "",
+            nonNormalValue: "1.5",
           },
           {
             name: "Assault",
@@ -1362,7 +1362,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "1.023418723",
-            nonNormalValue: "",
+            nonNormalValue: "0.9",
           },
           {
             name: "Assault",
@@ -1442,7 +1442,7 @@ export class Data {
             description:
               "Ratio of land consumption rate to population growth rate (1971 to 2011)",
             value: "0.929264945",
-            nonNormalValue: "",
+            nonNormalValue: "1.2",
           },
           {
             name: "Assault",
