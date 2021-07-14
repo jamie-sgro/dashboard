@@ -114,7 +114,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0",
-            nonNormalValue: "",
+            nonNormalValue: "$893",
           },
           {
             name: "Econ Loss2",
@@ -195,7 +195,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.27556745",
-            nonNormalValue: "",
+            nonNormalValue: "$1,060",
           },
           {
             name: "Econ Loss2",
@@ -275,7 +275,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.15587496",
-            nonNormalValue: "",
+            nonNormalValue: "$988",
           },
           {
             name: "Econ Loss2",
@@ -355,7 +355,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.38804851",
-            nonNormalValue: "",
+            nonNormalValue: "$1,129",
           },
           {
             name: "Econ Loss2",
@@ -435,7 +435,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.145046924",
-            nonNormalValue: "",
+            nonNormalValue: "$981",
           },
           {
             name: "Econ Loss2",
@@ -515,7 +515,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.209202403",
-            nonNormalValue: "",
+            nonNormalValue: "$1,020",
           },
           {
             name: "Econ Loss2",
@@ -595,7 +595,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.226784553",
-            nonNormalValue: "",
+            nonNormalValue: "$1,031",
           },
           {
             name: "Econ Loss2",
@@ -675,7 +675,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.047672447",
-            nonNormalValue: "",
+            nonNormalValue: "$922",
           },
           {
             name: "Econ Loss2",
@@ -755,7 +755,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.066812117",
-            nonNormalValue: "",
+            nonNormalValue: "$934",
           },
           {
             name: "Econ Loss2",
@@ -835,7 +835,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.22963834",
-            nonNormalValue: "",
+            nonNormalValue: "$1,033",
           },
           {
             name: "Econ Loss2",
@@ -915,7 +915,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.319730698",
-            nonNormalValue: "",
+            nonNormalValue: "$1,087",
           },
           {
             name: "Econ Loss2",
@@ -995,7 +995,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.276811915",
-            nonNormalValue: "",
+            nonNormalValue: "$1,061",
           },
           {
             name: "Econ Loss2",
@@ -1075,7 +1075,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.340729319",
-            nonNormalValue: "",
+            nonNormalValue: "$1,100",
           },
           {
             name: "Econ Loss2",
@@ -1155,7 +1155,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.286369616",
-            nonNormalValue: "",
+            nonNormalValue: "$1,067",
           },
           {
             name: "Econ Loss2",
@@ -1235,7 +1235,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.624227317",
-            nonNormalValue: "",
+            nonNormalValue: "$1,272",
           },
           {
             name: "Econ Loss2",
@@ -1315,7 +1315,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.64384356",
-            nonNormalValue: "",
+            nonNormalValue: "$1,284",
           },
           {
             name: "Econ Loss2",
@@ -1395,7 +1395,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.405696012",
-            nonNormalValue: "",
+            nonNormalValue: "$1,139",
           },
           {
             name: "Econ Loss2",
@@ -1475,7 +1475,7 @@ export class Data {
             description:
               "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)",
             value: "0.415613018",
-            nonNormalValue: "",
+            nonNormalValue: "$1,145",
           },
           {
             name: "Econ Loss2",
