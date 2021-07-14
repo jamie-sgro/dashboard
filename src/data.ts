@@ -11,7 +11,7 @@ export const imageDirectory = {
   Civility: "public/images/axis-icons/sdg-11.3.2.png",
   Affected: "public/images/axis-icons/sdg-11.5.1.1.png",
   Disaster: "public/images/axis-icons/sdg-11.5.1.2.png",
-  "Heritage": "public/images/sdg-icons/SDG11.png",
+  Heritage: "public/images/sdg-icons/SDG11.png",
   "Econ Loss2": "public/images/axis-icons/sdg-11.5.2.png",
   Waste: "public/images/axis-icons/sdg-11.6.1.png",
   PM: "public/images/axis-icons/sdg-11.6.2.png",
@@ -163,7 +163,7 @@ export class Data {
             description: "Total Affected",
             value: "0.758780432",
           },
-          
+
           {
             name: "Disaster",
             description:
@@ -968,7 +968,7 @@ export class Data {
           {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
-            value: "0.373116963"
+            value: "0.373116963",
           },
           {
             name: "House Need",
