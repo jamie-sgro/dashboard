@@ -87,7 +87,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.59430496",
-            nonNormalValue: "",
+            nonNormalValue: "66.25",
           },
           {
             name: "House Need",
@@ -167,7 +167,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0",
-            nonNormalValue: "",
+            nonNormalValue: "163.3",
           },
           {
             name: "House Need",
@@ -248,7 +248,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.650214329",
-            nonNormalValue: "",
+            nonNormalValue: "57.12",
           },
           {
             name: "House Need",
@@ -328,7 +328,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.543539498",
-            nonNormalValue: "",
+            nonNormalValue: "74.54",
           },
           {
             name: "House Need",
@@ -408,7 +408,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.610838947",
-            nonNormalValue: "",
+            nonNormalValue: "63.55",
           },
           {
             name: "House Need",
@@ -488,7 +488,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.63496632",
-            nonNormalValue: "",
+            nonNormalValue: "59.61",
           },
           {
             name: "House Need",
@@ -568,7 +568,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.481322719",
-            nonNormalValue: "",
+            nonNormalValue: "84.7",
           },
           {
             name: "House Need",
@@ -648,7 +648,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.536007348",
-            nonNormalValue: "",
+            nonNormalValue: "75.77",
           },
           {
             name: "House Need",
@@ -728,7 +728,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.480832823",
-            nonNormalValue: "",
+            nonNormalValue: "84.78",
           },
           {
             name: "House Need",
@@ -808,7 +808,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.499755052",
-            nonNormalValue: "",
+            nonNormalValue: "81.69",
           },
           {
             name: "House Need",
@@ -888,7 +888,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.593815064",
-            nonNormalValue: "",
+            nonNormalValue: "66.33",
           },
           {
             name: "House Need",
@@ -968,7 +968,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.392651562",
-            nonNormalValue: "",
+            nonNormalValue: "99.18",
           },
           {
             name: "House Need",
@@ -1048,7 +1048,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.483343539",
-            nonNormalValue: "",
+            nonNormalValue: "84.37",
           },
           {
             name: "House Need",
@@ -1128,7 +1128,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.373116963",
-            nonNormalValue: "",
+            nonNormalValue: "102.37",
           },
           {
             name: "House Need",
@@ -1208,7 +1208,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.566564605",
-            nonNormalValue: "",
+            nonNormalValue: "70.78",
           },
           {
             name: "House Need",
@@ -1288,7 +1288,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.475995101",
-            nonNormalValue: "",
+            nonNormalValue: "85.57",
           },
           {
             name: "House Need",
@@ -1368,7 +1368,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.679853031",
-            nonNormalValue: "",
+            nonNormalValue: "52.28",
           },
           {
             name: "House Need",
@@ -1448,7 +1448,7 @@ export class Data {
             name: "Assault",
             description: "Sexual assault (rate per 100,000 population)",
             value: "0.563563993",
-            nonNormalValue: "",
+            nonNormalValue: "71.27",
           },
           {
             name: "House Need",
