@@ -2,6 +2,7 @@ export class DataPoint {
   name: string;
   value: string;
   description?: string;
+  nonNormalValue?: string;
 }
 
 export const imageDirectory = {
@@ -92,7 +93,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.158003141",
           },
           {
@@ -160,7 +162,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "1.425506519",
           },
 
@@ -229,7 +232,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.007207309",
           },
           {
@@ -297,7 +301,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.2619344",
           },
           {
@@ -365,7 +370,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.351016591",
           },
           {
@@ -433,7 +439,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.463506154",
           },
           {
@@ -501,7 +508,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.389477438",
           },
           {
@@ -569,7 +577,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.559131955",
           },
           {
@@ -637,7 +646,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.300360055",
           },
           {
@@ -705,7 +715,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.332143299",
           },
           {
@@ -773,7 +784,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0",
           },
           {
@@ -841,7 +853,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.104394005",
           },
           {
@@ -909,7 +922,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.60846421",
           },
           {
@@ -977,7 +991,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.033952621",
           },
           {
@@ -1045,7 +1060,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.483131323",
           },
           {
@@ -1113,7 +1129,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.3266746",
           },
           {
@@ -1181,7 +1198,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.330980265",
           },
           {
@@ -1249,7 +1267,8 @@ export class Data {
           },
           {
             name: "Affected",
-            description: "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
+            description:
+              "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities",
             value: "0.041723805",
           },
           {
