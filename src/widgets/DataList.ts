@@ -1,13 +1,9 @@
 import { uuidv4 } from "../utils";
+import { DataListModel } from "./DataListModel";
+import { Widget } from "./Widget";
 
-export interface DataListModel {
-  id: number;
-  value: string;
-}
-
-export class DataList {
+export class DataList extends Widget {
   private htmlId: string;
-  private parentId: string;
   private listAttr: string;
   private data: DataListModel[];
   private onClick: Function;
@@ -19,15 +15,15 @@ export class DataList {
     onClick: Function,
     { parentId = undefined } = {}
   ) {
+    super(parentId);
     this.htmlId = htmlId;
-    this.parentId = parentId;
     this.listAttr = uuidv4();
     this.data = data;
     this.onClick = onClick;
     this.view = this.initView();
   }
 
-  private initView(): HTMLInputElement {
+  protected initView(): HTMLInputElement {
     let elem = this.createInput();
     this.fillDataList();
     return elem;
@@ -36,7 +32,7 @@ export class DataList {
   private createInput() {
     let elem = document.createElement("input");
     elem.id = this.htmlId;
-    elem.style.margin = "10px 00px";
+    elem.style.margin = "10px 0px";
     elem.setAttribute("list", this.listAttr);
     elem.oninput = (e) => {
       // @ts-expect-error
@@ -53,12 +49,6 @@ export class DataList {
     if (id === -1) return;
     this.onClick(id);
     this.setUserInput("");
-  }
-
-  private appendToParent(elem: HTMLInputElement): void {
-    typeof this.parentId === "undefined"
-      ? document.body.appendChild(elem)
-      : document.getElementById(this.parentId).appendChild(elem);
   }
 
   private setUserInput(aString: string) {
