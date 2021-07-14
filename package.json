@@ -12,7 +12,6 @@
     "dev": "nodemon",
     "build": "tsc"
   },
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jamie-sgro/dashboard.git"
