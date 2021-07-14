@@ -128,7 +128,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0",
-            nonNormalValue: "",
+            nonNormalValue: "59.9",
           },
           {
             name: "Civility",
@@ -209,7 +209,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.274314214",
-            nonNormalValue: "",
+            nonNormalValue: "70.9",
           },
           {
             name: "Civility",
@@ -289,7 +289,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.578553616",
-            nonNormalValue: "",
+            nonNormalValue: "83.1",
           },
           {
             name: "Civility",
@@ -369,7 +369,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.411471322",
-            nonNormalValue: "",
+            nonNormalValue: "76.4",
           },
           {
             name: "Civility",
@@ -449,7 +449,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.790523691",
-            nonNormalValue: "",
+            nonNormalValue: "91.6",
           },
           {
             name: "Civility",
@@ -529,7 +529,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.825436409",
-            nonNormalValue: "",
+            nonNormalValue: "93",
           },
           {
             name: "Civility",
@@ -609,7 +609,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.528678304",
-            nonNormalValue: "",
+            nonNormalValue: "81.1",
           },
           {
             name: "Civility",
@@ -689,7 +689,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.523690773",
-            nonNormalValue: "",
+            nonNormalValue: "80.9",
           },
           {
             name: "Civility",
@@ -769,7 +769,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.655860349",
-            nonNormalValue: "",
+            nonNormalValue: "86.2",
           },
           {
             name: "Civility",
@@ -849,7 +849,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.443890274",
-            nonNormalValue: "",
+            nonNormalValue: "77.7",
           },
           {
             name: "Civility",
@@ -929,7 +929,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.179551122",
-            nonNormalValue: "",
+            nonNormalValue: "67.1",
           },
           {
             name: "Civility",
@@ -1009,7 +1009,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.705735661",
-            nonNormalValue: "",
+            nonNormalValue: "88.2",
           },
           {
             name: "Civility",
@@ -1089,7 +1089,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.760598504",
-            nonNormalValue: "",
+            nonNormalValue: "90.4",
           },
           {
             name: "Civility",
@@ -1169,7 +1169,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.566084788",
-            nonNormalValue: "",
+            nonNormalValue: "82.6",
           },
           {
             name: "Civility",
@@ -1249,7 +1249,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.72319202",
-            nonNormalValue: "",
+            nonNormalValue: "88.9",
           },
           {
             name: "Civility",
@@ -1329,7 +1329,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.568578554",
-            nonNormalValue: "",
+            nonNormalValue: "82.7",
           },
           {
             name: "Civility",
@@ -1409,7 +1409,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.817955112",
-            nonNormalValue: "",
+            nonNormalValue: "92.7",
           },
           {
             name: "Civility",
@@ -1489,7 +1489,7 @@ export class Data {
             description:
               "Percentage of population less than 500 metres from public transit access point. ",
             value: "0.760598504",
-            nonNormalValue: "",
+            nonNormalValue: "90.4",
           },
           {
             name: "Civility",
