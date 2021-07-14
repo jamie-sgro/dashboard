@@ -30,14 +30,14 @@ export const panelWidth = 0.33;
 // @ts-ignore
 // document.getElementById("popupInfo").class = 0;
 
-let newBarplot = new Barplot(
+let avgBarplot = new Barplot(
   "#column-2",
   $(window).width() * panelWidth,
   getHeight(),
   { margin: new Margin(10, 20, 30, 60) }
 );
 $(window).on("resize", function () {
-  newBarplot.resize();
+  avgBarplot.resize();
 });
 let data: DataPoint[];
 data = [
@@ -68,8 +68,8 @@ data = [
   { name: "Halifax", value: "98", description: "Halifax" },
   { name: "St. John's", value: "100", description: "St. John's" },
 ];
-newBarplot.plot(data, [0, 0], [100, 100]);
-newBarplot.updatePlot(data);
+avgBarplot.plot(data, [0, 0], [100, 100]);
+avgBarplot.updatePlot(data);
 
 /******************
  *** ADD D3 TOOL ***
@@ -147,12 +147,36 @@ let btn = new ToggleButton("btn-lead-lag", leadLagOnClick, {
 
 let datalist = populateRadioButton();
 
+/**
+ * \brief   Is called when the user clicks on any city radio button.
+ *          Rerenders the city bar plot with values form the city.
+ * @param   id : Index of the radio button.
+ */
 function onClick(id: number) {
-  let name = Data.getSyncData()[id].name;
+  let city = Data.getSyncData()[id];
+  let name = city.name;
   header.textContent = name;
-  newBarplot.applyStrokeByName(name);
+  avgBarplot.applyStrokeByName(name);
   recenterDashboard();
+  avgCityData(city.data);
   updateAllGraphs(id);
+}
+
+/**
+ * \brief   Averages the city data.
+ * @param   cityData : The array of DataPoint describing the city.
+ * @returns Returns the average of the city's DataPoint values.
+ */
+function avgCityData(cityData: DataPoint[]) : number {
+  let sum = 0.0;
+  let numElements = 0;
+  cityData.forEach((d) => addDataPointElement(d.value));
+  function addDataPointElement(dataPointValue: string) {
+    sum +=  parseFloat(dataPointValue);
+    ++numElements;
+  }
+  let avg = sum / numElements;
+  return avg;
 }
 
 function populateRadioButton(): RadioButton {

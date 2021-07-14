@@ -57,6 +57,12 @@ export class Data {
     return maxOfVariable;
   }
 
+  /**
+   * @returns   Returns all geographic data as an array of Data Model.
+   * \details   Each DataModel element pertains to one city, and has a name and data property.
+   *              - The data property is an array of DataPoint
+   *              - Each DataPoint has three strings (name, desc, value) for the bar plot.
+   */
   static getSyncData(): DataModel[] {
     return [
       {
