@@ -107,7 +107,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.735469986",
-            nonNormalValue: "",
+            nonNormalValue: "39,627",
           },
           {
             name: "Heritage",
@@ -188,7 +188,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0",
-            nonNormalValue: "",
+            nonNormalValue: "149,801",
           },
           {
             name: "Heritage",
@@ -268,7 +268,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.678591369",
-            nonNormalValue: "",
+            nonNormalValue: "48,147",
           },
           {
             name: "Heritage",
@@ -348,7 +348,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.567493002",
-            nonNormalValue: "",
+            nonNormalValue: "64,790",
           },
           {
             name: "Heritage",
@@ -428,7 +428,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.667494914",
-            nonNormalValue: "",
+            nonNormalValue: "49,810",
           },
           {
             name: "Heritage",
@@ -508,7 +508,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.724149925",
-            nonNormalValue: "",
+            nonNormalValue: "41,323",
           },
           {
             name: "Heritage",
@@ -588,7 +588,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.809926691",
-            nonNormalValue: "",
+            nonNormalValue: "28,473",
           },
           {
             name: "Heritage",
@@ -668,7 +668,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.811198662",
-            nonNormalValue: "",
+            nonNormalValue: "28,283",
           },
           {
             name: "Heritage",
@@ -748,7 +748,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.808982728",
-            nonNormalValue: "",
+            nonNormalValue: "28,615",
           },
           {
             name: "Heritage",
@@ -828,7 +828,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.810418937",
-            nonNormalValue: "",
+            nonNormalValue: "28,399",
           },
           {
             name: "Heritage",
@@ -908,7 +908,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.760131164",
-            nonNormalValue: "",
+            nonNormalValue: "35,933",
           },
           {
             name: "Heritage",
@@ -988,7 +988,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.97091365",
-            nonNormalValue: "",
+            nonNormalValue: "4,357",
           },
           {
             name: "Heritage",
@@ -1068,7 +1068,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.954228525",
-            nonNormalValue: "",
+            nonNormalValue: "6,857",
           },
           {
             name: "Heritage",
@@ -1148,7 +1148,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.998379091",
-            nonNormalValue: "",
+            nonNormalValue: "243",
           },
           {
             name: "Heritage",
@@ -1228,7 +1228,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.961429024",
-            nonNormalValue: "",
+            nonNormalValue: "5,778",
           },
           {
             name: "Heritage",
@@ -1308,7 +1308,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.999015336",
-            nonNormalValue: "",
+            nonNormalValue: "148",
           },
           {
             name: "Heritage",
@@ -1388,7 +1388,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.630853372",
-            nonNormalValue: "",
+            nonNormalValue: "55,298",
           },
           {
             name: "Heritage",
@@ -1468,7 +1468,7 @@ export class Data {
             description:
               "Number of people who died, went missing or were directly affected by disasters per 100,000 population.",
             value: "0.851679244",
-            nonNormalValue: "",
+            nonNormalValue: "22,219",
           },
           {
             name: "Heritage",
