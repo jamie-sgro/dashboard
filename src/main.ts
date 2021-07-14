@@ -14,7 +14,9 @@ import {
 import { Margin } from "./Margin.js";
 import { panel3Resize } from "./panel3.js";
 import { ToggleButton } from "./widgets/ToggleButton.js";
-import { DataList, DataListModel } from "./widgets/DataList.js";
+import { DataList } from "./widgets/DataList.js";
+import { DataListModel } from "./widgets/DataListModel.js";
+import { RadioButton } from "./widgets/RadioButton.js";
 
 export const markRad = 15;
 export const markCol = "rgba(10,151,217, .8)";
@@ -143,7 +145,7 @@ let btn = new ToggleButton("btn-lead-lag", leadLagOnClick, {
   parentId: "column-1",
 });
 
-let datalist = populateDataList();
+let datalist = populateRadioButton();
 
 function onClick(id: number) {
   let name = Data.getSyncData()[id].name;
@@ -153,12 +155,12 @@ function onClick(id: number) {
   updateAllGraphs(id);
 }
 
-function populateDataList(): DataList {
+function populateRadioButton(): RadioButton {
   let data = Data.getSyncData();
   const dataListModel = data.map((city, id) => {
     return { id: id, value: city.name } as DataListModel;
   });
-  return new DataList("cities-datalist", dataListModel, onClick, {
+  return new RadioButton("cities-radiobutton", dataListModel, onClick, {
     parentId: "column-1",
   });
 }
