@@ -41,32 +41,32 @@ $(window).on("resize", function () {
 });
 let data: DataPoint[];
 data = [
-  { name: "Victoria", value: "5", description: "Victoria" },
-  { name: "Vancouver", value: "10", description: "Vancouver" },
-  { name: "Edmonton", value: "20", description: "Edmonton" },
-  { name: "Calgary", value: "28", description: "Calgary" },
-  { name: "Saskatoon", value: "34", description: "Saskatoon" },
-  { name: "Regina", value: "38", description: "Regina" },
-  { name: "Winnipeg", value: "40", description: "Winnipeg" },
-  { name: "Windsor", value: "43", description: "Windsor" },
-  { name: "London", value: "54", description: "London" },
+  { name: "Edmonton", value: "0.706197578", description: "Edmonton" },
+  { name: "Victoria", value: "0.699868017", description: "Victoria" },
+  { name: "Calgary", value: "0.696674863", description: "Calgary" },
+  { name: "Vancouver", value: "0.695830997", description: "Vancouver" },
   {
     name: "Kitchener, Cambridge, Waterloo",
-    value: "55",
+    value: "0.673147867",
     description: "Kitchener, Cambridge, Waterloo",
   },
+  { name: "Hamilton", value: "0.668070434", description: "Hamilton" },
+  { name: "Regina", value: "0.652578651", description: "Regina" },
+  { name: "Toronto", value: "0.641217199", description: "Toronto" },
+  { name: "Saskatoon", value: "0.639751891", description: "Saskatoon" },
+  { name: "London", value: "0.638577745", description: "London" },
+  { name: "Montreal", value: "0.638424117", description: "Montreal" },
+  { name: "Winnipeg", value: "0.622137428", description: "Winnipeg" },
+  { name: "Quebec City", value: "0.61164794294", description: "Quebec City" },
+  { name: "Halifax", value: "0.584855557", description: "Halifax" },
   {
     name: "St. Catharines, Niagara",
-    value: "60",
+    value: "0.579313058",
     description: "St. Catharines, Niagara",
   },
-  { name: "Hamilton", value: "70", description: "Hamilton" },
-  { name: "Toronto", value: "81", description: "Toronto" },
-  { name: "Montreal", value: "84", description: "Montreal" },
-  { name: "Sherbrooke", value: "84", description: "Sherbrooke" },
-  { name: "Quebec City", value: "94", description: "Quebec City" },
-  { name: "Halifax", value: "98", description: "Halifax" },
-  { name: "St. John's", value: "100", description: "St. John's" },
+  { name: "Sherbrooke", value: "0.563877292", description: "Sherbrooke" },
+  { name: "St. John's", value: "0.550804241", description: "St. John's" },
+  { name: "Windsor", value: "0.523914824", description: "Windsor" },
 ];
 avgBarplot.plot(data, [0, 0], [100, 100]);
 avgBarplot.updatePlot(data);
@@ -167,12 +167,12 @@ function onClick(id: number) {
  * @param   cityData : The array of DataPoint describing the city.
  * @returns Returns the average of the city's DataPoint values.
  */
-function avgCityData(cityData: DataPoint[]) : number {
+function avgCityData(cityData: DataPoint[]): number {
   let sum = 0.0;
   let numElements = 0;
   cityData.forEach((d) => addDataPointElement(d.value));
   function addDataPointElement(dataPointValue: string) {
-    sum +=  parseFloat(dataPointValue);
+    sum += parseFloat(dataPointValue);
     ++numElements;
   }
   let avg = sum / numElements;
