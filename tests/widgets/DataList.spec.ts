@@ -50,5 +50,9 @@ describe("DataList", () => {
       datalist.convertInputToIndexAndProcessClick("invalid input");
       expect(result).to.equal(undefined);
     });
+
+    it("should fail", () => {
+      expect(true).to.equal(false);
+    });
   });
 });
