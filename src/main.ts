@@ -46,7 +46,13 @@ $(window).on("resize", function () {
 **********************/
 drawMeanPlot(avgBarplot);
 
-function drawMeanPlot(avgBarplot : Barplot) {//: DataPoint[] {
+
+/**
+ * @brief   Renders the left-side plot with city averages, sorted descending.
+ * @param   avgBarplot : The barPlot to render.
+ * @returns N/A
+ */
+function drawMeanPlot(avgBarplot : Barplot) {
   let countryData = Data.getSyncData();
   let meanCountryData : DataPoint[] = [];
   countryData.forEach((d) => addMeanCity(d));
@@ -60,9 +66,12 @@ function drawMeanPlot(avgBarplot : Barplot) {//: DataPoint[] {
     meanCountryData.push(citySummary);
   }
 
+  meanCountryData.sort(compareDataPoint);
+
   avgBarplot.plot(meanCountryData, [0, 0], [100, 100]);
   avgBarplot.updatePlot(meanCountryData);
 }
+
 
 /**
  * \brief   Averages the city data.
@@ -81,6 +90,25 @@ function avgCityData(cityData: DataPoint[]): number {
   return avg;
 }
 
+
+/**
+ * @brief   Compares the values of two DataPoints. Useful for sorting funtions.
+ * @param   a : The first DataPoint to compare.
+ * @param   b : The second DataPoint to compare.
+ * @returns Returns:
+ *            - -1 if a < b
+ *            - +1 if a > b
+ *            - 0 if a == b
+ */
+function compareDataPoint( a: DataPoint, b: DataPoint) : number {
+  if ( a.value < b.value ){
+    return -1;
+  }
+  else if ( a.value > b.value ){
+    return 1;
+  }
+  return 0;
+}
 
 
 /******************
