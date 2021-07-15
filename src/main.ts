@@ -41,34 +41,26 @@ $(window).on("resize", function () {
 });
 let data: DataPoint[];
 data = [
-  { name: "Victoria", value: "5", description: "Victoria" },
-  { name: "Vancouver", value: "10", description: "Vancouver" },
-  { name: "Edmonton", value: "20", description: "Edmonton" },
-  { name: "Calgary", value: "28", description: "Calgary" },
-  { name: "Saskatoon", value: "34", description: "Saskatoon" },
-  { name: "Regina", value: "38", description: "Regina" },
-  { name: "Winnipeg", value: "40", description: "Winnipeg" },
-  { name: "Windsor", value: "43", description: "Windsor" },
-  { name: "London", value: "54", description: "London" },
-  {
-    name: "Kitchener, Cambridge, Waterloo",
-    value: "55",
-    description: "Kitchener, Cambridge, Waterloo",
-  },
-  {
-    name: "St. Catharines, Niagara",
-    value: "60",
-    description: "St. Catharines, Niagara",
-  },
-  { name: "Hamilton", value: "70", description: "Hamilton" },
-  { name: "Toronto", value: "81", description: "Toronto" },
-  { name: "Montreal", value: "84", description: "Montreal" },
-  { name: "Sherbrooke", value: "84", description: "Sherbrooke" },
-  { name: "Quebec City", value: "94", description: "Quebec City" },
-  { name: "Halifax", value: "98", description: "Halifax" },
-  { name: "St. John's", value: "100", description: "St. John's" },
+  { name: "Windsor", value: "0.523914824", description: "Windsor", nonNormalValue: "0.523914824" },
+  { name: "St. John's", value: "0.550804241", description: "St. John's", nonNormalValue: "0.550804241" },
+  { name: "Sherbrooke", value: "0.563877292", description: "Sherbrooke", nonNormalValue: "0.563877292" },
+  { name: "St. Catharines, Niagara", value: "0.579313058", description: "St. Catharines, Niagara", nonNormalValue: "0.579313058" },
+  { name: "Halifax", value: "0.584855557", description: "Halifax", nonNormalValue: "0.584855557" },
+  { name: "Quebec City", value: "0.61164794294", description: "Quebec City", nonNormalValue: "0.61164794294" },
+  { name: "Winnipeg", value: "0.622137428", description: "Winnipeg", nonNormalValue: "0.622137428" },
+  { name: "Montreal", value: "0.638424117", description: "Montreal", nonNormalValue: "0.638424117" },
+  { name: "London", value: "0.638577745", description: "London", nonNormalValue: "0.638577745" },
+  { name: "Saskatoon", value: "0.639751891", description: "Saskatoon", nonNormalValue: "0.639751891" },
+  { name: "Toronto", value: "0.641217199", description: "Toronto", nonNormalValue: "0.641217199" },
+  { name: "Regina", value: "0.652578651", description: "Regina", nonNormalValue: "0.652578651" },
+  { name: "Hamilton", value: "0.668070434", description: "Hamilton", nonNormalValue: "0.668070434" },
+  { name: "Kitchener, Cambridge, Waterloo", value: "0.673147867", description: "Kitchener, Cambridge, Waterloo", nonNormalValue: "0.673147867" },
+  { name: "Vancouver", value: "0.695830997", description: "Vancouver", nonNormalValue: "0.695830997" },
+  { name: "Calgary", value: "0.696674863", description: "Calgary", nonNormalValue: "0.696674863" },
+  { name: "Victoria", value: "0.699868017", description: "Victoria", nonNormalValue: "0.699868017" },
+  { name: "Edmonton", value: "0.706197578", description: "Edmonton", nonNormalValue: "0.706197578" },
 ];
-avgBarplot.plot(data, [0, 0], [100, 100]);
+avgBarplot.plot(data, [0, 0], [1, 1]);
 avgBarplot.updatePlot(data);
 
 /******************
@@ -167,12 +159,12 @@ function onClick(id: number) {
  * @param   cityData : The array of DataPoint describing the city.
  * @returns Returns the average of the city's DataPoint values.
  */
-function avgCityData(cityData: DataPoint[]) : number {
+function avgCityData(cityData: DataPoint[]): number {
   let sum = 0.0;
   let numElements = 0;
   cityData.forEach((d) => addDataPointElement(d.value));
   function addDataPointElement(dataPointValue: string) {
-    sum +=  parseFloat(dataPointValue);
+    sum += parseFloat(dataPointValue);
     ++numElements;
   }
   let avg = sum / numElements;
