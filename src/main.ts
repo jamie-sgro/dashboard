@@ -39,8 +39,8 @@ let avgBarplot = new Barplot(
 $(window).on("resize", function () {
   avgBarplot.resize();
 });
-let data: DataPoint[];
-data = [
+let avgData: DataPoint[];
+avgData = [
   { name: "Victoria", value: "5", description: "Victoria" },
   { name: "Vancouver", value: "10", description: "Vancouver" },
   { name: "Edmonton", value: "20", description: "Edmonton" },
@@ -68,8 +68,55 @@ data = [
   { name: "Halifax", value: "98", description: "Halifax" },
   { name: "St. John's", value: "100", description: "St. John's" },
 ];
-avgBarplot.plot(data, [0, 0], [100, 100]);
-avgBarplot.updatePlot(data);
+
+/*********************
+*** DRAW MEAN PLOT ***
+**********************/
+drawMeanPlot(avgBarplot);
+//avgBarplot.plot(avgData, [0, 0], [100, 100]);
+//avgBarplot.updatePlot(avgData);
+
+function drawMeanPlot(avgBarplot : Barplot) {//: DataPoint[] {
+  let countryData = Data.getSyncData();
+  let meanCountryData : DataPoint[] = [];
+  countryData.forEach((d) => addMeanCity(d));
+
+  function addMeanCity(cityData : DataModel) {
+    let citySummary: DataPoint = {
+      name:         cityData.name,
+      description:  cityData.name,
+      value:        (avgCityData(cityData.data) * 100).toString()
+    };
+    meanCountryData.push(citySummary);
+  }
+
+  //return meanCountryData;
+
+  avgBarplot.plot(meanCountryData, [0, 0], [100, 100]);
+  avgBarplot.updatePlot(meanCountryData);
+
+  // DEBUG: log
+  meanCountryData.forEach((d) => console.log("name: " + d.name + ", value: " + d.value + ", desc: " + d.description));
+}
+
+/**
+ * \brief   Averages the city data.
+ * @param   cityData : The array of DataPoint describing the city.
+ * @returns Returns the average of the city's DataPoint values.
+ */
+function avgCityData(cityData: DataPoint[]): number {
+  let sum = 0.0;
+  let numElements = 0;
+  cityData.forEach((d) => addDataPointElement(d.value));
+  function addDataPointElement(dataPointValue: string) {
+    sum += parseFloat(dataPointValue);
+    ++numElements;
+  }
+  let avg = sum / numElements;
+  return avg;
+}
+
+
 
 /******************
  *** ADD D3 TOOL ***
@@ -160,23 +207,6 @@ function onClick(id: number) {
   recenterDashboard();
   avgCityData(city.data);
   updateAllGraphs(id);
-}
-
-/**
- * \brief   Averages the city data.
- * @param   cityData : The array of DataPoint describing the city.
- * @returns Returns the average of the city's DataPoint values.
- */
-function avgCityData(cityData: DataPoint[]) : number {
-  let sum = 0.0;
-  let numElements = 0;
-  cityData.forEach((d) => addDataPointElement(d.value));
-  function addDataPointElement(dataPointValue: string) {
-    sum +=  parseFloat(dataPointValue);
-    ++numElements;
-  }
-  let avg = sum / numElements;
-  return avg;
 }
 
 function populateRadioButton(): RadioButton {
