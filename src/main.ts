@@ -39,42 +39,12 @@ let avgBarplot = new Barplot(
 $(window).on("resize", function () {
   avgBarplot.resize();
 });
-let avgData: DataPoint[];
-avgData = [
-  { name: "Victoria", value: "5", description: "Victoria" },
-  { name: "Vancouver", value: "10", description: "Vancouver" },
-  { name: "Edmonton", value: "20", description: "Edmonton" },
-  { name: "Calgary", value: "28", description: "Calgary" },
-  { name: "Saskatoon", value: "34", description: "Saskatoon" },
-  { name: "Regina", value: "38", description: "Regina" },
-  { name: "Winnipeg", value: "40", description: "Winnipeg" },
-  { name: "Windsor", value: "43", description: "Windsor" },
-  { name: "London", value: "54", description: "London" },
-  {
-    name: "Kitchener, Cambridge, Waterloo",
-    value: "55",
-    description: "Kitchener, Cambridge, Waterloo",
-  },
-  {
-    name: "St. Catharines, Niagara",
-    value: "60",
-    description: "St. Catharines, Niagara",
-  },
-  { name: "Hamilton", value: "70", description: "Hamilton" },
-  { name: "Toronto", value: "81", description: "Toronto" },
-  { name: "Montreal", value: "84", description: "Montreal" },
-  { name: "Sherbrooke", value: "84", description: "Sherbrooke" },
-  { name: "Quebec City", value: "94", description: "Quebec City" },
-  { name: "Halifax", value: "98", description: "Halifax" },
-  { name: "St. John's", value: "100", description: "St. John's" },
-];
+
 
 /*********************
 *** DRAW MEAN PLOT ***
 **********************/
 drawMeanPlot(avgBarplot);
-//avgBarplot.plot(avgData, [0, 0], [100, 100]);
-//avgBarplot.updatePlot(avgData);
 
 function drawMeanPlot(avgBarplot : Barplot) {//: DataPoint[] {
   let countryData = Data.getSyncData();
@@ -90,13 +60,8 @@ function drawMeanPlot(avgBarplot : Barplot) {//: DataPoint[] {
     meanCountryData.push(citySummary);
   }
 
-  //return meanCountryData;
-
   avgBarplot.plot(meanCountryData, [0, 0], [100, 100]);
   avgBarplot.updatePlot(meanCountryData);
-
-  // DEBUG: log
-  meanCountryData.forEach((d) => console.log("name: " + d.name + ", value: " + d.value + ", desc: " + d.description));
 }
 
 /**
