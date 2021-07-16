@@ -43,7 +43,6 @@ let avgBarplot = new Barplot(
 $(window).on("resize", function () {
   avgBarplot.resize();
 });
-
 avgBarplot.drawMeanPlot();
 
 /******************

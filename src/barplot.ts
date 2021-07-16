@@ -338,8 +338,8 @@ export class Barplot {
     this.tooltip.text = initialText;
     this.tooltip.fadeIn();
 
-    const newText = `${initialText} ${data.value}`;
-    this.tooltip.setTextAfterDelay(newText);
+    const newText = `${initialText} ${data.nonNormalValue}`;
+    this.tooltip.setTextAfterDelay(newText, 500);
 
     this.tooltip.repositionTooltipIfOffscreen(this.svg.bottom);
 

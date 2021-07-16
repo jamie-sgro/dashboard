@@ -63,10 +63,10 @@ export class Tooltip {
     this.d3Element.html(aString);
   }
 
-  setTextAfterDelay(aString: string) {
+  setTextAfterDelay(aString: string, delayInMilliseconds: number) {
     this.d3Element
       .transition()
-      .delay(2000)
+      .delay(delayInMilliseconds)
       .on("end", function () {
         d3.select(this).html(aString);
       });
