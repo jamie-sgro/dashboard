@@ -25,7 +25,11 @@ export const imageDirectory = {
 };
 
 
-function addDescriptionToTrait(trait: DataPoint) {
+/**
+ * @brief   Adds the appropriate description to the trait / data point.
+ * @param   trait : The trait to add the description to. 
+ */
+function traitDescriptions(trait: DataPoint) {
   switch (trait.name) {
     case "PM":
       trait.description = "Average fine particule matter concentrations (PM 2.5)";
@@ -1058,7 +1062,7 @@ export class Data {
     // add descriptions to city traits
     countryData.forEach((d) => addDescriptionsToCityTraits(d));
     function addDescriptionsToCityTraits(city: DataModel) {
-      city.data.forEach((d) => addDescriptionToTrait(d));
+      city.data.forEach((d) => traitDescriptions(d));
     }
     return countryData;
   }
