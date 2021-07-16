@@ -59,6 +59,69 @@ export class Data {
   }
 
   /**
+   * \brief   Averages the city data.
+   * @param   cityData : The array of DataPoint describing the city.
+   * @returns Returns the average of the city's DataPoint values.
+   */
+   static getMeanCityData(cityData: DataPoint[]): number {
+    if (cityData.length <= 0) {
+      return 0;
+    }
+
+    let sum = 0.0;
+    let numElements = 0;
+    cityData.forEach((d) => addDataPointElement(d.value));
+    function addDataPointElement(dataPointValue: string) {
+      sum += parseFloat(dataPointValue);
+      ++numElements;
+    }
+    let avg = sum / numElements;
+    return avg;
+  }
+
+
+   /**
+   * @brief   Renders the left-side plot with city averages, sorted descending.
+   * @param   avgBarplot : The barPlot to render.
+   * @returns N/A
+   */
+  static getMeanCountry() : DataPoint[] {
+    let countryData = Data.getSyncData();
+    let meanCountryData : DataPoint[] = [];
+    countryData.forEach((d) => addMeanCity(d));
+
+    function addMeanCity(cityData : DataModel) {
+      let citySummary: DataPoint = {
+        name:         cityData.name,
+        description:  cityData.name,
+        value:        Data.getMeanCityData(cityData.data).toString()
+      };
+      meanCountryData.push(citySummary);
+    }
+
+    meanCountryData.sort(Data.compareDataPoint);
+    return meanCountryData;
+  }
+
+  /**
+   * @brief   Compares the values of two DataPoints. Useful for sorting funtions.
+   * @param   a : The first DataPoint to compare.
+   * @param   b : The second DataPoint to compare.
+   * @returns Returns:
+   *            - -1 if a < b
+   *            - +1 if a > b
+   *            - 0 if a == b
+   */
+  static compareDataPoint( a: DataPoint, b: DataPoint) : number {
+    if ( a.value < b.value ){
+      return -1;
+    }
+    else if ( a.value > b.value ){
+      return 1;
+    }
+    return 0;
+  }
+  /**
    * @returns   Returns all geographic data as an array of Data Model.
    * \details   Each DataModel element pertains to one city, and has a name and data property.
    *              - The data property is an array of DataPoint

@@ -2,7 +2,7 @@
 import d3 = require("d3");
 import { AxisImage } from "./AxisImage.js";
 
-import { DataPoint } from "./data.js";
+import { Data, DataModel, DataPoint } from "./data.js";
 import { Margin } from "./Margin.js";
 import { Svg } from "./Svg.js";
 import { Tooltip } from "./Tooltip.js";
@@ -291,6 +291,19 @@ export class Barplot {
   get baseType() {
     return this as unknown as d3.BaseType;
   }
+
+
+  /**
+   * @brief   Calulates the mean of all data points for each city, and then
+   *          renders the plot with those mean city values.
+   */
+  drawMeanPlot() {
+    let meanCountry = Data.getMeanCountry();
+    let xMax : number = parseFloat(meanCountry[0].value); 
+    this.plot(meanCountry, [0, 0], [xMax, 1]);
+    this.updatePlot(meanCountry);
+  }
+
 
   onClick(data) {
     // change marker size based on data value
