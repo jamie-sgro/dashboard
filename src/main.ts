@@ -30,6 +30,10 @@ export const panelWidth = 0.33;
 // @ts-ignore
 // document.getElementById("popupInfo").class = 0;
 
+/*********************
+*** DRAW MEAN PLOT ***
+**********************/
+
 let avgBarplot = new Barplot(
   "#column-2",
   $(window).width() * panelWidth,
@@ -40,76 +44,7 @@ $(window).on("resize", function () {
   avgBarplot.resize();
 });
 
-
-/*********************
-*** DRAW MEAN PLOT ***
-**********************/
-drawMeanPlot(avgBarplot);
-
-
-/**
- * @brief   Renders the left-side plot with city averages, sorted descending.
- * @param   avgBarplot : The barPlot to render.
- * @returns N/A
- */
-function drawMeanPlot(avgBarplot : Barplot) {
-  let countryData = Data.getSyncData();
-  let meanCountryData : DataPoint[] = [];
-  countryData.forEach((d) => addMeanCity(d));
-
-  function addMeanCity(cityData : DataModel) {
-    let citySummary: DataPoint = {
-      name:         cityData.name,
-      description:  cityData.name,
-      value:        (avgCityData(cityData.data) * 100).toString()
-    };
-    meanCountryData.push(citySummary);
-  }
-
-  meanCountryData.sort(compareDataPoint);
-
-  avgBarplot.plot(meanCountryData, [0, 0], [100, 100]);
-  avgBarplot.updatePlot(meanCountryData);
-}
-
-
-/**
- * \brief   Averages the city data.
- * @param   cityData : The array of DataPoint describing the city.
- * @returns Returns the average of the city's DataPoint values.
- */
-function avgCityData(cityData: DataPoint[]): number {
-  let sum = 0.0;
-  let numElements = 0;
-  cityData.forEach((d) => addDataPointElement(d.value));
-  function addDataPointElement(dataPointValue: string) {
-    sum += parseFloat(dataPointValue);
-    ++numElements;
-  }
-  let avg = sum / numElements;
-  return avg;
-}
-
-
-/**
- * @brief   Compares the values of two DataPoints. Useful for sorting funtions.
- * @param   a : The first DataPoint to compare.
- * @param   b : The second DataPoint to compare.
- * @returns Returns:
- *            - -1 if a < b
- *            - +1 if a > b
- *            - 0 if a == b
- */
-function compareDataPoint( a: DataPoint, b: DataPoint) : number {
-  if ( a.value < b.value ){
-    return -1;
-  }
-  else if ( a.value > b.value ){
-    return 1;
-  }
-  return 0;
-}
-
+avgBarplot.drawMeanPlot();
 
 /******************
  *** ADD D3 TOOL ***
@@ -198,7 +133,6 @@ function onClick(id: number) {
   header.textContent = name;
   avgBarplot.applyStrokeByName(name);
   recenterDashboard();
-  avgCityData(city.data);
   updateAllGraphs(id);
 }
 

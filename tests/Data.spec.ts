@@ -1,4 +1,4 @@
-import { Data, DataModel } from "../src/data";
+import { Data, DataModel, DataPoint } from "../src/data";
 
 var chaiSrc = require("chai");
 var src = require("../src/data");
@@ -6,6 +6,48 @@ var src = require("../src/data");
 require("jsdom-global")();
 
 var expect = chaiSrc.expect;
+
+describe("mean city", function(){
+  it("should calculate the mean of all datapoints within a city", () => {
+    let city : DataPoint[] = [
+      {
+        name: "a", value: "1"
+      },
+      {
+        name: "a", value: "2"
+      }
+    ];
+    expect(Data.getMeanCityData(city)).to.equal(1.5);
+    city = [
+      {
+        name: "a", value: "56.8"
+      },
+      {
+        name: "a", value: "23.4"
+      },
+      {
+        name: "a", value: "36.9"
+      },
+      {
+        name: "a", value: "6.0"
+      },
+      {
+        name: "a", value: "-7.23"
+      },
+      {
+        name: "a", value: "0.92"
+      },
+      {
+        name: "a", value: "97.51"
+      }
+    ];
+    expect(Data.getMeanCityData(city).toFixed(5)).to.equal("30.61429");
+  });
+  it("should return 0 if the city has no data points", () => {
+    let city = [];
+    expect(Data.getMeanCityData(city)).to.equal(0);
+  });
+});
 
 describe("data", () => {
   let data: DataModel[];
