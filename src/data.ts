@@ -63,7 +63,7 @@ export class Data {
    * @param   cityData : The array of DataPoint describing the city.
    * @returns Returns the average of the city's DataPoint values.
    */
-   static getMeanCityData(cityData: DataPoint[]): number {
+  static getMeanCityData(cityData: DataPoint[]): number {
     if (cityData.length <= 0) {
       return 0;
     }
@@ -79,19 +79,19 @@ export class Data {
     return avg;
   }
 
-
-   /**
+  /**
    * @brief   Renders the left-side plot with city averages, sorted descending.
    * @param   avgBarplot : The barPlot to render.
    * @returns N/A
    */
-  static getMeanCountry() : DataPoint[] {
+  static getMeanCountry(): DataPoint[] {
     let countryData = Data.getSyncData();
-    let meanCountryData : DataPoint[] = [];
+    let meanCountryData: DataPoint[] = [];
     countryData.forEach((d) => addMeanCity(d));
 
-    function addMeanCity(cityData : DataModel) {
-      let dataValue = Data.getMeanCityData(cityData.data)
+    function addMeanCity(cityData: DataModel) {
+      let dataValue = Data.getMeanCityData(cityData.data);
+      // prettier-ignore
       let citySummary:  DataPoint = {
         name:           cityData.name,
         description:    cityData.name,
@@ -114,11 +114,10 @@ export class Data {
    *            - +1 if a > b
    *            - 0 if a == b
    */
-  static compareDataPoint( a: DataPoint, b: DataPoint) : number {
-    if ( a.value < b.value ){
+  static compareDataPoint(a: DataPoint, b: DataPoint): number {
+    if (a.value < b.value) {
       return -1;
-    }
-    else if ( a.value > b.value ){
+    } else if (a.value > b.value) {
       return 1;
     }
     return 0;
@@ -130,7 +129,7 @@ export class Data {
    *              - Each DataPoint has three strings (name, desc, value) for the bar plot.
    */
   static getSyncData(): DataModel[] {
-    let countryData : DataModel[] = [
+    let countryData: DataModel[] = [
       {
         name: "St. John's",
         data: [
@@ -1222,37 +1221,45 @@ export class Data {
     function addDescriptionToTrait(trait: DataPoint) {
       switch (trait.name) {
         case "PM":
-          trait.description = "Average fine particule matter concentrations (PM 2.5)";
+          trait.description =
+            "Average fine particule matter concentrations (PM 2.5)";
           break;
         case "Consumption":
-          trait.description = "Ratio of land consumption rate to population growth rate (1971 to 2011)";
+          trait.description =
+            "Ratio of land consumption rate to population growth rate (1971 to 2011)";
           break;
         case "Assult":
           trait.description = "Sexual assault (rate per 100,000 population)";
-            break;
+          break;
         case "House Need":
           trait.description = "Proportion of households in core housing need";
           break;
         case "Affected":
           trait.description = "Total Affected";
-            break;
+          break;
         case "Disaster":
-          trait.description = "Number of people who died, went missing or were directly affected by disasters per 100,000 population.";
+          trait.description =
+            "Number of people who died, went missing or were directly affected by disasters per 100,000 population.";
           break;
         case "Econ Loss1":
-          trait.description = "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)";
+          trait.description =
+            "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)";
           break;
         case "Econ Loss2":
-          trait.description = "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)";
+          trait.description =
+            "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)";
           break;
         case "Transit":
-          trait.description = "Percentage of population less than 500 metres from public transit access point. ";
+          trait.description =
+            "Percentage of population less than 500 metres from public transit access point. ";
           break;
         case "Civility":
-          trait.description = "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ";
+          trait.description =
+            "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ";
           break;
         case "Waste":
-          trait.description = "Proportion of urban solid waste regularly collected and with adequate final discharge out of total urban solid waste generated by cities ";
+          trait.description =
+            "Proportion of urban solid waste regularly collected and with adequate final discharge out of total urban solid waste generated by cities ";
           break;
       }
     }
