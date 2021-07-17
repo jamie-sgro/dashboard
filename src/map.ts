@@ -76,7 +76,7 @@ export function updateAllGraphs(id: number) {
 export function updateGraphById(id, graph = barplot) {
   let data = Data.getSyncData();
 
-  const dataArray = reduceData(data[id]);
+  const dataArray = data[id].data;
 
   graph.updatePlot(dataArray);
 };

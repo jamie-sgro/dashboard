@@ -96,7 +96,7 @@ function plotData(barplot: Barplot) {
 
   //only return the first datapoint to populate the graph
   var id = 0;
-  let dataArray = reduceData(data[id]);
+  let dataArray = data[id].data;
   barplot.id = id; //Currently use first row of .csv on graph init
 
   let min = Data.getMinPerVariable(data);
