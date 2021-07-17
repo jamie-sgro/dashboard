@@ -28,8 +28,8 @@ export const panelWidth = 0.33;
 // document.getElementById("popupInfo").class = 0;
 
 /*********************
-*** DRAW MEAN PLOT ***
-**********************/
+ *** DRAW MEAN PLOT ***
+ **********************/
 
 let avgBarplot = new Barplot(
   "#column-2",
