@@ -1234,7 +1234,7 @@ export class Data {
           trait.description = "Proportion of households in core housing need";
           break;
         case "Affected":
-          trait.description = "Total Affected";
+          trait.description = "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities";
             break;
         case "Disaster":
           trait.description = "Number of people who died, went missing or were directly affected by disasters per 100,000 population.";
