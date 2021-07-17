@@ -1227,7 +1227,7 @@ export class Data {
         case "Consumption":
           trait.description = "Ratio of land consumption rate to population growth rate (1971 to 2011)";
           break;
-        case "Assult":
+        case "Assault":
           trait.description = "Sexual assault (rate per 100,000 population)";
             break;
         case "House Need":
