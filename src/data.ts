@@ -91,10 +91,12 @@ export class Data {
     countryData.forEach((d) => addMeanCity(d));
 
     function addMeanCity(cityData : DataModel) {
-      let citySummary: DataPoint = {
-        name:         cityData.name,
-        description:  cityData.name,
-        value:        Data.getMeanCityData(cityData.data).toString()
+      let dataValue = Data.getMeanCityData(cityData.data)
+      let citySummary:  DataPoint = {
+        name:           cityData.name,
+        description:    cityData.name,
+        value:          dataValue.toString(),
+        nonNormalValue: dataValue.toFixed(4).toString()
       };
       meanCountryData.push(citySummary);
     }
