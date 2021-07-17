@@ -17,83 +17,56 @@
   </head>
 
   <body>
-    <!-- Dashboard -->
-    <style>
-      * {
-        box-sizing: border-box;
-      }
+		<!-- Dashboard -->
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			
+			/* Create three equal columns that floats next to each other */
+			.column {
+				float: left;
+				width: 33.33%;
+				padding: 0px;
+			}
 
-      /* Create three equal columns that floats next to each other */
-      .column {
-        float: left;
-        width: 33.33%;
-        padding: 0px;
-      }
+			#column-1 {
+				overflow: auto;
+				max-height: 90vh;
+				padding: 0 0 0 10%;
+			}
+			
+			.column input[type="radio"] + label:before {
+				border-color: rgb(0,0,0,.50);
+			}
+			
+			.row {
+				height: 100vh;
+			}
+			
+			/* Clear floats after the columns */
+			.row:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			</style>
 
-      .row {
-        height: 100vh;
-      }
+	<section class="belownav" id="dashboard"></section>
+	<div class="row">
+		<div class="column" id="column-1" >
+		</div>
+		<div class="column" id="column-2" >
+		</div>
+		<div class="column" id="column-3" >
+		</div>
+	</div>
 
-      /* Clear floats after the columns */
-      .row:after {
-        content: "";
-        display: table;
-        clear: both;
-      }
-    </style>
-
-    <div class="row">
-      <div class="column" id="column-1" style="padding: 30px">
-        <div class="switch col-4 col-12-small">
-          <label class="switch"
-            >Toggle Leader Laggard Graph
-            <input
-              id="leadLag"
-              type="checkbox"
-              onclick="barplot.toggleLeadLag()"
-              title="Toggle Leader Laggard Graph"
-            />
-            <span class="slider round"></span>
-          </label>
-        </div>
-        <div class="col-4 col-12-small">
-          <input
-            type="radio"
-            id="arithmetic"
-            name="radio"
-            onclick="updatePanel3()"
-          />
-          <label for="arithmetic">[Disabled] Arithmetic Mean</label>
-        </div>
-        <div class="col-4 col-12-small">
-          <input
-            type="radio"
-            id="median"
-            name="radio"
-            onclick="updatePanel3()"
-            checked
-          />
-          <label for="median">[Disabled] Median</label>
-        </div>
-        <div class="col-4 col-12-small">
-          <input
-            type="radio"
-            id="geometric"
-            name="radio"
-            onclick="updatePanel3()"
-          />
-          <label for="geometric">[Disabled] Geometric Mean</label>
-        </div>
-      </div>
-      <div class="column" id="column-2"></div>
-      <div class="column" id="column-3"></div>
-    </div>
-
-    <section id="dashboard" class="belownav">
-      <div id="map">
-        <script src="public/javascripts/src/main.js" type="module"></script>
-      </div>
-    </section>
+		<section class="belownav">
+			<div id="map">
+				<script src="public/javascripts/src/main.js" type="module"></script>
+			</div>
+		</section>
 
     <!-- Footer -->
     <footer id="footer">
