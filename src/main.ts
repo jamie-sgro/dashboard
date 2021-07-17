@@ -2,19 +2,16 @@
 import d3 = require("d3");
 
 import { Barplot } from "./barplot.js";
-import { Data, DataModel, DataPoint } from "./data.js";
+import { Data } from "./data.js";
 import {
-  matches,
   populateMarkers,
   recenterDashboard,
-  reduceData,
   updateAllGraphs,
   updateGraphById,
 } from "./map.js";
 import { Margin } from "./Margin.js";
 import { panel3Resize } from "./panel3.js";
 import { ToggleButton } from "./widgets/ToggleButton.js";
-import { DataList } from "./widgets/DataList.js";
 import { DataListModel } from "./widgets/DataListModel.js";
 import { RadioButton } from "./widgets/RadioButton.js";
 
