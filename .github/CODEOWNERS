@@ -1,0 +1,9 @@
+# This owners will be the default owners for everything in
+# the repo. Unless a later match takes precedence,
+# @jamie-sgro will be requested for review when
+# someone opens a pull request.
+*             @jamie-sgro
+
+# These users owns any files in this directory at the root
+# of the repository and any of its subdirectories.
+/public/      @jamie-sgro @andy-sgro
