@@ -182,7 +182,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.583333333",
-            nonNormalValue: "3.75",
+            nonNormalValue: "3.75 out of 5",
           },
           {
             name: "Waste",
@@ -243,7 +243,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.583333333",
-            nonNormalValue: "3.75",
+            nonNormalValue: "3.75 out of 5",
           },
           {
             name: "Waste",
@@ -303,7 +303,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.416666667",
-            nonNormalValue: "3.25",
+            nonNormalValue: "3.25 out of 5",
           },
           {
             name: "Waste",
@@ -363,7 +363,7 @@ export class Data {
           {
             name: "Civility",
             value: "0",
-            nonNormalValue: "2",
+            nonNormalValue: "2 out of 5",
           },
           {
             name: "Waste",
@@ -423,7 +423,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.416666667",
-            nonNormalValue: "3.25",
+            nonNormalValue: "3.25 out of 5",
           },
           {
             name: "Waste",
@@ -483,7 +483,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.75",
-            nonNormalValue: "4.25",
+            nonNormalValue: "4.25 out of 5",
           },
           {
             name: "Waste",
@@ -543,7 +543,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.916666667",
-            nonNormalValue: "4.75",
+            nonNormalValue: "4.75 out of 5",
           },
           {
             name: "Waste",
@@ -603,7 +603,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.5",
-            nonNormalValue: "3.5",
+            nonNormalValue: "3.5 out of 5",
           },
           {
             name: "Waste",
@@ -663,7 +663,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.666666667",
-            nonNormalValue: "4",
+            nonNormalValue: "4 out of 5",
           },
           {
             name: "Waste",
@@ -723,7 +723,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.666666667",
-            nonNormalValue: "4",
+            nonNormalValue: "4 out of 5",
           },
           {
             name: "Waste",
@@ -783,7 +783,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.416666667",
-            nonNormalValue: "3.25",
+            nonNormalValue: "3.25 out of 5",
           },
           {
             name: "Waste",
@@ -843,7 +843,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.666666667",
-            nonNormalValue: "4",
+            nonNormalValue: "4 out of 5",
           },
           {
             name: "Waste",
@@ -903,7 +903,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.083333333",
-            nonNormalValue: "2.25",
+            nonNormalValue: "2.25 out of 5",
           },
           {
             name: "Waste",
@@ -963,7 +963,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.583333333",
-            nonNormalValue: "3.75",
+            nonNormalValue: "3.75 out of 5",
           },
           {
             name: "Waste",
@@ -1023,7 +1023,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.666666667",
-            nonNormalValue: "4",
+            nonNormalValue: "4 out of 5",
           },
           {
             name: "Waste",
@@ -1083,7 +1083,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.416666667",
-            nonNormalValue: "3.25",
+            nonNormalValue: "3.25 out of 5",
           },
           {
             name: "Waste",
@@ -1143,7 +1143,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.666666667",
-            nonNormalValue: "4",
+            nonNormalValue: "4 out of 5",
           },
           {
             name: "Waste",
@@ -1203,7 +1203,7 @@ export class Data {
           {
             name: "Civility",
             value: "0.666666667",
-            nonNormalValue: "4",
+            nonNormalValue: "4 out of 5",
           },
           {
             name: "Waste",
