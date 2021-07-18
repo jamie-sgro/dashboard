@@ -157,7 +157,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.158003141",
-            nonNormalValue: "25.3677618",
+            nonNormalValue: "25.4%",
           },
           {
             name: "Disaster",
@@ -177,7 +177,7 @@ export class Data {
           {
             name: "Transit",
             value: "0",
-            nonNormalValue: "59.9",
+            nonNormalValue: "59.9%",
           },
           {
             name: "Civility",
@@ -217,7 +217,7 @@ export class Data {
           {
             name: "Affected",
             value: "1.425506519",
-            nonNormalValue: "62.44800121",
+            nonNormalValue: "62.4%",
           },
 
           {
@@ -238,7 +238,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.274314214",
-            nonNormalValue: "70.9",
+            nonNormalValue: "70.9%",
           },
           {
             name: "Civility",
@@ -278,7 +278,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.007207309",
-            nonNormalValue: "20.95629778",
+            nonNormalValue: "21.0%",
           },
           {
             name: "Disaster",
@@ -298,7 +298,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.578553616",
-            nonNormalValue: "83.1",
+            nonNormalValue: "83.1%",
           },
           {
             name: "Civility",
@@ -338,7 +338,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.2619344",
-            nonNormalValue: "28.4082239",
+            nonNormalValue: "28.4%",
           },
           {
             name: "Disaster",
@@ -358,7 +358,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.411471322",
-            nonNormalValue: "76.4",
+            nonNormalValue: "76.4%",
           },
           {
             name: "Civility",
@@ -398,7 +398,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.351016591",
-            nonNormalValue: "31.01428319",
+            nonNormalValue: "31.0%",
           },
           {
             name: "Disaster",
@@ -418,7 +418,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.790523691",
-            nonNormalValue: "91.6",
+            nonNormalValue: "91.6%",
           },
           {
             name: "Civility",
@@ -458,7 +458,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.463506154",
-            nonNormalValue: "34.3051146",
+            nonNormalValue: "34.3%",
           },
           {
             name: "Disaster",
@@ -478,7 +478,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.825436409",
-            nonNormalValue: "93",
+            nonNormalValue: "93%",
           },
           {
             name: "Civility",
@@ -518,7 +518,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.389477438",
-            nonNormalValue: "32.13943793",
+            nonNormalValue: "32.1%",
           },
           {
             name: "Disaster",
@@ -538,7 +538,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.528678304",
-            nonNormalValue: "81.1",
+            nonNormalValue: "81.1%",
           },
           {
             name: "Civility",
@@ -578,7 +578,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.559131955",
-            nonNormalValue: "37.10260427",
+            nonNormalValue: "37.1%",
           },
           {
             name: "Disaster",
@@ -598,7 +598,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.523690773",
-            nonNormalValue: "80.9",
+            nonNormalValue: "80.9%",
           },
           {
             name: "Civility",
@@ -638,7 +638,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.300360055",
-            nonNormalValue: "29.53234908",
+            nonNormalValue: "29.5%",
           },
           {
             name: "Disaster",
@@ -658,7 +658,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.655860349",
-            nonNormalValue: "86.2",
+            nonNormalValue: "86.2%",
           },
           {
             name: "Civility",
@@ -698,7 +698,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.332143299",
-            nonNormalValue: "30.46215356",
+            nonNormalValue: "30.4%",
           },
           {
             name: "Disaster",
@@ -718,7 +718,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.443890274",
-            nonNormalValue: "77.7",
+            nonNormalValue: "77.7%",
           },
           {
             name: "Civility",
@@ -758,7 +758,7 @@ export class Data {
           {
             name: "Affected",
             value: "0",
-            nonNormalValue: "20.74545121",
+            nonNormalValue: "21.0%",
           },
           {
             name: "Disaster",
@@ -778,7 +778,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.179551122",
-            nonNormalValue: "67.1",
+            nonNormalValue: "67.1%",
           },
           {
             name: "Civility",
@@ -818,7 +818,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.104394005",
-            nonNormalValue: "23.79945071",
+            nonNormalValue: "24.0%",
           },
           {
             name: "Disaster",
@@ -838,7 +838,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.705735661",
-            nonNormalValue: "88.2",
+            nonNormalValue: "88.2%",
           },
           {
             name: "Civility",
@@ -878,7 +878,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.60846421",
-            nonNormalValue: "38.54579712",
+            nonNormalValue: "38.5%",
           },
           {
             name: "Disaster",
@@ -898,7 +898,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.760598504",
-            nonNormalValue: "90.4",
+            nonNormalValue: "90.4%",
           },
           {
             name: "Civility",
@@ -938,7 +938,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.033952621",
-            nonNormalValue: "21.73871983",
+            nonNormalValue: "22%",
           },
           {
             name: "Disaster",
@@ -958,7 +958,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.566084788",
-            nonNormalValue: "82.6",
+            nonNormalValue: "82.6%",
           },
           {
             name: "Civility",
@@ -998,7 +998,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.483131323",
-            nonNormalValue: "34.87924008",
+            nonNormalValue: "35.0%",
           },
           {
             name: "Disaster",
@@ -1018,7 +1018,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.72319202",
-            nonNormalValue: "88.9",
+            nonNormalValue: "88.9%",
           },
           {
             name: "Civility",
@@ -1058,7 +1058,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.3266746",
-            nonNormalValue: "30.30216923",
+            nonNormalValue: "30.3%",
           },
           {
             name: "Disaster",
@@ -1078,7 +1078,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.568578554",
-            nonNormalValue: "82.7",
+            nonNormalValue: "82.7%",
           },
           {
             name: "Civility",
@@ -1118,7 +1118,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.330980265",
-            nonNormalValue: "30.42812951",
+            nonNormalValue: "30.4%",
           },
           {
             name: "Disaster",
@@ -1138,7 +1138,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.817955112",
-            nonNormalValue: "92.7",
+            nonNormalValue: "92.7%",
           },
           {
             name: "Civility",
@@ -1178,7 +1178,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.041723805",
-            nonNormalValue: "21.96606231",
+            nonNormalValue: "22.0%",
           },
           {
             name: "Disaster",
@@ -1198,7 +1198,7 @@ export class Data {
           {
             name: "Transit",
             value: "0.760598504",
-            nonNormalValue: "90.4",
+            nonNormalValue: "90.4%",
           },
           {
             name: "Civility",
