@@ -1228,22 +1228,21 @@ export class Data {
           trait.description =
             "Ratio of land consumption rate to population growth rate (1971 to 2011)";
           break;
-        case "Assult":
+        case "Assault":
           trait.description = "Sexual assault (rate per 100,000 population)";
           break;
         case "House Need":
           trait.description = "Proportion of households in core housing need";
           break;
         case "Affected":
-          trait.description = "Total Affected";
-          break;
+          trait.description = "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities";
+            break;
         case "Disaster":
           trait.description =
             "Number of people who died, went missing or were directly affected by disasters per 100,000 population.";
           break;
-        case "Econ Loss1":
-          trait.description =
-            "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Canadian Disaster Database)";
+        case "Heritage":
+          trait.description = "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)";
           break;
         case "Econ Loss2":
           trait.description =
