@@ -63,7 +63,7 @@ export class Data {
    * @param   cityData : The array of DataPoint describing the city.
    * @returns Returns the average of the city's DataPoint values.
    */
-   static getMeanCityData(cityData: DataPoint[]): number {
+  static getMeanCityData(cityData: DataPoint[]): number {
     if (cityData.length <= 0) {
       return 0;
     }
@@ -79,19 +79,19 @@ export class Data {
     return avg;
   }
 
-
-   /**
+  /**
    * @brief   Renders the left-side plot with city averages, sorted descending.
    * @param   avgBarplot : The barPlot to render.
    * @returns N/A
    */
-  static getMeanCountry() : DataPoint[] {
+  static getMeanCountry(): DataPoint[] {
     let countryData = Data.getSyncData();
-    let meanCountryData : DataPoint[] = [];
+    let meanCountryData: DataPoint[] = [];
     countryData.forEach((d) => addMeanCity(d));
 
-    function addMeanCity(cityData : DataModel) {
-      let dataValue = Data.getMeanCityData(cityData.data)
+    function addMeanCity(cityData: DataModel) {
+      let dataValue = Data.getMeanCityData(cityData.data);
+      // prettier-ignore
       let citySummary:  DataPoint = {
         name:           cityData.name,
         description:    cityData.name,
@@ -114,11 +114,10 @@ export class Data {
    *            - +1 if a > b
    *            - 0 if a == b
    */
-  static compareDataPoint( a: DataPoint, b: DataPoint) : number {
-    if ( a.value < b.value ){
+  static compareDataPoint(a: DataPoint, b: DataPoint): number {
+    if (a.value < b.value) {
       return -1;
-    }
-    else if ( a.value > b.value ){
+    } else if (a.value > b.value) {
       return 1;
     }
     return 0;
@@ -130,7 +129,7 @@ export class Data {
    *              - Each DataPoint has three strings (name, desc, value) for the bar plot.
    */
   static getSyncData(): DataModel[] {
-    let countryData : DataModel[] = [
+    let countryData: DataModel[] = [
       {
         name: "St. John's",
         data: [
@@ -157,7 +156,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.158003141",
-            nonNormalValue: "25.3677618",
+            nonNormalValue: "25.4%",
           },
           {
             name: "Disaster",
@@ -177,12 +176,12 @@ export class Data {
           {
             name: "Transit",
             value: "0",
-            nonNormalValue: "59.9",
+            nonNormalValue: "59.9%",
           },
           {
             name: "Civility",
             value: "0.583333333",
-            nonNormalValue: "3.75",
+            nonNormalValue: "3.75 out of 5",
           },
           {
             name: "Waste",
@@ -217,7 +216,7 @@ export class Data {
           {
             name: "Affected",
             value: "1.425506519",
-            nonNormalValue: "62.44800121",
+            nonNormalValue: "62.4%",
           },
 
           {
@@ -238,12 +237,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.274314214",
-            nonNormalValue: "70.9",
+            nonNormalValue: "70.9%",
           },
           {
             name: "Civility",
             value: "0.583333333",
-            nonNormalValue: "3.75",
+            nonNormalValue: "3.75 out of 5",
           },
           {
             name: "Waste",
@@ -278,7 +277,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.007207309",
-            nonNormalValue: "20.95629778",
+            nonNormalValue: "21.0%",
           },
           {
             name: "Disaster",
@@ -298,12 +297,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.578553616",
-            nonNormalValue: "83.1",
+            nonNormalValue: "83.1%",
           },
           {
             name: "Civility",
             value: "0.416666667",
-            nonNormalValue: "3.25",
+            nonNormalValue: "3.25 out of 5",
           },
           {
             name: "Waste",
@@ -338,7 +337,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.2619344",
-            nonNormalValue: "28.4082239",
+            nonNormalValue: "28.4%",
           },
           {
             name: "Disaster",
@@ -358,12 +357,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.411471322",
-            nonNormalValue: "76.4",
+            nonNormalValue: "76.4%",
           },
           {
             name: "Civility",
             value: "0",
-            nonNormalValue: "2",
+            nonNormalValue: "2 out of 5",
           },
           {
             name: "Waste",
@@ -398,7 +397,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.351016591",
-            nonNormalValue: "31.01428319",
+            nonNormalValue: "31.0%",
           },
           {
             name: "Disaster",
@@ -418,12 +417,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.790523691",
-            nonNormalValue: "91.6",
+            nonNormalValue: "91.6%",
           },
           {
             name: "Civility",
             value: "0.416666667",
-            nonNormalValue: "3.25",
+            nonNormalValue: "3.25 out of 5",
           },
           {
             name: "Waste",
@@ -458,7 +457,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.463506154",
-            nonNormalValue: "34.3051146",
+            nonNormalValue: "34.3%",
           },
           {
             name: "Disaster",
@@ -478,12 +477,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.825436409",
-            nonNormalValue: "93",
+            nonNormalValue: "93%",
           },
           {
             name: "Civility",
             value: "0.75",
-            nonNormalValue: "4.25",
+            nonNormalValue: "4.25 out of 5",
           },
           {
             name: "Waste",
@@ -518,7 +517,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.389477438",
-            nonNormalValue: "32.13943793",
+            nonNormalValue: "32.1%",
           },
           {
             name: "Disaster",
@@ -538,12 +537,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.528678304",
-            nonNormalValue: "81.1",
+            nonNormalValue: "81.1%",
           },
           {
             name: "Civility",
             value: "0.916666667",
-            nonNormalValue: "4.75",
+            nonNormalValue: "4.75 out of 5",
           },
           {
             name: "Waste",
@@ -578,7 +577,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.559131955",
-            nonNormalValue: "37.10260427",
+            nonNormalValue: "37.1%",
           },
           {
             name: "Disaster",
@@ -598,12 +597,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.523690773",
-            nonNormalValue: "80.9",
+            nonNormalValue: "80.9%",
           },
           {
             name: "Civility",
             value: "0.5",
-            nonNormalValue: "3.5",
+            nonNormalValue: "3.5 out of 5",
           },
           {
             name: "Waste",
@@ -638,7 +637,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.300360055",
-            nonNormalValue: "29.53234908",
+            nonNormalValue: "29.5%",
           },
           {
             name: "Disaster",
@@ -658,12 +657,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.655860349",
-            nonNormalValue: "86.2",
+            nonNormalValue: "86.2%",
           },
           {
             name: "Civility",
             value: "0.666666667",
-            nonNormalValue: "4",
+            nonNormalValue: "4 out of 5",
           },
           {
             name: "Waste",
@@ -698,7 +697,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.332143299",
-            nonNormalValue: "30.46215356",
+            nonNormalValue: "30.4%",
           },
           {
             name: "Disaster",
@@ -718,12 +717,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.443890274",
-            nonNormalValue: "77.7",
+            nonNormalValue: "77.7%",
           },
           {
             name: "Civility",
             value: "0.666666667",
-            nonNormalValue: "4",
+            nonNormalValue: "4 out of 5",
           },
           {
             name: "Waste",
@@ -758,7 +757,7 @@ export class Data {
           {
             name: "Affected",
             value: "0",
-            nonNormalValue: "20.74545121",
+            nonNormalValue: "21.0%",
           },
           {
             name: "Disaster",
@@ -778,12 +777,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.179551122",
-            nonNormalValue: "67.1",
+            nonNormalValue: "67.1%",
           },
           {
             name: "Civility",
             value: "0.416666667",
-            nonNormalValue: "3.25",
+            nonNormalValue: "3.25 out of 5",
           },
           {
             name: "Waste",
@@ -818,7 +817,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.104394005",
-            nonNormalValue: "23.79945071",
+            nonNormalValue: "24.0%",
           },
           {
             name: "Disaster",
@@ -838,12 +837,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.705735661",
-            nonNormalValue: "88.2",
+            nonNormalValue: "88.2%",
           },
           {
             name: "Civility",
             value: "0.666666667",
-            nonNormalValue: "4",
+            nonNormalValue: "4 out of 5",
           },
           {
             name: "Waste",
@@ -878,7 +877,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.60846421",
-            nonNormalValue: "38.54579712",
+            nonNormalValue: "38.5%",
           },
           {
             name: "Disaster",
@@ -898,12 +897,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.760598504",
-            nonNormalValue: "90.4",
+            nonNormalValue: "90.4%",
           },
           {
             name: "Civility",
             value: "0.083333333",
-            nonNormalValue: "2.25",
+            nonNormalValue: "2.25 out of 5",
           },
           {
             name: "Waste",
@@ -938,7 +937,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.033952621",
-            nonNormalValue: "21.73871983",
+            nonNormalValue: "22%",
           },
           {
             name: "Disaster",
@@ -958,12 +957,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.566084788",
-            nonNormalValue: "82.6",
+            nonNormalValue: "82.6%",
           },
           {
             name: "Civility",
             value: "0.583333333",
-            nonNormalValue: "3.75",
+            nonNormalValue: "3.75 out of 5",
           },
           {
             name: "Waste",
@@ -998,7 +997,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.483131323",
-            nonNormalValue: "34.87924008",
+            nonNormalValue: "35.0%",
           },
           {
             name: "Disaster",
@@ -1018,12 +1017,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.72319202",
-            nonNormalValue: "88.9",
+            nonNormalValue: "88.9%",
           },
           {
             name: "Civility",
             value: "0.666666667",
-            nonNormalValue: "4",
+            nonNormalValue: "4 out of 5",
           },
           {
             name: "Waste",
@@ -1058,7 +1057,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.3266746",
-            nonNormalValue: "30.30216923",
+            nonNormalValue: "30.3%",
           },
           {
             name: "Disaster",
@@ -1078,12 +1077,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.568578554",
-            nonNormalValue: "82.7",
+            nonNormalValue: "82.7%",
           },
           {
             name: "Civility",
             value: "0.416666667",
-            nonNormalValue: "3.25",
+            nonNormalValue: "3.25 out of 5",
           },
           {
             name: "Waste",
@@ -1118,7 +1117,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.330980265",
-            nonNormalValue: "30.42812951",
+            nonNormalValue: "30.4%",
           },
           {
             name: "Disaster",
@@ -1138,12 +1137,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.817955112",
-            nonNormalValue: "92.7",
+            nonNormalValue: "92.7%",
           },
           {
             name: "Civility",
             value: "0.666666667",
-            nonNormalValue: "4",
+            nonNormalValue: "4 out of 5",
           },
           {
             name: "Waste",
@@ -1178,7 +1177,7 @@ export class Data {
           {
             name: "Affected",
             value: "0.041723805",
-            nonNormalValue: "21.96606231",
+            nonNormalValue: "22.0%",
           },
           {
             name: "Disaster",
@@ -1198,12 +1197,12 @@ export class Data {
           {
             name: "Transit",
             value: "0.760598504",
-            nonNormalValue: "90.4",
+            nonNormalValue: "90.4%",
           },
           {
             name: "Civility",
             value: "0.666666667",
-            nonNormalValue: "4",
+            nonNormalValue: "4 out of 5",
           },
           {
             name: "Waste",
@@ -1222,14 +1221,16 @@ export class Data {
     function addDescriptionToTrait(trait: DataPoint) {
       switch (trait.name) {
         case "PM":
-          trait.description = "Average fine particule matter concentrations (PM 2.5)";
+          trait.description =
+            "Average fine particule matter concentrations (PM 2.5)";
           break;
         case "Consumption":
-          trait.description = "Ratio of land consumption rate to population growth rate (1971 to 2011)";
+          trait.description =
+            "Ratio of land consumption rate to population growth rate (1971 to 2011)";
           break;
         case "Assault":
           trait.description = "Sexual assault (rate per 100,000 population)";
-            break;
+          break;
         case "House Need":
           trait.description = "Proportion of households in core housing need";
           break;
@@ -1237,22 +1238,26 @@ export class Data {
           trait.description = "Average share of the built-up area of cities that is open space for public use for all, by sex, age and persons with disabilities";
             break;
         case "Disaster":
-          trait.description = "Number of people who died, went missing or were directly affected by disasters per 100,000 population.";
+          trait.description =
+            "Number of people who died, went missing or were directly affected by disasters per 100,000 population.";
           break;
         case "Heritage":
           trait.description = "Total per capita expenditure on the preservation, protection and conservation of all cultural and natural heritage, by source of funding (public, private), type of heritage (cultural, natural) and level of government (national, regional, and local/municipal)";
           break;
         case "Econ Loss2":
-          trait.description = "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)";
+          trait.description =
+            "Direct economic loss: the monetary value of total or partial destruction of physical assets existing in the affected area. Direct economic loss is nearly equivalent to physical damage (based on the Inflation Calculator)";
           break;
         case "Transit":
-          trait.description = "Percentage of population less than 500 metres from public transit access point. ";
+          trait.description =
+            "Percentage of population less than 500 metres from public transit access point. ";
           break;
         case "Civility":
-          trait.description = "Proportion of cities with a direct participation structure of civil society in urban planning and management that operate regularly and democratically ";
+          trait.description = "Score of direct and regular participation by civil society in the urban planning and management of the primate city";
           break;
         case "Waste":
-          trait.description = "Proportion of urban solid waste regularly collected and with adequate final discharge out of total urban solid waste generated by cities ";
+          trait.description =
+            "Proportion of urban solid waste regularly collected and with adequate final discharge out of total urban solid waste generated by cities ";
           break;
       }
     }

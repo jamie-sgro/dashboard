@@ -2,19 +2,16 @@
 import d3 = require("d3");
 
 import { Barplot } from "./barplot.js";
-import { Data, DataModel, DataPoint } from "./data.js";
+import { Data } from "./data.js";
 import {
-  matches,
   populateMarkers,
   recenterDashboard,
-  reduceData,
   updateAllGraphs,
   updateGraphById,
 } from "./map.js";
 import { Margin } from "./Margin.js";
 import { panel3Resize } from "./panel3.js";
 import { ToggleButton } from "./widgets/ToggleButton.js";
-import { DataList } from "./widgets/DataList.js";
 import { DataListModel } from "./widgets/DataListModel.js";
 import { RadioButton } from "./widgets/RadioButton.js";
 
@@ -31,8 +28,8 @@ export const panelWidth = 0.33;
 // document.getElementById("popupInfo").class = 0;
 
 /*********************
-*** DRAW MEAN PLOT ***
-**********************/
+ *** DRAW MEAN PLOT ***
+ **********************/
 
 let avgBarplot = new Barplot(
   "#column-2",
@@ -96,7 +93,7 @@ function plotData(barplot: Barplot) {
 
   //only return the first datapoint to populate the graph
   var id = 0;
-  let dataArray = reduceData(data[id]);
+  let dataArray = data[id].data;
   barplot.id = id; //Currently use first row of .csv on graph init
 
   let min = Data.getMinPerVariable(data);
