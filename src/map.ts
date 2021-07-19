@@ -76,26 +76,9 @@ export function updateAllGraphs(id: number) {
 export function updateGraphById(id, graph = barplot) {
   let data = Data.getSyncData();
 
-  const dataArray = reduceData(data[id]);
+  const dataArray = data[id].data;
 
   graph.updatePlot(dataArray);
-};
-
-/** provide JSON object, removes data not used in graph visualization (i.e name) 
- * and returns an array ready for d3 to use.
-*/
-export function reduceData(data: DataModel): DataPoint[] {
-  return data.data;
-
-  let rtn: DataPoint[] = [];
-  for (let key in data) {
-    if (matches(key, ["name"]) == false) {
-      if (key.substring(0, 5) != "score") {
-        rtn.push({ "name": key.split("|")[0], "value": data[key], "description": key.split("|")[1] }); // TODO: decouple at the data model level
-      };
-    };
-  };
-  return rtn;
 };
 
 export function populateMarkers() {
