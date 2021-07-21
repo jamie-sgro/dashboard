@@ -334,7 +334,7 @@ export class Barplot {
 
   onMouseover(data: DataPoint, index: number) {
     assertType(this, Barplot);
-    const initialText = data.description;
+    const initialText = data.name + ": " + data.description;
     this.tooltip.text = initialText;
     this.tooltip.fadeIn();
 
