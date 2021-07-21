@@ -40,7 +40,7 @@ let avgBarplot = new Barplot(
 $(window).on("resize", function () {
   avgBarplot.resize();
 });
-avgBarplot.drawMeanPlot();
+avgBarplot.drawAverageCountry(Data.getMeanCity);
 
 /******************
  *** ADD D3 TOOL ***
