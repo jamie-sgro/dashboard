@@ -8,7 +8,7 @@ require("jsdom-global")();
 var expect = chaiSrc.expect;
 
 describe("mean city", function(){
-  it("should calculate the mean of all datapoints within a city", () => {
+  it("should calculate the mean of all data points within a city", () => {
     let city : DataPoint[] = [
       {
         name: "a", value: "1"
@@ -17,7 +17,7 @@ describe("mean city", function(){
         name: "a", value: "2"
       }
     ];
-    expect(Data.getMeanCityData(city)).to.equal(1.5);
+    expect(Data.getMeanCity(city)).to.equal(1.5);
     city = [
       {
         name: "a", value: "56.8"
@@ -41,11 +41,11 @@ describe("mean city", function(){
         name: "a", value: "97.51"
       }
     ];
-    expect(Data.getMeanCityData(city).toFixed(5)).to.equal("30.61429");
+    expect(Data.getMeanCity(city).toFixed(5)).to.equal("30.61429");
   });
   it("should return 0 if the city has no data points", () => {
     let city = [];
-    expect(Data.getMeanCityData(city)).to.equal(0);
+    expect(Data.getMeanCity(city)).to.equal(0);
   });
 });
 
