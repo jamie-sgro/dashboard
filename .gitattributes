@@ -1,8 +1,8 @@
-public/stylesheets/main.css linguist-vendored=false
-public/table.html linguist-vendored=false
-public/elements.html linguist-vendored=false
-public/home.html linguist-vendored=false
-public/about.html linguist-vendored=false
-public/dev-index.html linguist-vendored=false
-public/index.html linguist-vendored=false
-public/robots.html linguist-vendored=false
+public/stylesheets/main.css linguist-detectable=false
+public/table.html linguist-detectable=false
+public/elements.html linguist-detectable=false
+public/home.html linguist-detectable=false
+public/about.html linguist-detectable=false
+public/dev-index.html linguist-detectable=false
+public/index.html linguist-detectable=false
+public/robots.html linguist-detectable=false
