@@ -1,8 +1,8 @@
-public/stylesheets/main.css linguist-detectable=false
-public/table.html linguist-detectable=false
-public/elements.html linguist-detectable=false
-public/home.html linguist-detectable=false
-public/about.html linguist-detectable=false
-public/dev-index.html linguist-detectable=false
-public/index.html linguist-detectable=false
-public/robots.html linguist-detectable=false
+./public/stylesheets/main.css linguist-detectable=false
+./public/table.html linguist-detectable=false
+./public/elements.html linguist-detectable=false
+./public/home.html linguist-detectable=false
+./public/about.html linguist-detectable=false
+./public/dev-index.html linguist-detectable=false
+./public/index.html linguist-detectable=false
+./public/robots.html linguist-detectable=false
