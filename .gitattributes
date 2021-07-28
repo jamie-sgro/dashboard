@@ -1,4 +1,4 @@
 public/table.html linguist-vendored
-public/stylesheets/main.css linguist-vendored
-public/elements.html linguist-vendored
-public/home.html linguist-vendored
+public/stylesheets/main.css linguist-vendored=false
+public/elements.html linguist-vendored=false
+public/home.html linguist-vendored=false
