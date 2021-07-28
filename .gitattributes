@@ -1,8 +1,8 @@
-public/stylesheets/main.css linguist-vendored
-public/table.html linguist-vendored
-public/elements.html linguist-vendored
-public/home.html linguist-vendored
-public/about.html linguist-vendored
-public/dev-index.html linguist-vendored
-public/index.html linguist-vendored
-public/robots.html linguist-vendored
+public/stylesheets/main.css linguist-documentation=true
+public/table.html linguist-documentation=true
+public/elements.html linguist-documentation=true
+public/home.html linguist-documentation=true
+public/about.html linguist-documentation=true
+public/dev-index.html linguist-documentation=true
+public/index.html linguist-documentation=true
+public/robots.html linguist-documentation=true
