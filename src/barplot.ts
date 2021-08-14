@@ -158,42 +158,6 @@ export class Barplot {
     let xAxis = path
       .attr("transform", "translate(0," + obj.height + ")")
       .call(d3.axisBottom(widthScale));
-
-    obj.drawVerticalLineAtPostion(obj, 1, xAxis);
-  }
-
-  private drawVerticalLineAtPostion(obj, xPosition: number, xAxis) {
-    let xAxisTransform: string = obj.parseTransform(xAxis.attr("transform"));
-    let yPositionOfXAxis = xAxisTransform[1];
-
-    let w = obj.getWidthScale();
-    let h = this.getHeightScale();
-    console.log(h.domain())
-    let x = w(xPosition);
-    obj.canvas
-      .append("line")
-      .attr("x1", x)
-      .attr("y1", 0)
-      .attr("x2", x)
-      .attr("y2", yPositionOfXAxis)
-      .attr("stroke-width", 2)
-      .attr("stroke", colourBottom);
-  }
-
-  /**
-   * Parse the string from *.attr("transform") into a 2-length array
-   * @param aTransform A string with the general format: "translate(12.34,56.78)"
-   * @returns Array of length==2.
-   * Zeroth index indicates translation along the x-axis
-   * First index indicates translation along the y-axis
-   */
-  private parseTransform(aTransform: string): number[] {
-    let stringTranslate = aTransform
-      .substring(aTransform.indexOf("(") + 1, aTransform.indexOf(")"))
-      .split(",");
-    assert(stringTranslate.length == 2);
-    let numberTranslate = stringTranslate.map((x) => parseFloat(x));
-    return numberTranslate;
   }
 
   getYAxis(path, obj: Barplot): void {
@@ -321,9 +285,43 @@ export class Barplot {
 
     // add the x Axis
     this.canvas.append("g").attr("class", "x axis").call(this.getXAxis, this);
+    this.drawVerticalLineAtPostion(1);
 
     // add the y Axis
     this.canvas.append("g").attr("class", "y axis").call(this.getYAxis, this);
+  }
+
+  private drawVerticalLineAtPostion(xPosition: number) {
+    let xAxis = d3.select("g.x.axis")
+    let xAxisTransform = this.parseTransform(xAxis.attr("transform"));
+    let yPositionOfXAxis = xAxisTransform[1];
+
+    let w = this.getWidthScale();
+    let x = w(xPosition);
+    this.canvas
+      .append("line")
+      .attr("x1", x)
+      .attr("y1", 0)
+      .attr("x2", x)
+      .attr("y2", yPositionOfXAxis)
+      .attr("stroke-width", 2)
+      .attr("stroke", colourBottom);
+  }
+
+  /**
+   * Parse the string from *.attr("transform") into a 2-length array
+   * @param aTransform A string with the general format: "translate(12.34,56.78)"
+   * @returns Array of length==2.
+   * Zeroth index indicates translation along the x-axis
+   * First index indicates translation along the y-axis
+   */
+  private parseTransform(aTransform: string): number[] {
+    let stringTranslate = aTransform
+      .substring(aTransform.indexOf("(") + 1, aTransform.indexOf(")"))
+      .split(",");
+    assert(stringTranslate.length == 2);
+    let numberTranslate = stringTranslate.map((x) => parseFloat(x));
+    return numberTranslate;
   }
 
   /** Excplicitely cast `this` into a d3.BaseType
