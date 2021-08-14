@@ -151,27 +151,49 @@ export class Barplot {
   }
 
   getXAxis(path, obj) {
-    let w = obj.getWidthScale()
-    let x = w(1)
-    let h = obj.getHeightScale()
-    let y2 = h(obj.max)
-    obj.canvas.append("line")
-      .attr("x1", x)
-      .attr("y1", 0)
-      .attr("x2", x)
-      .attr("y2", 100)
-      .attr("stroke-width", 2)
-      .attr("stroke", "black");
-
-
-
     let widthScale = d3
       .scalePoint()
       .domain(["Farthest from Target", "Target", ""])
       .range([0, obj.width - obj.margin.left - obj.margin.right]);
-    path
+    let xAxis = path
       .attr("transform", "translate(0," + obj.height + ")")
       .call(d3.axisBottom(widthScale));
+
+    obj.drawVerticalLineAtPostion(obj, 1, xAxis);
+  }
+
+  private drawVerticalLineAtPostion(obj, xPosition: number, xAxis) {
+    let xAxisTransform: string = obj.parseTransform(xAxis.attr("transform"));
+    let yPositionOfXAxis = xAxisTransform[1];
+
+    let w = obj.getWidthScale();
+    let h = this.getHeightScale();
+    console.log(h.domain())
+    let x = w(xPosition);
+    obj.canvas
+      .append("line")
+      .attr("x1", x)
+      .attr("y1", 0)
+      .attr("x2", x)
+      .attr("y2", yPositionOfXAxis)
+      .attr("stroke-width", 2)
+      .attr("stroke", colourBottom);
+  }
+
+  /**
+   * Parse the string from *.attr("transform") into a 2-length array
+   * @param aTransform A string with the general format: "translate(12.34,56.78)"
+   * @returns Array of length==2.
+   * Zeroth index indicates translation along the x-axis
+   * First index indicates translation along the y-axis
+   */
+  private parseTransform(aTransform: string): number[] {
+    let stringTranslate = aTransform
+      .substring(aTransform.indexOf("(") + 1, aTransform.indexOf(")"))
+      .split(",");
+    assert(stringTranslate.length == 2);
+    let numberTranslate = stringTranslate.map((x) => parseFloat(x));
+    return numberTranslate;
   }
 
   getYAxis(path, obj: Barplot): void {
@@ -310,18 +332,16 @@ export class Barplot {
     return this as unknown as d3.BaseType;
   }
 
-
   /**
    * @brief   Calulates the mean of all data points for each city, and then
    *          renders the plot with those mean city values.
    */
   drawAverageCountry(averageCityFunction: Function) {
     let meanCountry = Data.getAverageCountry(averageCityFunction);
-    let xMax : number = parseFloat(meanCountry[0].value); 
+    let xMax: number = parseFloat(meanCountry[0].value);
     this.plot(meanCountry, [0, 0], [xMax, 1]);
     this.updatePlot(meanCountry);
   }
-
 
   onClick(data) {
     // change marker size based on data value
@@ -485,17 +505,15 @@ export class Barplot {
   }
 
   applyStrokeByName(nameToSelect: string) {
-    this.canvas
-      .selectAll("rect.bar")
-      .each(function(d, i) {
-        // Turn off stroke from previous selection
-        d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)");
-        let currentName = d3.select(this).attr("name")
-        if (currentName === nameToSelect) {
-          // Turn on stroke to new selection
-          d3.select(this).call(attrTween, 800, "stroke", "black");
-        }
-      })
+    this.canvas.selectAll("rect.bar").each(function (d, i) {
+      // Turn off stroke from previous selection
+      d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)");
+      let currentName = d3.select(this).attr("name");
+      if (currentName === nameToSelect) {
+        // Turn on stroke to new selection
+        d3.select(this).call(attrTween, 800, "stroke", "black");
+      }
+    });
   }
 }
 
