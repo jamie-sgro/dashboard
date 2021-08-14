@@ -8,12 +8,22 @@ export class VerticalLine {
   parent: Barplot;
   xPosition: number;
   private htmlId: string;
+  g: d3.Selection<any, unknown, HTMLElement, any>;
   line: d3.Selection<any, unknown, HTMLElement, any>;
+  text?: string;
+  colour?: string;
+  textElem: d3.Selection<any, unknown, HTMLElement, any>;
 
-  constructor(parent: Barplot, xPosition: number) {
+  constructor(
+    parent: Barplot,
+    xPosition: number,
+    { text = undefined, colour = undefined } = {}
+  ) {
     this.parent = parent;
     this.xPosition = xPosition;
     this.htmlId = uuidv4();
+    this.text = text;
+    this.colour = colour ?? "black";
     this.line = this.drawVerticalLineAtPostion();
   }
 
@@ -23,12 +33,23 @@ export class VerticalLine {
     HTMLElement,
     any
   > {
-    this.line = this.parent.canvas
+    this.g = this.parent.canvas.append("g");
+    this.line = this.g
       .append("line")
       .attr("class", "verticalLine")
       .attr("id", this.htmlId)
       .attr("stroke-width", 2)
-      .attr("stroke", colourBottom);
+      .attr("stroke", this.colour);
+
+    if (this.text != undefined) {
+      this.textElem = this.g
+        .append("text")
+        .attr("text-anchor", "middle")
+        .style("font-size", 10)
+        .style("font", "sans-serif")
+        .text(this.text);
+    }
+
     this.update();
     return this.line;
   }
@@ -44,7 +65,11 @@ export class VerticalLine {
       .attr("x1", x)
       .attr("y1", 0)
       .attr("x2", x)
-      .attr("y2", yPositionOfXAxis);
+      .attr("y2", yPositionOfXAxis + 6);
+
+    if (this.text != undefined) {
+      this.textElem.attr("x", x).attr("y", yPositionOfXAxis + 18);
+    }
   }
 
   /**

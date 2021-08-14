@@ -88,7 +88,10 @@ export const barplot = new Barplot(
   { margin: new Margin(10, 20, 30, 60) }
 );
 plotData(barplot);
-barplot.annotation.verticalLines.push(new VerticalLine(barplot, 1))
+barplot.annotation.verticalLines.push(new VerticalLine(barplot, 0, {text: "Farthest from Target"}))
+barplot.annotation.verticalLines.push(
+  new VerticalLine(barplot, 1, { text: "Target", colour: colourBottom })
+);
 
 function plotData(barplot: Barplot) {
   let data = Data.getSyncData();
