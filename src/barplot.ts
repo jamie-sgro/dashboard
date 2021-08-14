@@ -155,9 +155,10 @@ export class Barplot {
       .scalePoint()
       .domain(["Farthest from Target", "Target", ""])
       .range([0, obj.width - obj.margin.left - obj.margin.right]);
-    let xAxis = path
+    path
       .attr("transform", "translate(0," + obj.height + ")")
       .call(d3.axisBottom(widthScale));
+    obj.drawVerticalLineAtPostion(1);
   }
 
   getYAxis(path, obj: Barplot): void {
@@ -285,21 +286,22 @@ export class Barplot {
 
     // add the x Axis
     this.canvas.append("g").attr("class", "x axis").call(this.getXAxis, this);
-    this.drawVerticalLineAtPostion(1);
 
     // add the y Axis
     this.canvas.append("g").attr("class", "y axis").call(this.getYAxis, this);
   }
 
   private drawVerticalLineAtPostion(xPosition: number) {
+    d3.select("#verticalLine").remove()
     let xAxis = d3.select("g.x.axis")
     let xAxisTransform = this.parseTransform(xAxis.attr("transform"));
     let yPositionOfXAxis = xAxisTransform[1];
 
-    let w = this.getWidthScale();
-    let x = w(xPosition);
+    let widthScale = this.getWidthScale();
+    let x = widthScale(xPosition);
     this.canvas
       .append("line")
+      .attr("id", "verticalLine")
       .attr("x1", x)
       .attr("y1", 0)
       .attr("x2", x)
