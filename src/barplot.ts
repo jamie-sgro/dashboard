@@ -2,6 +2,7 @@
 import d3 = require("d3");
 import { AxisImage } from "./AxisImage.js";
 
+import { VerticalLine } from "./annotations/VerticalLine.js";
 import { Data, DataModel, DataPoint } from "./data.js";
 import { Margin } from "./Margin.js";
 import { Svg } from "./Svg.js";
@@ -9,8 +10,8 @@ import { Tooltip } from "./Tooltip.js";
 import { assert, assertType } from "./utils.js";
 
 const scl = 15;
-const colourBottom = "rgb(56, 94, 231)";
-const colourTop = "rgb(34, 236, 87)";
+export const colourBottom = "rgb(56, 94, 231)";
+export const colourTop = "rgb(34, 236, 87)";
 
 export class Barplot {
   parentId: string;
@@ -158,7 +159,7 @@ export class Barplot {
     path
       .attr("transform", "translate(0," + obj.height + ")")
       .call(d3.axisBottom(widthScale));
-    obj.drawVerticalLineAtPostion(1);
+    new VerticalLine().drawVerticalLineAtPostion(obj, 1);
   }
 
   getYAxis(path, obj: Barplot): void {
@@ -289,41 +290,6 @@ export class Barplot {
 
     // add the y Axis
     this.canvas.append("g").attr("class", "y axis").call(this.getYAxis, this);
-  }
-
-  private drawVerticalLineAtPostion(xPosition: number) {
-    d3.select("#verticalLine").remove()
-    let xAxis = d3.select("g.x.axis")
-    let xAxisTransform = this.parseTransform(xAxis.attr("transform"));
-    let yPositionOfXAxis = xAxisTransform[1];
-
-    let widthScale = this.getWidthScale();
-    let x = widthScale(xPosition);
-    this.canvas
-      .append("line")
-      .attr("id", "verticalLine")
-      .attr("x1", x)
-      .attr("y1", 0)
-      .attr("x2", x)
-      .attr("y2", yPositionOfXAxis)
-      .attr("stroke-width", 2)
-      .attr("stroke", colourBottom);
-  }
-
-  /**
-   * Parse the string from *.attr("transform") into a 2-length array
-   * @param aTransform A string with the general format: "translate(12.34,56.78)"
-   * @returns Array of length==2.
-   * Zeroth index indicates translation along the x-axis
-   * First index indicates translation along the y-axis
-   */
-  private parseTransform(aTransform: string): number[] {
-    let stringTranslate = aTransform
-      .substring(aTransform.indexOf("(") + 1, aTransform.indexOf(")"))
-      .split(",");
-    assert(stringTranslate.length == 2);
-    let numberTranslate = stringTranslate.map((x) => parseFloat(x));
-    return numberTranslate;
   }
 
   /** Excplicitely cast `this` into a d3.BaseType
