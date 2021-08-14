@@ -1,26 +1,33 @@
 // @ts-expect-error
 import d3 = require("d3");
 
-import { Barplot, colourBottom } from "../barplot";
-import { assert } from "../utils";
+import { Barplot, colourBottom } from "../barplot.js";
+import { assert } from "../utils.js";
 
 export class VerticalLine {
-  parent: Barplot
-  line: object
+  parent: Barplot;
+  xPosition: number;
+  line: d3.Selection<any, unknown, HTMLElement, any>;
 
   constructor(parent: Barplot, xPosition: number) {
-    this.parent = parent
-    this.line = this.drawVerticalLineAtPostion(xPosition)
+    this.parent = parent;
+    this.xPosition = xPosition;
+    this.line = this.drawVerticalLineAtPostion();
   }
 
-  private drawVerticalLineAtPostion(xPosition: number) {
+  private drawVerticalLineAtPostion(): d3.Selection<
+    any,
+    unknown,
+    HTMLElement,
+    any
+  > {
     d3.select("#verticalLine").remove();
     let xAxis = d3.select("g.x.axis");
     let xAxisTransform = this.parseTransform(xAxis.attr("transform"));
     let yPositionOfXAxis = xAxisTransform[1];
 
     let widthScale = this.parent.getWidthScale();
-    let x = widthScale(xPosition);
+    let x = widthScale(this.xPosition);
     return this.parent.canvas
       .append("line")
       .attr("id", "verticalLine")
@@ -46,5 +53,10 @@ export class VerticalLine {
     assert(stringTranslate.length == 2);
     let numberTranslate = stringTranslate.map((x) => parseFloat(x));
     return numberTranslate;
+  }
+
+  update() {
+    this.line.remove();
+    this.drawVerticalLineAtPostion();
   }
 }

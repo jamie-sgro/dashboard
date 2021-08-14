@@ -3,6 +3,7 @@ import d3 = require("d3");
 import { AxisImage } from "./AxisImage.js";
 
 import { VerticalLine } from "./annotations/VerticalLine.js";
+import { Annotation } from "./annotations/Annotation.js";
 import { Data, DataModel, DataPoint } from "./data.js";
 import { Margin } from "./Margin.js";
 import { Svg } from "./Svg.js";
@@ -26,6 +27,7 @@ export class Barplot {
   svg: Svg;
   tooltip: Tooltip;
   dataArray: DataPoint[];
+  annotation: Annotation;
   private _isLeadLag: boolean;
 
   constructor(
@@ -44,6 +46,7 @@ export class Barplot {
     this._isLeadLag = isLeadLag;
     this.width = width;
     this.height = height - this.margin.top - this.margin.bottom;
+    this.annotation = new Annotation();
 
     this.svg = new Svg(this.parentId);
 
@@ -159,7 +162,6 @@ export class Barplot {
     path
       .attr("transform", "translate(0," + obj.height + ")")
       .call(d3.axisBottom(widthScale));
-    new VerticalLine(obj, 1)
   }
 
   getYAxis(path, obj: Barplot): void {
@@ -462,6 +464,7 @@ export class Barplot {
       });
 
     this.canvas.selectAll("g.x.axis").call(this.getXAxis, this);
+    this.annotation.update();
 
     this.canvas.selectAll("g.y.axis").call(this.getYAxis, this);
 
