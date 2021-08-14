@@ -159,7 +159,7 @@ export class Barplot {
     path
       .attr("transform", "translate(0," + obj.height + ")")
       .call(d3.axisBottom(widthScale));
-    new VerticalLine().drawVerticalLineAtPostion(obj, 1);
+    new VerticalLine(obj, 1)
   }
 
   getYAxis(path, obj: Barplot): void {

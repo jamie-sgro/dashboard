@@ -5,15 +5,23 @@ import { Barplot, colourBottom } from "../barplot";
 import { assert } from "../utils";
 
 export class VerticalLine {
-  drawVerticalLineAtPostion(barplot: Barplot, xPosition: number) {
+  parent: Barplot
+  line: object
+
+  constructor(parent: Barplot, xPosition: number) {
+    this.parent = parent
+    this.line = this.drawVerticalLineAtPostion(xPosition)
+  }
+
+  private drawVerticalLineAtPostion(xPosition: number) {
     d3.select("#verticalLine").remove();
     let xAxis = d3.select("g.x.axis");
     let xAxisTransform = this.parseTransform(xAxis.attr("transform"));
     let yPositionOfXAxis = xAxisTransform[1];
 
-    let widthScale = barplot.getWidthScale();
+    let widthScale = this.parent.getWidthScale();
     let x = widthScale(xPosition);
-    barplot.canvas
+    return this.parent.canvas
       .append("line")
       .attr("id", "verticalLine")
       .attr("x1", x)
