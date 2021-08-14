@@ -8,6 +8,6 @@ export class Annotation {
   }
 
   update() {
-    this.verticalLines.forEach(line => line.update());
+    this.verticalLines.forEach((line) => line.update());
   }
 }
