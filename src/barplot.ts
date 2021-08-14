@@ -153,14 +153,20 @@ export class Barplot {
     }
   }
 
-  getXAxis(path, obj) {
+  clearXAxis(path, obj) {
     let widthScale = d3
       .scalePoint()
-      .domain(["", ""])
+      .domain([" ", " "])
       .range([0, obj.width - obj.margin.left - obj.margin.right]);
     path
       .attr("transform", "translate(0," + obj.height + ")")
       .call(d3.axisBottom(widthScale));
+  }
+
+  getXAxis(path, obj) {
+    path
+      .attr("transform", "translate(0," + obj.height + ")")
+      .call(d3.axisBottom(obj.getWidthScale()));
   }
 
   getYAxis(path, obj: Barplot): void {
@@ -392,7 +398,7 @@ export class Barplot {
 
   /* @updatePlot(svg, data)
   - run on marker click, resizes rectangle/circle attributes according to data
-*/
+  */
   updatePlot(dataArray: DataPoint[]) {
     this.dataArray = dataArray;
     var widthScale = this.getWidthScale();

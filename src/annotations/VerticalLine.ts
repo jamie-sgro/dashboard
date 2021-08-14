@@ -55,6 +55,8 @@ export class VerticalLine {
   }
 
   update() {
+    // Remove usual x axis ticks and labels
+    this.parent.canvas.selectAll("g.x.axis").call(this.parent.clearXAxis, this.parent);
     let xAxis = d3.select("g.x.axis");
     let xAxisTransform = this.parseTransform(xAxis.attr("transform"));
     let yPositionOfXAxis = xAxisTransform[1];
