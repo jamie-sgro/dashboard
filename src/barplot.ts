@@ -2,7 +2,6 @@
 import d3 = require("d3");
 import { AxisImage } from "./AxisImage.js";
 
-import { VerticalLine } from "./annotations/VerticalLine.js";
 import { Annotation } from "./annotations/Annotation.js";
 import { Data, DataModel, DataPoint } from "./data.js";
 import { Margin } from "./Margin.js";

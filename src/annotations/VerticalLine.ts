@@ -2,16 +2,18 @@
 import d3 = require("d3");
 
 import { Barplot, colourBottom } from "../barplot.js";
-import { assert } from "../utils.js";
+import { assert, uuidv4 } from "../utils.js";
 
 export class VerticalLine {
   parent: Barplot;
   xPosition: number;
+  private htmlId: string;
   line: d3.Selection<any, unknown, HTMLElement, any>;
 
   constructor(parent: Barplot, xPosition: number) {
     this.parent = parent;
     this.xPosition = xPosition;
+    this.htmlId = uuidv4();
     this.line = this.drawVerticalLineAtPostion();
   }
 
@@ -21,22 +23,29 @@ export class VerticalLine {
     HTMLElement,
     any
   > {
-    d3.select("#verticalLine").remove();
+    this.line = this.parent.canvas
+      .append("line")
+      .attr("class", "verticalLine")
+      .attr("id", this.htmlId)
+      .attr("stroke-width", 2)
+      .attr("stroke", colourBottom);
+
+    this.update();
+    return this.line;
+  }
+
+  update() {
     let xAxis = d3.select("g.x.axis");
     let xAxisTransform = this.parseTransform(xAxis.attr("transform"));
     let yPositionOfXAxis = xAxisTransform[1];
 
     let widthScale = this.parent.getWidthScale();
     let x = widthScale(this.xPosition);
-    return this.parent.canvas
-      .append("line")
-      .attr("id", "verticalLine")
+    this.line
       .attr("x1", x)
       .attr("y1", 0)
       .attr("x2", x)
-      .attr("y2", yPositionOfXAxis)
-      .attr("stroke-width", 2)
-      .attr("stroke", colourBottom);
+      .attr("y2", yPositionOfXAxis);
   }
 
   /**
@@ -53,10 +62,5 @@ export class VerticalLine {
     assert(stringTranslate.length == 2);
     let numberTranslate = stringTranslate.map((x) => parseFloat(x));
     return numberTranslate;
-  }
-
-  update() {
-    this.line.remove();
-    this.drawVerticalLineAtPostion();
   }
 }

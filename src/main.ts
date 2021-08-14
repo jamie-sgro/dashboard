@@ -14,6 +14,7 @@ import { panel3Resize } from "./panel3.js";
 import { ToggleButton } from "./widgets/ToggleButton.js";
 import { DataListModel } from "./widgets/DataListModel.js";
 import { RadioButton } from "./widgets/RadioButton.js";
+import { VerticalLine } from "./annotations/VerticalLine.js";
 
 export const markRad = 15;
 export const markCol = "rgba(10,151,217, .8)";
@@ -87,6 +88,9 @@ export const barplot = new Barplot(
   { margin: new Margin(10, 20, 30, 60) }
 );
 plotData(barplot);
+barplot.annotation.verticalLines.push(new VerticalLine(barplot, 1))
+barplot.annotation.verticalLines.push(new VerticalLine(barplot, .5))
+barplot.annotation.verticalLines.push(new VerticalLine(barplot, .33))
 
 function plotData(barplot: Barplot) {
   let data = Data.getSyncData();
