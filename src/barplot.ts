@@ -156,7 +156,7 @@ export class Barplot {
   getXAxis(path, obj) {
     let widthScale = d3
       .scalePoint()
-      .domain(["Farthest from Target", "Target", ""])
+      .domain(["Farthest from Target", ""])
       .range([0, obj.width - obj.margin.left - obj.margin.right]);
     path
       .attr("transform", "translate(0," + obj.height + ")")

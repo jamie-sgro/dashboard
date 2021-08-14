@@ -29,7 +29,6 @@ export class VerticalLine {
       .attr("id", this.htmlId)
       .attr("stroke-width", 2)
       .attr("stroke", colourBottom);
-
     this.update();
     return this.line;
   }

@@ -89,8 +89,6 @@ export const barplot = new Barplot(
 );
 plotData(barplot);
 barplot.annotation.verticalLines.push(new VerticalLine(barplot, 1))
-barplot.annotation.verticalLines.push(new VerticalLine(barplot, .5))
-barplot.annotation.verticalLines.push(new VerticalLine(barplot, .33))
 
 function plotData(barplot: Barplot) {
   let data = Data.getSyncData();
