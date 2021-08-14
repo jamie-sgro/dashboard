@@ -151,9 +151,27 @@ export class Barplot {
   }
 
   getXAxis(path, obj) {
+    let w = obj.getWidthScale()
+    let x = w(1)
+    let h = obj.getHeightScale()
+    let y2 = h(obj.max)
+    obj.canvas.append("line")
+      .attr("x1", x)
+      .attr("y1", 0)
+      .attr("x2", x)
+      .attr("y2", 100)
+      .attr("stroke-width", 2)
+      .attr("stroke", "black");
+
+
+
+    let widthScale = d3
+      .scalePoint()
+      .domain(["Farthest from Target", "Target", ""])
+      .range([0, obj.width - obj.margin.left - obj.margin.right]);
     path
       .attr("transform", "translate(0," + obj.height + ")")
-      .call(d3.axisBottom(obj.getWidthScale()));
+      .call(d3.axisBottom(widthScale));
   }
 
   getYAxis(path, obj: Barplot): void {
