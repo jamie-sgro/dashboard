@@ -2,6 +2,7 @@
 import d3 = require("d3");
 import { AxisImage } from "./AxisImage.js";
 
+import { Annotation } from "./annotations/Annotation.js";
 import { Data, DataModel, DataPoint } from "./data.js";
 import { Margin } from "./Margin.js";
 import { Svg } from "./Svg.js";
@@ -9,8 +10,8 @@ import { Tooltip } from "./Tooltip.js";
 import { assert, assertType } from "./utils.js";
 
 const scl = 15;
-const colourBottom = "rgb(56, 94, 231)";
-const colourTop = "rgb(34, 236, 87)";
+export const colourBottom = "rgb(56, 94, 231)";
+export const colourTop = "rgb(34, 236, 87)";
 
 export class Barplot {
   parentId: string;
@@ -25,6 +26,7 @@ export class Barplot {
   svg: Svg;
   tooltip: Tooltip;
   dataArray: DataPoint[];
+  annotation: Annotation;
   private _isLeadLag: boolean;
 
   constructor(
@@ -43,6 +45,7 @@ export class Barplot {
     this._isLeadLag = isLeadLag;
     this.width = width;
     this.height = height - this.margin.top - this.margin.bottom;
+    this.annotation = new Annotation();
 
     this.svg = new Svg(this.parentId);
 
@@ -148,6 +151,16 @@ export class Barplot {
           break;
       }
     }
+  }
+
+  clearXAxis(path, obj) {
+    let widthScale = d3
+      .scalePoint()
+      .domain([" ", " "])
+      .range([0, obj.width - obj.margin.left - obj.margin.right]);
+    path
+      .attr("transform", "translate(0," + obj.height + ")")
+      .call(d3.axisBottom(widthScale));
   }
 
   getXAxis(path, obj) {
@@ -292,18 +305,16 @@ export class Barplot {
     return this as unknown as d3.BaseType;
   }
 
-
   /**
    * @brief   Calulates the mean of all data points for each city, and then
    *          renders the plot with those mean city values.
    */
   drawAverageCountry(averageCityFunction: Function) {
     let meanCountry = Data.getAverageCountry(averageCityFunction);
-    let xMax : number = parseFloat(meanCountry[0].value); 
+    let xMax: number = parseFloat(meanCountry[0].value);
     this.plot(meanCountry, [0, 0], [xMax, 1]);
     this.updatePlot(meanCountry);
   }
-
 
   onClick(data) {
     // change marker size based on data value
@@ -387,7 +398,7 @@ export class Barplot {
 
   /* @updatePlot(svg, data)
   - run on marker click, resizes rectangle/circle attributes according to data
-*/
+  */
   updatePlot(dataArray: DataPoint[]) {
     this.dataArray = dataArray;
     var widthScale = this.getWidthScale();
@@ -458,6 +469,7 @@ export class Barplot {
       });
 
     this.canvas.selectAll("g.x.axis").call(this.getXAxis, this);
+    this.annotation.update();
 
     this.canvas.selectAll("g.y.axis").call(this.getYAxis, this);
 
@@ -467,17 +479,15 @@ export class Barplot {
   }
 
   applyStrokeByName(nameToSelect: string) {
-    this.canvas
-      .selectAll("rect.bar")
-      .each(function(d, i) {
-        // Turn off stroke from previous selection
-        d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)");
-        let currentName = d3.select(this).attr("name")
-        if (currentName === nameToSelect) {
-          // Turn on stroke to new selection
-          d3.select(this).call(attrTween, 800, "stroke", "black");
-        }
-      })
+    this.canvas.selectAll("rect.bar").each(function (d, i) {
+      // Turn off stroke from previous selection
+      d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)");
+      let currentName = d3.select(this).attr("name");
+      if (currentName === nameToSelect) {
+        // Turn on stroke to new selection
+        d3.select(this).call(attrTween, 800, "stroke", "black");
+      }
+    });
   }
 }
 
