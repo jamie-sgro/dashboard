@@ -156,6 +156,10 @@ function populateRankingRadioButtons() {
         break;
     }
     avgBarplot.updatePlot(meanCountry);
+
+    // Update the stroke based on the currently selected city's new position
+    avgBarplot.applyStrokeByName(avgBarplot.currentName);
+
     recenterDashboard();
   }
 }

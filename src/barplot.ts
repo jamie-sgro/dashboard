@@ -29,6 +29,14 @@ export class Barplot {
   annotation: Annotation;
   private _isLeadLag: boolean;
 
+  private _currentName: string;
+  public get currentName(): string {
+    return this._currentName;
+  }
+  private set currentName(v: string) {
+    this._currentName = v;
+  }
+
   constructor(
     parentId,
     width,
@@ -407,6 +415,9 @@ export class Barplot {
       this.canvas
         .selectAll("rect.bar")
         .data(this.dataArray)
+        .attr("name", function (d: DataPoint) {
+          return d.name;
+        })
         .each(function (d, i) {
           d3.select(this).call(attrTween, 800, "width", widthScale(d.value));
           d3.select(this).call(attrTween, 800, "fill", colour(d.value));
@@ -416,6 +427,9 @@ export class Barplot {
     this.canvas
       .selectAll("rect.leadLag")
       .data(this.dataArray)
+      .attr("name", function (d: DataPoint) {
+        return d.name;
+      })
       .each(function (d, i) {
         var widthFactor = Number(d3.select(this).attr("widthFactor"));
         var xPos = widthScale(d.value) * (1 - widthFactor);
@@ -487,6 +501,8 @@ export class Barplot {
         d3.select(this).call(attrTween, 800, "stroke", "black");
       }
     });
+    // Expose current name information publicly
+    this.currentName = nameToSelect;
   }
 }
 
