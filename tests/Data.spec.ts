@@ -7,17 +7,9 @@ require("jsdom-global")();
 
 var expect = chaiSrc.expect;
 
-describe("mean city", function(){
-  it("should calculate the mean of all data points within a city", () => {
-    let city : DataPoint[] = [
-      {
-        name: "a", value: "1"
-      },
-      {
-        name: "a", value: "2"
-      }
-    ];
-    expect(Data.getMeanCity(city)).to.equal(1.5);
+describe("arithmetic mean city", function(){
+  let city: DataPoint[];
+  before(() => {
     city = [
       {
         name: "a", value: "56.8"
@@ -32,7 +24,7 @@ describe("mean city", function(){
         name: "a", value: "6.0"
       },
       {
-        name: "a", value: "-7.23"
+        name: "a", value: "7.23"
       },
       {
         name: "a", value: "0.92"
@@ -41,11 +33,27 @@ describe("mean city", function(){
         name: "a", value: "97.51"
       }
     ];
-    expect(Data.getMeanCity(city).toFixed(5)).to.equal("30.61429");
+  });
+  it("should calculate the arithmetic mean of all data points within a city", () => {
+    let city : DataPoint[] = [
+      {
+        name: "a", value: "1"
+      },
+      {
+        name: "a", value: "2"
+      }
+    ];
+    expect(Data.getArithmenticMeanForCity(city)).to.equal(1.5);
+  });
+  it ("should calculate the arithmetic mean of more complex data points within a city", () => {
+    expect(Data.getArithmenticMeanForCity(city).toFixed(5)).to.equal("32.68");
+  });
+  it ("should calculate the arithmetic mean of more complex data points within a city", () => {
+    expect(Data.getPseudoGeometricMeanForCity(city).toFixed(5)).to.equal("16.87214");
   });
   it("should return 0 if the city has no data points", () => {
     let city = [];
-    expect(Data.getMeanCity(city)).to.equal(0);
+    expect(Data.getArithmenticMeanForCity(city)).to.equal(0);
   });
 });
 

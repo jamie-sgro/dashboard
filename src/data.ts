@@ -60,9 +60,9 @@ export class Data {
   /**
    * \brief   Averages the city data.
    * @param   cityData : The array of DataPoint describing the city.
-   * @returns Returns the average of the city's DataPoint values.
+   * @returns Returns the arithmetic mean of the city's DataPoint values.
    */
-  static getMeanCity(cityData: DataPoint[]): number {
+  static getArithmenticMeanForCity(cityData: DataPoint[]): number {
     if (cityData.length <= 0) {
       return 0;
     }
@@ -76,6 +76,21 @@ export class Data {
     }
     let avg = sum / numElements;
     return avg;
+  }
+
+  /**
+   * Calculate a pseudo geomtric mean, applying the usual formula with two alterations:
+   * If any value is zero (0), one is added to each value in the set and then one is 
+   * subtracted from the result
+   * @param cityData The array of DataPoint describing the city.
+   * @returns Returns the psudo-geometric mean of the city's DataPoint values.
+   */
+  static getPseudoGeometricMeanForCity(cityData: DataPoint[]): number {
+    let root = cityData.length
+    if (root < 1) return 0;
+    let dataValues = cityData.map((x) => Number(x.value) + 1)
+    let agg = dataValues.reduce((a, b) => a * b);
+    return Math.pow(agg, 1/root) - 1;
   }
 
   /**
