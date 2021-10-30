@@ -309,8 +309,7 @@ export class Barplot {
    * @brief   Calulates the mean of all data points for each city, and then
    *          renders the plot with those mean city values.
    */
-  drawAverageCountry(averageCityFunction: Function) {
-    let meanCountry = Data.getAverageCountry(averageCityFunction);
+  drawAverageCountry(meanCountry: DataPoint[]) {
     let xMax: number = parseFloat(meanCountry[0].value);
     this.plot(meanCountry, [0, 0], [xMax, 1]);
     this.updatePlot(meanCountry);

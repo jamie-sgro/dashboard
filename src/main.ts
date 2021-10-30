@@ -41,7 +41,15 @@ let avgBarplot = new Barplot(
 $(window).on('resize', function () {
   avgBarplot.resize();
 });
-avgBarplot.drawAverageCountry(Data.getPseudoGeometricMeanForCity);
+
+// let rankingMethod = Data.getPseudoGeometricMeanForCity
+// let meanCountry =  Data.getAverageCountry(rankingMethod)
+
+// let rankingMethod = Data.getArithmenticMeanForCity
+// let meanCountry =  Data.getAverageCountry(rankingMethod)
+
+let meanCountry = Data.get_condorcet_ranking_all_variables()
+avgBarplot.drawAverageCountry(meanCountry);
 
 /******************
  *** ADD D3 TOOL ***
