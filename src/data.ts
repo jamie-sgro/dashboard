@@ -108,7 +108,7 @@ export class Data {
       // prettier-ignore
       let citySummary:  DataPoint = {
         name:           cityData.name,
-        description:    cityData.name,
+        description:    "",
         value:          dataValue.toString(),
         nonNormalValue: dataValue.toFixed(4).toString()
       };
@@ -117,6 +117,29 @@ export class Data {
 
     meanCountryData.sort(Data.compareDataPoints);
     return meanCountryData;
+  }
+
+  static get_condorcet_ranking_all_variables(): DataPoint[] {
+    return [
+      { name: "Windsor", description: "", value: "0.1", nonNormalValue: "0"},
+      { name: "St. John's", description: "", value: "0.2", nonNormalValue: "1"},
+      { name: "St. Catharines, Niagara", description: "", value: "0.2", nonNormalValue: "1"},
+      { name: "Halifax", description: "", value: "0.2", nonNormalValue: "1"},
+      { name: "Montréal", description: "", value: "0.3", nonNormalValue: "4"},
+      { name: "Regina", description: "", value: "0.4", nonNormalValue: "5"},
+      { name: "Hamilton", description: "", value: "0.4", nonNormalValue: "5"},
+      { name: "Quebec City", description: "", value: "0.4", nonNormalValue: "5"},
+      { name: "Sherbrooke", description: "", value: "0.5", nonNormalValue: "6"},
+      { name: "Toronto", description: "", value: "0.5", nonNormalValue: "6"},
+      { name: "Kitchener, Cambridge, Waterloo", description: "", value: "0.5", nonNormalValue: "6"},
+      { name: "Saskatoon", description: "", value: "0.5", nonNormalValue: "6"},
+      { name: "Winnipeg", description: "", value: "0.5", nonNormalValue: "6"},
+      { name: "London", description: "", value: "0.6", nonNormalValue: "7"},
+      { name: "Edmonton", description: "", value: "0.7", nonNormalValue: "12"},
+      { name: "Victoria", description: "", value: "0.8", nonNormalValue: "13"},
+      { name: "Vancouver", description: "", value: "0.9", nonNormalValue: "14"},
+      { name: "Calgary", description: "", value: "1", nonNormalValue: "17"},
+    ]
   }
 
   /**
