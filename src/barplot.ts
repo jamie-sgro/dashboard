@@ -441,6 +441,7 @@ export class Barplot {
     if (this.isLeadLag) {
       this.canvas
         .selectAll("rect.bar")
+        .attr("opacity","0.9")
         .attr("width", function () {
           var rtn = Number(d3.select(this).attr("max"));
           rtn -= Number(d3.select(this).attr("min"));
@@ -481,11 +482,11 @@ export class Barplot {
   applyStrokeByName(nameToSelect: string) {
     this.canvas.selectAll("rect.bar").each(function (d, i) {
       // Turn off stroke from previous selection
-      d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)");
+      d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)").call(attrTween, 800, "opacity", "0.9");
       let currentName = d3.select(this).attr("name");
       if (currentName === nameToSelect) {
         // Turn on stroke to new selection
-        d3.select(this).call(attrTween, 800, "stroke", "black");
+        d3.select(this).attr("stroke-width", "2px").call(attrTween, 800, "stroke", "black").call(attrTween, 800, "opacity", "1");
       }
     });
   }
