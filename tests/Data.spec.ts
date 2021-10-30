@@ -46,7 +46,7 @@ describe("arithmetic mean city", function(){
     expect(Data.getArithmenticMeanForCity(city)).to.equal(1.5);
   });
   it ("should calculate the arithmetic mean of more complex data points within a city", () => {
-    expect(Data.getArithmenticMeanForCity(city).toFixed(5)).to.equal("32.68");
+    expect(Data.getArithmenticMeanForCity(city).toFixed(5)).to.equal("32.68000");
   });
   it ("should calculate the arithmetic mean of more complex data points within a city", () => {
     expect(Data.getPseudoGeometricMeanForCity(city).toFixed(5)).to.equal("16.87214");
