@@ -62,3 +62,5 @@ On a remote machine, run `npm run ci` to pull the repository and rebuild the doc
 * **Vishal Sharma**
 * **Chris Keppler**
 * **Snehaa Suryanarayanan**
+* **Jay Clark**
+* **Justin McIntosh**
