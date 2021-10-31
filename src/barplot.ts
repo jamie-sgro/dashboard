@@ -27,6 +27,7 @@ export class Barplot {
   tooltip: Tooltip;
   dataArray: DataPoint[];
   annotation: Annotation;
+  blurOpacity: string;
   private _isLeadLag: boolean;
 
   constructor(
@@ -55,6 +56,9 @@ export class Barplot {
 
     // Define the div for the tooltip
     this.tooltip = new Tooltip();
+
+    // Set the target opacity of non-focused bars when a single bar is focused   
+    this.blurOpacity = "0.85";
   }
 
   public get isLeadLag(): boolean {
@@ -345,7 +349,7 @@ export class Barplot {
 
   onMouseover(data: DataPoint, index: number) {
     assertType(this, Barplot);
-    const initialText = data.name + ": " + data.description;
+    const initialText = data.name === data.description ? data.name :  data.name + ": " + data.description;
     this.tooltip.text = initialText;
     this.tooltip.fadeIn();
 
@@ -479,13 +483,14 @@ export class Barplot {
   }
 
   applyStrokeByName(nameToSelect: string) {
+    const blurOpacity = this.blurOpacity;
     this.canvas.selectAll("rect.bar").each(function (d, i) {
       // Turn off stroke from previous selection
-      d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)");
+      d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)").call(attrTween, 800, "opacity", blurOpacity);
       let currentName = d3.select(this).attr("name");
       if (currentName === nameToSelect) {
         // Turn on stroke to new selection
-        d3.select(this).call(attrTween, 800, "stroke", "black");
+        d3.select(this).attr("stroke-width", "2px").call(attrTween, 800, "stroke", "black").call(attrTween, 800, "opacity", "1");
       }
     });
   }
