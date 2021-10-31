@@ -27,7 +27,16 @@ export class Barplot {
   tooltip: Tooltip;
   dataArray: DataPoint[];
   annotation: Annotation;
+  blurOpacity: string;
   private _isLeadLag: boolean;
+
+  private _currentName: string;
+  public get currentName(): string {
+    return this._currentName;
+  }
+  private set currentName(v: string) {
+    this._currentName = v;
+  }
 
   constructor(
     parentId,
@@ -55,6 +64,9 @@ export class Barplot {
 
     // Define the div for the tooltip
     this.tooltip = new Tooltip();
+
+    // Set the target opacity of non-focused bars when a single bar is focused   
+    this.blurOpacity = "0.85";
   }
 
   public get isLeadLag(): boolean {
@@ -309,8 +321,7 @@ export class Barplot {
    * @brief   Calulates the mean of all data points for each city, and then
    *          renders the plot with those mean city values.
    */
-  drawAverageCountry(averageCityFunction: Function) {
-    let meanCountry = Data.getAverageCountry(averageCityFunction);
+  drawAverageCountry(meanCountry: DataPoint[]) {
     let xMax: number = parseFloat(meanCountry[0].value);
     this.plot(meanCountry, [0, 0], [xMax, 1]);
     this.updatePlot(meanCountry);
@@ -345,7 +356,7 @@ export class Barplot {
 
   onMouseover(data: DataPoint, index: number) {
     assertType(this, Barplot);
-    const initialText = data.name + ": " + data.description;
+    const initialText = data.name === data.description ? data.name :  data.name + ": " + data.description;
     this.tooltip.text = initialText;
     this.tooltip.fadeIn();
 
@@ -408,6 +419,9 @@ export class Barplot {
       this.canvas
         .selectAll("rect.bar")
         .data(this.dataArray)
+        .attr("name", function (d: DataPoint) {
+          return d.name;
+        })
         .each(function (d, i) {
           d3.select(this).call(attrTween, 800, "width", widthScale(d.value));
           d3.select(this).call(attrTween, 800, "fill", colour(d.value));
@@ -417,6 +431,9 @@ export class Barplot {
     this.canvas
       .selectAll("rect.leadLag")
       .data(this.dataArray)
+      .attr("name", function (d: DataPoint) {
+        return d.name;
+      })
       .each(function (d, i) {
         var widthFactor = Number(d3.select(this).attr("widthFactor"));
         var xPos = widthScale(d.value) * (1 - widthFactor);
@@ -479,15 +496,18 @@ export class Barplot {
   }
 
   applyStrokeByName(nameToSelect: string) {
+    const blurOpacity = this.blurOpacity;
     this.canvas.selectAll("rect.bar").each(function (d, i) {
       // Turn off stroke from previous selection
-      d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)");
+      d3.select(this).call(attrTween, 800, "stroke", "rgba(0,0,0,0)").call(attrTween, 800, "opacity", blurOpacity);
       let currentName = d3.select(this).attr("name");
       if (currentName === nameToSelect) {
         // Turn on stroke to new selection
-        d3.select(this).call(attrTween, 800, "stroke", "black");
+        d3.select(this).attr("stroke-width", "2px").call(attrTween, 800, "stroke", "black").call(attrTween, 800, "opacity", "1");
       }
     });
+    // Expose current name information publicly
+    this.currentName = nameToSelect;
   }
 }
 
