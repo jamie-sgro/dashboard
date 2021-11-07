@@ -31,9 +31,9 @@ export class AxisImage {
       .attr("xlink:href", function (d) {
         return imageDirectory[d];
       })
-      .attr("width", size)
-      .attr("height", size)
-      .attr("x", -size)
-      .attr("y", -(size / 2));
+      .attr("width", size - 8)
+      .attr("height", size - 8)
+      .attr("x", -(size))
+      .attr("y", -((size - 8) / 2));
   }
 }

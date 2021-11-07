@@ -119,7 +119,15 @@ export class Data {
     return meanCountryData;
   }
 
-  static get_condorcet_ranking_all_variables(): DataPoint[] {
+  static getCondorcetRanking(): DataPoint[] {
+    let isReduced = true;
+    if (isReduced) {
+      return this.getCondorcetRankingReducedVariables();
+    }
+    return this.getCondorcetRankingAllVariables();
+  }
+
+  static getCondorcetRankingAllVariables(): DataPoint[] {
     return [
       { name: "Windsor", description: "Windsor", value: "0.1", nonNormalValue: "0"},
       { name: "St. John's", description: "St. John's", value: "0.2", nonNormalValue: "1"},
@@ -142,6 +150,30 @@ export class Data {
     ]
   }
 
+  static getCondorcetRankingReducedVariables(): DataPoint[] {
+    return [
+      { name: "Windsor", description: "Windsor", value: "0.0769230769230769", nonNormalValue: "1" },
+      { name: "Regina", description: "Regina", value: "0.0769230769230769", nonNormalValue: "1" },
+      { name: "Halifax", description: "Halifax", value: "0.153846153846154", nonNormalValue: "3" },
+      { name: "St. Catharines, Niagara", description: "St. Catharines, Niagara", value: "0.153846153846154", nonNormalValue: "3" },
+      { name: "London", description: "London", value: "0.230769230769231", nonNormalValue: "4" },
+      { name: "Saskatoon", description: "Saskatoon", value: "0.307692307692308", nonNormalValue: "5" },
+      { name: "Hamilton", description: "Hamilton", value: "0.307692307692308", nonNormalValue: "5" },
+      { name: "Edmonton", description: "Edmonton", value: "0.384615384615385", nonNormalValue: "7" },
+      { name: "St. John's", description: "St. John's", value: "0.461538461538462", nonNormalValue: "8" },
+      { name: "Quebec City", description: "Quebec City", value: "0.538461538461539", nonNormalValue: "10" },
+      { name: "Kitchener, Cambridge, Waterloo", description: "Kitchener, Cambridge, Waterloo", value: "0.538461538461539", nonNormalValue: "10" },
+      { name: "Winnipeg", description: "Winnipeg", value: "0.538461538461539", nonNormalValue: "10" },
+      { name: "Sherbrooke", description: "Sherbrooke", value: "0.615384615384615", nonNormalValue: "11" },
+      { name: "Calgary", description: "Calgary", value: "0.692307692307692", nonNormalValue: "13" },
+      { name: "Victoria", description: "Victoria", value: "0.769230769230769", nonNormalValue: "14" },
+      { name: "Montréal", description: "Montréal", value: "0.846153846153846", nonNormalValue: "15" },
+      { name: "Toronto", description: "Toronto", value: "0.923076923076923", nonNormalValue: "16" },
+      { name: "Vancouver", description: "Vancouver", value: "1", nonNormalValue: "17" },
+  ]
+}
+
+
   /**
    * @brief   Compares the values of two DataPoints. Useful for sorting funtions.
    * @param   a : The first DataPoint to compare.
@@ -160,13 +192,36 @@ export class Data {
     return 0;
   }
 
+  static getSyncData(): DataModel[] {
+    let isReduced: boolean = Boolean(document.getElementById("reduced"));
+    console.log(isReduced)
+    if (isReduced) {
+      return this.getReducedSyncData(["11.3.1", "11.4.1", "11.5.1", "11.5.2", "11.6.1", "11.7.1"]);
+    }
+    return this.getAllSyncData();
+  }
+
+  /**
+   * Reduce dataset based on sdg name
+   * @param sdgsToDrop An array of SDG names 
+   * that should not be included for analysis
+   * @returns List of cities
+   */
+  static getReducedSyncData(sdgsToDrop: string[]): DataModel[] {
+    let data = this.getAllSyncData();
+    return data.map(city => {
+      city.data = city.data.filter(x => !sdgsToDrop.includes(x.name))
+      return city
+    })
+  }
+
   /**
    * @returns   Returns all geographic data as an array of Data Model.
    * \details   Each DataModel element pertains to one city, and has a name and data property.
    *              - The data property is an array of DataPoint
    *              - Each DataPoint has three strings (name, desc, value) for the bar plot.
    */
-  static getSyncData(): DataModel[] {
+  static getAllSyncData(): DataModel[] {
     let countryData: DataModel[] = [
       {
         name: "St. John's",

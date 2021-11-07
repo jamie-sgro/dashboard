@@ -1,0 +1,406 @@
+<!DOCTYPE HTML>
+<!--
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html lang="en">
+	<head>
+		<title>Cities Index | Dashboard</title>
+		<link rel="icon" type="image/png" href="public/images/global-goals.png">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="This project involves building a one-page online dashboard for visualizing an SDG Cities Index that is both open-sourced and legally shareable">
+		<meta name="keywords" content="dashboard, visualization, sdgs, open source, sdsn, sustainable development, solution network">
+		<link rel="stylesheet" href="public/stylesheets/main.css" />
+		<link rel="stylesheet" href="public/stylesheets/leaflet.css" />
+		<link rel="stylesheet" href="public/stylesheets/d3-stylesheet.css">
+
+		<!-- Scripts -->
+			<script src="public/libraries/leaflet.js"></script>
+			<script src="public/libraries/d3.min.js" type="text/JavaScript"></script>
+			<script src="public/libraries/jquery.min.js"></script>
+			<script src="public/libraries/jquery.scrolly.min.js"></script>
+			<script src="public/libraries/jquery.scrollex.min.js"></script>
+			<script src="public/libraries/browser.min.js"></script>
+			<script src="public/libraries/breakpoints.min.js"></script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a class="logo" href="home">Canada SDG Cities Index Dashboard</a>
+				<nav>
+					<a href="/home" class="icon fa-home shy-text"> Home</a>
+					<a href="/about" class="icon fa-info-circle shy-text"> About</a>
+					<a href="#dashboard" class="icon fa-globe shy-text"> Dashboard</a>
+					<a href="/time-series" class="icon fa-line-chart shy-text"> Time Series</a>
+					<a href="/public/data/sdsn_cleaned.csv" class="icon fa-download shy-text"> Download</a>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="/home" class="icon fa-home"> Home</a></li>
+					<li><a href="/about" class="icon fa-info-circle"> About</a></li>
+					<li><a href="#dashboard" class="icon fa-globe"> Dashboard</a></li>
+					<li><a href="/table" class="icon fa-table"> Table</a></li>
+					<li><a href="/sitemap" class="icon fa-sitemap"> Site Map</a></li>
+					<li><a href="/public/data/sdsn_cleaned.csv" class="icon fa-download"> Download</a></li>
+					<!-- Buttons: make sure id matches .csv header for 'score' -->
+				</ul>
+			</nav>
+
+		<!-- Banner -->
+			<section id="banner">
+				<div class="inner">
+					<h1>Canada SDG Cities Index Dashboard</h1>
+					<p>Want to see how each Canadian Census Metropolitan Area (CMA) is performing on the Sustainable Development Goal 11 indicators?</p>
+					<a href="#dashboard" class="button scrolly">Get Started</a>
+				</div>
+				<video autoplay loop muted playsinline title="Drone Footage of City Skyline" src="public/images/banner.mp4"></video>
+			</section>
+
+		<!-- Highlights -->
+			<section class="wrapper">
+				<div class="inner">
+					<header class="special">
+						<h2>What is Sustainable Development Goal 11?</h2>
+						<p>The United Nations Sustainable Development Goals (SDGs) were adopted in 2015 as a set of transformative
+							goals towards more sustainable development around the world by the year 2030. Among the 17 goals included
+							in the SDGs, goal 11 specifically focuses on sustainable cities and communities, providing a set of aspirational
+							targets and indicators for achieving more sustainable development in cities.</p>
+					</header>
+					<div class="highlights">
+						<section>
+							<div class="content">
+								<header>
+									<p>Want to learn more about
+										how this dashboard was
+										created? Check out the
+										methodology here:</p>
+										<a href="#methodology">
+											<img src="public/images/sdg-icons/SDG11.png" style="height: 8rem;">
+										</a>
+									</header>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<p>Want to Learn more about
+										SDSN Canada? Check out
+										the website here:</p>
+									<a href="https://uwaterloo.ca/sustainable-development-solutions-network-canada/">
+										<img src="public/images/sdsn-canada-logo.png" style="height: 8rem;">
+									</a>
+								</header>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+										<p>Want to Learn more about
+											SDG Localization in Cities?
+											Find tools and guides here:</p>
+										<a href="#methodology">
+											<img src="public/images/global-goals.png" style="height: 8rem;">
+										</a>
+								</header>
+							</div>
+						</section>
+					</div>
+					<header class="special">
+						<p>Instructions: Please start by selecting a CMA from the list below to see its performance on each SDG 11
+							indicator and its overall ranking. You can change the settings used to rank the cities using the settings icon on
+							the top right of the screen.</p>
+					</header>
+				</div>
+			</section>
+
+		<!-- Dashboard -->
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+
+			/* Create three equal columns that floats next to each other */
+			.column {
+				float: left;
+				width: 33.33%;
+				padding: 0px;
+			}
+
+			#column-1 {
+				overflow: auto;
+				max-height: 90vh;
+				padding: 0 0 0 10%;
+			}
+
+			.column input[type="radio"] + label:before {
+				border-color: rgb(0,0,0,.50);
+			}
+
+			.row {
+				height: 100vh;
+			}
+
+			/* Clear floats after the columns */
+			.row:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			</style>
+
+	<section class="belownav" id="dashboard"></section>
+	<div class="row">
+		<div class="column" id="column-1" >
+		</div>
+		<div class="column" id="column-2" >
+		</div>
+		<div class="column" id="column-3" >
+		</div>
+	</div>
+
+		<section class="belownav">
+			<div id="map">
+				<p id="reduced">true</p>
+				<script src="public/javascripts/src/main.js" type="module"></script>
+			</div>
+		</section>
+
+		<!-- CTA -->
+			<section id="cta" class="wrapper">
+				<div class="inner">
+					<h2>Indicator Normalization</h2>
+					<p>As you may have guessed, each of the indicators included in the bar charts are measured on very different scales
+						(percentages, proportions, ratios, dollars). So, how do we compare numbers across such different scales? We
+						transform (normalize) all of the numbers so that they are on the same scale. In this case, we transformed each
+						indicator so that it was on a scale of 0 to 100.</p>
+					<p>All the indicators were normalized onto the same scale from 0 to 100 using the min-max normalization. This
+						method transforms the indicator scores relative to two numbers: “100” (the highest achievable value or the
+						development target) and “0” (the lowest achievable value or the farthest from a development targets). In the
+						case of this dashboard, we made the development target of each indicator the “100” value for that indicator. The
+						“0” value represented the indicator value that was the farthest from the development target for the indicator
+						among the CMAs included in the data set.</p>
+				</div>
+			</section>
+
+		<!-- Methodology -->
+		<div id="methodology">
+			<section class="wrapper">
+				<div class="inner">
+					<header class="special">
+						<h2>Ranking Methodology</h2>
+					</header>
+					<div class="row" style="height: 100%;">
+						<div class="col-3 ">
+							<h1>Arithmetic Mean</h1>
+						</div>
+						<div class="col-9 ">
+							<p>This is the sum of n normalized indicator scores divided by n. While easy to
+								interpret, the arithmetic mean also allows for trade-offs among the indicators (e.g. a
+								poor performance on one indicator can be off set by a strong performance on
+								another indicator). This is known as compensability and the arithmetic mean allows
+								for perfect compensability.</p>
+						</div>
+					</div>
+
+					<div class="row" style="height: 100%;">
+						<div class="col-3">
+							<h1>Geometric Mean</h1>
+						</div>
+						<div class="col-9">
+							<p>This is the nth root of the product of n normalized indicator scores. Geometric
+								means allow for only imperfect compensability in that the geometric mean is more
+								sensitive to improvements among low indicator scores than it is to improvements
+								among high indicator scores.</p>
+						</div>
+					</div>
+
+					<div class="row" style="height: 100%;">
+						<div class="col-3">
+							<h1>Condorcet Ranking</h1>
+						</div>
+						<div class="col-9">
+							<p>This method will rank CMAs according to the CMAs who would achieve the
+								higher indicator score in the majority of head-to-head comparisons with other
+								CMAs. While a bit more difficult to interpret, Condorcet methods have the
+								advantage of being perfectly non-compensable (the rankings do not allow for the
+								trade-off of indicator performance).</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<!-- Table -->
+		<div>
+			<h3>Indicator Descriptions</h3>
+			<div class="table-wrapper">
+				<table>
+					<thead>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<p><img src="public/images/axis-icons/sdg-11.1.1.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>SDG 11.1.1: Proportion of Households in Core Housing Need</p>
+								<p>Target: 0% of the population</p>
+								<p>Year: 2016</p>
+								<p>Source: <a href="https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/chn-biml/index-eng.cfm">Statistics Canada</a></p>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								<p><img src="public/images/axis-icons/sdg-11.2.1.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>SDG 11.2.1: Percentage of population less than 500 metres from public transit access point</p>
+								<p>Target: 100% of the population</p>
+								<p>Year: 2020</p>
+								<p>Source: <a href="https://www150.statcan.gc.ca/n1/daily-quotidien/200602/t001a-eng.htm">Statistics Canada</a></p>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								<p><img src="public/images/axis-icons/sdg-11.3.2.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>SDG 11.3.2: Score of direct and regular participation by civil society in the urban planning and management of the primate city</p>
+								<p>Target: a score of 5 on the UN-Habitat survey</p>
+								<p>Year: 2019</p>
+								<p>Source: Calculations based on <a href="https://unhabitat.org/sites/default/files/2020/07/metadata_on_sdg_indicator_11.3.2.pdf">UN-Habitat Methodology</a>. The data was collected
+									from the largest city in each CMA. The UN-Habitat scale for civil participation in
+									municipal government was then applied to publicly available provincial legislation,
+									municipal public engagement policies, and other public information on the
+									municipal government website.</p>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								<p><img src="public/images/axis-icons/sdg-11.6.2.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>SDG 11.6.2: Average fine particulate matter concentrations (PM 2.5)</p>
+								<p>Target: 10 (per recommendations from the CDC)</p>
+								<p>Year: 2016</p>
+								<p>Source: <a href="https://www.canada.ca/en/environment-climate-change/services/environmental-indicators/air-quality.html">Government of Canada</a></p>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								<p><img src="public/images/axis-icons/sdg-11.7.2.png" style="width: 8rem;"></p>
+							</td>
+							<td>
+								<p>SDG 11.7.2: Sexual assault (rate per 100,000 population)</p>
+								<p>Target: 0 per 100,000 population</p>
+								<p>Year: 2018</p>
+								<p>Source: <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3510017701">Statistics Canada</a></p>
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="inner">
+        <div class="content">
+          <section>
+            <h3>Acknowledgements</h3>
+						<p>
+              This index and dashboard are the result of the collaborative work
+              of Bruce Frayne, Jean Andrey, Jeff Wilson, Cameron McCordic, Jon
+              Beale, Brock Dickenson, Jamie Sgro, Shelby Sgro, Chris Keppler,
+              Allen Lu, Amelia Clarke, Valentina Catillo, Muhammad Ahmed,
+              Muhammad Adil Rauf, Snehaa Suryanarayanan, and Pankaj Kumar
+              Tewari. We would also like to thank our partners at Statistics
+              Canada, Patrice Martineau and Catherine Michaud, for their support
+              and contributions to this index.
+            </p>
+            <p>
+							This index and dashboard was completed using research
+              funded by Employment and Social Development Canada (Project Number
+              016556557) and the Social Sciences and Humanities Research Council
+              of Canada (Grant Number 435-2019-0594).”
+            </p>
+          </section>
+          <section>
+            <h4>Want to Learn More?</h4>
+            <ul class="alt">
+              <li>
+                <a
+                  href="https://uwaterloo.ca/sustainable-development-solutions-network-canada/"
+                  >SDSN Canada Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://uwaterloo.ca/sustainable-development-solutions-network-canada/about"
+                  >About SDSN Canada</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://uwaterloo.ca/sustainable-development-solutions-network-canada/resources-and-publications"
+                  >Resources and Publications</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.un.org/sustainabledevelopment/wp-content/uploads/2019/01/SDG_Guidelines_January_2019.pdf"
+                  >View SDG Guidelines Documentation</a
+                >
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h4>Connect With Us</h4>
+            <ul class="plain">
+              <li>
+                <a href="https://twitter.com/sdsncanada?lang=en"
+                  ><i class="icon fa-twitter">&nbsp;</i>Twitter</a
+                >
+              </li>
+              <li>
+                <a href="https://www.facebook.com/SDSNCanada1/"
+                  ><i class="icon fa-facebook">&nbsp;</i>Facebook</a
+                >
+              </li>
+              <li>
+                <a href="https://www.instagram.com/sdsncanada/"
+                  ><i class="icon fa-instagram">&nbsp;</i>Instagram</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/jamie-sgro/dashboard"
+                  ><i class="icon fa-github">&nbsp;</i>GitHub</a
+                >
+              </li>
+            </ul>
+          </section>
+        </div>
+        <div class="copyright">
+          <p>
+            Sustainable Development Solutions Network Canada, Copyright &copy;
+            2021
+          </p>
+        </div>
+      </div>
+    </footer>
+
+			<script src="public/javascripts/templated-util.js"></script>
+			<script src="public/javascripts/templated-main.js"></script>
+
+	</body>
+</html>
