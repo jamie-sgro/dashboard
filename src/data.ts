@@ -119,6 +119,14 @@ export class Data {
     return meanCountryData;
   }
 
+  static getCondorcetRanking(): DataPoint[] {
+    let isReduced = true;
+    if (isReduced) {
+      return this.getCondorcetRankingReducedVariables();
+    }
+    return this.getCondorcetRankingAllVariables();
+  }
+
   static getCondorcetRankingAllVariables(): DataPoint[] {
     return [
       { name: "Windsor", description: "Windsor", value: "0.1", nonNormalValue: "0"},
@@ -184,13 +192,35 @@ export class Data {
     return 0;
   }
 
+  static getSyncData(): DataModel[] {
+    let isReduced = true;
+    if (isReduced) {
+      return this.getReducedSyncData(["11.3.1", "11.4.1", "11.5.1", "11.5.2", "11.6.1", "11.7.1"]);
+    }
+    return this.getAllSyncData();
+  }
+
+  /**
+   * Reduce dataset based on sdg name
+   * @param sdgsToDrop An array of SDG names 
+   * that should not be included for analysis
+   * @returns List of cities
+   */
+  static getReducedSyncData(sdgsToDrop: string[]): DataModel[] {
+    let data = this.getAllSyncData();
+    return data.map(city => {
+      city.data = city.data.filter(x => !sdgsToDrop.includes(x.name))
+      return city
+    })
+  }
+
   /**
    * @returns   Returns all geographic data as an array of Data Model.
    * \details   Each DataModel element pertains to one city, and has a name and data property.
    *              - The data property is an array of DataPoint
    *              - Each DataPoint has three strings (name, desc, value) for the bar plot.
    */
-  static getSyncData(): DataModel[] {
+  static getAllSyncData(): DataModel[] {
     let countryData: DataModel[] = [
       {
         name: "St. John's",
