@@ -193,7 +193,8 @@ export class Data {
   }
 
   static getSyncData(): DataModel[] {
-    let isReduced = true;
+    let isReduced: boolean = Boolean(document.getElementById("reduced"));
+    console.log(isReduced)
     if (isReduced) {
       return this.getReducedSyncData(["11.3.1", "11.4.1", "11.5.1", "11.5.2", "11.6.1", "11.7.1"]);
     }
