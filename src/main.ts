@@ -151,7 +151,7 @@ function populateRankingRadioButtons() {
         meanCountry =  Data.getAverageCountry(rankingMethod)
         break;
       case 2:
-        meanCountry = Data.get_condorcet_ranking_all_variables();
+        meanCountry = Data.getCondorcetRankingAllVariables();
       default:
         break;
     }

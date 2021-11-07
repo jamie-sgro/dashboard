@@ -119,7 +119,7 @@ export class Data {
     return meanCountryData;
   }
 
-  static get_condorcet_ranking_all_variables(): DataPoint[] {
+  static getCondorcetRankingAllVariables(): DataPoint[] {
     return [
       { name: "Windsor", description: "Windsor", value: "0.1", nonNormalValue: "0"},
       { name: "St. John's", description: "St. John's", value: "0.2", nonNormalValue: "1"},
@@ -141,6 +141,30 @@ export class Data {
       { name: "Calgary", description: "Calgary", value: "1", nonNormalValue: "17"},
     ]
   }
+
+  static getCondorcetRankingReducedVariables(): DataPoint[] {
+    return [
+    { name: "Quebec City", description: "Quebec City", value: "0", nonNormalValue: "10" },
+    { name: "Sherbrooke", description: "Sherbrooke", value: "0", nonNormalValue: "11" },
+    { name: "Montréal", description: "Montréal", value: "0", nonNormalValue: "15" },
+    { name: "Calgary", description: "Calgary", value: "0", nonNormalValue: "13" },
+    { name: "Kitchener, Cambridge, Waterloo", description: "Kitchener, Cambridge, Waterloo", value: "0", nonNormalValue: "10" },
+    { name: "St. John's", description: "St. John's", value: "0", nonNormalValue: "8" },
+    { name: "Windsor", description: "Windsor", value: "0", nonNormalValue: "1" },
+    { name: "Saskatoon", description: "Saskatoon", value: "0", nonNormalValue: "5" },
+    { name: "Winnipeg", description: "Winnipeg", value: "0", nonNormalValue: "10" },
+    { name: "Edmonton", description: "Edmonton", value: "0", nonNormalValue: "7" },
+    { name: "Hamilton", description: "Hamilton", value: "0", nonNormalValue: "5" },
+    { name: "Regina", description: "Regina", value: "0", nonNormalValue: "1" },
+    { name: "Halifax", description: "Halifax", value: "0", nonNormalValue: "3" },
+    { name: "St. Catharines, Niagara", description: "St. Catharines, Niagara", value: "0", nonNormalValue: "3" },
+    { name: "London", description: "London", value: "0", nonNormalValue: "4" },
+    { name: "Victoria", description: "Victoria", value: "0", nonNormalValue: "14" },
+    { name: "Vancouver", description: "Vancouver", value: "0", nonNormalValue: "17" },
+    { name: "Toronto", description: "Toronto", value: "0", nonNormalValue: "16" },
+    ]
+  }
+
 
   /**
    * @brief   Compares the values of two DataPoints. Useful for sorting funtions.
