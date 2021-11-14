@@ -152,23 +152,24 @@ export class Data {
 
   static getCondorcetRankingReducedVariables(): DataPoint[] {
     return [
-      { name: "Windsor", description: "Windsor", value: "0.0769230769230769", nonNormalValue: "1" },
-      { name: "Regina", description: "Regina", value: "0.0769230769230769", nonNormalValue: "1" },
-      { name: "Halifax", description: "Halifax", value: "0.153846153846154", nonNormalValue: "3" },
-      { name: "St. Catharines, Niagara", description: "St. Catharines, Niagara", value: "0.153846153846154", nonNormalValue: "3" },
-      { name: "London", description: "London", value: "0.230769230769231", nonNormalValue: "4" },
-      { name: "Saskatoon", description: "Saskatoon", value: "0.307692307692308", nonNormalValue: "5" },
-      { name: "Hamilton", description: "Hamilton", value: "0.307692307692308", nonNormalValue: "5" },
-      { name: "Edmonton", description: "Edmonton", value: "0.384615384615385", nonNormalValue: "7" },
-      { name: "St. John's", description: "St. John's", value: "0.461538461538462", nonNormalValue: "8" },
-      { name: "Quebec City", description: "Quebec City", value: "0.538461538461539", nonNormalValue: "10" },
-      { name: "Kitchener, Cambridge, Waterloo", description: "Kitchener, Cambridge, Waterloo", value: "0.538461538461539", nonNormalValue: "10" },
-      { name: "Winnipeg", description: "Winnipeg", value: "0.538461538461539", nonNormalValue: "10" },
-      { name: "Sherbrooke", description: "Sherbrooke", value: "0.615384615384615", nonNormalValue: "11" },
-      { name: "Calgary", description: "Calgary", value: "0.692307692307692", nonNormalValue: "13" },
-      { name: "Victoria", description: "Victoria", value: "0.769230769230769", nonNormalValue: "14" },
-      { name: "Montréal", description: "Montréal", value: "0.846153846153846", nonNormalValue: "15" },
-      { name: "Toronto", description: "Toronto", value: "0.923076923076923", nonNormalValue: "16" },
+      { name: "Windsor", description: "Windsor", value: "0.071428571", nonNormalValue: "1" },
+      { name: "St. Catharines--Niagara", description: "St. Catharines--Niagara", value: "0.071428571", nonNormalValue: "1" },
+      { name: "Halifax", description: "Halifax", value: "0.142857143", nonNormalValue: "2" },
+      { name: "Halifax", description: "Halifax", value: "0.142857143", nonNormalValue: "2" },
+      { name: "Hamilton", description: "Hamilton", value: "0.214285714", nonNormalValue: "3" },
+      { name: "London", description: "London", value: "0.285714286", nonNormalValue: "4" },
+      { name: "Regina", description: "Regina", value: "0.357142857", nonNormalValue: "5" },
+      { name: "Saskatoon", description: "Saskatoon", value: "0.428571429", nonNormalValue: "6" },
+      { name: "Edmonton", description: "Edmonton", value: "0.5", nonNormalValue: "7" },
+      { name: "St. John's", description: "St. John's", value: "0.571428571", nonNormalValue: "9" },
+      { name: "Winnipeg", description: "Winnipeg", value: "0.571428571", nonNormalValue: "9" },
+      { name: "Quebec City", description: "Quebec City", value: "0.642857143", nonNormalValue: "10" },
+      { name: "Kitchener--Cambridge--Waterloo", description: "Kitchener--Cambridge--Waterloo", value: "0.714285714", nonNormalValue: "11" },
+      { name: "Sherbrooke", description: "Sherbrooke", value: "0.714285714", nonNormalValue: "11" },
+      { name: "Victoria", description: "Victoria", value: "0.785714286", nonNormalValue: "13" },
+      { name: "Montréal", description: "Montréal", value: "0.857142857", nonNormalValue: "14" },
+      { name: "Calgary", description: "Calgary", value: "0.928571429", nonNormalValue: "15" },
+      { name: "Toronto", description: "Toronto", value: "0.928571429", nonNormalValue: "15" },
       { name: "Vancouver", description: "Vancouver", value: "1", nonNormalValue: "17" },
   ]
 }
@@ -196,7 +197,7 @@ export class Data {
     let isReduced: boolean = Boolean(document.getElementById("reduced"));
     console.log(isReduced)
     if (isReduced) {
-      return this.getReducedSyncData(["11.3.1", "11.4.1", "11.5.1", "11.5.2", "11.6.1", "11.7.1"]);
+      return this.getReducedSyncData(["11.3.2", "11.4.1", "11.5.1", "11.5.2", "11.6.1", "11.7.1"]);
     }
     return this.getAllSyncData();
   }
