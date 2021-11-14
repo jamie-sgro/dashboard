@@ -2000,7 +2000,7 @@ ul.icons {
     position: absolute;
     right: 50%;
     width: 100%; }
-  @media screen and (max-width: 1000px) {
+  @media screen {
     #banner video {
       width: auto;
     }
