@@ -28,7 +28,9 @@ result = pd.DataFrame(normalized_data)
 result.columns = [x + "_python" for x in rows_to_normalize]
 
 df = df.join(result)
-result = 1- result
+result = 1 - result
 result.columns = [x + "_python_inverted" for x in rows_to_normalize]
+df = df.join(result)
+
 df.to_csv(Path("./public/data/mix_max_js_results_inverted.csv"))
 1
