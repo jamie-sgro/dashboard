@@ -1,7 +1,3 @@
-[![Unit Tests](https://github.com/jamie-sgro/dashboard/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/jamie-sgro/dashboard/actions/workflows/unit_tests.yml)
-
-🌐 [View Live Dashboard!](https://sdsn-canada-dashboard.tk/home)
-
 # SDSN Cananada Dashboard
 
 This project involves building a one-page online dashboard for visualizing an SDG Cities Index that is both open-sourced and legally shareable. This includes a three-panel layout that dynamically resizes to based on the viewport. Panel-1 (left) includes a control panel, to select averaging methods and select particular cities to view in more detail. Panel-2 (middle) indicates the selected city name, a table including it's total score and relative ranking, and a barplot sorting total scores from highest to lowest with the current cities position highlighted. Panel-3 (right) contains a horizontal barplot indicating the various 'scores' for each indicator measured by the city/marker. Panel-3 can toggle a leader-laggard graph that indicates the min and max scores for each indicator with a circle marking the indicator score for the selected city.
